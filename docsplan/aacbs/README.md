@@ -38,3 +38,5 @@ AACBS-000 e AACBS-001 foram aprovadas. A AACBS-002 entrega 24 raízes XML, 25 XS
 ## Evidências
 
 A entrega da AACBS-002 está em [evidencias/AACBS-002/tentativa-0001/ENTREGA.md](evidencias/AACBS-002/tentativa-0001/ENTREGA.md), com o checkpoint de código, os 292 testes aprovados e os logs de build. A [entrega aprovada da AACBS-001](evidencias/AACBS-001/tentativa-0001/ENTREGA.md), a [revisão aprovada da AACBS-000](evidencias/AACBS-000/tentativa-0002/ENTREGA.md) e o [dossiê inicial](evidencias/AACBS-000/tentativa-0001/ENTREGA.md) permanecem como histórico. Logs adicionais só entram quando ajudam a comprovar o resultado; segredos e dados fiscais identificáveis não pertencem às evidências.
+
+O retrabalho dos quatro achados do ticket ID #189855 está na [tentativa-0002](evidencias/AACBS-002/tentativa-0002/ENTREGA.md), com testes Debug e INTEROP aprovados. A AACBS-002 aguarda revisão humana.

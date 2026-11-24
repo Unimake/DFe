@@ -434,3 +434,11 @@ MigrationBackup/
 !/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/testes-aacbs-0004.log
 !/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/regressao-0004.log
 !/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/build-interop-0004.log
+
+# Evidências finais sanitizadas do retrabalho da AACBS-002
+/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/CHECKPOINT.csv
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/regressao.log
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/testes-interop.log

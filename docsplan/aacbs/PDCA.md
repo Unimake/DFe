@@ -8,7 +8,7 @@ Este arquivo é a fonte única dos estados e do histórico das etapas. O escopo 
 |---|---|---|---|
 | AACBS-000 | Planejamento e revisão das fontes, decisões, requisitos e estratégia de execução | APPROVED | Aprovação explícita do DEV em 24/11/2026 |
 | AACBS-001 | Qualificação das fontes e especificação dos contratos de todas as famílias, campo a campo; autenticação somente documental | APPROVED | Aprovação explícita do DEV, incluindo datas e retorno global RAD |
-| AACBS-002 | Classes XML, XSDs de envio e retorno, validação, integração com recursos da DLL e testes | DELIVERED_FOR_REVIEW | 24 raízes, 25 XSDs, 226 testes AACBS e 66 regressões aprovados; builds normal e INTEROP concluídos |
+| AACBS-002 | Classes XML, XSDs de envio e retorno, validação, integração com recursos da DLL e testes | DELIVERED_FOR_REVIEW | Quatro achados corrigidos; testes Debug/INTEROP e regressões aprovados; tentativa-0002 |
 | AACBS-003 | Infraestrutura, autenticação, configuração e transporte; débitos com prova offline seguida de ciclo real | PLANNED | AACBS-002 APPROVED |
 | AACBS-004 | Créditos, pagamentos, recolhimentos e DARF RAD/PCONT; cobertura integral e provas reais incrementais | PLANNED | AACBS-003 APPROVED |
 | AACBS-005 | Consolidação dos resultados reais, INTEROP, pacote, documentação de uso, revisão e entrega final | PLANNED | AACBS-004 APPROVED |
@@ -57,5 +57,8 @@ Cada etapa usa `evidencias/<etapa>/tentativa-NNNN/ENTREGA.md`, seguindo [EVIDENC
 | 2026-11-24 | AACBS-001 | DELIVERED_FOR_REVIEW | APPROVED | DEV: "Aprovo a AACBS-001 e libero a execução da AACBS-002. Pode seguir com as propostas documentadas para as datas e o retorno global do DARF RAD." | tentativa-0001 |
 | 2026-11-24 | AACBS-002 | PLANNED | IN_PROGRESS | Implementação offline dos modelos, XSDs, catálogo e validação liberada pela mesma resposta; sem autenticação ou transporte de negócio | tentativa-0001 |
 | 2026-11-24 | AACBS-002 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Modelos, schemas, catálogo e validação entregues; checkpoint de 94 arquivos, 226 testes AACBS e 66 regressões sem falhas, build INTEROP aprovado e revisão independente sem pendências materiais | tentativa-0001 |
+| 2026-11-24 | AACBS-002 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou analisar e corrigir os achados da revisão do ticket ID #189855 | tentativa-0002 |
+| 2026-11-24 | AACBS-002 | REWORK | IN_PROGRESS | Correções dos contratos XML e regressões offline; AACBS-003 não iniciada | tentativa-0002 |
+| 2026-11-24 | AACBS-002 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Quatro achados corrigidos: 239 testes Debug, 241 INTEROP e 66 regressões aprovados; builds sem erros | tentativa-0002 |
 
-AACBS-000 e AACBS-001 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-002 entregue para revisão humana em [seu dossiê](evidencias/AACBS-002/tentativa-0001/ENTREGA.md). AACBS-003 a AACBS-005 permanecem pendentes. Nenhum token foi obtido ou API de negócio consumida; autenticação, transporte e harness pertencem à AACBS-003.
+AACBS-000 e AACBS-001 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-002 corrigida e entregue para revisão humana no [dossiê da tentativa-0002](evidencias/AACBS-002/tentativa-0002/ENTREGA.md); a entrega anterior permanece preservada. AACBS-003 a AACBS-005 permanecem pendentes. Nenhum token foi obtido ou API de negócio consumida; autenticação, transporte e harness pertencem à AACBS-003.
