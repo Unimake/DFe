@@ -19,7 +19,7 @@ namespace Unimake.Business.DFe.Xml.NFe
     [ComVisible(true)]
 #endif
     [Serializable()]
-    [XmlRoot("procInutNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
+    [XmlRoot("ProcInutNFe", Namespace = "http://www.portalfiscal.inf.br/nfe", IsNullable = false)]
     public class ProcInutNFe : XMLBase
     {
         #region Public Fields

@@ -856,8 +856,8 @@ namespace Unimake.Business.DFe.Utility
                .Replace("<SignatureValue xmlns=\"\">", "<SignatureValue>")
                .Replace("<KeyInfo xmlns=\"\">", "<KeyInfo>")
                .Replace("<protNFe xmlns=\"\" versao=\"4.00\">", "<protNFe versao=\"4.00\" xmlns=\"http://www.portalfiscal.inf.br/nfe\">")
-               .Replace("<ProcInutNFe ", "<procInutNFe ")
-               .Replace("</ProcInutNFe>", "</procInutNFe>")
+               .Replace("<procInutNFe ", "<ProcInutNFe ")
+               .Replace("</procInutNFe>", "</ProcInutNFe>")
             ;
 
         /// <summary>

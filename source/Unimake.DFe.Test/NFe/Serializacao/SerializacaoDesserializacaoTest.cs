@@ -404,16 +404,23 @@ namespace Unimake.DFe.Test.NFe.Serializacao
         /// </summary>
         [Theory]
         [Trait("DFe", "NFe")]
-        [InlineData(@"..\..\..\NFe\Resources\procInutNFe.xml")]
-        public void SerializacaoDesserializacaoProcInutNFe(string arqXML)
+        [InlineData(@"..\..\..\NFe\Resources\procInutNFe.xml", false)]
+        [InlineData(@"..\..\..\NFe\Resources\procInutNFe.xml", true)]
+        public void SerializacaoDesserializacaoProcInutNFe(string arqXML, bool raizSchema)
         {
             Assert.True(File.Exists(arqXML), "Arquivo " + arqXML + " não foi localizado para a realização da serialização/desserialização.");
 
             var doc = new XmlDocument();
             doc.Load(arqXML);
 
+            if (raizSchema)
+            {
+                doc.LoadXml(doc.OuterXml.Replace("<procInutNFe ", "<ProcInutNFe ").Replace("</procInutNFe>", "</ProcInutNFe>"));
+            }
+
             var xml = XMLUtility.Deserializar<ProcInutNFe>(doc);
             var doc2 = xml.GerarXML();
+            Assert.Equal("ProcInutNFe", doc2.DocumentElement.LocalName);
 
             Assert.True(doc.InnerText == doc2.InnerText, "XML gerado pela DLL está diferente do conteúdo do arquivo serializado.");
         }
