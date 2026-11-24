@@ -27,7 +27,7 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         /// <param name="configuracao">Configuração do serviço.</param>
         public RecepcaoEvento(EventoNFeABI evento, Configuracao configuracao) : this()
         {
-            Inicializar(evento?.GerarXML() ?? throw new ArgumentNullException(nameof(evento)), configuracao);
+            Inicializar(PrepararEvento(evento), configuracao);
         }
 
         /// <summary>Prepara um XML de evento para envio.</summary>
@@ -91,6 +91,33 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
             base.DefinirConfiguracao();
         }
 
+        /// <inheritdoc />
+        protected override void XmlValidarConteudo()
+        {
+            var evento = XMLUtility.Deserializar<EventoNFeABI>(ConteudoXML);
+            evento.Validar();
+
+            var namespaces = new XmlNamespaceManager(ConteudoXML.NameTable);
+            namespaces.AddNamespace("abi", "http://www.portalfiscal.inf.br/nfeabi");
+            var idInformado = ConteudoXML.SelectSingleNode("/abi:evento/abi:infEvento/@Id", namespaces)?.Value;
+            if (!string.Equals(idInformado, evento.InfEvento.Id, StringComparison.Ordinal))
+            {
+                throw new ValidarXMLException("O atributo Id de <infEvento> deve corresponder a ID + tpEvento + chNFeABI + nSeqEvento com três dígitos.");
+            }
+        }
+
+        private static XmlDocument PrepararEvento(EventoNFeABI evento)
+        {
+            if (evento == null)
+            {
+                throw new ArgumentNullException(nameof(evento));
+            }
+
+            // O serializador pode omitir valores conflitantes, como o CPF quando o CNPJ também é informado.
+            evento.Validar();
+            return evento.GerarXML();
+        }
+
 #if INTEROP
         /// <summary>Prepara o evento tipado e transmite ao autorizador.</summary>
         /// <param name="evento">Evento da NF-e ABI.</param>
@@ -100,7 +127,7 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         {
             try
             {
-                Inicializar(evento?.GerarXML() ?? throw new ArgumentNullException(nameof(evento)), configuracao);
+                Inicializar(PrepararEvento(evento), configuracao);
                 Executar();
             }
             catch (Exception ex)

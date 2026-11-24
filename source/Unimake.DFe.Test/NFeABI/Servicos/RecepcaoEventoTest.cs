@@ -71,8 +71,48 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             evento.Signature = null;
             using var certificado = CriarCertificado();
 
-            Assert.Throws<ValidarXMLException>(() => new NFeABIRecepcaoEvento(
+            Assert.Throws<ValidatorDFeException>(() => new NFeABIRecepcaoEvento(
                 evento, new Configuracao { CertificadoDigital = certificado }));
+        }
+
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void RejeitaDesfazimentoSemDescricaoAntesDaAssinatura(bool receberXml)
+        {
+            var evento = CarregarEvento("desfazimento-alienacao");
+            evento.Signature = null;
+            evento.InfEvento.DetEvento.EvDesfazimAlienac.TpDesfaz = "99";
+            evento.InfEvento.DetEvento.EvDesfazimAlienac.XDesfaz = null;
+
+            var erro = Assert.Throws<ValidatorDFeException>(() => receberXml
+                ? new NFeABIRecepcaoEvento(evento.GerarXML().OuterXml, new Configuracao())
+                : new NFeABIRecepcaoEvento(evento, new Configuracao()));
+            Assert.Contains("xDesfaz", erro.Message);
+        }
+
+        [Fact]
+        public void RejeitaDoisIdentificadoresDoAutorAntesDaSerializacao()
+        {
+            var evento = CarregarEvento("cancelamento");
+            evento.InfEvento.CPF = "12345678901";
+
+            var erro = Assert.Throws<ValidatorDFeException>(() => new NFeABIRecepcaoEvento(evento, new Configuracao()));
+            Assert.Contains("CNPJ ou CPF", erro.Message);
+        }
+
+        [Fact]
+        public void RejeitaIdBemFormadoDeOutraChaveAntesDaAssinatura()
+        {
+            var evento = CarregarEvento("cancelamento");
+            evento.Signature = null;
+            var xml = evento.GerarXML();
+            var infEvento = Assert.IsType<XmlElement>(xml.GetElementsByTagName("infEvento", NamespaceEvento)[0]);
+            evento.InfEvento.ChNFeABI = "41260912345678000123770010000000021012345671";
+            infEvento.SetAttribute("Id", evento.InfEvento.Id);
+
+            var erro = Assert.Throws<ValidarXMLException>(() => new NFeABIRecepcaoEvento(xml.OuterXml, new Configuracao()));
+            Assert.Contains("Id de <infEvento>", erro.Message);
         }
 
         [Fact]
