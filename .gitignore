@@ -442,3 +442,35 @@ MigrationBackup/
 !/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/regressao.log
 !/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/build-interop.log
 !/docsplan/aacbs/evidencias/AACBS-002/tentativa-0002/testes-interop.log
+
+# Checkpoints intermediários e evidências finais sanitizadas da AACBS-003
+/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/CHECKPOINT-000*.csv
+/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/CHECKPOINT-ROTEIRO.csv
+/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/CHECKPOINT-NI-0001.csv
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/regressao-transporte.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/testes-interop.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/roteiro-offline.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/configuracao-local.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/configuracao-beta.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/roteiro-isolamento-0001.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/autenticar-real-0002.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0001/debitos-real-0001.log
+
+# Retrabalho AACBS-003: somente checkpoint e logs finais sanitizados
+/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/CHECKPOINT.csv
+/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/CHECKPOINT-000*.csv
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/regressao.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/roteiro-offline.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0002/testes-interop.log
+
+# Correção do contexto OAuth auxiliar da AACBS-003
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0003/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0003/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0003/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-003/tentativa-0003/testes-interop.log
