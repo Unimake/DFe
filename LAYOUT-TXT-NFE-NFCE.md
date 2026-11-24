@@ -21,6 +21,7 @@ B|cUF|cNF|NatOp|mod|serie|nNF|dhEmi|dhSaiEnt|tpNF|idDest|cMunFG|TpImp|TpEmis|cDV
 B|cUF|cNF|NatOp|mod|serie|nNF|dhEmi|dhSaiEnt|tpNF|idDest|cMunFG|cMunFGIBS|TpImp|TpEmis|cDV|TpAmb|FinNFe|tpNFDebito|tpNFCredito|indFinal|indPres|indIntermed|ProcEmi|VerProc|dhCont|xJust|
 # B_28
 B|cUF|cNF|NatOp|mod|serie|nNF|dhEmi|dhSaiEnt|dPrevEntrega|tpNF|idDest|cMunFG|cMunFGIBS|TpImp|TpEmis|cDV|TpAmb|FinNFe|tpNFDebito|tpNFCredito|indFinal|indPres|indIntermed|ProcEmi|VerProc|dhCont|xJust|
+B25d|cIndOp|
 B13|refNFe|
 BA02|refNFe|
 BA03|cUF|AAMM|CNPJ|mod|serie|nNF|
