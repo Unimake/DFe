@@ -123,6 +123,11 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
                 throw new ValidarXMLException($"A configuração da recepção de eventos da NFeABI exige o serviço {Servico.NFeABIRecepcaoEvento}. Serviço informado: {Configuracoes.Servico}.");
             }
 
+            if (Configuracoes.IsAPI)
+            {
+                throw new ValidarXMLException("A recepção de eventos da NFeABI exige transporte SOAP. Remova as URLs dos campos RequestURIHomologacao e RequestURIProducao da configuração.");
+            }
+
             var soapAction = ambienteEvento == TipoAmbiente.Producao
                 ? Configuracoes.WebActionProducao
                 : Configuracoes.WebActionHomologacao;

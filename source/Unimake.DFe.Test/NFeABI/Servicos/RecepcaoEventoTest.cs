@@ -257,6 +257,28 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             Assert.Equal(0, servico.Result.InfEvento.CStat);
         }
 
+        [Theory]
+        [InlineData(false)]
+        [InlineData(true)]
+        public void RejeitaUrlDeApiAdicionadaAposPrepararEvento(bool urlDeProducao)
+        {
+            var configuracao = new Configuracao();
+            var servico = new NFeABIRecepcaoEvento(CarregarEvento("cancelamento"), configuracao);
+            const string urlApi = "http://127.0.0.1:1/api-anterior";
+            if (urlDeProducao)
+            {
+                configuracao.RequestURIProducao = urlApi;
+            }
+            else
+            {
+                configuracao.RequestURIHomologacao = urlApi;
+            }
+
+            var erro = Assert.Throws<ValidarXMLException>(() => servico.Executar());
+            Assert.Contains("exige transporte SOAP", erro.Message);
+            Assert.Equal(0, servico.Result.InfEvento.CStat);
+        }
+
 #if INTEROP
         [Theory]
         [InlineData(false, "NFeABIConsultaProtocolo")]
@@ -334,6 +356,19 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             }
 
             await EnviarEConferirAsync(primeiro, "1412600000000001");
+
+            var urlSoapCustomizada = configuracao.WebEnderecoHomologacao;
+            configuracao.RequestURIHomologacao = urlSoapCustomizada + "api-anterior";
+            Assert.True(configuracao.IsAPI);
+            var erroApi = Assert.Throws<ValidarXMLException>(() => servico.Executar(segundo, configuracao));
+            Assert.Contains("exige transporte SOAP", erroApi.Message);
+            Assert.Empty(servico.GetConteudoXMLOriginal());
+            Assert.Empty(servico.GetConteudoXMLAssinado());
+            Assert.Equal(0, servico.Result.InfEvento.CStat);
+            Assert.False(servidor.Pending());
+
+            configuracao.RequestURIHomologacao = null;
+            Assert.Equal(urlSoapCustomizada, configuracao.WebEnderecoHomologacao);
             await EnviarEConferirAsync(segundo, "1412600000000002");
 
             segundo.InfEvento.TpAmb = TipoAmbiente.Producao;
