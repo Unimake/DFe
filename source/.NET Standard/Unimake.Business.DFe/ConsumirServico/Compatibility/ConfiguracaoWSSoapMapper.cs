@@ -7,12 +7,17 @@ namespace Unimake.Business.DFe.ConsumirServico.Compatibility
 {
     internal sealed class ConfiguracaoWSSoapMapper
     {
+        internal static string ObterTagRetorno(Configuracao configuracoes) =>
+            configuracoes.TipoAmbiente == TipoAmbiente.Homologacao && !string.IsNullOrEmpty(configuracoes.WebTagRetornoHomologacao)
+                ? configuracoes.WebTagRetornoHomologacao
+                : configuracoes.WebTagRetorno;
+
         public WSSoap Map(Configuracao configuracoes) =>
             new WSSoap
             {
                 EnderecoWeb = configuracoes.TipoAmbiente == TipoAmbiente.Producao ? configuracoes.WebEnderecoProducao : configuracoes.WebEnderecoHomologacao,
                 ActionWeb = configuracoes.TipoAmbiente == TipoAmbiente.Producao ? configuracoes.WebActionProducao : configuracoes.WebActionHomologacao,
-                TagRetorno = configuracoes.TipoAmbiente == TipoAmbiente.Homologacao && !string.IsNullOrEmpty(configuracoes.WebTagRetornoHomologacao) ? configuracoes.WebTagRetornoHomologacao : configuracoes.WebTagRetorno,
+                TagRetorno = ObterTagRetorno(configuracoes),
                 EncodingRetorno = configuracoes.WebEncodingRetorno,
                 GZIPCompress = configuracoes.GZIPCompress,
                 VersaoSoap = configuracoes.WebSoapVersion,

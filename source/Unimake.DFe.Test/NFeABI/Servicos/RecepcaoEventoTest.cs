@@ -375,6 +375,28 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             Assert.Equal(urlSoapCustomizada, configuracao.WebEnderecoHomologacao);
 
             configuracao.WebSoapString = envelopeEvento;
+            var tagRetornoEvento = configuracao.WebTagRetorno;
+            var tagRetornoConsulta = consulta.Configuracoes.WebTagRetorno;
+
+            void RejeitarTagDeRetorno()
+            {
+                var erroRetorno = Assert.Throws<ValidarXMLException>(() => servico.Executar(segundo, configuracao));
+                Assert.Contains("tag de retorno SOAP", erroRetorno.Message);
+                Assert.Empty(servico.GetConteudoXMLOriginal());
+                Assert.Empty(servico.GetConteudoXMLAssinado());
+                Assert.Equal(0, servico.Result.InfEvento.CStat);
+                Assert.False(servidor.Pending());
+            }
+
+            configuracao.WebTagRetorno = tagRetornoConsulta;
+            RejeitarTagDeRetorno();
+
+            configuracao.WebTagRetorno = tagRetornoEvento;
+            configuracao.WebTagRetornoHomologacao = tagRetornoConsulta;
+            RejeitarTagDeRetorno();
+
+            configuracao.WebTagRetorno = tagRetornoConsulta;
+            configuracao.WebTagRetornoHomologacao = tagRetornoEvento;
             configuracao.RequestURIHomologacao = urlSoapCustomizada + "api-anterior";
             Assert.True(configuracao.IsAPI);
             var erroApi = Assert.Throws<ValidarXMLException>(() => servico.Executar(segundo, configuracao));
@@ -398,8 +420,8 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
         }
 #endif
 
-        private static string CriarRespostaSoap(string protocolo) => $@"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope"">
-  <soap:Body>
+        private static string CriarRespostaSoap(string protocolo) => $@"<s:Envelope xmlns:s=""http://www.w3.org/2003/05/soap-envelope"">
+  <s:Body>
     <nfeabiRecepcaoEventoResult xmlns=""{NamespaceWsdl}"">
       <retEventoNFeABI xmlns=""{NamespaceEvento}"" versao=""1.00"">
         <infEvento>
@@ -409,8 +431,8 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
         </infEvento>
       </retEventoNFeABI>
     </nfeabiRecepcaoEventoResult>
-  </soap:Body>
-</soap:Envelope>";
+  </s:Body>
+</s:Envelope>";
 
         private static async Task<string> ResponderSoapAsync(TcpListener servidor, string xml, CancellationToken limite)
         {

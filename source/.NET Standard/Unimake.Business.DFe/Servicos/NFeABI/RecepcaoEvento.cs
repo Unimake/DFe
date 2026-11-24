@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System;
 using System.IO;
 using System.Xml;
+using Unimake.Business.DFe.ConsumirServico.Compatibility;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.NFeABI;
@@ -22,6 +23,7 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
     {
         private const string NamespaceRecepcaoEvento = "http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIRecepcaoEvento";
         private const string SoapActionRecepcaoEvento = NamespaceRecepcaoEvento + "/nfeabiRecepcaoEvento";
+        private const string TagRetornoRecepcaoEvento = "nfeabiRecepcaoEventoResult";
 
         /// <summary>Cria o serviço para inicialização posterior.</summary>
         public RecepcaoEvento() { }
@@ -139,6 +141,12 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
             }
 
             ValidarEnvelopeSoap(Configuracoes.WebSoapString);
+
+            var tagRetorno = ConfiguracaoWSSoapMapper.ObterTagRetorno(Configuracoes);
+            if (!string.Equals(tagRetorno, TagRetornoRecepcaoEvento, StringComparison.Ordinal))
+            {
+                throw new ValidarXMLException($"A tag de retorno SOAP efetiva da recepção de eventos da NFeABI deve ser {TagRetornoRecepcaoEvento}.");
+            }
         }
 
         private static void ValidarEnvelopeSoap(string template)
