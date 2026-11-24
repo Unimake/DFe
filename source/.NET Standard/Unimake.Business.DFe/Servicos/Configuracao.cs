@@ -50,6 +50,8 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         private string NomeTagServico { get; set; }
 
+        internal void DefinirNomeTagServico(string nome) => NomeTagServico = nome;
+
         // Identidade da operação carregada; alguns enums agrupam serviços com retornos distintos.
         // Leitura exclusiva do diagnóstico, sem alterar configuração, transporte ou contrato COM.
         internal string NomeServicoObservacaoDisponibilidade => NomeTagServico;
@@ -1407,6 +1409,17 @@ namespace Unimake.Business.DFe.Servicos
         /// ClientSecret para gerar token (no momento, apenas Padrão AGILI) 
         /// </summary>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Token AACBS obtido pelo consumidor e com validade controlada por ele.
+        /// Quando informado, evita autenticação auxiliar automática; não inclui o prefixo Bearer.
+        /// Disponível na API .NET. Consumidores COM utilizam ClientID/ClientSecret e a autenticação integrada.
+        /// </summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        [System.Xml.Serialization.XmlIgnore]
+        public string AACBSToken { get; set; }
 
         /// <summary>
         /// Provedor utilizado para os serviços do CIOT. O padrão é a integração direta com a ANTT.

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuracoes>
+  <Servicos ID="AACBS">
+    <Autenticar versao="1.00">
+      <Descricao>Autenticar no Receita Integra</Descricao>
+      <MetodoAPI>post</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/token</RequestURIProducao>
+    </Autenticar>
+    <ConsultarDebitos versao="1.00">
+      <Descricao>Abrir consulta de débitos</Descricao>
+      <MetodoAPI>post</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/debitos/{cnpj}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </ConsultarDebitos>
+    <ConsultarSituacaoSolicitacao versao="1.00">
+      <Descricao>Consultar a situação do tíquete</Descricao>
+      <MetodoAPI>get</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/situacao/{tiqueteSolicitacao}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </ConsultarSituacaoSolicitacao>
+    <ConsultarLinkDownload versao="1.00">
+      <Descricao>Obter a URL assinada</Descricao>
+      <MetodoAPI>get</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/download/{tiqueteSolicitacao}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </ConsultarLinkDownload>
+    <BaixarArquivoRetorno versao="1.00">
+      <Descricao>Baixar o arquivo na URL assinada recebida do serviço de link</Descricao>
+      <MetodoAPI>get</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>{urlAssinada}</RequestURIProducao>
+    </BaixarArquivoRetorno>
+  </Servicos>
+</Configuracoes>

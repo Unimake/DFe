@@ -143,7 +143,10 @@ namespace Unimake.Business.DFe.Servicos
                 DefinirConfiguracao();
             }
 
-            System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
+            if (Configuracoes.TipoDFe != TipoDFe.AACBS)
+            {
+                System.Diagnostics.Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe");
+            }
 
             XmlValidar();
         }
@@ -182,13 +185,19 @@ namespace Unimake.Business.DFe.Servicos
         /// Recupera o conteúdo do XML assinado.
         /// </summary>
         /// <returns>Retorna conteúdo do XML assinado</returns>
-        public string GetConteudoXMLAssinado() => (ConteudoXMLAssinado != null ? ConteudoXMLAssinado.OuterXml : "");
+        public string GetConteudoXMLAssinado() => ObterTextoXmlInterop(ConteudoXMLAssinado);
 
         /// <summary>
         /// Recupera o conteúdo do XML original.
         /// </summary>
         /// <returns>Retorna conteúdo do XML original</returns>
-        public string GetConteudoXMLOriginal() => (ConteudoXMLOriginal != null ? ConteudoXMLOriginal.OuterXml : "");
+        public string GetConteudoXMLOriginal() => ObterTextoXmlInterop(ConteudoXMLOriginal);
+
+        private static string ObterTextoXmlInterop(XmlDocument documento) =>
+            documento == null ? string.Empty :
+            documento.DocumentElement?.NamespaceURI == Unimake.Business.DFe.Xml.AACBS.AACBSFormat.Namespace
+                ? XMLUtility.ObterTextoXmlAACBS(documento)
+                : documento.OuterXml;
 
 
 #endif
@@ -196,7 +205,7 @@ namespace Unimake.Business.DFe.Servicos
         /// <summary>
         /// Propriedade para uso interno nos testes unitários. 
         /// </summary>
-        public HttpStatusCode HttpStatusCode { get; private set; }
+        public HttpStatusCode HttpStatusCode { get; protected set; }
 
         /// <summary>
         /// Conteúdo do XML original, para os que tem assinatura este está sem. Original conforme foi criado.

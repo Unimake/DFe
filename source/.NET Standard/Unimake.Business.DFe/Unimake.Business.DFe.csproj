@@ -4030,6 +4030,8 @@
 
 	<ItemGroup Label="AACBS - schemas XML">
 		<EmbeddedResource Include="Xml\Schemas\AACBS\*.xsd" />
+		<None Remove="Servicos\Config\AACBS\*.xml" />
+		<EmbeddedResource Include="Servicos\Config\AACBS\*.xml" />
 	</ItemGroup>
 </Project>
 
