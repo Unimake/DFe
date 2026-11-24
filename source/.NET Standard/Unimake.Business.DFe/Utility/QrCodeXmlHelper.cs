@@ -559,7 +559,8 @@ namespace Unimake.Business.DFe.Utility
             }
 
             var parametrosQrCode = chave + "|1|" + ((int)tpAmb).ToString();
-
+            // A emissão normal em homologação usa a sequência posicional diretamente após o '?'.
+            var conteudoQrCode = urlQrCode + "?" + parametrosQrCode;
             if (tpEmis == TipoEmissao.ContingenciaOffLine)
             {
                 if (elementIde.GetElementsByTagName("dhEmi").Count <= 0)
@@ -606,9 +607,8 @@ namespace Unimake.Business.DFe.Utility
                 var vNF = elementTotal.GetElementsByTagName("vNF")[0].InnerText;
                 parametrosQrCode += "|" + dhEmi.ToString("dd") + "|" + vNF.Trim() + "|" + tipoDocumento + "|" + documento;
                 parametrosQrCode += "|" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, parametrosQrCode);
+                conteudoQrCode = urlQrCode + "?p=" + parametrosQrCode;
             }
-
-            var conteudoQrCode = urlQrCode + "?p=" + parametrosQrCode;
 
             if (conteudoQrCode.Length < 100 || conteudoQrCode.Length > 1000)
             {

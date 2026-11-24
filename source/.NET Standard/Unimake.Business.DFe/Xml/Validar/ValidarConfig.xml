@@ -3059,9 +3059,9 @@
 					<UF>SP</UF>
 					<UF>TO</UF>
 					<Urls>
-						<UrlChaveHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode/consulta</UrlChaveHomologacao>
+						<UrlChaveHomologacao>https://www.nfeabi.fazenda.pr.gov.br/nfeabi/consulta</UrlChaveHomologacao>
 						<UrlChaveProducao></UrlChaveProducao>
-						<UrlQrCodeHomologacao>https://www.fazenda.pr.gov.br/nfeabi/qrcode/consulta</UrlQrCodeHomologacao>
+						<UrlQrCodeHomologacao>https://www.nfeabi.fazenda.pr.gov.br/nfeabi/consulta</UrlQrCodeHomologacao>
 						<UrlQrCodeProducao></UrlQrCodeProducao>
 					</Urls>
 				</Grupo>

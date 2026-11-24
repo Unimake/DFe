@@ -14,10 +14,10 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
     /// </summary>
     public class QRCodeTest
     {
-        private const string UrlProvisoria = "https://www.fazenda.pr.gov.br/nfeabi/qrcode/consulta";
+        private const string UrlConsultaHomologacao = "https://www.nfeabi.fazenda.pr.gov.br/nfeabi/consulta";
 
         /// <summary>
-        /// Gera o grupo suplementar online conforme a versão 1 do QR Code.
+        /// Gera o grupo suplementar online no formato usado em homologação.
         /// </summary>
         [Fact]
         [Trait("DFe", "NFeABI")]
@@ -33,9 +33,9 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
 
             var grupo = xml.GetElementsByTagName("infNFeSupl");
             Assert.Single(grupo);
-            Assert.Equal(UrlProvisoria + "?p=" + chave + "|1|2", ((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText);
+            Assert.Equal(UrlConsultaHomologacao + "?" + chave + "|1|2", ((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText);
             Assert.InRange(((XmlElement)grupo[0]).GetElementsByTagName("qrCode")[0].InnerText.Length, 100, 1000);
-            Assert.Equal(UrlProvisoria, ((XmlElement)grupo[0]).GetElementsByTagName("urlChave")[0].InnerText);
+            Assert.Equal(UrlConsultaHomologacao, ((XmlElement)grupo[0]).GetElementsByTagName("urlChave")[0].InnerText);
             Assert.Equal("Signature", grupo[0].NextSibling.LocalName);
         }
 
@@ -66,7 +66,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
 
                     var assinatura = Converter.ToRSASHA1(certificado, parametrosSemAssinatura);
                     Assert.Equal(
-                        UrlProvisoria + "?p=" + parametrosSemAssinatura + "|" + assinatura,
+                        UrlConsultaHomologacao + "?p=" + parametrosSemAssinatura + "|" + assinatura,
                         xml.GetElementsByTagName("qrCode")[0].InnerText);
                 }
             }
@@ -84,9 +84,9 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
 
             var servico = new NFeABIAutorizacaoSinc(documento, new Configuracao());
 
-            Assert.Equal(UrlProvisoria, servico.Configuracoes.UrlQrCodeHomologacao);
+            Assert.Equal(UrlConsultaHomologacao, servico.Configuracoes.UrlQrCodeHomologacao);
             Assert.True(string.IsNullOrEmpty(servico.Configuracoes.UrlQrCodeProducao));
-            Assert.Equal(UrlProvisoria, servico.Configuracoes.UrlChaveHomologacao);
+            Assert.Equal(UrlConsultaHomologacao, servico.Configuracoes.UrlChaveHomologacao);
             Assert.True(string.IsNullOrEmpty(servico.Configuracoes.UrlChaveProducao));
         }
 
@@ -130,7 +130,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
                     var qrCode = servico.ConteudoXMLAssinado.GetElementsByTagName("qrCode")[0].InnerText;
 
                     Assert.InRange(qrCode.Length, 100, 1000);
-                    Assert.StartsWith(UrlProvisoria + "?p=", qrCode);
+                    Assert.Equal(UrlConsultaHomologacao + "?" + documento.InfNFeABI.Chave + "|1|2", qrCode);
                 }
             }
         }
@@ -176,9 +176,9 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
             return new Configuracao
             {
                 TipoAmbiente = TipoAmbiente.Homologacao,
-                UrlQrCodeHomologacao = UrlProvisoria,
+                UrlQrCodeHomologacao = UrlConsultaHomologacao,
                 UrlQrCodeProducao = string.Empty,
-                UrlChaveHomologacao = UrlProvisoria,
+                UrlChaveHomologacao = UrlConsultaHomologacao,
                 UrlChaveProducao = string.Empty
             };
         }
