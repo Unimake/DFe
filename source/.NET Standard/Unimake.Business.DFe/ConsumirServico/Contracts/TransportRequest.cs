@@ -41,6 +41,12 @@ namespace Unimake.Business.DFe.ConsumirServico.Contracts
 
         public bool DisableAutomaticClientCertificateSelection { get; set; }
 
+        public bool ResponseHeadersRead { get; set; }
+
+        public bool AllowAutoRedirect { get; set; } = true;
+
+        public bool UseCookies { get; set; } = true;
+
         public IDictionary<string, string> Headers { get; } = new Dictionary<string, string>();
     }
 }

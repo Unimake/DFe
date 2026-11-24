@@ -17,10 +17,19 @@ namespace Unimake.Business.DFe.ConsumirServico.Contracts
 
         public HttpResponseMessage HttpResponseMessage { get; set; }
 
+        public IDisposable ResponseLifetime { get; set; }
+
         public void Dispose()
         {
-            HttpResponseMessage?.Dispose();
-            ContentStream?.Dispose();
+            try
+            {
+                HttpResponseMessage?.Dispose();
+                ContentStream?.Dispose();
+            }
+            finally
+            {
+                ResponseLifetime?.Dispose();
+            }
         }
     }
 }

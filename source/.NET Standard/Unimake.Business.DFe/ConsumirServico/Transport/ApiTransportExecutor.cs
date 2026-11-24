@@ -10,6 +10,29 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
     {
         public TransportResponse Execute(TransportRequest request)
         {
+            if (request.ResponseHeadersRead)
+            {
+                var streamingClient = CreateClient(request);
+                try
+                {
+                    using (var message = new HttpRequestMessage(new HttpMethod(request.Method), request.RequestUri) { Content = request.HttpContent })
+                    {
+                        var response = streamingClient.SendAsync(message, HttpCompletionOption.ResponseHeadersRead).GetAwaiter().GetResult();
+                        return new TransportResponse
+                        {
+                            StatusCode = response.StatusCode,
+                            HttpResponseMessage = response,
+                            ResponseLifetime = streamingClient
+                        };
+                    }
+                }
+                catch
+                {
+                    streamingClient.Dispose();
+                    throw;
+                }
+            }
+
             using (var httpClient = CreateClient(request))
             {
                 HttpResponseMessage httpResponse;
@@ -74,7 +97,9 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
         {
             var handler = new HttpClientHandler
             {
-                UseProxy = request.UseProxy
+                UseProxy = request.UseProxy,
+                AllowAutoRedirect = request.AllowAutoRedirect,
+                UseCookies = request.UseCookies
             };
 
             if (!request.UseCertificate)
@@ -105,6 +130,8 @@ namespace Unimake.Business.DFe.ConsumirServico.Transport
         {
             var handler = new WinHttpHandler
             {
+                AutomaticRedirection = request.AllowAutoRedirect,
+                CookieUsePolicy = request.UseCookies ? CookieUsePolicy.UseInternalCookieStoreOnly : CookieUsePolicy.IgnoreCookies,
                 WindowsProxyUsePolicy = !request.UseProxy
                     ? WindowsProxyUsePolicy.DoNotUseProxy
                     : request.Proxy == null ? WindowsProxyUsePolicy.UseWinInetProxy : WindowsProxyUsePolicy.UseCustomProxy
