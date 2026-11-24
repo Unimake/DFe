@@ -1,33 +1,20 @@
 ---
 name: revisao-ticket
-description: 'Use quando Codex precisar revisar commits vinculados a um ticket Redmine no projeto Unimake.DFe pelo padrão "ID #000000", consolidando todos os commits do ticket e gerando justificativa objetiva em Textile somente para problemas técnicos que permanecem no estado final.'
+description: 'Use para revisar o estado final das alterações do Unimake.DFe. Com um ticket Redmine informado no padrão "ID #000000" ou pelo número, consolide seus commits. Sem ticket, revise somente as alterações pendentes de commit feitas pelo Codex no chat atual. Reporte problemas remanescentes em Textile.'
 ---
 
-# Revisão técnica de ticket por commits
+# Revisão técnica de alterações
 
 ## Objetivo
 
-Revisar os commits relacionados a um ticket informado pelo usuário e avaliar o resultado final do conjunto de alterações.
-
-Localizar o ticket nas mensagens de commit pelo padrão exato:
-
-```text
-ID #123456
-```
-
-Use o restante do repositório apenas como contexto para entender arquitetura, padrões, convenções, compatibilidade e impacto. Não critique código antigo não alterado pelos commits do ticket, exceto quando ele for indispensável para explicar o impacto direto da alteração revisada.
+Avaliar o estado final das alterações no escopo escolhido. Use o restante do repositório como contexto para entender arquitetura, padrões, convenções, compatibilidade e impacto. Reporte somente problemas introduzidos ou agravados pelas alterações revisadas.
 
 ## Entrada
 
-O usuário deve informar o número do ticket, por exemplo:
+- **Com ticket informado para esta revisão**, como `ID #123456` ou `123456`, siga o fluxo por ticket.
+- **Sem ticket informado para esta revisão**, siga diretamente o fluxo de alterações pendentes do chat atual.
 
-```text
-123456
-```
-
-Se o número do ticket não for informado, peça somente essa informação.
-
-## Fluxo obrigatório
+## Fluxo por ticket
 
 1. Localize todos os commits cuja mensagem contenha exatamente `ID #NUMERO`.
 2. Considere todos os branches disponíveis quando possível.
@@ -59,7 +46,7 @@ git diff COMMIT_BASE..COMMIT_FINAL -- CAMINHO_DO_ARQUIVO
 
 Se o branch atual não contiver o estado final do ticket, use o último commit do ticket como referência para os arquivos alterados.
 
-## Regra de consolidação
+### Regra de consolidação
 
 A revisão é do ticket, não de cada commit isolado.
 
@@ -73,9 +60,16 @@ Não reporte:
 
 Antes de reprovar, confirme se algum commit posterior do mesmo ticket alterou o mesmo arquivo, classe, método, XML, schema, teste ou comportamento relacionado.
 
+## Fluxo de alterações pendentes do chat atual
+
+1. Use o histórico disponível do chat atual, os patches, os snapshots anteriores às edições e as saídas de ferramentas para identificar as alterações comprovadamente feitas pelo Codex neste chat.
+2. Cruze essas evidências com o estado atual do Git. Use `git status --short --untracked-files=all` para inventariar arquivos, `git diff --cached` para alterações no índice e `git diff` para alterações fora do índice. Use `git diff HEAD` para conferir o resultado combinado das alterações rastreadas e leia diretamente os arquivos novos ainda não rastreados que forem atribuíveis ao chat. Considere também exclusões e renomeações.
+3. Revise apenas as mudanças deste chat que ainda estejam pendentes de commit. Exclua mudanças já commitadas ou revertidas, alterações preexistentes e edições do usuário, de outros chats ou de outros processos. Em arquivos com mudanças de várias origens, revise apenas os trechos cuja autoria puder comprovar. O estado do Git por si só não comprova autoria.
+4. Avalie o estado final das mudanças elegíveis. Se não houver código pendente comprovadamente alterado neste chat, aplique a mensagem correspondente em “Sem código alterado”.
+
 ## Escopo da revisão
 
-Analise somente alterações feitas pelo ticket, incluindo efeitos diretos sobre:
+Analise somente as alterações selecionadas pelo fluxo em uso, incluindo efeitos diretos sobre:
 
 - código C# da biblioteca principal;
 - classes XML e serialização/desserialização;
@@ -85,7 +79,7 @@ Analise somente alterações feitas pelo ticket, incluindo efeitos diretos sobre
 - assinatura digital e certificado;
 - validadores;
 - testes e recursos XML de teste;
-- exemplos somente quando o ticket alterá-los.
+- exemplos somente quando estiverem entre as alterações revisadas.
 
 Não faça implementação nem correção durante a revisão, a menos que o usuário peça explicitamente.
 
@@ -216,12 +210,24 @@ Se o ticket não tiver nenhum código alterado associado aos commits encontrados
 Não encontramos códigos alterados para o ticket informado.
 ```
 
+Se não houver código pendente de commit comprovadamente alterado pelo Codex no chat atual, responda somente:
+
+```text
+Não encontramos códigos pendentes de commit alterados neste chat.
+```
+
 ### Com problemas
 
-Se houver problemas remanescentes, comece exatamente com:
+Na revisão por ticket, comece exatamente com:
 
 ```text
 h2. Justificativa da reprova na revisão do ticket:
+```
+
+Na revisão das alterações pendentes do chat, comece com:
+
+```text
+h2. Justificativa da reprova na revisão das alterações pendentes:
 ```
 
 Para cada problema, use Textile simples:
@@ -268,4 +274,4 @@ Inclua uma orientação curta para evitar esse tipo de problema no futuro.
 - Não repita trechos grandes de código.
 - Mostre o trecho de código no estado final, não em commit intermediário.
 - Não liste commits aprovados.
-- Não inclua problemas corrigidos no próprio ticket.
+- Não inclua problemas já corrigidos no estado final do escopo revisado.
