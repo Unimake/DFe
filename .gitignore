@@ -420,3 +420,17 @@ MigrationBackup/
 
 # Backup temporário da validação local com o UniNFe
 /uninfe-xsd-backup.json
+
+# Credenciais, tíquetes e execução real local da apuração assistida CBS
+/.local/aacbs/
+
+# Checkpoints intermediários da AACBS; a evidência final é versionada
+/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/CHECKPOINT.csv
+/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/CHECKPOINT-0002.csv
+/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/CHECKPOINT-0003.csv
+
+# Somente os logs finais sanitizados referenciados pela entrega
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/build-testes-0004.log
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/testes-aacbs-0004.log
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/regressao-0004.log
+!/docsplan/aacbs/evidencias/AACBS-002/tentativa-0001/build-interop-0004.log
