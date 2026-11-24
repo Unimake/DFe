@@ -498,7 +498,9 @@ namespace Unimake.Business.DFe
 
                 settings.ValidationEventHandler += Reader_ValidationEventHandler;
 
-                ValidateXMLAgainstSchema(conteudoXML.OuterXml, settings);
+                ValidateXMLAgainstSchema(SanitizarErrosAACBS
+                    ? Utility.XMLUtility.ObterTextoXmlAACBS(conteudoXML)
+                    : conteudoXML.OuterXml, settings);
             }
             catch (Exception ex)
             {
@@ -533,8 +535,7 @@ namespace Unimake.Business.DFe
         /// </example>
         public void Validar(string path, string arqSchema, string targetNS = "")
         {
-            var doc = new XmlDocument();
-            doc.Load(path);
+            var doc = CarregarDocumentoParaValidacao(documento => documento.Load(path), arqSchema);
             Validar(doc, arqSchema, targetNS);
         }
 
@@ -553,10 +554,25 @@ namespace Unimake.Business.DFe
         /// </example>
         public void ValidarString(string xml, string arqSchema, string targetNS = "")
         {
-            var doc = new XmlDocument();
-            doc.LoadXml(xml);
+            var doc = CarregarDocumentoParaValidacao(documento => documento.LoadXml(xml), arqSchema);
 
             Validar(doc, arqSchema, targetNS);
+        }
+
+        private static XmlDocument CarregarDocumentoParaValidacao(Action<XmlDocument> carregar, string arqSchema)
+        {
+            var aacbs = arqSchema != null && arqSchema.StartsWith("AACBS.", StringComparison.Ordinal);
+            var documento = new XmlDocument { PreserveWhitespace = aacbs };
+            try
+            {
+                carregar(documento);
+                return documento;
+            }
+            catch (XmlException) when (aacbs)
+            {
+                // A exceção do parser pode conter trechos de texto opaco ou de segredo operacional.
+                throw new XmlException("AACBS: não foi possível ler o XML para validação; verifique sua formação.");
+            }
         }
 #endif
 

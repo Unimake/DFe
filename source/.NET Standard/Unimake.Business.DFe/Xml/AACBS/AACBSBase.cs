@@ -13,6 +13,12 @@ namespace Unimake.Business.DFe.Xml.AACBS
 #endif
     public abstract class AACBSBase : XMLBase
     {
+#if INTEROP
+        /// <summary>Serializa em texto XML preservando retornos de carro nos dados AACBS.</summary>
+        /// <returns>Texto XML sem normalização das quebras de linha dos campos.</returns>
+        public override string GerarXMLString() => Utility.XMLUtility.ObterTextoXmlAACBS(GerarXML());
+#endif
+
         /// <summary>Versão do contrato XML Unimake, independente da versão HTTP.</summary>
         [XmlAttribute("versao")]
         public string Versao { get; set; } = "1.00";

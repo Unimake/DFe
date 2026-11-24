@@ -649,7 +649,7 @@ namespace Unimake.Business.DFe.Utility
 
                 if (result is Contract.Serialization.IXmlSerializable serializable)
                 {
-                    var xmlDoc = new XmlDocument();
+                    var xmlDoc = new XmlDocument { PreserveWhitespace = aacbs };
                     xmlDoc.LoadXml(xml);
                     serializable.ReadXml(xmlDoc);
                 }
@@ -1007,7 +1007,7 @@ namespace Unimake.Business.DFe.Utility
         /// <param name="doc">Conteúdo do XML a ser desserializado</param>
         /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
         public static T Deserializar<T>(XmlDocument doc)
-        where T : new() => Deserializar<T>(doc.OuterXml);
+        where T : new() => Deserializar<T>(TextoXmlParaLeitura<T>(doc));
 
         /// <summary>
         /// Desserializar XML rejeitando elementos e atributos sem mapeamento na classe de destino.
@@ -1017,7 +1017,31 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>Retorna o objeto com o conteúdo do XML desserializado</returns>
         /// <exception cref="DesserializacaoXMLException">Lançada quando o XML contém elementos ou atributos desconhecidos.</exception>
         public static T DeserializarEstrito<T>(XmlDocument doc)
-        where T : new() => Deserializar<T>(doc.OuterXml, true);
+        where T : new() => Deserializar<T>(TextoXmlParaLeitura<T>(doc), true);
+
+        private static string TextoXmlParaLeitura<T>(XmlDocument documento)
+        {
+            var raiz = (XmlRootAttribute)Attribute.GetCustomAttribute(typeof(T), typeof(XmlRootAttribute));
+            return raiz?.Namespace == Unimake.Business.DFe.Xml.AACBS.AACBSFormat.Namespace
+                ? ObterTextoXmlAACBS(documento)
+                : documento.OuterXml;
+        }
+
+        internal static string ObterTextoXmlAACBS(XmlDocument documento)
+        {
+            using (var texto = new Utf8StringWriter())
+            {
+                using (var writer = XmlWriter.Create(texto, new XmlWriterSettings
+                {
+                    Indent = false,
+                    NewLineHandling = NewLineHandling.Entitize
+                }))
+                {
+                    documento.WriteTo(writer);
+                }
+                return texto.ToString();
+            }
+        }
 
         /// <summary>
         /// Detectar qual o tipo de documento fiscal eletrônico do XML

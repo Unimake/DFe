@@ -21,7 +21,7 @@ namespace Unimake.Business.DFe.Validator.AACBS
         /// <param name="xml">Documento XML a validar.</param>
         public AACBSValidator(XmlDocument xml) : this()
         {
-            Xml = (xml ?? throw new ArgumentNullException(nameof(xml))).OuterXml;
+            Xml = Unimake.Business.DFe.Utility.XMLUtility.ObterTextoXmlAACBS(xml ?? throw new ArgumentNullException(nameof(xml)));
         }
 
         /// <summary>Reconhece somente raízes do catálogo no namespace AACBS.</summary>

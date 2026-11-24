@@ -19,6 +19,11 @@ namespace Unimake.Business.DFe.Xml.AACBS
     [XmlType(TypeName = "RetArquivoRecolhimentosTipo", Namespace = "http://www.unimake.com.br/dfe/aacbs")]
     public class RetArquivoRecolhimentos : XMLBase
     {
+#if INTEROP
+        /// <summary>Serializa em texto XML preservando retornos de carro nos dados AACBS.</summary>
+        /// <returns>Texto XML sem normalização das quebras de linha dos campos.</returns>
+        public override string GerarXMLString() => Utility.XMLUtility.ObterTextoXmlAACBS(GerarXML());
+#endif
         /// <summary>
         /// Versão do leiaute XML do arquivo.
         /// </summary>
