@@ -36,14 +36,6 @@
 			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionHomologacao>
 			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/NFeRecepcaoEvento4</WebActionProducao>
 		</RecepcaoEvento>
-		<RecepcaoEventoEPEC versao="1.00">
-			<Descricao>Recepção de eventos</Descricao>
-			<WebEnderecoHomologacao>https://homologacao.nfce.epec.fazenda.sp.gov.br/EPECws/RecepcaoEPEC.asmx</WebEnderecoHomologacao>
-			<WebEnderecoProducao>https://nfce.epec.fazenda.sp.gov.br/EPECws/RecepcaoEPEC.asmx</WebEnderecoProducao>
-			<WebActionHomologacao>http://www.portalfiscal.inf.br/nfe/wsdl/RecepcaoEvento</WebActionHomologacao>
-			<WebActionProducao>http://www.portalfiscal.inf.br/nfe/wsdl/RecepcaoEvento</WebActionProducao>
-			<WebTagRetorno>nfeRecepcaoEventoResult</WebTagRetorno>
-		</RecepcaoEventoEPEC>
 		<Autorizacao versao="4.00">
 			<Descricao>Autorização da NFCe</Descricao>
 			<WebEnderecoHomologacao>https://homologacao.nfce.fazenda.sp.gov.br/ws/nfeautorizacao4.asmx</WebEnderecoHomologacao>

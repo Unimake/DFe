@@ -33,6 +33,28 @@ namespace Unimake.Business.DFe.Servicos.NFe
             protected set => _EnvEvento = value;
         }
 
+        /// <summary>
+        /// Recusa lotes que contenham EPEC da NFC-e de São Paulo antes de preparar o serviço.
+        /// </summary>
+        protected override void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
+        {
+            if (conteudoXML != null)
+            {
+                var namespaces = new XmlNamespaceManager(conteudoXML.NameTable);
+                namespaces.AddNamespace("n", "http://www.portalfiscal.inf.br/nfe");
+                const string epecNFCeSp = "/n:envEvento/n:evento/n:infEvento[" +
+                    "normalize-space(n:tpEvento) = '110140' and substring(normalize-space(n:chNFe), 21, 2) = '65' and " +
+                    "(starts-with(normalize-space(n:chNFe), '35') or normalize-space(n:cOrgao) = '35' or " +
+                    "normalize-space(n:detEvento/n:cOrgaoAutor) = '35')]";
+                if (conteudoXML.SelectSingleNode(epecNFCeSp, namespaces) != null)
+                {
+                    throw new ValidarXMLException("O envio de EPEC da NFC-e de São Paulo foi descontinuado. Utilize a contingência offline da NFC-e.");
+                }
+            }
+
+            base.Inicializar(conteudoXML, configuracao);
+        }
+
         private void ValidarXMLEvento(XmlDocument xml, string schemaArquivo, string targetNS)
         {
             var validar = new ValidarSchema();
@@ -154,19 +176,9 @@ namespace Unimake.Business.DFe.Servicos.NFe
                         descMensagem = "EPEC de NFe";
                     }
 
-                    if (tpEvento == TipoEventoNFe.EPEC && xml.Evento[0].InfEvento.ChNFe.Substring(20, 2) == "65" && ((DetEventoEPEC)xml.Evento[0].InfEvento.DetEvento).COrgaoAutor == UFBrasil.SP)
+                    if (xml.Evento[0].InfEvento.COrgao != UFBrasil.AN)
                     {
-                        if (xml.Evento[0].InfEvento.COrgao != UFBrasil.SP)
-                        {
-                            throw new Exception("Conteúdo da tag <cOrgao> inválido. Para o evento de EPEC de NFCe o conteúdo da tag <cOrgao> deve igual a 35.");
-                        }
-                    }
-                    else
-                    {
-                        if (xml.Evento[0].InfEvento.COrgao != UFBrasil.AN)
-                        {
-                            throw new Exception("Conteúdo da tag <cOrgao> inválido. Para o evento de tipo " + descMensagem + " o conteúdo da tag <cOrgao> deve igual a 91.");
-                        }
+                        throw new Exception("Conteúdo da tag <cOrgao> inválido. Para o evento de tipo " + descMensagem + " o conteúdo da tag <cOrgao> deve igual a 91.");
                     }
                     break;
             }
