@@ -212,8 +212,15 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
 #if INTEROP
             else
             {
+                Assert.Contains(evento.InfEvento.ChNFeABI, servico.GetConteudoXMLOriginal());
+                Assert.Contains(evento.InfEvento.ChNFeABI, servico.GetConteudoXMLAssinado());
+                evento.InfEvento.ChNFeABI = "41260912345678000123770010000000021012345678";
                 evento.InfEvento.NSeqEvento = 2;
-                Assert.ThrowsAny<Exception>(() => servico.Executar(evento, configuracao));
+                Assert.Throws<ValidatorDFeException>(() => servico.Executar(evento, configuracao));
+                Assert.Empty(servico.GetConteudoXMLOriginal());
+                Assert.Empty(servico.GetConteudoXMLAssinado());
+                Assert.Null(servico.EventoNFeABI);
+                Assert.False(servidor.Pending());
             }
 #endif
 
@@ -222,6 +229,32 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             Assert.Equal(default, servico.HttpStatusCode);
             Assert.Equal(0, servico.Result.InfEvento.CStat);
             Assert.Null(servico.Result.InfEvento.NProt);
+        }
+
+        [Fact]
+        public void RejeitaAmbienteDivergenteComConfiguracaoDefinida()
+        {
+            var evento = CarregarEvento("cancelamento");
+            evento.InfEvento.TpAmb = TipoAmbiente.Producao;
+            evento.Signature = null;
+            var configuracao = new Configuracao { Definida = true, TipoAmbiente = TipoAmbiente.Homologacao };
+
+            var erro = Assert.Throws<ValidarXMLException>(() => new NFeABIRecepcaoEvento(evento, configuracao));
+            Assert.Contains("tpAmb de <infEvento> (1)", erro.Message);
+            Assert.Contains("ambiente configurado para a recepção do evento (2)", erro.Message);
+        }
+
+        [Fact]
+        public void RejeitaAmbienteAlteradoAposPrepararEvento()
+        {
+            var configuracao = new Configuracao();
+            var servico = new NFeABIRecepcaoEvento(CarregarEvento("cancelamento"), configuracao);
+            configuracao.Definida = true;
+            configuracao.TipoAmbiente = TipoAmbiente.Producao;
+
+            var erro = Assert.Throws<ValidarXMLException>(() => servico.Executar());
+            Assert.Contains("tpAmb de <infEvento> (2)", erro.Message);
+            Assert.Equal(0, servico.Result.InfEvento.CStat);
         }
 
 #if INTEROP
@@ -271,6 +304,14 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
 
             await EnviarEConferirAsync(primeiro, "1412600000000001");
             await EnviarEConferirAsync(segundo, "1412600000000002");
+
+            segundo.InfEvento.TpAmb = TipoAmbiente.Producao;
+            var erro = Assert.Throws<ValidarXMLException>(() => servico.Executar(segundo, configuracao));
+            Assert.Contains("tpAmb de <infEvento> (1)", erro.Message);
+            Assert.Empty(servico.GetConteudoXMLOriginal());
+            Assert.Empty(servico.GetConteudoXMLAssinado());
+            Assert.Equal(0, servico.Result.InfEvento.CStat);
+            Assert.False(servidor.Pending());
         }
 #endif
 

@@ -203,6 +203,13 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public XmlDocument ConteudoXMLOriginal { get; private set; }
 
+        /// <summary>Descarta o XML original e o XML em processamento.</summary>
+        private protected void LimparConteudoXML()
+        {
+            ConteudoXMLOriginal = null;
+            _ConteudoXML = null;
+        }
+
         /// <summary>
         /// String do XML retornado pelo WebService
         /// </summary>

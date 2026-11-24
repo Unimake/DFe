@@ -41,7 +41,9 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         }
 
         /// <summary>Evento preparado para envio, incluindo a assinatura.</summary>
-        public EventoNFeABI EventoNFeABI => XMLUtility.Deserializar<EventoNFeABI>(ConteudoXMLAssinado);
+        public EventoNFeABI EventoNFeABI => ConteudoXMLAssinado == null
+            ? null
+            : XMLUtility.Deserializar<EventoNFeABI>(ConteudoXMLAssinado);
 
         /// <summary>Retorno tipado do registro do evento.</summary>
         public RetEventoNFeABI Result
@@ -96,6 +98,7 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         {
             var evento = XMLUtility.Deserializar<EventoNFeABI>(ConteudoXML);
             evento.Validar();
+            ValidarAmbiente(evento.InfEvento.TpAmb);
 
             var namespaces = new XmlNamespaceManager(ConteudoXML.NameTable);
             namespaces.AddNamespace("abi", "http://www.portalfiscal.inf.br/nfeabi");
@@ -103,6 +106,14 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
             if (!string.Equals(idInformado, evento.InfEvento.Id, StringComparison.Ordinal))
             {
                 throw new ValidarXMLException("O atributo Id de <infEvento> deve corresponder a ID + tpEvento + chNFeABI + nSeqEvento com três dígitos.");
+            }
+        }
+
+        private void ValidarAmbiente(TipoAmbiente ambienteEvento)
+        {
+            if (ambienteEvento != Configuracoes.TipoAmbiente)
+            {
+                throw new ValidarXMLException($"O tpAmb de <infEvento> ({(int)ambienteEvento}) diverge do ambiente configurado para a recepção do evento ({(int)Configuracoes.TipoAmbiente}).");
             }
         }
 
@@ -125,6 +136,9 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         public override void Executar()
         {
             LimparRetornoWS();
+            var evento = EventoNFeABI
+                ?? throw new InvalidOperationException("Nenhum evento da NFeABI foi preparado para envio.");
+            ValidarAmbiente(evento.InfEvento.TpAmb);
             base.Executar();
         }
 
@@ -135,14 +149,22 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         [ComVisible(true)]
         public void Executar([MarshalAs(UnmanagedType.IUnknown)] EventoNFeABI evento, [MarshalAs(UnmanagedType.IUnknown)] Configuracao configuracao)
         {
+            var preparado = false;
             try
             {
                 LimparRetornoWS();
+                LimparConteudoXML();
                 Inicializar(PrepararEvento(evento), configuracao);
+                preparado = true;
                 Executar();
             }
             catch (Exception ex)
             {
+                if (!preparado)
+                {
+                    LimparConteudoXML();
+                }
+
                 ThrowHelper.Instance.Throw(ex);
             }
         }
