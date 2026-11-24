@@ -80,6 +80,10 @@ namespace Unimake.Business.DFe.Validator.AACBS
                     case "chaveDFE":
                         if (root.Name.LocalName == "gerarDarfAdquirente" && string.IsNullOrWhiteSpace(element.Value))
                             Fail(element, "informe uma chave DF-e que não seja apenas espaço em branco.");
+                        ValidateKeyLength(element);
+                        break;
+                    case "chave":
+                        ValidateKeyLength(element);
                         break;
                     case "situacao":
                         var needsError = element.Value == "ERRO" || element.Value == "EXPIRADA";
@@ -110,6 +114,25 @@ namespace Unimake.Business.DFe.Validator.AACBS
                     if (pcont && (part.Element(NS + "niContribuinte") != null || part.Element(NS + "chaveDFE") != null))
                         Fail(part, "a composição PCONT não admite niContribuinte nem chaveDFE.");
                     if (pcont && part.Element(NS + "vencimento") is XElement due) ValidateDate(due);
+                }
+            }
+        }
+
+        private static void ValidateKeyLength(XElement element)
+        {
+            // O contrato limita caracteres Unicode; um par substituto UTF-16 conta uma vez.
+            var characters = 0;
+            for (var index = 0; index < element.Value.Length; index++)
+            {
+                if (char.IsHighSurrogate(element.Value[index]) && index + 1 < element.Value.Length &&
+                    char.IsLowSurrogate(element.Value[index + 1]))
+                {
+                    index++;
+                }
+                characters++;
+                if (characters > 100)
+                {
+                    Fail(element, "informe uma chave com no máximo 100 caracteres Unicode.");
                 }
             }
         }

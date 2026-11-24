@@ -26,7 +26,7 @@
       <xs:element name="chaveDFE">
         <xs:simpleType>
           <xs:restriction base="aacbs:TextoNaoVazio">
-            <xs:maxLength value="100" />
+            <xs:maxLength value="200" />
           </xs:restriction>
         </xs:simpleType>
       </xs:element>
