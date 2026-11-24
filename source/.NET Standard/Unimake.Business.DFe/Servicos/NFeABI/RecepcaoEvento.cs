@@ -19,6 +19,8 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
 #endif
     public class RecepcaoEvento : ServicoBase, IInteropService<EventoNFeABI>
     {
+        private const string SoapActionRecepcaoEvento = "http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIRecepcaoEvento/nfeabiRecepcaoEvento";
+
         /// <summary>Cria o serviço para inicialização posterior.</summary>
         public RecepcaoEvento() { }
 
@@ -98,7 +100,7 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         {
             var evento = XMLUtility.Deserializar<EventoNFeABI>(ConteudoXML);
             evento.Validar();
-            ValidarAmbiente(evento.InfEvento.TpAmb);
+            ValidarConfiguracaoEvento(evento.InfEvento.TpAmb);
 
             var namespaces = new XmlNamespaceManager(ConteudoXML.NameTable);
             namespaces.AddNamespace("abi", "http://www.portalfiscal.inf.br/nfeabi");
@@ -109,11 +111,24 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
             }
         }
 
-        private void ValidarAmbiente(TipoAmbiente ambienteEvento)
+        private void ValidarConfiguracaoEvento(TipoAmbiente ambienteEvento)
         {
             if (ambienteEvento != Configuracoes.TipoAmbiente)
             {
                 throw new ValidarXMLException($"O tpAmb de <infEvento> ({(int)ambienteEvento}) diverge do ambiente configurado para a recepção do evento ({(int)Configuracoes.TipoAmbiente}).");
+            }
+
+            if (Configuracoes.Servico != Servico.NFeABIRecepcaoEvento)
+            {
+                throw new ValidarXMLException($"A configuração da recepção de eventos da NFeABI exige o serviço {Servico.NFeABIRecepcaoEvento}. Serviço informado: {Configuracoes.Servico}.");
+            }
+
+            var soapAction = ambienteEvento == TipoAmbiente.Producao
+                ? Configuracoes.WebActionProducao
+                : Configuracoes.WebActionHomologacao;
+            if (!string.Equals(soapAction, SoapActionRecepcaoEvento, StringComparison.Ordinal))
+            {
+                throw new ValidarXMLException("A ação SOAP da configuração não corresponde à operação nfeabiRecepcaoEvento.");
             }
         }
 
@@ -138,7 +153,7 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
             LimparRetornoWS();
             var evento = EventoNFeABI
                 ?? throw new InvalidOperationException("Nenhum evento da NFeABI foi preparado para envio.");
-            ValidarAmbiente(evento.InfEvento.TpAmb);
+            ValidarConfiguracaoEvento(evento.InfEvento.TpAmb);
             base.Executar();
         }
 

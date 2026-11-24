@@ -258,6 +258,37 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
         }
 
 #if INTEROP
+        [Theory]
+        [InlineData(false, "NFeABIConsultaProtocolo")]
+        [InlineData(true, "ação SOAP")]
+        public void InteropRejeitaConfiguracaoDeConsultaMesmoEmHomologacao(bool alterarServico, string mensagem)
+        {
+            using var servidor = new TcpListener(IPAddress.Loopback, 0);
+            servidor.Start();
+            using var certificado = CriarCertificado();
+            var evento = CarregarEvento("cancelamento");
+            var servico = new NFeABIRecepcaoEvento(evento, new Configuracao());
+            Assert.NotEmpty(servico.GetConteudoXMLOriginal());
+
+            var configuracao = new Configuracao { CertificadoDigital = certificado, TimeOutWebServiceConnect = 1000 };
+            var consulta = new Business.DFe.Servicos.NFeABI.ConsultaProtocolo(
+                evento.InfEvento.ChNFeABI, TipoAmbiente.Homologacao, configuracao);
+            consulta.Configuracoes.WebEnderecoHomologacao = $"http://127.0.0.1:{((IPEndPoint)servidor.LocalEndpoint).Port}/";
+            configuracao.Definida = true;
+            if (alterarServico)
+            {
+                configuracao.Servico = Servico.NFeABIRecepcaoEvento;
+            }
+
+            evento.Signature = null;
+            var erro = Assert.Throws<ValidarXMLException>(() => servico.Executar(evento, configuracao));
+            Assert.Contains(mensagem, erro.Message);
+            Assert.Empty(servico.GetConteudoXMLOriginal());
+            Assert.Empty(servico.GetConteudoXMLAssinado());
+            Assert.Equal(0, servico.Result.InfEvento.CStat);
+            Assert.False(servidor.Pending());
+        }
+
         [Fact]
         public async Task InteropEnviaDoisEventosValidosEAtualizaXmlOriginal()
         {
