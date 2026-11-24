@@ -83,6 +83,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
             {
                 { "A", _ => this.ProcessarCabecalhoInicial() },
                 { "B", this.ProcessarIdentificacao },
+                { "B25D", this.ProcessarCodigoIndicadorLocalOperacao },
                 { "B13", _ => this.ProcessarReferenciasDaIdentificacao() },
                 { "BA02", _ => this.ProcessarReferenciasDaIdentificacao() },
                 { "B14", _ => this.ProcessarReferenciasDaIdentificacao() },
@@ -1173,6 +1174,40 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     }
 
                     versaoNFe = 4.00M;
+        }
+
+        private void ProcessarCodigoIndicadorLocalOperacao(int lenPipesRegistro)
+        {
+            if (nfeOficial == null)
+            {
+                throw new InvalidOperationException("B25d: informe o segmento B antes de cIndOp.");
+            }
+
+            if (identificacaoOficial.Mod != ModeloDFe.NFe)
+            {
+                throw new InvalidOperationException("B25d: cIndOp é permitido somente na NF-e modelo 55.");
+            }
+
+            if (identificacaoOficial.CIndOp != null)
+            {
+                throw new InvalidOperationException("B25d: cIndOp foi informado mais de uma vez na mesma nota.");
+            }
+
+            var codigo = this.LerString("cIndOp", ObOp.None, 0, 0);
+            if (lenPipesRegistro != 2 || codigo.Length != 6)
+            {
+                throw new InvalidOperationException("B25d: cIndOp deve conter exatamente seis dígitos.");
+            }
+
+            foreach (var digito in codigo)
+            {
+                if (digito < '0' || digito > '9')
+                {
+                    throw new InvalidOperationException("B25d: cIndOp deve conter exatamente seis dígitos.");
+                }
+            }
+
+            identificacaoOficial.CIndOp = codigo;
         }
 
         private void ProcessarIdentificacao(int lenPipesRegistro)

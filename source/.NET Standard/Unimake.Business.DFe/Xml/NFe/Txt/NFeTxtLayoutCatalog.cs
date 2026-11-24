@@ -18,6 +18,7 @@ namespace Unimake.Business.DFe.Xml.NFe.Txt
                     layouts.Add("B_26", prefix + "B|cUF|cNF|NatOp|mod|serie|nNF|dhEmi|dhSaiEnt|tpNF|idDest|cMunFG|TpImp|TpEmis|cDV|TpAmb|FinNFe|tpNFDebito|tpNFCredito|indFinal|indPres|indIntermed|ProcEmi|VerProc|dhCont|xJust|");
                     layouts.Add("B_27", prefix + "B|cUF|cNF|NatOp|mod|serie|nNF|dhEmi|dhSaiEnt|tpNF|idDest|cMunFG|cMunFGIBS|TpImp|TpEmis|cDV|TpAmb|FinNFe|tpNFDebito|tpNFCredito|indFinal|indPres|indIntermed|ProcEmi|VerProc|dhCont|xJust|");
                     layouts.Add("B_28", prefix + "B|cUF|cNF|NatOp|mod|serie|nNF|dhEmi|dhSaiEnt|dPrevEntrega|tpNF|idDest|cMunFG|cMunFGIBS|TpImp|TpEmis|cDV|TpAmb|FinNFe|tpNFDebito|tpNFCredito|indFinal|indPres|indIntermed|ProcEmi|VerProc|dhCont|xJust|");
+                    layouts.Add("B25D", prefix + "B25d|cIndOp|"); // ide->cIndOp
                     layouts.Add("B13", prefix + "B13|refNFe|");
                     layouts.Add("BA02", prefix + "BA02|refNFe|");
                     layouts.Add("BA03", prefix + "BA03|cUF|AAMM|CNPJ|mod|serie|nNF|");
