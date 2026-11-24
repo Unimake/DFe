@@ -118,6 +118,16 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
             return evento.GerarXML();
         }
 
+        /// <inheritdoc />
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public override void Executar()
+        {
+            LimparRetornoWS();
+            base.Executar();
+        }
+
 #if INTEROP
         /// <summary>Prepara o evento tipado e transmite ao autorizador.</summary>
         /// <param name="evento">Evento da NF-e ABI.</param>
@@ -127,6 +137,7 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
         {
             try
             {
+                LimparRetornoWS();
                 Inicializar(PrepararEvento(evento), configuracao);
                 Executar();
             }

@@ -1,8 +1,13 @@
 using System;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Xml;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -171,6 +176,93 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
 
             Assert.NotNull(servico.EventoNFeABI.Signature);
             Assert.NotEqual(0, servico.Result.InfEvento.CStat);
+        }
+
+        [Theory]
+        [InlineData(false)]
+#if INTEROP
+        [InlineData(true)]
+#endif
+        public async Task LimpaProtocoloAnteriorQuandoAProximaTentativaFalha(bool usarInterop)
+        {
+            const string protocolo = "1412600000000001";
+            var resposta = $@"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope"">
+  <soap:Body>
+    <nfeabiRecepcaoEventoResult xmlns=""{NamespaceWsdl}"">
+      <retEventoNFeABI xmlns=""{NamespaceEvento}"" versao=""1.00"">
+        <infEvento>
+          <tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cOrgao>41</cOrgao>
+          <cStat>135</cStat><xMotivo>Evento registrado</xMotivo>
+          <dhRegEvento>2026-09-14T12:00:00-03:00</dhRegEvento><nProt>{protocolo}</nProt>
+        </infEvento>
+      </retEventoNFeABI>
+    </nfeabiRecepcaoEventoResult>
+  </soap:Body>
+</soap:Envelope>";
+            using var servidor = new TcpListener(IPAddress.Loopback, 0);
+            servidor.Start();
+            using var limite = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            using var certificado = CriarCertificado();
+            var configuracao = new Configuracao { CertificadoDigital = certificado, TimeOutWebServiceConnect = 5000 };
+            var evento = CarregarEvento("cancelamento");
+            evento.Signature = null;
+            var servico = new NFeABIRecepcaoEvento(evento, configuracao);
+            configuracao.WebEnderecoHomologacao = $"http://127.0.0.1:{((IPEndPoint)servidor.LocalEndpoint).Port}/";
+
+            var primeiraResposta = ResponderSoapAsync(servidor, resposta, limite.Token);
+            servico.Executar();
+            await primeiraResposta;
+            Assert.Equal(135, servico.Result.InfEvento.CStat);
+            Assert.Equal(protocolo, servico.Result.InfEvento.NProt);
+            Assert.Equal(HttpStatusCode.OK, servico.HttpStatusCode);
+
+            if (!usarInterop)
+            {
+                var segundaResposta = ResponderSoapAsync(servidor, "resposta inválida", limite.Token);
+                Assert.ThrowsAny<Exception>(() => servico.Executar());
+                await segundaResposta;
+            }
+#if INTEROP
+            else
+            {
+                evento.InfEvento.NSeqEvento = 2;
+                Assert.ThrowsAny<Exception>(() => servico.Executar(evento, configuracao));
+            }
+#endif
+
+            Assert.Null(servico.RetornoWSString);
+            Assert.Null(servico.RetornoWSXML);
+            Assert.Equal(default, servico.HttpStatusCode);
+            Assert.Equal(0, servico.Result.InfEvento.CStat);
+            Assert.Null(servico.Result.InfEvento.NProt);
+        }
+
+        private static async Task ResponderSoapAsync(TcpListener servidor, string xml, CancellationToken limite)
+        {
+            using var cliente = await servidor.AcceptTcpClientAsync(limite);
+            using var stream = cliente.GetStream();
+            // Latin1 preserva a contagem de bytes indicada pelo Content-Length.
+            using var leitor = new StreamReader(stream, Encoding.Latin1, detectEncodingFromByteOrderMarks: false, leaveOpen: true);
+            var tamanho = 0;
+            string linha;
+            while (!string.IsNullOrEmpty(linha = await leitor.ReadLineAsync(limite)))
+            {
+                const string cabecalho = "Content-Length:";
+                if (linha.StartsWith(cabecalho, StringComparison.OrdinalIgnoreCase))
+                {
+                    tamanho = int.Parse(linha.Substring(cabecalho.Length));
+                }
+            }
+
+            Assert.True(tamanho > 0);
+            var corpo = new char[tamanho];
+            Assert.Equal(tamanho, await leitor.ReadBlockAsync(corpo.AsMemory(), limite));
+
+            var resposta = Encoding.UTF8.GetBytes(xml);
+            var headers = Encoding.ASCII.GetBytes(
+                $"HTTP/1.1 200 OK\r\nContent-Type: application/soap+xml; charset=utf-8\r\nContent-Length: {resposta.Length}\r\nConnection: close\r\n\r\n");
+            await stream.WriteAsync(headers, limite);
+            await stream.WriteAsync(resposta, limite);
         }
 
         private static EventoNFeABI CarregarEvento(string nome) =>

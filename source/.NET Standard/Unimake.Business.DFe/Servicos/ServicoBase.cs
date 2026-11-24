@@ -222,6 +222,16 @@ namespace Unimake.Business.DFe.Servicos
         /// </summary>
         public Stream RetornoWSStream { get; set; }
 
+        /// <summary>Descarta o retorno armazenado antes de uma nova tentativa de execução.</summary>
+        private protected void LimparRetornoWS()
+        {
+            RetornoWSString = null;
+            RetornoWSRawString = null;
+            RetornoWSXML = null;
+            RetornoWSStream = null;
+            HttpStatusCode = default;
+        }
+
         static ServicoBase() => AppDomain.CurrentDomain.AssemblyResolve += AssemblyResolver.AssemblyResolve;
 
         /// <summary>
