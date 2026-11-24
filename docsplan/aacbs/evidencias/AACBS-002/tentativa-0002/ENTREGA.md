@@ -35,4 +35,4 @@ Alterações externas em NFeABI, ServicoBase e versão do projeto foram observad
 
 ## Gate e retomada
 
-Entrega para revisão humana em 24/11/2026. Aprovação: AGUARDANDO. Retomar pelo PDCA e pelo checkpoint desta tentativa. Reversão, se solicitada, deve retirar somente os hunks deste retrabalho, preservando o ticket anterior e os trabalhos externos. Nenhuma reversão foi executada. A AACBS-003 continua pendente de aprovação da AACBS-002.
+Entrega para revisão humana em 24/11/2026. Aprovação: recebida do DEV em 24/11/2026: "Aprovo a AACBS-002 e libero a execução da AACBS-003. Pode seguir conforme o plano." Retomar pelo PDCA e pelo checkpoint desta tentativa. Reversão, se solicitada, deve retirar somente os hunks deste retrabalho, preservando o ticket anterior e os trabalhos externos. Nenhuma reversão foi executada. A AACBS-003 foi liberada e iniciada em registro separado no PDCA.

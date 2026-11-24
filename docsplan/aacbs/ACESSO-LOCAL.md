@@ -41,9 +41,9 @@ Os dois DARFs fazem parte da implementação planejada, mas sua geração real e
 
 Depois da configuração e da liberação da etapa técnica, o executor pode autenticar, executar os cenários previstos, aguardar de forma limitada e verificar XML/XSD/`Result`, sem solicitar participação do DEV em cada chamada. O orquestrador encaminha correções ao implementador/autor dos testes; o executor repete os checks afetados sobre o novo checkpoint estável, sem editar código ou testes. As aprovações humanas entre etapas continuam vigentes. O fornecimento de chaves não aprova automaticamente AACBS-000 nem libera a implementação.
 
-O helper desta revisão apenas prepara/verifica arquivos locais. O leitor das credenciais e o executor dos testes reais serão produzidos na AACBS-003. Não há promessa de teste remoto já disponível ou de ausência absoluta de bugs.
+O preparador apenas cria/verifica os arquivos locais. O leitor e o roteiro da AACBS-003 estão descritos em [ROTEIRO-AACBS003.md](scripts/ROTEIRO-AACBS003.md). A [pesquisa oficial de ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) mantém a Produção Restrita bloqueada por falta de rota confirmada; não houve mudança automática da configuração. Não há promessa de ausência absoluta de bugs.
 
-O roteiro futuro deve:
+O roteiro deve:
 
 - Importar a credencial cifrada dentro do processo e preencher a configuração em memória; não imprimir o objeto, exportar segredo em texto aberto ou passá-lo nos argumentos do runner. A DLL de produção continua recebendo `Configuracao` do consumidor e não procura arquivos particulares no disco.
 - Reutilizar token válido em cache cifrado entre execuções e coordenar um único executor por identidade. O manual Receita Integra 1.4 limita emissão a dois tokens/hora e informa validade de uma hora. Reiniciar o teste não autoriza solicitar outro token nem repetir um POST. [Manual oficial](https://cgibs.gov.br/upload/arquivos/202609/05164748-08-manual-de-integracao-tecnica-receita-integra-v-1-4.pdf)

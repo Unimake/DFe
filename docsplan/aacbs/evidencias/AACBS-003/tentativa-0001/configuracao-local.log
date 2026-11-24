@@ -1,0 +1,3 @@
+Attempting to perform the InitializeDefaultDrives operation on the 'FileSystem' provider failed.
+2026-11-24T20:50:00.0965716+00:00 AACBS-003 ambiente=ProducaoRestrita operacao=AcessoLocal estado=Verificado
+2026-11-24T20:50:00.1048820+00:00 AACBS-003 ambiente=ProducaoRestrita operacao=AcessoReal estado=RotaOficialPendente

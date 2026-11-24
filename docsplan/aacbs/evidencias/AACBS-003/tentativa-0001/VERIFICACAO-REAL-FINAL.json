@@ -1,0 +1,19 @@
+{
+  "etapa": "AACBS-003",
+  "ambiente": "ProducaoBeta",
+  "verificacao": "Leitura independente sem rede",
+  "journalFinal": "Finalizada",
+  "httpFinal": 200,
+  "aberturas": 1,
+  "consultasSituacao": 1,
+  "tentativasOAuthLocais": 2,
+  "xsdValido": true,
+  "ni14IntegralIgualMatriz": true,
+  "baseCorresponde": true,
+  "tiqueteCorresponde": true,
+  "roundTripInnerTextIgual": true,
+  "periodosApuracao": 0,
+  "itensDebito": 0,
+  "sha256ArquivoCifrado": "CE1200EF13CBA43C4E1BD29021E973FBEE9F6DA0921E7EA4E2C35339095B50B7",
+  "utc": "2026-11-24T21:22:27.2831140+00:00"
+}

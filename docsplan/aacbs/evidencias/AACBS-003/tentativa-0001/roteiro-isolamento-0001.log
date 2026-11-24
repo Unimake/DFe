@@ -1,0 +1,9 @@
+2026-11-24T21:00:27.3310250+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=AberturaAmbigua origem=simulada correlacao=538dc03b755f46eb968266d355c2405d
+2026-11-24T21:00:27.4862779+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=8cf82ea21b0d4a88b59292849c0a32c7
+2026-11-24T21:00:27.5734457+00:00 AACBS-003 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=8cf82ea21b0d4a88b59292849c0a32c7
+2026-11-24T21:00:27.6062631+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=JaFinalizada origem=simulada correlacao=8cf82ea21b0d4a88b59292849c0a32c7
+2026-11-24T21:00:27.7595757+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=c6e99768f9b144c6aee5d908410fe0bd
+System.Text.Json do PowerShell 10.0.0.0; System.Text.Json da DLL 11.0.0.0.
+A DLL executou o ciclo AACBS sintetico no mesmo contexto isolado do roteiro, com transporte controlado.
+Verificacoes sinteticas AACBS concluidas. Nenhuma API chamada e nenhum acesso local real importado.
+Codigo de saida: 0

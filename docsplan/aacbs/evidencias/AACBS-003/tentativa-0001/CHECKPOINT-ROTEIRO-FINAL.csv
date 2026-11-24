@@ -1,0 +1,5 @@
+"path","sha256_before","sha256_after","unchanged"
+"docsplan/aacbs/scripts/AACBS-RoteiroLocal.psm1","c4d43c31ff33728385375471dade25c6f884a597e2cc13b1004dfbda681b87e4","c4d43c31ff33728385375471dade25c6f884a597e2cc13b1004dfbda681b87e4","True"
+"docsplan/aacbs/scripts/Configurar-AcessoLocal.ps1","231af02523b6f8470cf31fe190be7b693adec9d38f66089ce1d6851fe8947f8a","231af02523b6f8470cf31fe190be7b693adec9d38f66089ce1d6851fe8947f8a","True"
+"docsplan/aacbs/scripts/Executar-AACBS003.ps1","e79787016a51fb8b74fbddee0aba70fc18c79ed25d454f5655fb98d77c4ca0d9","e79787016a51fb8b74fbddee0aba70fc18c79ed25d454f5655fb98d77c4ca0d9","True"
+"docsplan/aacbs/scripts/Testar-RoteiroAACBS.ps1","c1bf11cf16c86d34383ca6bfbeec1c29ebf00672f107d9b4a41145507b9a6229","c1bf11cf16c86d34383ca6bfbeec1c29ebf00672f107d9b4a41145507b9a6229","True"

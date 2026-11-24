@@ -1,0 +1,50 @@
+{
+  "etapa": "AACBS-003",
+  "ambiente": "ProducaoBeta",
+  "inicioUtc": "2026-11-24T21:10:16Z",
+  "familia": "DEBITOS",
+  "operacoes": {
+    "emissoesToken": 0,
+    "aberturas": 0,
+    "consultasSituacao": 0,
+    "consultasLink": 1,
+    "httpLink": 200,
+    "downloads": 1,
+    "httpDownload": 200
+  },
+  "conteudo": {
+    "bytes": 203,
+    "mediaType": "application/json",
+    "contentEncoding": null,
+    "bomUtf8": false,
+    "gzip": false,
+    "zip": false,
+    "jsonUtf8Valido": true,
+    "tiqueteCorrespondeAoJournal": true,
+    "apuracaoVazia": true,
+    "niConsumidor": { "tipoJson": "string", "quantidadeDigitosASCII": 14 }
+  },
+  "divergencia": {
+    "caminho": "$.ni",
+    "tipoJson": "string",
+    "quantidadeDigitosASCII": 14,
+    "digitosPrevistosNoHTML_e_JSONSchema": 8,
+    "igualAoCNPJCompletoDaMatrizConfigurada": true,
+    "oitoPrimeirosDigitosIguaisAoCNPJBaseDoPedido": true,
+    "resultadoOriginal": "RejeitadoPeloContratoAtual"
+  },
+  "verificacaoOffline": {
+    "substituicaoSomenteEmCopiaNaMemoria": "$.ni recebeu a base de oito digitos do pedido",
+    "mapeamentoDosDemaisCamposValido": true,
+    "envelopeXMLdaCopiaValidadoPeloXSD_e_ValidadorDeConteudo": true
+  },
+  "artefatoPrivado": {
+    "protecao": "DPAPI CurrentUser",
+    "sha256DoArquivoCifrado": "84F4386B99864716E36F8B12339BEDD2A27E1007478348B640E05CA33DC97D45"
+  },
+  "fontesLocais": [
+    "../../../fontes/2026-11-24/debito.html",
+    "../../../fontes/2026-11-24/debito-retorno.schema.json",
+    "../../../contratos/CONSULTAS-CAMPOS.csv"
+  ]
+}

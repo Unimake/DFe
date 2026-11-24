@@ -1,0 +1,9 @@
+Attempting to perform the InitializeDefaultDrives operation on the 'FileSystem' provider failed.
+2026-11-24T22:47:37.8731038+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=AberturaAmbigua origem=simulada correlacao=de70c4fbc0764a9ab1a500cb2096fa8f
+2026-11-24T22:47:38.0501878+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=1d7b5a889f3f4157bb713b184c990172
+2026-11-24T22:47:38.2016206+00:00 AACBS-003 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=1d7b5a889f3f4157bb713b184c990172
+2026-11-24T22:47:38.2384376+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=JaFinalizada origem=simulada correlacao=1d7b5a889f3f4157bb713b184c990172
+2026-11-24T22:47:38.3991737+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=d685f189a043473097a0ef5090f455b3
+System.Text.Json do PowerShell 10.0.0.0; System.Text.Json da DLL 11.0.0.0.
+A DLL executou o ciclo AACBS sintetico no mesmo contexto isolado do roteiro, com transporte controlado.
+Verificacoes sinteticas AACBS concluidas. Nenhuma API chamada e nenhum acesso local real importado.

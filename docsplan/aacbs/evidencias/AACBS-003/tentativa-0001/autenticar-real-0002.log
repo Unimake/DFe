@@ -1,0 +1,2 @@
+2026-11-24T21:02:56.0851278+00:00 AACBS-003 ambiente=ProducaoBeta operacao=Autenticar estado=RespostaInterpretada HTTP=200
+2026-11-24T21:02:56.1228877+00:00 AACBS-003 ambiente=ProducaoBeta operacao=Autenticar estado=TokenDisponivel

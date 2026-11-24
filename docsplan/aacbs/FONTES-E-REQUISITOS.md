@@ -2,7 +2,9 @@
 
 Levantamento inicial em **12/11/2026**, revisado em **24/11/2026** na AACBS-000 e qualificado documentalmente na **AACBS-001, tentativa-0001**, após liberação expressa do DEV. Sem chamadas às APIs de negócio. Domínio: **AACBS — Apuração Assistida da CBS**; IBS depende de documentação e planejamento futuros.
 
-A AACBS-000 foi aprovada e a especificação da AACBS-001 está em [contratos/ESPECIFICACAO.md](contratos/ESPECIFICACAO.md). A configuração local passou no modo `-Verificar`, sem revelar chaves ou obter token. Habilitação, autenticação e consumo remoto continuam sem prova real. O ambiente informado pelo DEV é Produção Restrita.
+A AACBS-000 foi aprovada e a especificação da AACBS-001 está em [contratos/ESPECIFICACAO.md](contratos/ESPECIFICACAO.md). A preparação local passou no modo `-Verificar`, sem revelar chaves ou obter token; na qualificação documental ainda não havia prova remota. O ambiente inicialmente informado pelo DEV foi Produção Restrita. Os resultados reais posteriores pertencem ao [dossiê AACBS-003](evidencias/AACBS-003/tentativa-0001/ENTREGA.md).
+
+Após a pesquisa dos ambientes na AACBS-003, o DEV autorizou explicitamente os testes em Produção Beta. Os metadados locais foram atualizados, preservando as chaves e os limites do roteiro. Essa autorização não resolve a ausência de rotas oficiais PRR nem libera etapas seguintes sem aprovação.
 
 ## Fontes de referência
 
@@ -26,6 +28,9 @@ A AACBS-000 foi aprovada e a especificação da AACBS-001 está em [contratos/ES
 | F22 | [Liberação de APIs CBS v2](https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-libera-acesso-as-novas-apis-de-apuracao-da-cbs/) | Comunicado de 09/11; disponibilidade e geração de credenciais, sem URI REST PRR. |
 | F23 | [Acesso ao Piloto CBS](https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-amplia-acesso-ao-ambiente-de-producao-restrita-do-piloto-da-cbs) | Comunicado de 20/11; acesso humano e poderes de representação, sem URI REST de negócio. |
 | F24 | [RFC 6749](https://www.rfc-editor.org/rfc/rfc6749.html) e [RFC 6750](https://www.rfc-editor.org/rfc/rfc6750.html) | Protocolo OAuth/Bearer: codificação de Basic, respostas, extensões e transporte do token; complementam F20/F21. |
+| F25 | [Atualização das credenciais, 14/08/2026; revisão 16/10/2026](https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/credenciais-de-acesso-as-api-da-reforma-tributaria-serao-atualizadas) | Credenciais compartilhadas entre APIs conforme autorizações; lista débitos e débitos PRR separadamente. Não qualifica uma rota única ou seletor de ambiente. |
+
+Na AACBS-003, a [pesquisa específica de ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) também conferiu diretamente o repositório público F11: o texto integral do PDF Receita Integra 1.4 é igual ao de F20. F23 confirma que Piloto/PRR usa documentos de homologação e Produção Beta usa documentos efetivos. As mesmas chaves não selecionam por si só um ambiente; a rota PRR continua sem confirmação nas fontes primárias atuais.
 
 Schemas oficiais de retorno, publicados em F03–F06/F12–F13 como **Draft 2020-12, versão 1.0.0**, conferidos em 24/11/2026:
 
@@ -46,9 +51,9 @@ A [baseline da AACBS-001](fontes/2026-11-24/README.md) preserva 23 fontes públi
 | --- | --- | --- |
 | Empresa | F02 exige credenciais válidas do estabelecimento matriz; as quatro consultas usam CNPJ base de 8 posições. F12/F13 orientam CNPJ de 14 posições para DARF, com divergência em exemplo RAD. | DEV indica empresa/cenário autorizado e confirma a identificação; dados reais ficam fora das massas versionadas. |
 | Representação | F10 permite acesso gov.br e representação da pessoa jurídica pelo responsável ou procurador autorizado. | DEV providencia acesso e autorizações para gerar a credencial da empresa. |
-| Credenciais | F20 confirma o mecanismo; DEV preparou os arquivos e o modo `-Verificar` passou em 24/11. | Credencial DPAPI e metadados continuam em `.local/aacbs`, conforme ACESSO-LOCAL.md. Nenhum valor foi exibido, transferido ao plano ou usado para token. Não presumir ACL restrita nem autorização remota. |
+| Credenciais | F20 confirma o mecanismo; preparo e verificação locais passaram em 24/11, e a AACBS-003 obteve resposta real 200 de autenticação em Beta. | Credencial DPAPI e metadados continuam em `.local/aacbs`, conforme ACESSO-LOCAL.md. Nenhum valor foi exibido ou transferido ao plano; o uso real ocorreu somente após autorização. Não presumir ACL restrita ou permissões para outras operações. |
 | Token | F20 confirma POST HTTPS no emissor de produção, uma hora, dois tokens/hora e cache. F21/F24 qualificam Basic com form-encoding UTF-8 dos componentes e formulário `grant_type=client_credentials`; resposta `access_token`, `token_type`, `expires_in`. | Implementar conforme ACESSO-E-FLUXO.md na 003. Nenhum token solicitado na 001; não inventar scope CBS ou emissor PRR. |
-| Certificado | As fontes lidas não comprovam A1, assinatura XML ou mTLS obrigatório para consumir CBS. | Não exigir certificado da empresa como pré-requisito de transporte sem confirmação oficial; acesso ao portal e autenticação da API são assuntos distintos. |
+| Certificado | As fontes lidas não comprovam A1, assinatura XML ou mTLS obrigatório para consumir CBS. Os cinco serviços do ciclo real da AACBS-003 funcionaram sem certificado de cliente e sem seleção automática de certificado. | Essa prova é limitada ao fluxo de débitos Beta consumido. Acesso ao portal para habilitação e transporte da API são assuntos distintos; não ampliar requisitos por suposição. |
 | Ambiente real | Todas as páginas de endpoint atuais lidas publicam somente produção. A URL PRR de download registrada em 12/11 foi removida da fonte atual. | DEV e agente de contratos confirmam ambiente habilitado. PRR exige URL oficial; não derivar endpoint nem usar produção como fallback. |
 | Conectividade | APIs usam HTTPS; arquivo final vem de URL assinada externa. | DEV prepara acesso HTTPS aos hosts efetivamente publicados e política de proxy; confirmar eventuais liberações no manual vigente. |
 | Dados úteis | Retorno vazio é válido e não comprova o mapeamento de todos os campos. | DEV identifica cenário autorizado com dados CBS representativos; massas versionadas serão sintéticas ou anonimizadas. |
@@ -89,6 +94,7 @@ A [baseline da AACBS-001](fontes/2026-11-24/README.md) preserva 23 fontes públi
 | L11 | Request RAD array1:N, retorno global objeto sem correlação por DF-e; semântica de agregação/atomicidade não esclarecida. | Preservar as duas formas; não inferir sucesso por item nem fragmentar POST. Teste real inicial unitário; lote real aguarda esclarecimento e cenário próprio. |
 | L12 | Tabela/instruções CNPJ14 versus exemplo RAD8; descrições de códigos PCONT aludem a RAD. | Proposta para aprovação: CNPJ14 no XML/path DARF; códigos e mensagens preservados no contexto real da operação. Não testar tamanhos candidatos. |
 | L13 | Limites/idempotência DARF e contrato de PDF não publicados. | Sem serviço/GET PDF ou pagamento; orçamento real explícito e sem analogia com cota das consultas. Restrição da implementação e dos testes posteriores. |
+| L14 | Retorno real Beta de débitos trouxe ni com 14 dígitos da matriz, enquanto HTML F03 e schema F14 continuam exigindo oito; tíquete e raiz do CNPJ foram conferidos sem expor valores. | DEV aprovou aceitar 8/14 apenas em retArquivoDebitos/ni, preservando o valor integral e comparando a base com o pedido. Envios e demais famílias continuam com oito. [Evidência e impacto](evidencias/AACBS-003/tentativa-0001/PROPOSTA-NI-RETORNO.md). |
 
 ## Condição para testes reais e evidências
 

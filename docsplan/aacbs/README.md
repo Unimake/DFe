@@ -33,10 +33,14 @@ Uma aprovação explícita do DEV da etapa N libera a etapa N+1, conforme sua in
 | AACBS-004 | Demais consultas e dois DARFs, com cobertura controlada integral e testes reais incrementais dos cenários habilitados. |
 | AACBS-005 | Consolidação das evidências reais, compatibilidade, empacotamento oficial, documentação e revisão final. |
 
-AACBS-000 e AACBS-001 foram aprovadas. A AACBS-002 entrega 24 raízes XML, 25 XSDs, validação central/de conteúdo e testes offline, aguardando revisão humana. As propostas de datas e retorno global RAD foram aceitas pelo DEV. Os serviços HTTP serão implementados a partir da AACBS-003, após a aprovação da 002. Este trabalho não publica pacote nem altera UniNFe ou PRO.
+AACBS-000, AACBS-001 e AACBS-002 foram aprovadas. A AACBS-002 entrega 24 raízes XML, 25 XSDs, validação central/de conteúdo e testes offline. As propostas de datas e retorno global RAD foram aceitas pelo DEV. A AACBS-003 foi entregue para revisão humana com autenticação e ciclo real de débitos em Produção Beta concluídos, incluindo a compatibilidade NI 8/14 aprovada. O retorno real veio vazio; cenários com itens foram testados offline. Ver o PDCA e o [dossiê da etapa](evidencias/AACBS-003/tentativa-0001/ENTREGA.md). Este trabalho não publica pacote nem altera UniNFe ou PRO.
 
 ## Evidências
 
 A entrega da AACBS-002 está em [evidencias/AACBS-002/tentativa-0001/ENTREGA.md](evidencias/AACBS-002/tentativa-0001/ENTREGA.md), com o checkpoint de código, os 292 testes aprovados e os logs de build. A [entrega aprovada da AACBS-001](evidencias/AACBS-001/tentativa-0001/ENTREGA.md), a [revisão aprovada da AACBS-000](evidencias/AACBS-000/tentativa-0002/ENTREGA.md) e o [dossiê inicial](evidencias/AACBS-000/tentativa-0001/ENTREGA.md) permanecem como histórico. Logs adicionais só entram quando ajudam a comprovar o resultado; segredos e dados fiscais identificáveis não pertencem às evidências.
 
-O retrabalho dos quatro achados do ticket ID #189855 está na [tentativa-0002](evidencias/AACBS-002/tentativa-0002/ENTREGA.md), com testes Debug e INTEROP aprovados. A AACBS-002 aguarda revisão humana.
+O retrabalho aprovado dos quatro achados do ticket ID #189855 está na [tentativa-0002](evidencias/AACBS-002/tentativa-0002/ENTREGA.md), com testes Debug e INTEROP aprovados. A [pesquisa dos ambientes na AACBS-003](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) registra a distinção entre Piloto/PRR e Beta e a ausência de uma rota PRR confirmada nas fontes atuais.
+
+Os quatro achados da revisão da AACBS-003 foram corrigidos na [tentativa-0002](evidencias/AACBS-003/tentativa-0002/ENTREGA.md): 341 testes Debug, 344 INTEROP, 132 regressões e roteiro offline aprovados, com conferência nativa de COM. A etapa aguarda aprovação humana. Esta rodada não fez novas chamadas reais.
+
+A [tentativa-0003](evidencias/AACBS-003/tentativa-0003/ENTREGA.md) corrige o diagnóstico da autenticação auxiliar, com três regressões novas e 344 testes Debug/347 INTEROP aprovados. É a entrega corrente para revisão humana da AACBS-003; a AACBS-004 continua pendente.

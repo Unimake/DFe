@@ -8,8 +8,8 @@ Este arquivo é a fonte única dos estados e do histórico das etapas. O escopo 
 |---|---|---|---|
 | AACBS-000 | Planejamento e revisão das fontes, decisões, requisitos e estratégia de execução | APPROVED | Aprovação explícita do DEV em 24/11/2026 |
 | AACBS-001 | Qualificação das fontes e especificação dos contratos de todas as famílias, campo a campo; autenticação somente documental | APPROVED | Aprovação explícita do DEV, incluindo datas e retorno global RAD |
-| AACBS-002 | Classes XML, XSDs de envio e retorno, validação, integração com recursos da DLL e testes | DELIVERED_FOR_REVIEW | Quatro achados corrigidos; testes Debug/INTEROP e regressões aprovados; tentativa-0002 |
-| AACBS-003 | Infraestrutura, autenticação, configuração e transporte; débitos com prova offline seguida de ciclo real | PLANNED | AACBS-002 APPROVED |
+| AACBS-002 | Classes XML, XSDs de envio e retorno, validação, integração com recursos da DLL e testes | APPROVED | Aprovação explícita do DEV após correções e nova revisão do ticket |
+| AACBS-003 | Infraestrutura, autenticação, configuração e transporte; débitos com prova offline seguida de ciclo real | DELIVERED_FOR_REVIEW | Contexto OAuth corrigido; 344 testes Debug/347 INTEROP aprovados; aguarda DEV |
 | AACBS-004 | Créditos, pagamentos, recolhimentos e DARF RAD/PCONT; cobertura integral e provas reais incrementais | PLANNED | AACBS-003 APPROVED |
 | AACBS-005 | Consolidação dos resultados reais, INTEROP, pacote, documentação de uso, revisão e entrega final | PLANNED | AACBS-004 APPROVED |
 
@@ -60,5 +60,20 @@ Cada etapa usa `evidencias/<etapa>/tentativa-NNNN/ENTREGA.md`, seguindo [EVIDENC
 | 2026-11-24 | AACBS-002 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou analisar e corrigir os achados da revisão do ticket ID #189855 | tentativa-0002 |
 | 2026-11-24 | AACBS-002 | REWORK | IN_PROGRESS | Correções dos contratos XML e regressões offline; AACBS-003 não iniciada | tentativa-0002 |
 | 2026-11-24 | AACBS-002 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Quatro achados corrigidos: 239 testes Debug, 241 INTEROP e 66 regressões aprovados; builds sem erros | tentativa-0002 |
+| 2026-11-24 | AACBS-002 | DELIVERED_FOR_REVIEW | APPROVED | DEV: Aprovo a AACBS-002 e libero a execução da AACBS-003. Pode seguir conforme o plano. | tentativa-0002 |
+| 2026-11-24 | AACBS-003 | PLANNED | IN_PROGRESS | Execução do fluxo de débitos, autenticação e infraestrutura liberada na mesma mensagem | tentativa-0001 |
+| 2026-11-24 | AACBS-003 | IN_PROGRESS | BLOCKED | Cinco serviços e roteiro implementados; 313 testes Debug, 315 INTEROP, 92 regressões e roteiro offline aprovados. Pesquisa oficial não qualificou rota PRR; acesso local verificado sem requests. Consumo real aguarda URL oficial ou seleção explícita do DEV por Beta | tentativa-0001 |
+| 2026-11-24 | AACBS-003 | BLOCKED | IN_PROGRESS | DEV: "Autorizo os testes em Produção Beta. Vamos testar tudo, na dúvida vai me perguntando." Metadados locais atualizados para Beta, credencial preservada; autenticação e fluxo de débitos dentro dos limites já definidos, sem liberar etapa 004 ou emissão de DARF | tentativa-0001 |
+| 2026-11-24 | AACBS-003 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Ciclo real Beta finalizado: autenticação 200, uma abertura 201, situação concluída, link/download 200 e XML real cifrado validado; apuração vazia. Desvio NI 14 aprovado e corrigido com 338 testes Debug/340 INTEROP; 92 regressões de transporte válidas e roteiro offline aprovados. Aguardando revisão humana, sem iniciar 004 | tentativa-0001 |
+| 2026-11-24 | AACBS-003 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou analisar e corrigir os quatro problemas da revisão: endpoints/HTTPS, interface COM de Configuracao, preservação de CR nos getters COM e switches falsos do roteiro | tentativa-0002 |
+| 2026-11-24 | AACBS-003 | REWORK | IN_PROGRESS | Correções delimitadas e testes offline; sem novas chamadas reais, sem acesso às credenciais e sem iniciar 004 | tentativa-0002 |
+| 2026-11-24 | AACBS-003 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Quatro achados corrigidos: 341 testes Debug, 344 INTEROP, 132 regressões e roteiro offline aprovados; ITypeInfo nativo confirmado e 119 hashes estáveis. Sem novas chamadas reais; aguarda DEV | tentativa-0002 |
+| 2026-11-24 | AACBS-003 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou corrigir o achado da nova revisão: falha da autenticação auxiliar atribuída à consulta de débitos e campo scope vazio sem caminho específico | tentativa-0003 |
+| 2026-11-24 | AACBS-003 | REWORK | IN_PROGRESS | Correção de contexto OAuth e testes controlados; sem chamadas reais ou início da 004 | tentativa-0003 |
+| 2026-11-24 | AACBS-003 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Achado OAuth corrigido, 3 regressões novas, 344 testes Debug/347 INTEROP aprovados e 119 hashes estáveis; revisão independente concluída, sem novas chamadas reais | tentativa-0003 |
 
-AACBS-000 e AACBS-001 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-002 corrigida e entregue para revisão humana no [dossiê da tentativa-0002](evidencias/AACBS-002/tentativa-0002/ENTREGA.md); a entrega anterior permanece preservada. AACBS-003 a AACBS-005 permanecem pendentes. Nenhum token foi obtido ou API de negócio consumida; autenticação, transporte e harness pertencem à AACBS-003.
+AACBS-000, AACBS-001 e AACBS-002 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-003 entregue com prova real Beta e aguardando revisão humana. A aprovação pontual do NI 8/14 foi uma decisão de contrato e não substitui a aprovação da etapa. AACBS-004 e AACBS-005 permanecem pendentes. Os resultados reais e a limitação da massa vazia estão no [dossiê](evidencias/AACBS-003/tentativa-0001/ENTREGA.md); a [pesquisa dos ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) conserva a limitação da rota PRR.
+
+O [retrabalho da AACBS-003](evidencias/AACBS-003/tentativa-0002/ENTREGA.md) consolida as quatro correções anteriores e sua validação offline. A prova real da tentativa-0001 permanece histórica; não houve novo consumo real no retrabalho.
+
+A entrega corrente está na [tentativa-0003](evidencias/AACBS-003/tentativa-0003/ENTREGA.md): correção do diagnóstico OAuth auxiliar e testes controlados concluídos; aguarda aprovação humana da AACBS-003. Não houve novas chamadas reais.

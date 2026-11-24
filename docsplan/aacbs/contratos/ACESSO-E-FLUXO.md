@@ -70,6 +70,8 @@ O pedido XML contém `tipoConsulta`, `cnpj`, `tiqueteSolicitacao`, `urlAssinada`
 
 Usar transporte isolado, sem credenciais da API, certificado de cliente, cookies herdados ou headers de aplicação, inclusive Accept da API. O proxy segue a escolha em `Configuracao` e credencial de proxy, quando necessária, é direcionada somente ao proxy. Não seguir redirecionamento automaticamente. Uma resposta 3xx não fornece por si uma nova URL confiável. O arquivo esperado é a resposta integral em JSON UTF-8. Validar o ramo escolhido, comparar exatamente os valores de `ni` e `tiqueteSolicitacao` com o contexto de origem e só então materializar `Result`. Download parcial não produz XML final nem reabertura automática.
 
+Na compatibilidade de débitos aprovada na AACBS-003, `ni` retornado admite oito ou 14 dígitos ASCII: preservar o valor integral e conferir seus oito dígitos iniciais com a base do pedido. O tíquete continua exigindo igualdade exata. Isso não amplia `cnpj` de envio nem as demais famílias. [Decisão e impacto](../evidencias/AACBS-003/tentativa-0001/PROPOSTA-NI-RETORNO.md)
+
 | tipoConsulta | Filho único de `retBaixarArquivoRetorno` | Matriz do arquivo |
 | --- | --- | --- |
 | `DEBITOS` | `retArquivoDebitos` | [Débitos, linhas DEB](CONSULTAS-CAMPOS.csv) |

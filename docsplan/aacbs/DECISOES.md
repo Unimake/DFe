@@ -19,10 +19,14 @@ Registro inicial de 12/11/2026, revisado em 24/11/2026. A aprovação das etapas
 | D11 | DEV quer que a equipe teste diretamente sem depender de participação manual contínua. | Preparação única das chaves e autonomia de execução/correção dentro da etapa, ambiente, cenários e limites liberados; preservar os gates humanos existentes. |
 | D12 | DEV: "Aprovo a AACBS-000 e libero a execução da AACBS-001." | Aprovação da tentativa-0002 e início documental da AACBS-001 registrados separadamente no PDCA. |
 | D13 | DEV informou ter preparado as chaves para Produção Restrita e solicitou conferência. | Verificação local passou sem exibir valores; não se confunde com token, permissão ou funcionamento remoto. |
+| D14 | DEV: "Aprovo a AACBS-002 e libero a execução da AACBS-003. Pode seguir conforme o plano." | Etapa 002 aprovada após correções e nova revisão; etapa 003 liberada, sem autorização para 004. |
+| D15 | DEV não encontrou endereço PRR e solicitou pesquisa dos ambientes. | Pesquisa oficial da AACBS-003 confirma ambientes distintos e credenciais compartilháveis; não qualificou rota PRR nem autoriza mudar silenciosamente para Beta. |
+| D16 | DEV autorizou explicitamente os testes em Produção Beta após a pesquisa dos ambientes. | Atualizar somente metadados locais, preservar credencial DPAPI e retomar autenticação/débitos da AACBS-003; manter limites locais e DARF desabilitado. Aprovações entre etapas continuam vigentes. |
+| D17 | DEV aprovou compatibilidade 8/14 somente no ni do retorno de débitos, após constatar divergência real Beta. | Preservar ni integral no XML; para 8 comparar com a base enviada, para 14 comparar seus primeiros 8. Outra raiz/tamanho/tipo permanece inválido; envio e demais famílias continuam com 8. |
 
 ## Propostas técnicas desta entrega
 
-Estas decisões integram o plano e os contratos aprovados nas etapas 000/001. A entrega da AACBS-002 aguarda sua própria aprovação; restrições de fontes e cenários reais permanecem explícitas.
+Estas decisões integram o plano e os contratos aprovados nas etapas 000/001/002, com o aditivo NI 8/14 expressamente aprovado durante a AACBS-003. Essa etapa foi entregue para revisão humana; restrições de fontes e cenários reais permanecem explícitas.
 
 - **AACBS — Apuração Assistida da CBS** como sigla, `docsplan/aacbs` para planejamento e `AACBS` para diretórios/namespaces do domínio.
 - Namespace XML Unimake e versão do XML independentes da versão HTTP; valores definitivos na AACBS-001.

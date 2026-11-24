@@ -1,0 +1,18 @@
+Verificação nativa de Unimake.Business.DFe.Servicos.Configuracao
+Data: 2026-11-24
+Ambiente: Windows PowerShell, CLR .NET Framework, processo de 64 bits
+Assembly final: source/Unimake.DFe/Compilacao/INTEROP_Release/netstandard2.0/Unimake.Business.DFe.dll
+SHA-256 final: E7CA0D3B20D783E946D26D4336325AC8937C4A52B46D9CF597C3066ABAB6088D
+Método: Marshal.GetITypeInfoForType, GetRefTypeOfImplType(0), GetRefTypeInfo, GetTypeAttr e enumeração de todos os FUNCDESC. Os nomes são os membros da interface. Nenhum valor de configuração foi lido.
+
+Interface dual x64 observada antes da correção: IID 1a1392a4-a3e4-35f3-9e17-6a03f1b94555, 206 funções.
+Interface dual x64 observada após a correção: IID 2e5c708e-81fc-30ad-a352-b0e995ec097f, 204 funções.
+
+Estado,Membro,DISPID,OffsetGetterBytes,OffsetSetterBytes
+Antes da correção,ClientSecret,1610743976,1400,1408
+Antes da correção,AACBSToken,1610743978,1416,1424
+Antes da correção,ProvedorCIOT,1610743980,1432,1440
+Após a correção,ClientSecret,1610743976,1400,1408
+Após a correção,ProvedorCIOT,1610743978,1416,1424
+
+A tabela final não contém acessores de AACBSToken. ProvedorCIOT segue diretamente ClientSecret, conforme a declaração anterior à inclusão de AACBSToken no HEAD. A comparação binária acima foi feita entre o build que expunha AACBSToken e o build corrigido.

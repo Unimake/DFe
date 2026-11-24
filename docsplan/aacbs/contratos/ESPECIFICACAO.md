@@ -14,6 +14,8 @@ As matrizes usam `;`, UTF-8 e as colunas `id`, `contrato`, `origemApi`, `caminho
 
 Esta especificação consolida as decisões comuns. As matrizes detalham as regras dos campos. Divergência entre publicações oficiais recebe uma política explícita abaixo, sem afirmar que fontes contraditórias passaram a concordar. A aprovação do DEV congela a proposta para a AACBS-002; alteração material posterior exige análise de impacto e nova evidência.
 
+**Aditivo aprovado na AACBS-003, 24/11/2026:** `retArquivoDebitos/ni` aceita 8 ou 14 dígitos ASCII, preservando o valor integral e conferindo a base com o pedido. O retorno real Beta veio com a matriz completa; o HTML e o JSON Schema oficiais continuam limitando o campo a oito. A [decisão de compatibilidade e auditoria de impacto](../evidencias/AACBS-003/tentativa-0001/PROPOSTA-NI-RETORNO.md) limita a exceção aos débitos. Envios, demais famílias e versão XML 1.00 permanecem conforme o contrato anterior.
+
 ## Identidade e compatibilidade
 
 | Item | Definição para a implementação |

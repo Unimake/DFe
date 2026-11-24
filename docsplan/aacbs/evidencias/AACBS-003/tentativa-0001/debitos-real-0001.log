@@ -1,0 +1,6 @@
+2026-11-24T21:04:15.7809417+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=RespostaInterpretada HTTP=201 correlacao=4c4a7ef21c054759b44882bb30c6ef0e
+2026-11-24T21:06:15.4774504+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=RespostaInterpretada HTTP=200 correlacao=4c4a7ef21c054759b44882bb30c6ef0e
+2026-11-24T21:06:15.5168385+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 correlacao=4c4a7ef21c054759b44882bb30c6ef0e
+2026-11-24T21:06:15.8371502+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarLinkDownload estado=RespostaInterpretada HTTP=200 correlacao=4c4a7ef21c054759b44882bb30c6ef0e
+2026-11-24T21:06:16.1258875+00:00 AACBS-003 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=FalhaTecnica HTTP=200 correlacao=4c4a7ef21c054759b44882bb30c6ef0e
+Exception: Download de debitos sem arquivo valido. O link foi descartado.

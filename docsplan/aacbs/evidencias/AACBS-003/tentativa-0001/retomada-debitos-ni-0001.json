@@ -1,0 +1,45 @@
+{
+  "etapa": "AACBS-003",
+  "ambiente": "ProducaoBeta",
+  "utc": "2026-11-24T21:20:40.2206009+00:00",
+  "familia": "DEBITOS",
+  "checkpointAntesEDepois": {
+    "fontes": 118,
+    "artefatos": 40,
+    "divergencias": 0
+  },
+  "revalidacaoDoArquivoOriginalSemAlterarJSON": true,
+  "journalFinal": "Finalizada",
+  "httpFinal": 200,
+  "retomada": {
+    "novasEmissoesToken": 0,
+    "novasAberturas": 0,
+    "novasConsultasSituacao": 0,
+    "consultasLink": 1,
+    "httpLink": 200,
+    "downloads": 1,
+    "httpDownload": 200
+  },
+  "totaisJournal": {
+    "tentativasOAuth": 2,
+    "aberturasDesteContexto": 1,
+    "consultasSituacao": 1
+  },
+  "resultado": {
+    "raiz": "retBaixarArquivoRetorno",
+    "namespace": "http://www.unimake.com.br/dfe/aacbs",
+    "versao": "1.00",
+    "xsdValido": true,
+    "roundTripInnerTextIgual": true,
+    "ni14IntegralIgualMatriz": true,
+    "baseCorresponde": true,
+    "tiqueteCorresponde": true,
+    "periodosApuracao": 0,
+    "itensDebito": 0
+  },
+  "arquivoFinal": {
+    "protecao": "DPAPI CurrentUser",
+    "existe": true,
+    "sha256DoArquivoCifrado": "CE1200EF13CBA43C4E1BD29021E973FBEE9F6DA0921E7EA4E2C35339095B50B7"
+  }
+}
