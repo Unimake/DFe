@@ -186,19 +186,6 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
         public async Task LimpaProtocoloAnteriorQuandoAProximaTentativaFalha(bool usarInterop)
         {
             const string protocolo = "1412600000000001";
-            var resposta = $@"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope"">
-  <soap:Body>
-    <nfeabiRecepcaoEventoResult xmlns=""{NamespaceWsdl}"">
-      <retEventoNFeABI xmlns=""{NamespaceEvento}"" versao=""1.00"">
-        <infEvento>
-          <tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cOrgao>41</cOrgao>
-          <cStat>135</cStat><xMotivo>Evento registrado</xMotivo>
-          <dhRegEvento>2026-09-14T12:00:00-03:00</dhRegEvento><nProt>{protocolo}</nProt>
-        </infEvento>
-      </retEventoNFeABI>
-    </nfeabiRecepcaoEventoResult>
-  </soap:Body>
-</soap:Envelope>";
             using var servidor = new TcpListener(IPAddress.Loopback, 0);
             servidor.Start();
             using var limite = new CancellationTokenSource(TimeSpan.FromSeconds(10));
@@ -209,7 +196,7 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             var servico = new NFeABIRecepcaoEvento(evento, configuracao);
             configuracao.WebEnderecoHomologacao = $"http://127.0.0.1:{((IPEndPoint)servidor.LocalEndpoint).Port}/";
 
-            var primeiraResposta = ResponderSoapAsync(servidor, resposta, limite.Token);
+            var primeiraResposta = ResponderSoapAsync(servidor, CriarRespostaSoap(protocolo), limite.Token);
             servico.Executar();
             await primeiraResposta;
             Assert.Equal(135, servico.Result.InfEvento.CStat);
@@ -237,7 +224,71 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             Assert.Null(servico.Result.InfEvento.NProt);
         }
 
-        private static async Task ResponderSoapAsync(TcpListener servidor, string xml, CancellationToken limite)
+#if INTEROP
+        [Fact]
+        public async Task InteropEnviaDoisEventosValidosEAtualizaXmlOriginal()
+        {
+            using var servidor = new TcpListener(IPAddress.Loopback, 0);
+            servidor.Start();
+            using var limite = new CancellationTokenSource(TimeSpan.FromSeconds(10));
+            using var certificado = CriarCertificado();
+            var configuracao = new Configuracao
+            {
+                TipoDFe = TipoDFe.NFeABI,
+                CodigoUF = (int)UFBrasil.PR,
+                TipoAmbiente = TipoAmbiente.Homologacao,
+                Servico = Servico.NFeABIRecepcaoEvento,
+                SchemaVersao = "1.00",
+                CertificadoDigital = certificado,
+                TimeOutWebServiceConnect = 5000
+            };
+            configuracao.Load("RecepcaoEvento");
+            configuracao.WebEnderecoHomologacao = $"http://127.0.0.1:{((IPEndPoint)servidor.LocalEndpoint).Port}/";
+            configuracao.Definida = true;
+
+            var servico = new NFeABIRecepcaoEvento();
+            var primeiro = CarregarEvento("cancelamento");
+            var segundo = CarregarEvento("cancelamento");
+            segundo.InfEvento.ChNFeABI = "41260912345678000123770010000000021012345678";
+            primeiro.Signature = null;
+            segundo.Signature = null;
+
+            async Task EnviarEConferirAsync(EventoNFeABI evento, string protocolo)
+            {
+                var requisicao = ResponderSoapAsync(servidor, CriarRespostaSoap(protocolo), limite.Token);
+                servico.Executar(evento, configuracao);
+                var chave = evento.InfEvento.ChNFeABI;
+                Assert.Contains("<chNFeABI>" + chave + "</chNFeABI>", await requisicao);
+                Assert.Equal(protocolo, servico.Result.InfEvento.NProt);
+                Assert.Empty(servico.Warnings);
+
+                var original = new XmlDocument();
+                original.LoadXml(servico.GetConteudoXMLOriginal());
+                Assert.Equal(chave, original.GetElementsByTagName("chNFeABI", NamespaceEvento)[0].InnerText);
+                Assert.Empty(original.GetElementsByTagName("Signature", SignedXml.XmlDsigNamespaceUrl));
+                Assert.NotNull(servico.EventoNFeABI.Signature);
+            }
+
+            await EnviarEConferirAsync(primeiro, "1412600000000001");
+            await EnviarEConferirAsync(segundo, "1412600000000002");
+        }
+#endif
+
+        private static string CriarRespostaSoap(string protocolo) => $@"<soap:Envelope xmlns:soap=""http://www.w3.org/2003/05/soap-envelope"">
+  <soap:Body>
+    <nfeabiRecepcaoEventoResult xmlns=""{NamespaceWsdl}"">
+      <retEventoNFeABI xmlns=""{NamespaceEvento}"" versao=""1.00"">
+        <infEvento>
+          <tpAmb>2</tpAmb><verAplic>TESTE</verAplic><cOrgao>41</cOrgao>
+          <cStat>135</cStat><xMotivo>Evento registrado</xMotivo>
+          <dhRegEvento>2026-09-14T12:00:00-03:00</dhRegEvento><nProt>{protocolo}</nProt>
+        </infEvento>
+      </retEventoNFeABI>
+    </nfeabiRecepcaoEventoResult>
+  </soap:Body>
+</soap:Envelope>";
+
+        private static async Task<string> ResponderSoapAsync(TcpListener servidor, string xml, CancellationToken limite)
         {
             using var cliente = await servidor.AcceptTcpClientAsync(limite);
             using var stream = cliente.GetStream();
@@ -263,6 +314,7 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
                 $"HTTP/1.1 200 OK\r\nContent-Type: application/soap+xml; charset=utf-8\r\nContent-Length: {resposta.Length}\r\nConnection: close\r\n\r\n");
             await stream.WriteAsync(headers, limite);
             await stream.WriteAsync(resposta, limite);
+            return Encoding.UTF8.GetString(Encoding.Latin1.GetBytes(corpo));
         }
 
         private static EventoNFeABI CarregarEvento(string nome) =>

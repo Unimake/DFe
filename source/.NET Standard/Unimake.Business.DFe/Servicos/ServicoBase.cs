@@ -122,15 +122,16 @@ namespace Unimake.Business.DFe.Servicos
         protected virtual void Inicializar(XmlDocument conteudoXML, Configuracao configuracao)
         {
             Configuracoes = configuracao ?? throw new ArgumentNullException(nameof(configuracao));
-            ConteudoXML = conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML));
+            ConteudoXMLOriginal = (XmlDocument)(conteudoXML ?? throw new ArgumentNullException(nameof(conteudoXML))).CloneNode(true);
+            ConteudoXML = conteudoXML;
 
-            Warnings.Clear();
+            Warnings?.Clear();
 
             var validatorFactory = new ValidatorFactory();
             var validator = (XmlValidatorBase)(validatorFactory.BuidValidator(ConteudoXML.InnerXml));
             var validou = (validator?.Validate() ?? true);
 
-            Warnings = validator?.Warnings;
+            Warnings = validator?.Warnings ?? new List<ValidatorDFeException>();
 
             if (!validou)
             {
