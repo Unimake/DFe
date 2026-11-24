@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regras Comuns de Solicitação e Retorno das APIs assíncronas</title>
+	<link rel="stylesheet" href="/apuracao-cbs/documentacao.css">
+</head>
+<body>
+  <main class="documento">
+		<nav class="navegacao"><a href="/apuracao-cbs/">Documentação da apuração CBS</a></nav>
+    <h2>Índice</h2>
+<ol>
+<li>Objetivo</li>
+<li>Histórico de versão</li>
+<li>Pré-requisitos</li>
+<li>Processamento assíncrono e fluxo da solicitação</li>
+<li>Status de processamento e comportamento do webhook</li>
+<li>Endpoint da API</li>
+<li>Restrições</li>
+</ol>
+<div style="page-break-before: always;"></div>
+<h1>Regras Comuns de Solicitação e Retorno das APIs assíncronas</h1>
+<h2>1. Objetivo</h2>
+<p>Descreve o fluxo comum de integração para apis assíncronas da apuração de CBS.</p>
+<h2>2. Histórico de versão</h2>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Data</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:12%; text-align:left;">Versão</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:70%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">03/09/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.0</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Versão inicial.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">14/10/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.1</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Atualizar o payload de notificação enviado ao webhook. Atualizar o fluxo de obtenção e download do arquivo de retorno por meio da `urlAssinada`.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>3. Pré-requisitos</h2>
+<p>Para consumir as API assincronas é necessário:</p>
+<ol>
+<li>Credenciais válidas para o estabelecimento matriz;</li>
+<li>Token obtido por meio da API de autenticação;</li>
+<li>Opcionalmente, uma URL de webhook válida e acessível publicamente para receber o retorno da API.<br>
+Quando não houver webhook, enviar <code>urlRetorno</code> como <code>&quot;&quot;</code> (string vazia).</li>
+</ol>
+<p>O manual com orientações para geração de credenciais e obtenção do token de acesso pode ser obtido em:<br>
+<a href="https://arquivos.receitafederal.gov.br/index.php/s/gn672Ad4CF8N6TK?dir=/Documentos/T%C3%A9cnicos/Receita%20Integra">https://arquivos.receitafederal.gov.br</a> → <strong>Documentos &gt; Técnicos &gt; Receita Integra</strong>.</p>
+<h2>4. Processamento assíncrono e fluxo da solicitação</h2>
+<p>As APIs deste conjunto operam em <strong>modo assíncrono</strong>.<br>
+Por isso, a requisição de abertura <strong>não retorna o arquivo final imediatamente</strong>.</p>
+<h3>Como funciona</h3>
+<ol>
+<li>O cliente envia uma requisição <code>POST</code> para a API desejada.</li>
+<li>O campo <code>urlRetorno</code>(url do webhook) é <strong>opcional</strong>:
+<ul>
+<li>com webhook: informar uma URL HTTPS válida;</li>
+<li>sem webhook: enviar <code>urlRetorno</code> como <code>&quot;&quot;</code> (string vazia).</li>
+</ul>
+</li>
+<li>Quando <code>urlRetorno</code> for informada, a API valida a disponibilidade do endpoint com uma chamada <code>HEAD</code>:
+<ul>
+<li>se o endpoint não responder adequadamente, a solicitação é rejeitada com erro;</li>
+<li>se responder, a solicitação segue para processamento.</li>
+</ul>
+</li>
+<li>Se a abertura for aceita (<code>HTTP 201</code>), a API retorna o <code>tiqueteSolicitacao</code>.</li>
+<li>A solicitação é processada de forma assíncrona.</li>
+<li>Ao final do processamento:
+<ul>
+<li>com webhook informado, a API envia notificação para a <code>urlRetorno</code>;</li>
+<li>sem webhook, o cliente deve consultar o endpoint de situação.</li>
+</ul>
+</li>
+<li>O payload de notificação (quando enviado) pode ser:
+<ul>
+<li><strong>Sucesso:</strong> <code>tiqueteSolicitacao</code> e <code>situacao</code>;</li>
+<li><strong>Erro:</strong> <code>codigoErro</code> e <code>mensagemErro</code>.</li>
+</ul>
+</li>
+<li>Quando a situação for <code>CONCLUIDA</code>, o cliente deve consultar o endpoint de download para obter a <code>urlAssinada</code> e baixar o arquivo de retorno:
+<a href="download.html">Consultar link para download do arquivo de retorno</a>.</li>
+<li>A consulta de situação pode ser usada a qualquer momento, informando o <code>tiqueteSolicitacao</code>:
+<a href="situacao-solicitacao.html">Consultar a situação da solicitação</a>.</li>
+</ol>
+<h2>5. Status de processamento e comportamento do webhook</h2>
+<p>Enquanto estiver em processamento:</p>
+<ul>
+<li>o arquivo final ainda não estará disponível para download;</li>
+<li>se <code>urlRetorno</code> foi informada, o cliente pode aguardar a notificação no webhook; sem webhook (<code>urlRetorno=&quot;&quot;</code>), deve consultar o endpoint de situação da solicitação para verificar se ela foi concluída.</li>
+</ul>
+<h4>Tempo esperado de processamento</h4>
+<ul>
+<li><strong>Tempo limite de processamento:</strong> até <code>240 minutos (4 horas)</code>.<br>
+Se esse limite for excedido, a solicitação passará para o status de erro.</li>
+</ul>
+<div style="page-break-before: always;"></div>
+<h3>5.1 Recomendações de segurança para webhook</h3>
+<p>Para reduzir o risco de interceptação, falsificação e processamento indevido das notificações, o cliente deve:</p>
+<ol>
+<li><strong>Usar HTTPS:</strong> disponibilizar a <code>urlRetorno</code> exclusivamente com HTTPS. Não desabilitar a validação do certificado TLS.</li>
+<li><strong>Restringir o endpoint:</strong> utilizar uma rota dedicada ao recebimento das notificações, sem expor outras funções administrativas no mesmo endereço.</li>
+<li><strong>Proteger a <code>urlAssinada</code>:</strong> tratar a URL Assinada como um segredo temporário, pois ela autoriza o download durante o período de validade de 48 horas. Não gravá-la em logs, mensagens de erro, métricas, histórico do navegador ou ferramentas de rastreamento; transmiti-la e armazená-la somente em canais protegidos.</li>
+<li><strong>Validar a expiração:</strong> conferir <code>urlAssinadaExpiraEm</code>, quando presente, antes do download. Baixar o arquivo somente quando a notificação indicar sucesso e descartar a URL após o uso ou a expiração.</li>
+<li><strong>Manter auditoria sem dados sensíveis:</strong> registrar, no mínimo, o <code>tiqueteSolicitacao</code>, o horário, o resultado do processamento e um identificador de correlação. Mascarar tokens, URLs pré-assinadas, credenciais e dados pessoais nos logs.</li>
+</ol>
+<p>Quando informar uma <code>urlRetorno</code>, o cliente deve mantê-la disponível durante todo o período esperado de processamento e utilizar a consulta ao endpoint de situação da solicitação como mecanismo de contingência, caso a notificação não seja recebida. A validação por <code>HEAD</code>, realizada na abertura da solicitação, confirma apenas que o endereço informado está acessível; ela não substitui mecanismos de autenticação nem a validação do conteúdo enviado no <code>POST</code>.</p>
+<h3>5.2 Faixas de IP de origem (segurança adicional)</h3>
+<p>Como camada adicional de segurança, recomenda-se restringir o recebimento do webhook às <strong>faixas oficiais de IP de origem</strong> do ambiente emissor da API.</p>
+<h4>Diretriz de implementação</h4>
+<ul>
+<li>Aplicar <strong>allowlist</strong> de IP/CIDR no firewall, WAF ou gateway de API.</li>
+<li>Manter regras separadas por ambiente (produção restrita e produção), quando aplicável.</li>
+<li>Revisar periodicamente as faixas publicadas oficialmente.</li>
+</ul>
+<h4>Faixas de IP autorizadas</h4>
+<p>Utilizar as faixas oficiais divulgadas para cada ambiente.</p>
+<ul>
+<li>Produção: <code>189.9.61.23/32</code></li>
+</ul>
+<div style="page-break-before: always;"></div>
+<h3>6. Resumo da sequência para consumir a API assíncrona:</h3>
+<ol>
+<li><strong>Obter o token OAuth2</strong> (Client Credentials).</li>
+<li><strong>Acionar o endpoint da API</strong> com <code>Authorization: Bearer &lt;token&gt;</code> e <code>{cnpj}</code> (8 dígitos); informe <code>urlRetorno</code> HTTPS se desejar receber notificações. Sem webhook, enviar <code>urlRetorno</code> como <code>&quot;&quot;</code> (string vazia).</li>
+<li><strong>Aguardar o webhook</strong>, se <code>urlRetorno</code> foi informada, ou consultar a situação da solicitação.</li>
+<li>Quando <code>situacao=CONCLUIDA</code>, <strong>consultar o endpoint de download</strong> com o <code>tiqueteSolicitacao</code> para obter a <code>urlAssinada</code>.</li>
+<li><strong>Baixar o arquivo</strong> com <code>HTTP GET</code> direto na <code>urlAssinada</code>, sem <code>Bearer Token</code> e sem headers adicionais.</li>
+</ol>
+<p><strong>Codificação do arquivo retornado:</strong> <code>UTF-8</code>.</p>
+<p><strong>Formato do arquivo retornado:</strong> <code>JSON</code>.</p>
+<p>Se a notificação não for recebida no webhook, utilize a consulta de situação como contingência:
+<a href="situacao-solicitacao.html">Consultar a situação da solicitação</a>.</p>
+<h2>7. Restrições</h2>
+<ol>
+<li>Limite de consumo do endpoint de solicitação: <strong>4 chamadas por credencial e por api</strong>.</li>
+<li>O arquivo de retorno fica disponível por <strong>48 horas</strong> após o aviso de pronto.</li>
+</ol>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "GerarDARFContribRetorno",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/$defs/retornoSucesso" },
+    { "$ref": "#/$defs/retornoErro" }
+  ],
+  "$defs": {
+    "valorMonetario": {
+      "type": "number",
+      "multipleOf": 0.01
+    },
+    "retornoSucesso": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cdRetorno", "darf", "informacoesPagamento"],
+      "properties": {
+        "cdRetorno": {
+          "type": "string",
+          "const": "DARF_GERADO"
+        },
+        "darf": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["chavePIX", "codigoBarras", "linkDarfPDF"],
+          "properties": {
+            "chavePIX": {
+              "type": "string",
+              "minLength": 1
+            },
+            "codigoBarras": {
+              "type": "string",
+              "minLength": 1
+            },
+            "linkDarfPDF": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        },
+        "informacoesPagamento": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "dataVencimento",
+            "valorDarfPrincipal",
+            "valorDarfMulta",
+            "valorDarfJuros",
+            "valorDarfTotal"
+          ],
+          "properties": {
+            "dataVencimento": {
+              "type": "string",
+              "format": "date"
+            },
+            "valorDarfPrincipal": {
+              "$ref": "#/$defs/valorMonetario"
+            },
+            "valorDarfMulta": {
+              "$ref": "#/$defs/valorMonetario"
+            },
+            "valorDarfJuros": {
+              "$ref": "#/$defs/valorMonetario"
+            },
+            "valorDarfTotal": {
+              "$ref": "#/$defs/valorMonetario"
+            }
+          }
+        }
+      }
+    },
+    "retornoErro": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cdRetorno", "mensagem"],
+      "properties": {
+        "cdRetorno": {
+          "type": "string",
+          "enum": [
+            "DFE_NAO_ENCONTRADO",
+            "VALOR_PARCIAL_SUPERIOR_DFE",
+            "CNPJ_NAO_ADQUIRENTE",
+            "DADOS_DE_ENTRADA_INVALIDOS"
+          ]
+        },
+        "mensagem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "dadosInvalidos": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "cdRetorno": { "const": "DADOS_DE_ENTRADA_INVALIDOS" }
+            },
+            "required": ["cdRetorno"]
+          },
+          "then": {
+            "required": ["dadosInvalidos"]
+          }
+        }
+      ]
+    }
+  }
+}

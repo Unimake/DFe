@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download Arquivo de Retorno</title>
+	<link rel="stylesheet" href="/apuracao-cbs/documentacao.css">
+</head>
+<body>
+  <main class="documento">
+		<nav class="navegacao"><a href="/apuracao-cbs/">Documentação da apuração CBS</a></nav>
+    <h1>Índice</h1>
+<ol>
+<li>Objetivo</li>
+<li>Histórico de versão</li>
+<li>Regras de retorno</li>
+<li>Endpoint da API</li>
+</ol>
+<div style="page-break-before: always;"></div>
+<h1>Consultar link para download do arquivo de retorno</h1>
+<h2>1. Objetivo</h2>
+<p>Permite consultar o link temporário (<code>urlAssinada</code>) para download do arquivo de retorno de uma solicitação assíncrona.</p>
+<h2>2. Histórico de versão</h2>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Data</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:14%; text-align:left;">Versão</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:68%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">13/10/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.0</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Versão inicial</td>
+    </tr>
+  </tbody>
+</table>
+<h2>3. Regras de retorno</h2>
+<ul>
+<li>O endpoint retorna <code>urlAssinada</code> para download temporário do arquivo.</li>
+<li>Quando disponível, retorna também <code>urlAssinadaExpiraEm</code>.</li>
+<li>A URL assinada deve ser consumida por <code>GET</code>, sem <code>Bearer Token</code> e sem headers adicionais.</li>
+</ul>
+<h2>4. Endpoint da api</h2>
+<ul>
+<li><strong>URL de Produção:</strong>
+<ul>
+<li><code>https://api.receitafederal.gov.br/apuracao-cbs/v2/download/{tiqueteSolicitacao}</code></li>
+</ul>
+</li>
+</ul>
+<h3>4.1 Campos de entrada</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">tiqueteSolicitacao</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Tíquete da solicitação.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.2 Header</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Authorization</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>Bearer &lt;token de acesso&gt;</code></td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Accept</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>application/json</code></td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.3 Método e exemplo de requisição</h3>
+<h3>Método: <code>GET</code></h3>
+<pre><code class="language-bash">curl --location --request GET 'https://api.receitafederal.gov.br/apuracao-cbs/v2/download/{tiqueteSolicitacao}' \
+  --header 'Authorization: Bearer &lt;access_token&gt;' \
+  --header 'Accept: application/json'
+</code></pre>
+<p><strong>Exemplo com dados fictícios (Produção):</strong></p>
+<pre><code class="language-bash">curl --location --request GET 'https://api.receitafederal.gov.br/apuracao-cbs/v2/download/TQ-20260925-00000001' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dadoFicticio.assinaturaFicticia' \
+  --header 'Accept: application/json'
+</code></pre>
+<h3>4.4 Possíveis respostas</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:16%; text-align:left;">HTTP</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:34%; text-align:left;">Quando ocorre</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:50%; text-align:left;">Resposta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>200 OK</code></td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Solicitação concluída e arquivo disponível.</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">JSON com <code>urlAssinada</code> e, quando disponível, <code>urlAssinadaExpiraEm</code>.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>401 Unauthorized</code></td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Token, tíquete ou identificação do consumidor inválidos.</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">JSON com <code>codigoErro=NAO_AUTORIZADO</code> e <code>mensagemErro</code>.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>404 Not Found</code></td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Solicitação inexistente ou arquivo indisponível (por exemplo, processamento ainda não concluído).</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">JSON com <code>codigoErro=ARQUIVO_INDISPONIVEL</code> e <code>mensagemErro</code>.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>500 Internal Server Error</code></td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Erro interno ao consultar o download.</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">JSON com <code>codigoErro=ERRO_INTERNO</code> e <code>mensagemErro</code>.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.5 Exemplos de retorno</h3>
+<p><strong>Sucesso (HTTP 200):</strong></p>
+<pre><code class="language-json">{
+  &quot;urlAssinada&quot;: &quot;https://storage.exemplo.gov.br/arquivo-retorno?X-Amz-Algorithm=AWS4-HMAC-SHA256&amp;...&quot;,
+  &quot;urlAssinadaExpiraEm&quot;: &quot;2026-09-27T14:30:00Z&quot;
+}
+</code></pre>
+<p><strong>Não autorizado (HTTP 401):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;NAO_AUTORIZADO&quot;,
+  &quot;mensagemErro&quot;: &quot;consumidor inválido&quot;
+}
+</code></pre>
+<p><strong>Arquivo indisponível (HTTP 404):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;ARQUIVO_INDISPONIVEL&quot;,
+  &quot;mensagemErro&quot;: &quot;Arquivo de retorno indisponível&quot;
+}
+</code></pre>
+<p><strong>Erro interno (HTTP 500):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;ERRO_INTERNO&quot;,
+  &quot;mensagemErro&quot;: &quot;erro interno ao processar solicitação&quot;
+}
+</code></pre>
+
+  </main>
+</body>
+</html>

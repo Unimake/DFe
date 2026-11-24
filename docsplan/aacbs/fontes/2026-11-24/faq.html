@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dúvidas Frequentes</title>
+	<link rel="stylesheet" href="/apuracao-cbs/documentacao.css">
+</head>
+<body>
+  <main class="documento">
+		<nav class="navegacao"><a href="/apuracao-cbs/">Documentação da apuração CBS</a></nav>
+    <h1>Dúvidas frequentes sobre as APIs da Apuração Assistida</h1>
+<h2>1. Qual é a sequência para consumir a API assíncrona?</h2>
+<p>A sequência é:</p>
+<ol>
+<li><strong>Obter o token OAuth2</strong> (Client Credentials).</li>
+<li><strong>Acionar o endpoint da API</strong> com <code>Authorization: Bearer &lt;token&gt;</code> e <code>{cnpj}</code> (8 dígitos). <code>urlRetorno</code> HTTPS é opcional.</li>
+<li><strong>Aguardar a notificação no webhook</strong>, se <code>urlRetorno</code> foi informada, ou consultar a situação da solicitação.</li>
+<li>Quando <code>situacao=CONCLUIDA</code>, <strong>consultar o endpoint de download</strong> com o <code>tiqueteSolicitacao</code> para obter a <code>urlAssinada</code>.</li>
+<li><strong>Baixar o arquivo</strong> com <code>HTTP GET</code> diretamente na <code>urlAssinada</code>, sem <code>Bearer Token</code> e sem cabeçalhos adicionais.</li>
+</ol>
+<h2>2. A <code>urlRetorno</code>(Url do webhook) é obrigatória?</h2>
+<p>Não.Se não houver webhook, a <code>urlRetorno</code> deve ser enviada <strong>vazia</strong> (<code>&quot;&quot;</code>).<br>
+Nesse caso, a solicitação é processada normalmente, porém sem notificação por webhook, e o acompanhamento deve ser feito pelo endpoint de situação.</p>
+<p>Se a <code>urlRetorno</code> for informada, a API valida sua disponibilidade com uma chamada <code>HEAD</code> no momento da abertura da solicitação. Se o endpoint não responder adequadamente, a solicitação é rejeitada.</p>
+<h2>3. O webhook de retorno possui mecanismo de validação de origem (autenticação, assinatura digital, mTLS ou cabeçalho específico)?</h2>
+<p>Quando <code>urlRetorno</code> for informada, o webhook de retorno <strong>não</strong> utiliza autenticação adicional, assinatura digital, mTLS ou cabeçalho específico de origem.</p>
+<h2>4. Qual é o método, formato de codificação e payload que o webhook pode receber?</h2>
+<p>Quando <code>urlRetorno</code> for informada, o webhook pode receber:</p>
+<ul>
+<li><strong>Método:</strong> <code>POST</code></li>
+<li><strong>Formato:</strong> <code>JSON</code></li>
+<li><strong>Codificação:</strong> <code>UTF-8</code></li>
+</ul>
+<p>Payload:</p>
+<ul>
+<li><strong>Sucesso:</strong> <code>tiqueteSolicitacao</code> e <code>situacao</code></li>
+<li><strong>Erro:</strong> <code>codigoErro</code> e <code>mensagemErro</code></li>
+</ul>
+<h2>5. Como saber se a solicitação foi concluída?</h2>
+<ul>
+<li>Com <code>urlRetorno</code> informada: pela notificação no webhook.</li>
+<li>Sem <code>urlRetorno</code> (enviada como <code>&quot;&quot;</code>): consultando o endpoint de situação com o <code>tiqueteSolicitacao</code>: <a href="situacao-solicitacao.html">Consultar a situação da solicitação</a>.</li>
+</ul>
+<h2>6. Como obter o arquivo de retorno de uma solicitação de API assíncrona?</h2>
+<p>Quando <code>situacao=CONCLUIDA</code>, consulte o endpoint de link de download com o <code>tiqueteSolicitacao</code>: <a href="download.html">Consultar a <code>urlAssinada</code> para download</a>.</p>
+<h2>7. Como baixar o arquivo da <code>urlAssinada</code>?</h2>
+<p>Faça <code>HTTP GET</code> diretamente na <code>urlAssinada</code>, sem <code>Bearer Token</code> e sem cabeçalhos adicionais de autenticação.</p>
+<h2>8. Por que utilizar a <code>urlAssinada</code> (S3 pre-signed URL), em vez de expor o download HTTP direto pela API?</h2>
+<p>A <code>urlAssinada</code> adota o modelo de acesso temporário do S3, trazendo vantagens de segurança e operação:</p>
+<ul>
+<li><strong>Acesso temporário:</strong> a URL expira automaticamente.</li>
+<li><strong>Escopo restrito:</strong> acesso apenas ao objeto autorizado.</li>
+<li><strong>Sem exposição de credenciais:</strong> não exige compartilhamento de chaves de storage.</li>
+<li><strong>Maior escalabilidade:</strong> o arquivo é entregue pelo storage, não pela API.</li>
+<li><strong>Melhor desempenho e custo:</strong> reduz consumo de CPU, memória e banda da aplicação.</li>
+</ul>
+<p>Observação: a <code>urlAssinada</code> também usa HTTP/HTTPS; o diferencial é a <strong>assinatura S3 com expiração</strong>.</p>
+<h2>9. Qual é o formato, a codificação e por quanto tempo o arquivo retornado fica disponível?</h2>
+<ul>
+<li><strong>Formato:</strong> <code>JSON</code></li>
+<li><strong>Codificação:</strong> <code>UTF-8</code></li>
+</ul>
+<p>O arquivo fica disponível por até <strong>48 horas</strong> após o aviso de pronto, respeitando <code>urlAssinadaExpiraEm</code> quando presente.</p>
+<h2>10. Os campos de data/hora seguem qual padrão?</h2>
+<p><code>String (date-time ISO 8601)</code>.</p>
+<h2>11. Qual é o tempo máximo de processamento após a abertura da solicitação?</h2>
+<p>Até <strong>240 minutos (4 horas)</strong>.<br>
+Se esse limite for excedido, a solicitação passa para status de erro.</p>
+<h2>12. Qual é o limite de consumo dos endpoint?</h2>
+<ul>
+<li>Apis de solicitação - débitos, créditos, pagamentos e recolhimentos - Até <strong>4 chamadas por API, por dia e por credencial</strong>. A cota é reiniciada diariamente à meia-noite (<code>00:00</code>).</li>
+</ul>
+<h2>13. Como funciona a regra de retorno de até 8 dias das APIs assíncronas?</h2>
+<p>Se já existir solicitação <strong>concluída nos últimos 3 meses</strong>, a API retorna inclusões/atualizações desde a última consulta concluída <strong>sem erro</strong>, limitando o recorte aos <strong>últimos 8 dias</strong>.</p>
+<p><strong>Exemplo:</strong></p>
+<ul>
+<li>Data da solicitação atual: <code>29/09/2026 10:00:00</code></li>
+<li>Última consulta concluída: <code>10/09/2026 10:00:00</code></li>
+</ul>
+<p>Mesmo com intervalo maior, o retorno virá apenas com alterações dos <strong>últimos 8 dias</strong> (de <code>22/09/2026 00:00:00</code> a <code>29/09/2026 10:00:00</code>).</p>
+<p>Se <strong>não houver consulta concluída nos últimos 3 meses</strong>, a busca começa no <strong>1º dia do mês corrente</strong>.</p>
+<h2>14. Quais cuidados de segurança são recomendados?</h2>
+<ul>
+<li>Usar <code>HTTPS</code> no webhook (<code>urlRetorno</code>), quando informado;</li>
+<li>Tratar <code>urlAssinada</code> como segredo temporário;</li>
+<li>Não registrar tokens ou URLs assinadas em logs;</li>
+<li>Validar <code>urlAssinadaExpiraEm</code> antes do download;</li>
+<li>Restringir o recebimento do webhook às faixas oficiais de IP de origem (allowlist em firewall/WAF/gateway), quando <code>urlRetorno</code> for utilizada.</li>
+</ul>
+
+  </main>
+</body>
+</html>

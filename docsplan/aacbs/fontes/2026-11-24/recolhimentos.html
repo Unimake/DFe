@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Recolhimentos CBS</title>
+	<link rel="stylesheet" href="/apuracao-cbs/documentacao.css">
+</head>
+<body>
+  <main class="documento">
+		<nav class="navegacao"><a href="/apuracao-cbs/">Documentação da apuração CBS</a></nav>
+    <h1>Índice</h1>
+<ol>
+<li>Objetivo</li>
+<li>Histórico de versão</li>
+<li>Regras de retorno</li>
+<li>Endpoint da API</li>
+<li>Estrutura principal do JSON do arquivo de retorno (download via urlAssinada)</li>
+<li>Schema JSON do arquivo de retorno</li>
+<li>Exemplo do JSON de retorno (download via urlAssinada)</li>
+</ol>
+<div style="page-break-before: always;"></div>
+<h1>Consultar recolhimentos de CBS como adquirente</h1>
+<h2>1. Objetivo</h2>
+<p>Consulta os recolhimentos de CBS realizados como adquirente (RAD), ou seja, pagamentos que extinguem débitos de fornecedores e apropriam créditos relativos às suas aquisições.</p>
+<p>Esta API funciona em modo assíncrono. Para orientações de uso, consulte as Regras Comuns às APIs Assíncronas da Apuração de CBS: <a href="guiaapiassincrona.html">regras de APIs assíncronas</a></p>
+<h2>2. Histórico de versão</h2>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Data</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:12%; text-align:left;">Versão</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:70%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">03/09/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.0</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Versão inicial</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">17/09/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.1</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Ajustes nos exemplos de chamada</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">14/10/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.2</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Atualizar o payload de notificação enviado ao webhook. Atualizar o fluxo de obtenção e download do arquivo de retorno por meio da `urlAssinada`. Atualizar seção 5.</td>
+    </tr>    
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">13/11/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.3</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Inclusão da seção de schema JSON do arquivo de retorno, ajuste da seção 5, ajuste da ordem das seções (schema antes do exemplo)</td>
+    </tr>
+  </tbody>
+</table>
+<h2>3. Regras de retorno</h2>
+<p>Para solicitações com consulta concluída nos últimos 3 meses, são retornados os recolhimentos registrados desde a data de atualização da solicitação concluída mais recente, limitada aos últimos 8 dias. Quando não há consulta concluída nesse período, a busca começa no 1º dia do mês corrente. Se não houver registros no período, <code>apuracao</code> será uma lista vazia (<code>[]</code>).</p>
+<h2>4. Endpoint da api</h2>
+<ul>
+<li><strong>URL de Produção:</strong>
+<ul>
+<li><code>https://api.receitafederal.gov.br/apuracao-cbs/v2/recolhimentos/{cnpj}</code></li>
+</ul>
+</li>
+</ul>
+<h3>4.1 Campos de Entrada</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">cnpj</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String (8)</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">CNPJ base informado no path.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.2 Header</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #cbd5e1; padding:6px;">Content-Type</td><td style="border:1px solid #cbd5e1; padding:6px;">String</td><td style="border:1px solid #cbd5e1; padding:6px;"><code>application/json</code></td></tr>    
+  </tbody>
+</table>
+<h3>4.3 Request Body</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">urlRetorno</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Opcional. URL do webhook para receber a notificação de retorno. Quando não houver webhook, informar <code>""</code> (string vazia).</td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.4 Acionar o endpoint</h3>
+<ol>
+<li>Substitua <code>$TOKEN</code> pelo valor de <code>access_token</code>.</li>
+<li>Substitua <code>{cnpj}</code> pelo <strong>CNPJ base com 8 dígitos</strong>.</li>
+<li>Opcionalmente, informe no corpo uma <code>urlRetorno</code> (URL do webhook) acessível por HTTP ou HTTPS para receber a notificação de conclusão da solicitação ou de erro no processamento. Quando não houver webhook, informar <code>&quot;&quot;</code> (string vazia). Sem esse campo, consulte a situação da solicitação para acompanhar o processamento.</li>
+</ol>
+<h4>Exemplo de chamada (com variável TOKEN)</h4>
+<pre><code class="language-bash">curl --location --request POST 'https://api.receitafederal.gov.br/apuracao-cbs/v2/recolhimentos/{cnpj}' \
+  --header &quot;Authorization: Bearer $TOKEN&quot; \
+  --header 'Content-Type: application/json' \
+  --data '{ &quot;urlRetorno&quot;: &quot;https://cliente.exemplo.com/webhooks/apuracao-cbs&quot; }'
+</code></pre>
+<h4>Exemplo com dados fictícios</h4>
+<pre><code class="language-bash">curl --location --request POST 'https://api.receitafederal.gov.br/apuracao-cbs/v2/recolhimentos/12345678' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dadoFicticio.assinaturaFicticia' \
+  --data '{ &quot;urlRetorno&quot;: &quot;https://cliente.exemplo.com/webhooks/apuracao-cbs&quot; }'
+</code></pre>
+<h4>Exemplo de chamada (sem webhook)</h4>
+<pre><code class="language-bash">curl --location --request POST 'https://api.receitafederal.gov.br/apuracao-cbs/v2/recolhimentos/{cnpj}' \
+  --header &quot;Authorization: Bearer $TOKEN&quot; \
+  --header 'Content-Type: application/json' \
+  --data '{&quot;urlRetorno&quot;:&quot;&quot;}'
+</code></pre>
+<div style="page-break-before: always;"></div>
+<h3>4.5 Campos Retornados</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">tiqueteSolicitacao</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de sucesso, tíquete gerado na requisição.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">tEASegundos</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Integer (segundos)</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de sucesso, tempo estimado para atendimento da solicitação, em segundos. O valor <code>-1</code> indica que não foi possível obter uma estimativa.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">codigoErro</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de erro - Identifica o erro ocorrido durante a requisição. Retornado apenas em caso de erro.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">mensagemErro</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de erro - Mensagem descritiva do erro ocorrido durante a requisição. Retornado apenas em caso de erro.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Exemplo de retorno em caso de sucesso (HTTP 201)</h3>
+<pre><code class="language-json">{
+  &quot;tiqueteSolicitacao&quot;: &quot;692b7b25-44cb-4415-8625-2b9522dd7933.B5E08D55&quot;,
+  &quot;tEASegundos&quot;: 120
+}
+</code></pre>
+<h3>Exemplos de retorno em caso de erro</h3>
+<p><strong>Requisição inválida (HTTP 400):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;REQUISICAO_INVALIDA&quot;,
+  &quot;mensagemErro&quot;: &quot;corpo da requisição inválido&quot;
+}
+</code></pre>
+<p><strong>Não autorizado (HTTP 401):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;NAO_AUTORIZADO&quot;,
+  &quot;mensagemErro&quot;: &quot;consumidor não autorizado para este NI&quot;
+}
+</code></pre>
+<p><strong>Erro interno (HTTP 500):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;ERRO_INTERNO&quot;,
+  &quot;mensagemErro&quot;: &quot;erro interno ao processar solicitação&quot;
+}
+</code></pre>
+<h3>Exemplo de objeto enviado para urlRetorno(webhook) em caso de sucesso (HTTP 2xx)</h3>
+<pre><code class="language-json">{
+  &quot;tiqueteSolicitacao&quot;:&quot;48d88a3c-eff9-4489-8e3a-cde8d878d3f7.1E0CE7A4&quot;,
+  &quot;situacao&quot;: &quot;CONCLUIDA&quot;
+ } 
+</code></pre>
+<div style="page-break-before: always;"></div>
+<h2>5. Estrutura principal do JSON do arquivo de retorno (download via urlAssinada)</h2>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:21%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:15%; text-align:left;">Objeto da cardinalidade</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:7%; text-align:center;">Nível</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:12%; text-align:center;">Cardinalidade</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:19%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:26%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">tiqueteSolicitacao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Tíquete da solicitação.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">ni</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (8)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">NI do contribuinte.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">niConsumidor</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (11 ou 14)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Inscrição no CPF ou CNPJ do usuário detentor da credencial de acesso, ou seja, quem está consumindo o serviço.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">geradoEm</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (date-time ISO 8601)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Data/hora de geração do arquivo.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">apuracao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:N</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Array</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Lista de apurações.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">dataArrecadacao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">apuracao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">2</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (date ISO 8601 - YYYY-MM-DD)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Data da arrecadação.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">pagamentos</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">apuracao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">2</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:N</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Array</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Lista de pagamentos.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">numeroDARF</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">pagamentos</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (17)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Número do DARF.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">tipo</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">pagamentos</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Integer</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Tipo do recolhimento:<br>
+    <code>1</code> = RAD - Recolhimento pelo adquirente<br>    
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">pagamentos</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:N</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Array</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Itens de composição do pagamento.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">sequencial</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Integer (1..99999999)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Sequencial do item de composição.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">pa</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (MM/AAAA)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Período de apuração.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">vencimento</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (date ISO 8601 - YYYY-MM-DD)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Data de vencimento.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">niFornecedor</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (14)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">NI do fornecedor.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">chaveDFE</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">String (100)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Chave do DFE (retornada conforme regra do tipo de pagamento).</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">principal</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Valor principal.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">multa</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Valor de multa.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">juros</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Valor de juros.</td>
+  </tr>
+  <tr>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">total</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">composicao</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+    <td style="border: 1px solid #cbd5e1; padding: 6px">Valor total.</td>
+  </tr>
+</tbody>
+</table>
+<h2>6. Schema JSON do arquivo de retorno</h2>
+<p>Schema do retorno (download via <code>urlAssinada</code>):</p>
+<ul>
+<li>Download (arquivo): <a href="schemas/recolhimento-retorno.schema.json">recolhimento-retorno.schema.json</a></li>
+<li>Padrão: JSON Schema Draft 2020-12</li>
+<li>Versão do schema: <code>1.0.0</code></li>
+</ul>
+<div style="page-break-before: always;"></div>
+<h2>7. Exemplo do JSON de retorno (download via urlAssinada)</h2>
+<pre><code class="language-json">{
+  &quot;tiqueteSolicitacao&quot;: &quot;48d88a3c-eff9-4489-8e3a-cde8d878d3f7.1E0CE7A4&quot;,
+  &quot;ni&quot;: &quot;12345678&quot;,
+  &quot;niConsumidor&quot;: &quot;12345678000114&quot;,
+  &quot;geradoEm&quot;: &quot;2026-08-27T19:03:44Z&quot;,
+  &quot;apuracao&quot;: [
+    {
+      &quot;dataArrecadacao&quot;: &quot;2026-08-27&quot;,
+      &quot;pagamentos&quot;: [
+        {
+          &quot;numeroDARF&quot;: &quot;20260827000000001&quot;,
+          &quot;tipo&quot;: 1,
+          &quot;composicao&quot;: [
+            {
+              &quot;sequencial&quot;: 1,
+              &quot;pa&quot;: &quot;08/2026&quot;,
+              &quot;vencimento&quot;: &quot;2026-09-20&quot;,
+              &quot;niFornecedor&quot;: &quot;98765432000199&quot;,
+              &quot;chaveDFE&quot;: &quot;35260898765432000199550010000001231234567890&quot;,
+              &quot;principal&quot;: 100.00,
+              &quot;multa&quot;: 10.00,
+              &quot;juros&quot;: 5.00,
+              &quot;total&quot;: 115.00
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+  </main>
+</body>
+</html>

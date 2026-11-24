@@ -1,0 +1,5 @@
+# Preservar os bytes capturados usados no manifesto SHA-256.
+* -text
+MANIFESTO-FONTES.csv text eol=lf
+README.md text eol=lf
+.gitattributes text eol=lf

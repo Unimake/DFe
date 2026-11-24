@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Situação da solicitação</title>
+	<link rel="stylesheet" href="/apuracao-cbs/documentacao.css">
+</head>
+<body>
+  <main class="documento">
+		<nav class="navegacao"><a href="/apuracao-cbs/">Documentação da apuração CBS</a></nav>
+    <h1>Índice</h1>
+<ol>
+<li>Objetivo</li>
+<li>Histórico de versão</li>
+<li>Regras de retorno</li>
+<li>Endpoint da api</li>
+</ol>
+<div style="page-break-before: always;"></div>
+<h1>Consultar situação da solicitação</h1>
+<h2>1. Objetivo</h2>
+<p>Permite consultar a situação do processamento da solicitação realizada por meio da API assíncrona</p>
+<h2>2. Histórico de versão</h2>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Data</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:14%; text-align:left;">Versão</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:68%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">03/09/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.0</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Versão inicial</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">17/09/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.1</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Ajustes nos exemplos de chamada</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">14/10/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.2</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Alteração no payload de retorno</td>
+    </tr>
+  </tbody>
+</table>
+<h2>3. Regras de retorno</h2>
+<ol>
+<li>O endpoint retorna a situação atual da solicitação associada ao <code>tiqueteSolicitacao</code>.</li>
+<li>Quando <code>situacao=ERRO</code> ou <code>situacao=EXPIRADA</code>, são retornados <code>codigoErro</code> e <code>mensagemErro</code>.</li>
+</ol>
+<h2>4. Endpoint da api</h2>
+<ul>
+<li><strong>URL de Produção:</strong>
+<ul>
+<li><code>https://api.receitafederal.gov.br/apuracao-cbs/v2/situacao/{tiqueteSolicitacao}</code></li>
+</ul>
+</li>
+</ul>
+<h3>4.1 Campos de entrada</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">tiqueteSolicitacao</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Tíquete da solicitação.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.2 Header</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Authorization</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>Bearer &lt;token de acesso&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.3 Método e exemplo de requisição</h3>
+<h3>Método: <code>GET</code></h3>
+<pre><code class="language-bash">curl --location --request GET 'https://api.receitafederal.gov.br/apuracao-cbs/v2/situacao/{tiqueteSolicitacao}' \
+  --header 'Authorization: Bearer &lt;access_token&gt;' \
+  --header 'Accept: application/json'
+</code></pre>
+<p><strong>Exemplo com dados fictícios (Produção):</strong></p>
+<pre><code class="language-bash">curl --location --request GET 'https://api.receitafederal.gov.br/apuracao-cbs/v2/situacao/{tiqueteSolicitacao}' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dadoFicticio.assinaturaFicticia' \
+  --header 'Accept: application/json'
+</code></pre>
+<h3>4.4 Campos retornados</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">situacao</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;"><code>PENDENTE</code>, <code>EM_PROCESSAMENTO</code>, <code>CONCLUIDA</code>, <code>ERRO</code> ou <code>EXPIRADA</code> - Situação da solicitação</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">codigoErro</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Retornado quando <code>situacao=ERRO</code> ou <code>situacao=EXPIRADA</code>. Código técnico da falha.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">mensagemErro</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Retornado quando <code>situacao=ERRO</code> ou <code>situacao=EXPIRADA</code>. Descrição legível da falha.</td>
+    </tr>
+  </tbody>
+</table>
+<div style="page-break-before: always;"></div>
+<h3>4.5 Exemplos de retorno</h3>
+<p><strong>Sucesso (HTTP 200):</strong></p>
+<pre><code class="language-json">{
+  &quot;situacao&quot;: &quot;CONCLUIDA&quot;
+}
+</code></pre>
+<p><strong>Solicitação expirada (HTTP 200):</strong></p>
+<pre><code class="language-json">{
+  &quot;situacao&quot;: &quot;EXPIRADA&quot;,
+  &quot;codigoErro&quot;: &quot;EXPIRADA&quot;,
+  &quot;mensagemErro&quot;: &quot;Tempo limite de processamento excedido (240 minutos).&quot;
+}
+</code></pre>
+<p><strong>Erro (HTTP 400/401/404/500):</strong></p>
+<pre><code class="language-json">{
+  &quot;situacao&quot;: &quot;ERRO&quot;,
+  &quot;codigoErro&quot;: &quot;ERRO_INTERNO&quot;,
+  &quot;mensagemErro&quot;: &quot;Ocorreu um erro interno ao processar a solicitacao.&quot;
+}
+</code></pre>
+
+  </main>
+</body>
+</html>

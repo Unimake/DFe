@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Créditos CBS</title>
+	<link rel="stylesheet" href="/apuracao-cbs/documentacao.css">
+</head>
+<body>
+  <main class="documento">
+		<nav class="navegacao"><a href="/apuracao-cbs/">Documentação da apuração CBS</a></nav>
+    <h1>Índice</h1>
+<ol>
+<li>Objetivo</li>
+<li>Histórico de versão</li>
+<li>Regras de retorno</li>
+<li>Endpoint da API</li>
+<li>Estrutura principal do JSON do arquivo de retorno(download via urlAssinada)</li>
+<li>Schema JSON do arquivo de retorno</li>
+<li>Exemplo do JSON de retorno (download via urlAssinada)</li>
+</ol>
+<div style="page-break-before: always;"></div>
+<h1>Consultar créditos em operações de consumo (CBS)</h1>
+<h2>1. Objetivo</h2>
+<p>Retorna os créditos de Contribuição sobre Bens e Serviços (CBS) incluídos ou atualizados entre a data consulta e a data da última consulta anterior.</p>
+<p>Esta API funciona em modo assíncrono. Para orientações de uso, consulte as Regras Comuns às APIs Assíncronas da Apuração de CBS: <a href="guiaapiassincrona.html">regras de APIs assíncronas</a></p>
+<h2>2. Histórico de versão</h2>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Data</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:12%; text-align:left;">Versão</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:70%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">03/09/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.0</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Versão inicial</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">17/09/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.1</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Correção dos dados retornados(seção 5). Ajustes nos exemplos de chamada.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">14/10/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.2</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Atualizar o payload de notificação enviado ao webhook. Atualizar o fluxo de obtenção e download do arquivo de retorno por meio da `urlAssinada`. Atualizar seção 5</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">13/11/2026</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">1.3</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Inclusão da seção de schema JSON do arquivo de retorno, ajuste da seção 5 e reorganização das seções (schema antes do exemplo)</td>
+    </tr>
+  </tbody>
+</table>
+<h2>3. Regras de retorno</h2>
+<p>Para solicitações com consulta concluída nos últimos 3 meses, são retornadas as inclusões e atualizações desde a data de atualização da solicitação concluída mais recente, limitada aos últimos 8 dias. Quando não há consulta concluída nesse período, a busca começa no 1º dia do mês corrente.</p>
+<h2>4. Endpoint da api</h2>
+<ul>
+<li><strong>URL de Produção:</strong>
+<ul>
+<li><code>https://api.receitafederal.gov.br/apuracao-cbs/v2/creditos/{cnpj}</code></li>
+</ul>
+</li>
+</ul>
+<h3>4.1 Campos de Entrada</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">cnpj</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String (8)</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">CNPJ base informado no path.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.2 Header</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td style="border:1px solid #cbd5e1; padding:6px;">Content-Type</td><td style="border:1px solid #cbd5e1; padding:6px;">String</td><td style="border:1px solid #cbd5e1; padding:6px;"><code>application/json</code></td></tr>    
+  </tbody>
+</table>
+<h3>4.3 Request Body</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">urlRetorno</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Opcional. URL do webhook para receber a notificação de retorno. Quando não houver webhook, informar <code>""</code> (string vazia).</td>
+    </tr>
+  </tbody>
+</table>
+<h3>4.4 Acionar o endpoint</h3>
+<ol>
+<li>Substitua <code>$TOKEN</code> pelo valor de <code>access_token</code>.</li>
+<li>Substitua <code>{cnpj}</code> pelo <strong>CNPJ base com 8 dígitos</strong>.</li>
+<li>Opcionalmente, informe no corpo uma <code>urlRetorno</code> (URL do webhook) acessível por HTTP ou HTTPS para receber a notificação de conclusão da solicitação ou de erro no processamento. Sem esse campo, consulte a situação da solicitação para acompanhar o processamento.</li>
+</ol>
+<h4>Exemplo de chamada (com variável TOKEN)</h4>
+<pre><code class="language-bash">curl --location --request POST 'https://api.receitafederal.gov.br/apuracao-cbs/v2/creditos/{cnpj}' \
+  --header &quot;Authorization: Bearer $TOKEN&quot; \
+  --header 'Content-Type: application/json' \
+  --data '{ &quot;urlRetorno&quot;: &quot;https://cliente.exemplo.com/webhooks/apuracao-cbs&quot; }'
+</code></pre>
+<h4>Exemplo com dados fictícios</h4>
+<pre><code class="language-bash">curl --location --request POST 'https://api.receitafederal.gov.br/apuracao-cbs/v2/creditos/12345678' \
+  --header 'Content-Type: application/json' \
+  --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.dadoFicticio.assinaturaFicticia' \
+  --data '{ &quot;urlRetorno&quot;: &quot;https://cliente.exemplo.com/webhooks/apuracao-cbs&quot; }'
+</code></pre>
+<h4>Exemplo de chamada (sem webhook)</h4>
+<pre><code class="language-bash">curl --location --request POST 'https://api.receitafederal.gov.br/apuracao-cbs/v2/creditos/{cnpj}' \
+  --header &quot;Authorization: Bearer $TOKEN&quot; \
+  --header 'Content-Type: application/json' \
+  --data '{&quot;urlRetorno&quot;:&quot;&quot;}'
+</code></pre>
+<div style="page-break-before: always;"></div>
+<h3>4.5 Campos Retornados</h3>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.35;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:22%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:18%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:60%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">tiqueteSolicitacao</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de sucesso, tíquete gerado na requisição.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">tEASegundos</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Integer (segundos)</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de sucesso, tempo estimado para atendimento da solicitação, em segundos. O valor <code>-1</code> indica que não foi possível obter uma estimativa.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">codigoErro</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de erro - Identifica o erro ocorrido durante a requisição. Retornado apenas em caso de erro.</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #cbd5e1; padding:6px;">mensagemErro</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">String</td>
+      <td style="border:1px solid #cbd5e1; padding:6px;">Em caso de erro - Mensagem descritiva do erro ocorrido durante a requisição. Retornado apenas em caso de erro.</td>
+    </tr>
+  </tbody>
+</table>
+<h3>Exemplo de retorno em caso de sucesso (HTTP 201)</h3>
+<pre><code class="language-json">{
+  &quot;tiqueteSolicitacao&quot;: &quot;692b7b25-44cb-4415-8625-2b9522dd7933.B5E08D55&quot;,
+  &quot;tEASegundos&quot;: 120
+}
+</code></pre>
+<h3>Exemplos de retorno em caso de erro</h3>
+<p><strong>Requisição inválida (HTTP 400):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;REQUISICAO_INVALIDA&quot;,
+  &quot;mensagemErro&quot;: &quot;corpo da requisição inválido&quot;
+}
+</code></pre>
+<p><strong>Não autorizado (HTTP 401):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;NAO_AUTORIZADO&quot;,
+  &quot;mensagemErro&quot;: &quot;consumidor não autorizado para este NI&quot;
+}
+</code></pre>
+<p><strong>Erro interno (HTTP 500):</strong></p>
+<pre><code class="language-json">{
+  &quot;codigoErro&quot;: &quot;ERRO_INTERNO&quot;,
+  &quot;mensagemErro&quot;: &quot;erro interno ao processar solicitação&quot;
+}
+</code></pre>
+<h3>Exemplo de objeto enviado para urlRetorno(webhook) em caso de sucesso (HTTP 2xx)</h3>
+<pre><code class="language-json">{
+  &quot;tiqueteSolicitacao&quot;:&quot;48d88a3c-eff9-4489-8e3a-cde8d878d3f7.1E0CE7A4&quot;,
+  &quot;situacao&quot;: &quot;CONCLUIDA&quot;    
+ } 
+</code></pre>
+<div style="page-break-before: always;"></div>
+<h2>5. Estrutura principal do JSON do arquivo de retorno(download via urlAssinada)</h2>
+<p><strong>Observação:</strong> Com exceção dos campos <code>apurado</code> e <code>saldoCredor</code>, os demais campos de valor não serão exibidos se o resultado for igual a zero.<br>
+<p>Se não houver créditos que atendam à janela de consulta, o campo <code>apuracao</code> será retornado como uma lista vazia (<code>[]</code>). Valores numéricos zero marcados como opcionais não são incluídos no JSON; os objetos <code>apropriacao</code>, <code>utilizacao</code> e <code>naoUtilizado</code> são incluídos mesmo quando seus valores são zero.</p>
+<table style="width:100%; border-collapse:collapse; table-layout:fixed; font-size:14px; line-height:1.3;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:16%; text-align:left;">Campo</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:14%; text-align:left;">Objeto da cardinalidade</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:6%; text-align:center;">Nível</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:6%; text-align:center;">Card.</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:12%; text-align:left;">Formato</th>
+      <th style="border:1px solid #94a3b8; background:#e2e8f0; padding:6px; font-size:15px; font-weight:700; width:46%; text-align:left;">Descrição</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">tiqueteSolicitacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">string</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Tíquete da solicitação.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">ni</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (8)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Ni base do contribuinte.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">niConsumidor</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (11 ou 14)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Inscrição no CPF ou CNPJ do usuário detentor da credencial de acesso, ou seja, quem está consumindo o serviço.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">geradoEm</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (date-time ISO 8601)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Data/hora de geração do arquivo.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apuracao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">raiz</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:N</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">array</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Lista de apurações.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">pa</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apuracao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">2</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (mm/aaaa)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Período de apuração.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apuracao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">2</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:N</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">array</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Lista de créditos da apuração.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">origem</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">integer</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">
+              Origem do crédito:
+              <br><code>0</code> = NORMAL
+              <br><code>20</code> = DEVOLUCAO_POR_PCONT
+              <br><code>21</code> = DEVOLUCAO_POR_RAD
+              <br><code>22</code> = DEVOLUCAO_POR_CREDITO
+              <br><code>30</code> = CANCELAMENTO_CREDITO
+              <br><code>31</code> = CANCELAMENTO_RAD
+              <br><code>32</code> = CANCELAMENTO_PCONT
+              <br><code>50</code> = PERECIMENTO_TRANSPORTE_FOB
+              <br><code>51</code> = PERECIMENTO_TRANSPORTE_CIF
+              <br><code>52</code> = DEVOLUCAO_PERECIMENTO_TRANSPORTE_CIF_POR_PCONT
+              <br><code>53</code> = DEVOLUCAO_PERECIMENTO_TRANSPORTE_CIF_POR_RAD
+              <br><code>54</code> = DEVOLUCAO_PERECIMENTO_TRANSPORTE_CIF_POR_CREDITO
+              <br><code>55</code> = NOTA_CREDITO_MULTA_JUROS
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">documento</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">integer</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">
+              Tipo do documento:
+              <br><code>55</code> = NF-e — Nota Fiscal Eletrônica
+              <br><code>57</code> = CT-e — Conhecimento de Transporte Eletrônico
+              <br><code>62</code> = NFCOM — Nota Fiscal Fatura de Serviços de Comunicação Eletrônica
+              <br><code>63</code> = BP-e — Bilhete de Passagem Eletrônico
+              <br><code>64</code> = GTV-e — Guia de Transporte de Valores Eletrônica
+              <br><code>65</code> = NFC-e — Nota Fiscal de Consumidor Eletrônica
+              <br><code>66</code> = NF3-e — Nota Fiscal de Energia Elétrica Eletrônica
+              <br><code>67</code> = CT-e OS — Conhecimento de Transporte Eletrônico para Outros Serviços
+              <br><code>91</code> = NFS-e — Nota Fiscal de Serviço Eletrônica
+              <br><code>92</code> = NFS-e Via — Nota Fiscal de Serviço Eletrônica de Exploração de Vias
+              <br><code>93</code> = BP-e TM — Bilhete de Passagem Eletrônico Transporte Metropolitano
+              <br><code>94</code> = DERE — Declaração de Regimes Específicos
+              <br><code>97</code> = CT-e Simplificado — Conhecimento de Transporte Eletrônico Simplificado
+        </td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">chave</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (100)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Chave do documento fiscal.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">emissao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (date-time ISO 8601)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Data/hora em que o documento fiscal foi emitido.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">registro</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (date-time ISO 8601)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Data/hora de registro.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">atualizacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">String (date-time ISO 8601)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Data/hora da última atualização.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">cbs</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">creditos</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">3</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">object</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Grupo de valores CBS.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">excedente</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">cbs</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor excedente - valor não processado por inconsistência em relação ao documento vinculado.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apurado</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">cbs</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor apurado - Valor processado a partir do documento e origem.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">cbs</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">4</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">object</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Grupo de apropriação.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">inapropriavel</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">5</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor inapropriável - parte do valor apurado que, em razão de eventos posteriores, não pode ser mais apropriado.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">suspenso</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">5</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor suspenso - parte do valor apurado que, em razão da classificação tributária (cClassTrib), tem exigibilidade suspensa e, portanto, não pode ser apropriado.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">prescrito</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">5</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor prescrito - parte do valor apurado que, em razão da prescrição não pode ser apropriado.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">aApropriar</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">5</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor a apropriar - parte do valor apurado que ainda não foi apropriado, ou seja, ainda não está disponível para ser utilizado.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriado</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">5</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor apropriado - parte do valor apurado que já foi apropriado, ou seja, é passível de utilização.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">utilizacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">apropriacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">5</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">object</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Grupo de utilização.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">inutilizavel</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">utilizacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">6</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor inutilizável - parte do valor apropriado que, em razão de eventos posteriores, não pode ser mais utilizado.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">utilizado</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">utilizacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">6</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor utilizado - parte do valor apropriado que já foi utilizado para compensar débitos.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">restabelecido</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">utilizacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">6</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Valor restabelecido - parte do valor apropriado, previamente utilizado, que em razão de eventos posteriores volta a estar disponível para utilização.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">naoUtilizado</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">utilizacao</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">6</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">object</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Grupo de não utilizado.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">saldoCredor</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">naoUtilizado</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">7</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">1:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Saldo credor - parte do valor apropriado que ainda não foi utilizado e está disponível.</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">pedidoRessarcimento</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">naoUtilizado</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">7</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px; text-align: center">0:1</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">number (18,2)</td>
+        <td style="border: 1px solid #cbd5e1; padding: 6px">Pedido de ressarcimento - parte do valor apropriado que foi objeto de pedido de ressarcimento.</td>
+    </tr>
+  </tbody>
+</table>
+<h2>6. Schema JSON do arquivo de retorno</h2>
+<p>Schema do retorno (download via <code>urlAssinada</code>):</p>
+<ul>
+<li>Download (arquivo): <a href="schemas/credito-retorno.schema.json">credito-retorno.schema.json</a></li>
+<li>Padrão: JSON Schema Draft 2020-12</li>
+<li>Versão do schema: <code>1.0.0</code></li>
+</ul>
+<div style="page-break-before: always;"></div>
+<h2>7. Exemplo do JSON de retorno (download via urlAssinada)</h2>
+<pre><code class="language-json">{
+  &quot;tiqueteSolicitacao&quot;: &quot;b7f09814-0ca2-48ef-8f2d-6652342c90b6.9A9E30DA&quot;,
+  &quot;ni&quot;: &quot;12345678&quot;,
+  &quot;niConsumidor&quot;: &quot;12345678000199&quot;,
+  &quot;geradoEm&quot;: &quot;2026-11-12T15:33:43-03:00&quot;,
+  &quot;apuracao&quot;: [
+    {
+      &quot;pa&quot;: &quot;03/2026&quot;,
+      &quot;creditos&quot;: [
+        {
+          &quot;origem&quot;: 0,
+          &quot;documento&quot;: 55,
+          &quot;chave&quot;: &quot;35250905062033000260550013818075071577175301&quot;,
+          &quot;emissao&quot;: &quot;2026-07-10T09:49:49-03:00&quot;,
+          &quot;registro&quot;: &quot;2026-03-10T00:37:01.754202-03:00&quot;,
+          &quot;atualizacao&quot;: &quot;2026-09-14T12:01:32.399788-03:00&quot;,
+          &quot;cbs&quot;: {
+            &quot;apurado&quot;: 3000,
+            &quot;apropriacao&quot;: {
+              &quot;apropriado&quot;: 3000,
+              &quot;utilizacao&quot;: {
+                &quot;utilizado&quot;: 3000,
+                &quot;naoUtilizado&quot;: {
+                  &quot;saldoCredor&quot;: 0
+                }
+              }
+            }
+          }
+        },
+        {
+          &quot;origem&quot;: 0,
+          &quot;documento&quot;: 55,
+          &quot;chave&quot;: &quot;35250905062033000260550014830371391648064041&quot;,
+          &quot;emissao&quot;: &quot;2026-07-10T09:49:49-03:00&quot;,
+          &quot;registro&quot;: &quot;2026-03-10T00:37:01.729238-03:00&quot;,
+          &quot;atualizacao&quot;: &quot;2026-09-14T12:01:32.399788-03:00&quot;,
+          &quot;cbs&quot;: {
+            &quot;apurado&quot;: 3002,
+            &quot;apropriacao&quot;: {
+              &quot;apropriado&quot;: 3002,
+              &quot;utilizacao&quot;: {
+                &quot;utilizado&quot;: 884.51,
+                &quot;naoUtilizado&quot;: {
+                  &quot;saldoCredor&quot;: 0,
+                  &quot;pedidoRessarcimento&quot;: 2117.49
+                }
+              }
+            }
+          }
+        },
+        {
+          &quot;origem&quot;: 0,
+          &quot;documento&quot;: 55,
+          &quot;chave&quot;: &quot;35250905062033000260550019924483071488210481&quot;,
+          &quot;emissao&quot;: &quot;2026-07-10T09:49:49-03:00&quot;,
+          &quot;registro&quot;: &quot;2026-03-10T00:37:01.617994-03:00&quot;,
+          &quot;atualizacao&quot;: &quot;2026-09-14T12:01:32.399788-03:00&quot;,
+          &quot;cbs&quot;: {
+            &quot;apurado&quot;: 3001,
+            &quot;apropriacao&quot;: {
+              &quot;apropriado&quot;: 3001,
+              &quot;utilizacao&quot;: {
+                &quot;utilizado&quot;: 3001,
+                &quot;naoUtilizado&quot;: {
+                  &quot;saldoCredor&quot;: 0
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      &quot;pa&quot;: &quot;08/2026&quot;,
+      &quot;creditos&quot;: [
+        {
+          &quot;origem&quot;: 0,
+          &quot;documento&quot;: 55,
+          &quot;chave&quot;: &quot;35250905062033000260550012294532631628085551&quot;,
+          &quot;emissao&quot;: &quot;2026-07-10T09:49:49-03:00&quot;,
+          &quot;registro&quot;: &quot;2026-02-10T16:52:27.394639-03:00&quot;,
+          &quot;atualizacao&quot;: &quot;2026-09-14T12:01:32.399788-03:00&quot;,
+          &quot;cbs&quot;: {
+            &quot;apurado&quot;: 3000,
+            &quot;apropriacao&quot;: {
+              &quot;apropriado&quot;: 3000,
+              &quot;utilizacao&quot;: {
+                &quot;utilizado&quot;: 3000,
+                &quot;naoUtilizado&quot;: {
+                  &quot;saldoCredor&quot;: 0
+                }
+              }
+            }
+          }
+        },
+        {
+          &quot;origem&quot;: 0,
+          &quot;documento&quot;: 55,
+          &quot;chave&quot;: &quot;35250905062033000260550015398922461611326351&quot;,
+          &quot;emissao&quot;: &quot;2026-07-10T09:49:49-03:00&quot;,
+          &quot;registro&quot;: &quot;2026-02-10T16:53:08.56165-03:00&quot;,
+          &quot;atualizacao&quot;: &quot;2026-09-14T12:01:32.399788-03:00&quot;,
+          &quot;cbs&quot;: {
+            &quot;apurado&quot;: 3002,
+            &quot;apropriacao&quot;: {
+              &quot;aApropriar&quot;: 262.43,
+              &quot;apropriado&quot;: 2739.57,
+              &quot;utilizacao&quot;: {
+                &quot;utilizado&quot;: 2739.57,
+                &quot;naoUtilizado&quot;: {
+                  &quot;saldoCredor&quot;: 0
+                }
+              }
+            }
+          }
+        },
+        {
+          &quot;origem&quot;: 0,
+          &quot;documento&quot;: 55,
+          &quot;chave&quot;: &quot;35250905062033000260550015538338871170401971&quot;,
+          &quot;emissao&quot;: &quot;2026-07-10T09:49:49-03:00&quot;,
+          &quot;registro&quot;: &quot;2026-02-10T16:53:08.519852-03:00&quot;,
+          &quot;atualizacao&quot;: &quot;2026-09-14T12:01:32.399788-03:00&quot;,
+          &quot;cbs&quot;: {
+            &quot;apurado&quot;: 3001,
+            &quot;apropriacao&quot;: {
+              &quot;apropriado&quot;: 3001,
+              &quot;utilizacao&quot;: {
+                &quot;utilizado&quot;: 3001,
+                &quot;naoUtilizado&quot;: {
+                  &quot;saldoCredor&quot;: 0
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
+</code></pre>
+
+  </main>
+</body>
+</html>

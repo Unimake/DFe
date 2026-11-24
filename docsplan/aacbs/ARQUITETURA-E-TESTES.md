@@ -1,6 +1,8 @@
 # AACBS — arquitetura e estratégia de testes
 
-Estado: proposta de arquitetura da etapa AACBS-000; contratos detalhados serão fechados na AACBS-001. Este documento não comprova implementação, compilação, execução de testes nem consumo real.
+Estado: arquitetura da AACBS-000 e contratos da [especificação da AACBS-001](contratos/ESPECIFICACAO.md) aprovados. A implementação XML/XSD da AACBS-002 foi entregue para revisão; seus resultados estão no [dossiê da etapa](evidencias/AACBS-002/tentativa-0001/ENTREGA.md). Este guia distingue os testes já executados nessa entrega dos fluxos HTTP/reais ainda planejados. Nenhum token foi obtido.
+
+Revisão documental: **24/11/2026**. Atualiza o inventário publicado em 13/11/2026, a preparação dos testes reais incrementais e o runner `net10.0`. As fontes e divergências detalhadas ficam em [FONTES-E-REQUISITOS.md](FONTES-E-REQUISITOS.md) e [MATRIZ-APIS.md](MATRIZ-APIS.md).
 
 ## 1. Decisões de escopo e contrato
 
@@ -8,6 +10,8 @@ Estado: proposta de arquitetura da etapa AACBS-000; contratos detalhados serão 
 - O escopo atual é a CBS documentada pela Receita Federal. IBS permanece para uma evolução com documentação própria; não presumir que utilize os mesmos endpoints ou contratos.
 - O desenvolvedor fornece XML, ou usa as classes públicas para gerar esse XML, e recebe XML e `Result` tipado. A DLL traduz o contrato necessário para HTTP/API internamente.
 - Haverá um serviço público por endpoint/operação documentada. Serviços individualizados de solicitação, consulta da situação e obtenção do resultado permitem que a aplicação controle tickets, espera, retomada e persistência.
+- O inventário atual contém **oito endpoints de negócio**, mais `Autenticar` e `BaixarArquivoRetorno`, totalizando **dez serviços planejados**: quatro aberturas de consulta assíncrona, situação, link de download e dois geradores síncronos de DARF.
+- `GerarDarfAdquirente` consome `POST /rad/{cnpj14}` com entrada JSON em array de um ou vários itens; `GerarDarfContribuinte` consome `POST /pcont/{cnpj14}` com entrada JSON objeto. Ambos entregam a resposta da chamada síncrona em XML/`Result`, sem passar artificialmente pelo fluxo de tíquete e download das consultas.
 - Uma execução do serviço não inicia um fluxo de polling, não espera a conclusão remota e não baixa resultados de forma oculta. A aplicação escolhe a próxima operação a executar.
 - O domínio terá uma base própria, sem seleção de provedores: o conjunto em escopo é da Receita Federal.
 - Dados e códigos retornados pela API devem conservar seu significado e sua representação contratual no XML. Nenhuma regra de sucesso, namespace, código ou normalização de CIOT é transferida para a AACBS.
@@ -54,6 +58,7 @@ Os caminhos abaixo são relativos à raiz do repositório. A biblioteca está em
 | `ConsumirServico/Transport/ApiTransportExecutor.cs` | Executa HTTP e configura handler, certificado, timeout e proxy. | Reusar. Alterações compartilhadas só com necessidade demonstrada e regressões determinísticas. |
 | `ConsumirServico/Transport/ApiTransportExecutorFactory.cs` | Possui `Override(...)` com escopo por `AsyncLocal`. | Usar nos testes de serviços para capturar requisições e fornecer respostas sem rede externa. |
 | `Unimake.Business.DFe.csproj` | Controla os recursos embutidos; biblioteca usa `netstandard2.0` e C# 7.3. | Incluir configurações e XSDs. Manter `CS1591`, compatibilidade de linguagem e INTEROP. |
+| `source/Unimake.DFe.Test/Unimake.DFe.Test.csproj` | O projeto de testes agora mira `net10.0` e mantém xUnit v3. | Exigir SDK/runtime compatíveis e executar a DLL em `bin/Debug/net10.0`; não migrar o target da biblioteca principal. |
 
 O catálogo e os resolvedores centrais serão alterados de forma restrita. O novo domínio não justifica uma refatoração geral da validação ou do transporte.
 
@@ -103,11 +108,17 @@ Cada serviço deve expor XML/objeto de envio e retorno tipado coerente com o end
 
 A consulta de situação e o download não dependem de memória de uma solicitação anterior na mesma instância da DLL. O contrato XML contém os identificadores e o contexto necessários à operação; assim a aplicação consegue persistir o ticket e retomar após reiniciar.
 
+Os dois serviços de DARF têm contratos próprios de envio e retorno síncronos. A conversão deve respeitar a diferença entre array RAD de cardinalidade 1:N e objeto PCONT, inclusive para RAD com apenas um item. O CNPJ completo de 14 posições dessas rotas não pode ser substituído pelo CNPJ base utilizado nas aberturas de consulta.
+
 Para arquivos de resultado com formatos diferentes, a **família de consulta é contexto explícito**: débitos, créditos, pagamentos ou recolhimentos. A interpretação não deve depender apenas de um identificador opaco, de tentativa sequencial de desserialização ou de nomes de campos parcialmente coincidentes. A AACBS-001 decidirá se esse contexto aparece como campo discriminador obrigatório ou por tipos/serviços específicos compatíveis com o inventário oficial.
 
 ## 5. Contrato XML e preservação dos dados
 
 Os XSDs serão da representação XML fornecida pela Unimake para a API. Não serão apresentados como schemas XML oficiais da Receita quando a fonte oficial definir HTTP/JSON ou outro formato.
+
+O conjunto atual publica JSON Schemas oficiais **Draft 2020-12** para as quatro consultas e os dois geradores de DARF. As páginas das consultas estão na revisão documental 1.3 de 13/11/2026; as de DARF, na 1.0 da mesma data. Esses schemas qualificam a origem JSON, mas não substituem os XSDs do XML público da DLL. Existem contradições entre HTML e JSON Schema; a AACBS-001 registrará a decisão por campo, com fonte, exemplos e restrições aceitas pelo DEV, antes de gerar modelos ou impor enums e cardinalidades.
+
+A qualificação inclui arquivos e referências dos schemas, versões e hashes, além das diferenças frente ao levantamento anterior. Não adicionar uma dependência de validação Draft 2020-12 à biblioteca principal apenas por haver schema oficial; definir o método de verificação das fixtures e a necessidade de qualquer dependência na AACBS-001, preservando `netstandard2.0` e C# 7.3.
 
 A AACBS-001 deve produzir uma matriz por campo contendo: operação, caminho na API, nome/tag XML, tipo, cardinalidade, obrigatoriedade, limites, enumeração, formato, tratamento de ausência/null, regra de conversão e fonte. Campos cuja definição oficial estiver incompleta ficam identificados como pendência, com método de qualificação; não se inventa uma restrição fiscal.
 
@@ -116,6 +127,7 @@ Regras a observar na implementação:
 - Identificadores, CNPJ, chaves, tickets e códigos conservam zeros e conteúdo textual contratual; não converter automaticamente em números.
 - Valores financeiros devem ter precisão compatível com a API; não adotar `double` por copiar um modelo CIOT. A decisão entre `decimal`, campos auxiliares e preservação lexical será documentada na AACBS-001.
 - Datas e horários conservam o fuso, a precisão e a semântica oficial. Datas sem hora não se tornam instantes locais por inferência.
+- A revisão atual usa `niContribuinte` em pagamentos, em lugar de `ni_contribuinte`; `excedente` singular em créditos, em lugar de `excedentes`; datas de pagamentos/recolhimentos têm formato `date`; `niConsumidor` admite 11 ou 14 posições. A matriz por campo resolve divergências remanescentes entre schema e HTML. Testes de contrato não podem congelar os nomes e formatos superados do levantamento de 12/11.
 - Ausência, `null`, zero, `false`, string vazia e lista vazia recebem regras próprias quando forem situações distintas na API. Os testes precisam detectar perda desses significados.
 - Arrays conservam itens, ordem relevante e cardinalidade de um ou vários elementos. Não depender da conversão JSON/XML genérica para decidir a forma da coleção pública.
 - Códigos e mensagens remotos são preservados. Não substituí-los por `110`, `cStat`, autorização de documento ou mensagens CIOT.
@@ -130,7 +142,7 @@ A especificação de autenticação e os pré-requisitos reais pertencem ao leva
 
 Requisitos da implementação:
 
-1. Endpoints e ambientes ficam nos XMLs embutidos. Não presumir homologação ou produção a partir de nomes de host nem copiar um ambiente para outro.
+1. Endpoints e ambientes ficam nos XMLs embutidos. A revisão atual não publica ambiente de produção restrita, inclusive no download; remover a antiga exceção documental. Não presumir homologação ou produção restrita a partir de nomes de host nem copiar um ambiente para outro. Ambiente sem endpoint oficial produz erro local explícito, sem fallback para produção.
 2. Método HTTP, media type, parâmetros, headers e autenticação seguem a operação oficial. Codificar valores de path/query corretamente e testar caracteres reservados.
 3. Reutilizar `ConsumirAPI`, mappers e executor existentes para negócio e chamadas auxiliares. A adaptação do domínio deve ocorrer antes/depois do transporte.
 4. `HasProxy=false` significa conexão direta; `ProxyAutoDetect=true` permite proxy do sistema; proxy manual e pares de credenciais obedecem à política central. Nenhuma chamada auxiliar pode reintroduzir proxy implícito.
@@ -143,6 +155,29 @@ Há duas particularidades verificadas no caminho comum que precisam ser testadas
 
 - O parser JSON comum usa um nó `temp` ao converter JSON para XML. A representação pública AACBS exige conversão própria e tipada para não depender dessa forma intermediária.
 - `ConsumirAPI` verifica conteúdo XML com `InnerText` não vazio. Se houver resposta bem-sucedida vazia documentada, o suporte precisa ser implementado e delimitado ao contrato afetado, com regressão dos fluxos existentes.
+
+### Proteção comprovada antes de credenciais reais
+
+A revisão do código em 24/11 identificou dois caminhos que o plano precisa tratar antes da primeira autenticação real:
+
+- `Servicos/ServicoBase.cs`, na inicialização, chama `Trace.WriteLine(ConteudoXML?.InnerXml, "Unimake.DFe")`. O XML público de download pode conter a URL assinada; registrar esse XML sem tratamento divulga o segredo temporário.
+- `ConsumirServico/ConsumirAPI.cs`, ao falhar no tratamento do retorno, usa `throw new Exception(responseContent)`. Uma resposta de autenticação ou um conteúdo incompatível pode chegar integralmente à mensagem da exceção.
+
+Na AACBS-003, implementar a proteção delimitada necessária no caminho efetivamente usado pela AACBS e comprovar seu comportamento **com dados sintéticos antes de carregar credenciais reais**. O XML/`Result` legítimo continua disponível ao consumidor; a proteção incide em trace, mensagens de erro, logs e evidências, sem eliminar informação contratual do retorno público por conveniência.
+
+Os testes devem instalar um `TraceListener` controlado e usar sentinelas distintas para `clientSecret`, token, URL assinada com query e conteúdo fiscal. Exercitar construção do serviço, sucesso e falhas de parsing/autenticação/download; verificar mensagens de exceções e suas internas, trace e saída do teste. Nenhuma sentinela pode aparecer nesses canais. A falha deve conservar tipo/categoria, HTTP quando disponível e correlação sanitizada suficiente para diagnóstico. Não apenas evitar a impressão de um segredo no teste enquanto o serviço continua produzindo a mensagem sensível.
+
+### Arquivo local e suporte dos testes reais
+
+O suporte dos testes importa a credencial **não versionada** `.local/aacbs/credenciais.local.clixml`, com ClientSecret cifrado por DPAPI Windows, e lê `.local/aacbs/configuracao.local.json` somente para CNPJ, ambiente e limites, conforme [ACESSO-LOCAL.md](ACESSO-LOCAL.md). O preparador pede ClientId/ClientSecret em prompt; o roteiro recupera o segredo somente em memória, no mesmo usuário/computador, sem imprimi-lo ou passá-lo em argumentos. A DLL recebe `Configuracao` preenchida pelo consumidor: não procura esses arquivos e não ganha polling ou persistência de estado. Não presumir que uma restrição de ACL foi comprovada.
+
+O manual primário [Receita Integra 1.4](https://cgibs.gov.br/upload/arquivos/202609/05164748-08-manual-de-integracao-tecnica-receita-integra-v-1-4.pdf), de 17/07/2026, exige cache e limita a emissão a dois tokens/hora, com validade de uma hora. O suporte de testes deve compartilhar cache cifrado e sincronizado entre processos por identidade/ambiente; reiniciar o runner ou criar outra instância não autoriza novo login. Esse limite não substitui a cota de negócio. O cache da DLL e a persistência operacional do roteiro são camadas distintas.
+
+Antes de criar conteúdo real, confirmar a regra de ignore e que o arquivo não está rastreado. O arquivo não é fixture, `EmbeddedResource`, conteúdo copiado para `bin` ou parte de pacote. O loader tem testes sintéticos para ausência, JSON inválido, campos obrigatórios e ambiente sem suporte. Ele informa o nome do campo inválido sem devolver valor, JSON ou objeto de configuração na mensagem.
+
+Testes reais desabilitados ficam explicitamente ignorados, sem tráfego. Com execução habilitada, configuração inválida ou pré-requisito indisponível deve ser reportado como falha/pendência apropriada, sem declarar que o teste passou. A habilitação local não substitui o gate da etapa nem autoriza criar DARF ou abrir novas consultas fora do cenário definido.
+
+O harness conserva tíquetes, tentativas, cotas e dados mínimos de retomada em estado privado sob `.local/aacbs`, separado das credenciais. Uma nova execução pode autenticar e acompanhar um tíquete existente sem repetir sua abertura. Abertura de consulta e geração de DARF são ações explícitas do cenário; não podem ocorrer em inicializador compartilhado ou rotina de preparação. Timeout de POST sem resposta cria um resultado incerto e não autoriza reenvio automático. URLs assinadas e tokens ficam protegidos e fora das evidências; não transformar seu armazenamento em requisito da DLL.
 
 ## 7. Disponibilidade passiva
 
@@ -161,19 +196,23 @@ Se uma etapa precisar alterar reconhecedores, sessões, telemetria ou classifica
 | Serialização XML | Exemplos mínimos/completos, round-trip, namespaces, ordem, opcionais, coleções e atributos | XML equivalente ao contrato aprovado e leitura sem perda dos valores significativos. |
 | Tipos e conversões | Valores financeiros nos limites, zeros à esquerda, datas/fusos, enumerações, ausência/null/zero/false | Nenhuma conversão silenciosa que altere o significado dos dados. |
 | XSD | Todos os envios e retornos, tipos compartilhados, campo obrigatório ausente, formato/enum/cardinalidade inválidos | Exemplos válidos aceitos e violações representativas rejeitadas pelo `ValidarSchema`. |
+| Origem JSON oficial | Fixtures contra os JSON Schemas Draft 2020-12, nomes/formatos atualizados e divergências resolvidas com HTML | Contrato XML rastreável ao JSON qualificado; XSD Unimake e schema JSON oficial cumprem papéis distintos. |
 | Validação central | Identificação do domínio, versão, raiz, serviço e namespace, envios e retornos cadastrados | `ValidarConfig.xml` e os resolvedores localizam o recurso correto; XML de outra operação não recebe schema por coincidência. |
 | Regras de conteúdo | Dependências entre campos, intervalos e combinações oficialmente documentadas | Mensagem cita tag/grupo/valor relevante; não há request de negócio para entrada inválida. |
 | XML para API | Corpo JSON estrutural, path/query/headers, media type, presença/ausência e encoding | Request coincide com a matriz API/XML; metadados locais não vazam para a API. |
+| DARFs síncronos | RAD com um e vários itens, array vazio inválido, PCONT objeto, CNPJ completo, respostas/erros oficiais | RAD conserva array 1:N; PCONT conserva objeto; resposta XML/`Result` completa sem tíquete ou polling inventado. |
 | API para XML | Sucesso, aceitação, processamento, conclusão, erros documentados, listas vazias/um/vários itens | XML final validado por XSD e `Result` reproduz o contrato remoto correto. |
 | Download por família | Mesmos identificadores opacos em contextos distintos, conteúdo incompatível com a família e campos variantes | Seleção usa o contexto explícito aprovado; não interpreta a resposta por tentativa ou semelhança de nomes. |
 | Serviço completo | Construção por XML e por objeto, `Executar()` com transporte controlado, retorno e exceções | Captura do request final e asserções sobre `RetornoWSXML`, `RetornoWSString`, status e `Result`. |
 | Contagem de requests | Operação única, autenticação quando necessária, erro, timeout e retomada explícita | Quantidade e sequência exatas; nenhum polling, retry, download ou request de disponibilidade oculto. |
 | Autenticação | Contratos aceitos, rejeição, expiração e reuso conforme a fonte, certificado requerido/ausente quando aplicável | Credenciais chegam somente ao destino correto; falhas não são atribuídas ao processamento de negócio. |
+| Sanitização antes do real | Sentinelas em credencial, token, URL assinada e conteúdo; `TraceListener`, mensagens/inner exceptions e falhas de parsing | Nenhuma sentinela nos canais de diagnóstico; retorno contratual preservado; teste verde antes de ler credenciais reais. |
+| Suporte local dos testes | Loader JSON sintético, habilitação desligada, ambiente ausente e retomada com tíquete privado | Sem rede quando desabilitado; configuração inválida não aparenta sucesso; nenhuma leitura automática de arquivo pela DLL. |
 | Proxy | Direto, automático e manual; pares de credenciais e endpoints inválidos | Política explícita chega ao request e ao handler de negócio e autenticação. |
 | Reutilização | Troca de contribuinte, ambiente, operação e execução após reinício lógico | URI, autenticação, família e resultado anterior não são reaproveitados indevidamente. |
 | Gravação | XML final em diretório temporário de teste e posterior leitura | Conteúdo gravado corresponde ao retorno tipado e valida pelo XSD aplicável. |
 | INTEROP | API pública, construtores, enums, listas, valores opcionais e métodos COM | Build `INTEROP_Release` e uso compatível com o padrão público existente. |
-| Integração real | Solicitação, situação e resultado das quatro famílias em ambiente autorizado | Evidência sanitizada do contrato real; ausência de dados no ambiente não comprova mapeamento de campos não exercitados. |
+| Integração real incremental | Autenticação e débitos na 003; outras três consultas e dois DARFs na 004 conforme cenário autorizado e habilitado | Evidência sanitizada por serviço e versão; nenhuma repetição de abertura/geração para recriar evidência; ausência de dados não comprova grupos não exercitados. |
 
 Testes de mapper isolado são necessários, mas não substituem `Executar()` até `Result`. O conjunto deve incluir respostas controladas de erro, corpo inválido e contratos cruzados, preservando as exceções e dados observáveis definidos.
 
@@ -184,17 +223,17 @@ Os testes usarão `[Trait("DFe", "AACBS")]`, namespaces que acompanham as subpas
 | Etapa | Entrega técnica prevista | Qualidade exigida antes da revisão humana |
 |---|---|---|
 | AACBS-000 | Plano e investigação | Consistência de escopo, dependências, status e decisões; nenhum build/teste de implementação alegado. |
-| AACBS-001 | Qualificação da fonte e especificação por campo, somente documentação | Inventário completo de operações, matriz API/XML, variantes e erros, exemplos de referência, requisitos de acesso e critérios testáveis. |
+| AACBS-001 | Qualificação da fonte e especificação por campo, somente documentação | Inventário dos dez serviços, HTML e JSON Schemas oficiais reconciliados, matriz API/XML, variantes, erros, requisitos de acesso e critérios testáveis. |
 | AACBS-002 | Modelos XML, XSDs e validadores | Serialização, XSDs positivos/negativos, campos limítrofes, catálogo, recursos e compatibilidade pública. |
-| AACBS-003 | Infraestrutura/autenticação e primeiro fluxo completo de débitos | Requests e autenticação, solicitação/situação/resultado individualizados, XML final, `Result`, erros, retomada e contagem de chamadas sem rede externa. |
-| AACBS-004 | Créditos, pagamentos e recolhimentos; cobertura total do inventário | Mesma exigência para os três fluxos, variantes e testes cruzados; matriz endpoint × contrato × teste sem lacunas não justificadas. |
-| AACBS-005 | Testes reais, INTEROP, pacote e entrega | Evidências reais sanitizadas, builds, validações do fluxo oficial de pacote, exemplos de consumo XML e limitações explicitadas. |
+| AACBS-003 | Infraestrutura/autenticação e primeiro fluxo completo de débitos | Primeiro testes offline de requests, XML/`Result`, erros, retomada, contagem de chamadas, loader e sanitização; depois autenticação e fluxo real de débitos com acesso habilitado e cenário autorizado. |
+| AACBS-004 | Créditos, pagamentos, recolhimentos e dois DARFs; cobertura total | Provar offline os três fluxos, dois serviços síncronos, variantes e contratos cruzados; reais incrementais quando ambiente/cenário estiverem autorizados e habilitados, com pendências reais explícitas se faltarem dados. |
+| AACBS-005 | Consolidação real, INTEROP, pacote e entrega | Reutilizar evidências válidas de 003/004, executar apenas validação residual necessária, builds e pacote; exemplos de consumo e limitações, sem repetir aberturas ou geração de DARF só para refazer o dossiê. |
 
 Cada etapa encerra em revisão humana. Os agentes podem trabalhar em tarefas independentes dentro da etapa liberada, mas não iniciam a implementação da etapa sucessora sem aprovação do DEV.
 
 ## 10. Comandos e seleção da regressão
 
-Os comandos abaixo são instruções de execução futura. Foram conferidos contra as configurações dos projetos e as instruções do repositório; não foram executados na etapa de planejamento.
+Os comandos abaixo são a referência de execução. Os comandos e filtros efetivamente executados na AACBS-002 estão em seu dossiê; os fluxos HTTP e reais permanecem futuros. Confirmar SDK/runtime compatíveis com `net10.0` antes de compilar/executar testes. A biblioteca principal permanece em `netstandard2.0`.
 
 Build principal:
 
@@ -211,7 +250,7 @@ dotnet build "source/Unimake.DFe.Test/Unimake.DFe.Test.csproj" --no-restore
 Execução pelo runner xUnit v3, substituindo o nome pela classe criada na etapa:
 
 ```powershell
-dotnet "source/Unimake.DFe.Test/bin/Debug/net8.0/Unimake.DFe.Test.dll" -class "Unimake.DFe.Test.AACBS.Servicos.NomeDaClasseTest"
+dotnet "source/Unimake.DFe.Test/bin/Debug/net10.0/Unimake.DFe.Test.dll" -class "Unimake.DFe.Test.AACBS.Servicos.NomeDaClasseTest"
 ```
 
 Build INTEROP da biblioteca:
@@ -236,8 +275,10 @@ O fluxo oficial de empacotamento é `source/packDFeOffline.bat` e `source/Packag
 
 Para cada entrega técnica, registrar em sua evidência: arquivos relevantes, contrato coberto, comando e resultado dos testes, quantidade de casos quando disponível, build, achados corrigidos e limitações restantes. Um relatório curto com links para artefatos e logs sanitizados é suficiente; capturas de tela não são prova necessária de testes automatizados.
 
+Separar evidência offline, autenticação real e execução real de cada operação. Registrar somente serviço, ambiente, horário, HTTP/estado, contagem e correlação sanitizada; não anexar arquivo de credenciais, token, URL assinada, XML fiscal real nem exceção bruta. A consolidação na 005 reaproveita resultados anteriores vinculados ao código ainda válido. Se um contrato ou caminho executado mudou, repetir somente a verificação necessária e justificar eventual nova abertura ou geração, respeitando cotas e autorização do cenário.
+
 Uma evidência deve vincular o resultado ao estado do código executado. Em trabalho paralelo, o agente executor identifica a revisão ou o diff testado; se outro agente alterar os arquivos relevantes durante a execução, o resultado não fecha a validação da versão posterior. Builds e testes que compartilham `bin/obj` precisam de um executor coordenado, ou isolamento explícito, para evitar disputa de arquivos e resultados ambíguos.
 
 A integração com UniNFe ou PRO não faz parte do escopo pedido. Não editar outros repositórios nem apresentar testes de um pacote anterior como validação da AACBS. Se uma etapa futura de consumo for autorizada, gerar primeiro pacote offline imutável pelo fluxo oficial, restaurar essa versão exata no consumidor e executar os filtros/builds correspondentes, sem recriar `ProjectReference`.
 
-Não há evidência de implementação ou testes neste documento: a entrega atual é o planejamento. A especificação da AACBS-001 poderá refinar classes e agrupamentos internos, preservando as decisões de serviços individualizados, contrato XML, contexto explícito de família e aprovação humana por etapa.
+Este documento registra a arquitetura e a estratégia de testes. A especificação aprovada da AACBS-001 detalha classes e agrupamentos internos, preservando serviços individualizados, contrato XML, contexto explícito de família e aprovação humana por etapa. Somente o dossiê de cada etapa comprova a execução de seus critérios.

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DebitoRetorno",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["tiqueteSolicitacao", "ni", "niConsumidor", "geradoEm", "apuracao"],
+  "properties": {
+    "tiqueteSolicitacao": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ni": {
+      "type": "string",
+      "pattern": "^\\d{8}$"
+    },
+    "niConsumidor": {
+      "type": "string",
+      "pattern": "^(\\d{11}|\\d{14})$"
+    },
+    "geradoEm": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "apuracao": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pa", "debitos"],
+        "properties": {
+          "pa": {
+            "type": "string",
+            "pattern": "^(0[1-9]|1[0-2])\\/\\d{4}$"
+          },
+          "debitos": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["origem", "documento", "chave", "emissao", "registro", "atualizacao", "cbs"],
+              "properties": {
+                "origem": {
+                  "type": "integer",
+                  "enum": [0, 20, 21, 22, 30, 31, 32, 50, 51, 52, 53, 54, 55]
+                },
+                "documento": {
+                  "type": "integer",
+                  "enum": [55, 57, 62, 63, 64, 65, 66, 67, 91, 92, 93, 94, 97]
+                },
+                "chave": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "emissao": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "registro": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "atualizacao": {
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "cbs": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["apurado", "saldoDevedor"],
+                  "properties": {
+                    "excedente": { "$ref": "#/$defs/valorMonetario" },
+                    "apurado": { "$ref": "#/$defs/valorMonetario" },
+                    "inexigivel": { "$ref": "#/$defs/valorMonetario" },
+                    "suspenso": { "$ref": "#/$defs/valorMonetario" },
+                    "pgtoAntecipado": { "$ref": "#/$defs/valorMonetario" },
+                    "extinto": { "$ref": "#/$defs/valorMonetario" },
+                    "saldoDevedor": { "$ref": "#/$defs/valorMonetario" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "valorMonetario": {
+      "type": "number",
+      "multipleOf": 0.01
+    }
+  }
+}
