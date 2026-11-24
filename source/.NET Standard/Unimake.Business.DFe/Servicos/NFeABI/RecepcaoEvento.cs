@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 #endif
 
 using System;
+using System.IO;
 using System.Xml;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Utility;
@@ -19,7 +20,8 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
 #endif
     public class RecepcaoEvento : ServicoBase, IInteropService<EventoNFeABI>
     {
-        private const string SoapActionRecepcaoEvento = "http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIRecepcaoEvento/nfeabiRecepcaoEvento";
+        private const string NamespaceRecepcaoEvento = "http://www.portalfiscal.inf.br/nfeabi/wsdl/NFeABIRecepcaoEvento";
+        private const string SoapActionRecepcaoEvento = NamespaceRecepcaoEvento + "/nfeabiRecepcaoEvento";
 
         /// <summary>Cria o serviço para inicialização posterior.</summary>
         public RecepcaoEvento() { }
@@ -134,6 +136,32 @@ namespace Unimake.Business.DFe.Servicos.NFeABI
             if (!string.Equals(soapAction, SoapActionRecepcaoEvento, StringComparison.Ordinal))
             {
                 throw new ValidarXMLException("A ação SOAP da configuração não corresponde à operação nfeabiRecepcaoEvento.");
+            }
+
+            ValidarEnvelopeSoap(Configuracoes.WebSoapString);
+        }
+
+        private static void ValidarEnvelopeSoap(string template)
+        {
+            var envelope = new XmlDocument();
+            try
+            {
+                using (var reader = XmlReader.Create(new StringReader(template ?? string.Empty)))
+                {
+                    envelope.Load(reader);
+                }
+            }
+            catch (XmlException)
+            {
+                throw new ValidarXMLException("O envelope SOAP da configuração da recepção de eventos da NFeABI deve conter XML válido.");
+            }
+
+            var namespaces = new XmlNamespaceManager(envelope.NameTable);
+            namespaces.AddNamespace("soap", "http://www.w3.org/2003/05/soap-envelope");
+            namespaces.AddNamespace("evento", NamespaceRecepcaoEvento);
+            if (envelope.SelectSingleNode("/soap:Envelope/soap:Body/*[1][self::evento:nfeabiDadosMsg]", namespaces) == null)
+            {
+                throw new ValidarXMLException("O envelope SOAP da configuração deve conter nfeabiDadosMsg no namespace da operação NFeABIRecepcaoEvento.");
             }
         }
 

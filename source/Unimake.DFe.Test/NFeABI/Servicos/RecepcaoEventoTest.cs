@@ -344,7 +344,10 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
                 var requisicao = ResponderSoapAsync(servidor, CriarRespostaSoap(protocolo), limite.Token);
                 servico.Executar(evento, configuracao);
                 var chave = evento.InfEvento.ChNFeABI;
-                Assert.Contains("<chNFeABI>" + chave + "</chNFeABI>", await requisicao);
+                var envelope = new XmlDocument();
+                envelope.LoadXml(await requisicao);
+                var dados = Assert.IsType<XmlElement>(Assert.Single(envelope.GetElementsByTagName("nfeabiDadosMsg", NamespaceWsdl)));
+                Assert.Contains("<chNFeABI>" + chave + "</chNFeABI>", dados.InnerXml);
                 Assert.Equal(protocolo, servico.Result.InfEvento.NProt);
                 Assert.Empty(servico.Warnings);
 
@@ -358,6 +361,20 @@ namespace Unimake.DFe.Test.NFeABI.Servicos
             await EnviarEConferirAsync(primeiro, "1412600000000001");
 
             var urlSoapCustomizada = configuracao.WebEnderecoHomologacao;
+            var envelopeEvento = configuracao.WebSoapString;
+            var consulta = new Business.DFe.Servicos.NFeABI.ConsultaProtocolo(
+                segundo.InfEvento.ChNFeABI, TipoAmbiente.Homologacao, new Configuracao());
+            configuracao.WebSoapString = consulta.Configuracoes.WebSoapString;
+
+            var erroEnvelope = Assert.Throws<ValidarXMLException>(() => servico.Executar(segundo, configuracao));
+            Assert.Contains("envelope SOAP", erroEnvelope.Message);
+            Assert.Empty(servico.GetConteudoXMLOriginal());
+            Assert.Empty(servico.GetConteudoXMLAssinado());
+            Assert.Equal(0, servico.Result.InfEvento.CStat);
+            Assert.False(servidor.Pending());
+            Assert.Equal(urlSoapCustomizada, configuracao.WebEnderecoHomologacao);
+
+            configuracao.WebSoapString = envelopeEvento;
             configuracao.RequestURIHomologacao = urlSoapCustomizada + "api-anterior";
             Assert.True(configuracao.IsAPI);
             var erroApi = Assert.Throws<ValidarXMLException>(() => servico.Executar(segundo, configuracao));
