@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:aacbs="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd" />
+
+  <xs:element name="gerarDarfAdquirente" type="aacbs:GerarDarfAdquirenteTipo" />
+
+  <xs:complexType name="GerarDarfAdquirenteTipo">
+    <xs:sequence>
+      <xs:element name="cnpj" type="aacbs:Identificacao14" />
+      <xs:element name="solicitacoes">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" maxOccurs="unbounded" type="aacbs:SolicitacaoDarfAdquirenteTipo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="versao" type="aacbs:VersaoXML" use="required" fixed="1.00" />
+  </xs:complexType>
+
+  <xs:complexType name="SolicitacaoDarfAdquirenteTipo">
+    <xs:sequence>
+      <xs:element name="chaveDFE">
+        <xs:simpleType>
+          <xs:restriction base="aacbs:TextoNaoVazio">
+            <xs:maxLength value="100" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="opcaoPagamento">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="PAGAMENTO_PARCIAL" />
+            <xs:enumeration value="PAGAMENTO_TOTAL" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="valorDarfParcial" minOccurs="0" type="aacbs:ValorMonetario18_2" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

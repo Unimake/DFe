@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd"/>
+
+  <xs:element name="retArquivoPagamentos" type="RetArquivoPagamentosTipo"/>
+
+  <xs:complexType name="RetArquivoPagamentosTipo">
+    <xs:sequence>
+      <xs:element name="tiqueteSolicitacao" type="TextoNaoVazio"/>
+      <xs:element name="ni" type="Identificacao8"/>
+      <xs:element name="niConsumidor" type="IdentificacaoConsumidor"/>
+      <xs:element name="geradoEm" type="InstanteComFuso"/>
+      <xs:element name="apuracao">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" type="ApuracaoPagamentosTipo" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="versao" type="VersaoXML" use="required" fixed="1.00"/>
+  </xs:complexType>
+
+  <xs:complexType name="ApuracaoPagamentosTipo">
+    <xs:sequence>
+      <xs:element name="dataArrecadacao" type="DataCivil"/>
+      <xs:element name="pagamentos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" type="PagamentoArquivoTipo" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="PagamentoArquivoTipo">
+    <xs:sequence>
+      <xs:element name="numeroDARF">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="17"/>
+            <xs:pattern value="[0-9]{17}"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="tipo">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="niAdquirente" type="Identificacao14"/>
+        <xs:element name="niContribuinte" type="Identificacao14"/>
+      </xs:choice>
+      <xs:element name="composicao">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" type="ComposicaoPagamentoArquivoTipo" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ComposicaoPagamentoArquivoTipo">
+    <xs:sequence>
+      <xs:element name="sequencial">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="99999999"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="pa" type="PeriodoApuracao"/>
+      <xs:element name="vencimento" type="VencimentoRad"/>
+      <xs:element name="niContribuinte" type="Identificacao14" minOccurs="0"/>
+      <xs:element name="chaveDFE" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="principal" type="ValorMonetario18_2"/>
+      <xs:element name="multa" type="ValorMonetario18_2"/>
+      <xs:element name="juros" type="ValorMonetario18_2"/>
+      <xs:element name="total" type="ValorMonetario18_2"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="VencimentoRad">
+    <xs:union memberTypes="DataCivil InstanteComFuso"/>
+  </xs:simpleType>
+</xs:schema>

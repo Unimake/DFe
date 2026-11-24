@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.Xml.Serialization;
 
@@ -865,6 +865,46 @@ namespace Unimake.Business.DFe.Servicos
         [Description("Recepção de eventos do MDF-e")]
         MDFeRecepcaoEvento = 139,
 
+        /// <summary>140 - AACBS - Autenticar.</summary>
+        [Description("AACBS - Autenticar")]
+        AACBSAutenticar = 140,
+
+        /// <summary>141 - AACBS - ConsultarDebitos.</summary>
+        [Description("AACBS - ConsultarDebitos")]
+        AACBSConsultarDebitos = 141,
+
+        /// <summary>142 - AACBS - ConsultarCreditos.</summary>
+        [Description("AACBS - ConsultarCreditos")]
+        AACBSConsultarCreditos = 142,
+
+        /// <summary>143 - AACBS - ConsultarPagamentos.</summary>
+        [Description("AACBS - ConsultarPagamentos")]
+        AACBSConsultarPagamentos = 143,
+
+        /// <summary>144 - AACBS - ConsultarRecolhimentos.</summary>
+        [Description("AACBS - ConsultarRecolhimentos")]
+        AACBSConsultarRecolhimentos = 144,
+
+        /// <summary>145 - AACBS - ConsultarSituacaoSolicitacao.</summary>
+        [Description("AACBS - ConsultarSituacaoSolicitacao")]
+        AACBSConsultarSituacaoSolicitacao = 145,
+
+        /// <summary>146 - AACBS - ConsultarLinkDownload.</summary>
+        [Description("AACBS - ConsultarLinkDownload")]
+        AACBSConsultarLinkDownload = 146,
+
+        /// <summary>147 - AACBS - BaixarArquivoRetorno.</summary>
+        [Description("AACBS - BaixarArquivoRetorno")]
+        AACBSBaixarArquivoRetorno = 147,
+
+        /// <summary>148 - AACBS - GerarDarfAdquirente.</summary>
+        [Description("AACBS - GerarDarfAdquirente")]
+        AACBSGerarDarfAdquirente = 148,
+
+        /// <summary>149 - AACBS - GerarDarfContribuinte.</summary>
+        [Description("AACBS - GerarDarfContribuinte")]
+        AACBSGerarDarfContribuinte = 149,
+
         #endregion
 
         #region Gerais
@@ -993,6 +1033,9 @@ namespace Unimake.Business.DFe.Servicos
         /// 23 - NFeABI - Nota Fiscal Eletrônica de Alienação de Bens Imóveis
         /// </summary>
         NFeABI = 23,
+
+        /// <summary>24 - Apuração Assistida da CBS.</summary>
+        AACBS = 24,
 
     }
 

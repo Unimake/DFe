@@ -47,7 +47,7 @@ namespace Unimake.Business.DFe.Xml.Validar
                 return;
             }
 
-            if (tipoDFe == TipoDFe.NFeABI &&
+            if ((tipoDFe == TipoDFe.NFeABI || tipoDFe == TipoDFe.AACBS) &&
                 !string.Equals(xml.DocumentElement?.NamespaceURI, informacao.TargetNS, StringComparison.Ordinal))
             {
                 throw new ValidarXMLException(

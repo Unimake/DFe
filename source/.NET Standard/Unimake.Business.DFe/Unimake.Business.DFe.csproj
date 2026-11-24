@@ -4028,6 +4028,9 @@
 		<Exec Command="$(SolutionDir)Build.bat $(TargetPath) $(SolutionDir) $(OutputPath)" IgnoreExitCode="true" />
 	</Target>
 
+	<ItemGroup Label="AACBS - schemas XML">
+		<EmbeddedResource Include="Xml\Schemas\AACBS\*.xsd" />
+	</ItemGroup>
 </Project>
 
 

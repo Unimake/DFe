@@ -12177,4 +12177,199 @@
 			</Servico>
 		</Padrao>
 	</NFSe>
+    <!-- AACBS: contratos XML nacionais, sem transporte nesta etapa. -->
+    <AACBS>
+        <Servico tagRaiz="autenticar" versao="1.00">
+            <Descricao>AACBS - Autenticar</Descricao>
+            <SchemaArquivo>autenticar_v1.00.xsd</SchemaArquivo>
+            <TagVersao>autenticar</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSAutenticar</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retAutenticar" versao="1.00">
+            <Descricao>AACBS - RetAutenticar</Descricao>
+            <SchemaArquivo>retAutenticar_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retAutenticar</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSAutenticar</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="consultarDebitos" versao="1.00">
+            <Descricao>AACBS - ConsultarDebitos</Descricao>
+            <SchemaArquivo>consultarDebitos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>consultarDebitos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarDebitos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retConsultarDebitos" versao="1.00">
+            <Descricao>AACBS - RetConsultarDebitos</Descricao>
+            <SchemaArquivo>retConsultarDebitos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retConsultarDebitos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarDebitos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="consultarCreditos" versao="1.00">
+            <Descricao>AACBS - ConsultarCreditos</Descricao>
+            <SchemaArquivo>consultarCreditos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>consultarCreditos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarCreditos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retConsultarCreditos" versao="1.00">
+            <Descricao>AACBS - RetConsultarCreditos</Descricao>
+            <SchemaArquivo>retConsultarCreditos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retConsultarCreditos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarCreditos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="consultarPagamentos" versao="1.00">
+            <Descricao>AACBS - ConsultarPagamentos</Descricao>
+            <SchemaArquivo>consultarPagamentos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>consultarPagamentos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarPagamentos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retConsultarPagamentos" versao="1.00">
+            <Descricao>AACBS - RetConsultarPagamentos</Descricao>
+            <SchemaArquivo>retConsultarPagamentos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retConsultarPagamentos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarPagamentos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="consultarRecolhimentos" versao="1.00">
+            <Descricao>AACBS - ConsultarRecolhimentos</Descricao>
+            <SchemaArquivo>consultarRecolhimentos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>consultarRecolhimentos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarRecolhimentos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retConsultarRecolhimentos" versao="1.00">
+            <Descricao>AACBS - RetConsultarRecolhimentos</Descricao>
+            <SchemaArquivo>retConsultarRecolhimentos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retConsultarRecolhimentos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarRecolhimentos</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="consultarSituacaoSolicitacao" versao="1.00">
+            <Descricao>AACBS - ConsultarSituacaoSolicitacao</Descricao>
+            <SchemaArquivo>consultarSituacaoSolicitacao_v1.00.xsd</SchemaArquivo>
+            <TagVersao>consultarSituacaoSolicitacao</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarSituacaoSolicitacao</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retConsultarSituacaoSolicitacao" versao="1.00">
+            <Descricao>AACBS - RetConsultarSituacaoSolicitacao</Descricao>
+            <SchemaArquivo>retConsultarSituacaoSolicitacao_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retConsultarSituacaoSolicitacao</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarSituacaoSolicitacao</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="consultarLinkDownload" versao="1.00">
+            <Descricao>AACBS - ConsultarLinkDownload</Descricao>
+            <SchemaArquivo>consultarLinkDownload_v1.00.xsd</SchemaArquivo>
+            <TagVersao>consultarLinkDownload</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarLinkDownload</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retConsultarLinkDownload" versao="1.00">
+            <Descricao>AACBS - RetConsultarLinkDownload</Descricao>
+            <SchemaArquivo>retConsultarLinkDownload_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retConsultarLinkDownload</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSConsultarLinkDownload</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="baixarArquivoRetorno" versao="1.00">
+            <Descricao>AACBS - BaixarArquivoRetorno</Descricao>
+            <SchemaArquivo>baixarArquivoRetorno_v1.00.xsd</SchemaArquivo>
+            <TagVersao>baixarArquivoRetorno</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSBaixarArquivoRetorno</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retBaixarArquivoRetorno" versao="1.00">
+            <Descricao>AACBS - RetBaixarArquivoRetorno</Descricao>
+            <SchemaArquivo>retBaixarArquivoRetorno_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retBaixarArquivoRetorno</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSBaixarArquivoRetorno</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retArquivoDebitos" versao="1.00">
+            <Descricao>AACBS - RetArquivoDebitos</Descricao>
+            <SchemaArquivo>retArquivoDebitos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retArquivoDebitos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSBaixarArquivoRetorno</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retArquivoCreditos" versao="1.00">
+            <Descricao>AACBS - RetArquivoCreditos</Descricao>
+            <SchemaArquivo>retArquivoCreditos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retArquivoCreditos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSBaixarArquivoRetorno</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retArquivoPagamentos" versao="1.00">
+            <Descricao>AACBS - RetArquivoPagamentos</Descricao>
+            <SchemaArquivo>retArquivoPagamentos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retArquivoPagamentos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSBaixarArquivoRetorno</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retArquivoRecolhimentos" versao="1.00">
+            <Descricao>AACBS - RetArquivoRecolhimentos</Descricao>
+            <SchemaArquivo>retArquivoRecolhimentos_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retArquivoRecolhimentos</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSBaixarArquivoRetorno</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="gerarDarfAdquirente" versao="1.00">
+            <Descricao>AACBS - GerarDarfAdquirente</Descricao>
+            <SchemaArquivo>gerarDarfAdquirente_v1.00.xsd</SchemaArquivo>
+            <TagVersao>gerarDarfAdquirente</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSGerarDarfAdquirente</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retGerarDarfAdquirente" versao="1.00">
+            <Descricao>AACBS - RetGerarDarfAdquirente</Descricao>
+            <SchemaArquivo>retGerarDarfAdquirente_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retGerarDarfAdquirente</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSGerarDarfAdquirente</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="gerarDarfContribuinte" versao="1.00">
+            <Descricao>AACBS - GerarDarfContribuinte</Descricao>
+            <SchemaArquivo>gerarDarfContribuinte_v1.00.xsd</SchemaArquivo>
+            <TagVersao>gerarDarfContribuinte</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSGerarDarfContribuinte</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+        <Servico tagRaiz="retGerarDarfContribuinte" versao="1.00">
+            <Descricao>AACBS - RetGerarDarfContribuinte</Descricao>
+            <SchemaArquivo>retGerarDarfContribuinte_v1.00.xsd</SchemaArquivo>
+            <TagVersao>retGerarDarfContribuinte</TagVersao>
+            <TargetNS>http://www.unimake.com.br/dfe/aacbs</TargetNS>
+            <TipoServico>AACBSGerarDarfContribuinte</TipoServico>
+            <UsaCertificadoDigital>false</UsaCertificadoDigital>
+        </Servico>
+    </AACBS>
 </ServicosValidacao>

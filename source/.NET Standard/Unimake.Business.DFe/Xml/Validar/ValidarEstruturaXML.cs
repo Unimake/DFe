@@ -199,7 +199,7 @@ namespace Unimake.Business.DFe
             {
                 configuracao.TipoDFe = tipoDFe;
                 var xmlConfig = CarregarConfigValidacao();
-                var tagRaiz = xml.DocumentElement.Name;
+                var tagRaiz = tipoDFe == TipoDFe.AACBS ? xml.DocumentElement.LocalName : xml.DocumentElement.Name;
                 var versao = tipoDFe == TipoDFe.NFSe
                     ? (!string.IsNullOrWhiteSpace(configuracao.SchemaVersao)
                         ? configuracao.SchemaVersao
@@ -241,22 +241,39 @@ namespace Unimake.Business.DFe
                     AssinarSeNecessario(xml, servico, inform, certificado, configuracao, tipoAmbiente, tipoDFe);
                     ValidarSchemas(xml, servico, inform, tipoDFe, padraoNFSe);
 
+                    if (tipoDFe == TipoDFe.AACBS)
+                    {
+                        new Validator.AACBS.AACBSValidator(xml).Validate();
+                    }
+
                     return CriarResultadoSucesso(xml, inform.Descricao, "XML assinado e validado com sucesso.");
                 }
 
                 catch (Exception ex)
                 {
-                    return CriarResultadoFalha(xml, inform.Descricao, ex, ObterStatus(ex));
+                    var falha = SanitizarFalhaAACBS(xml, ex);
+                    return CriarResultadoFalha(xml, inform.Descricao, falha, ObterStatus(falha));
                 }
             }
             catch (Exception ex)
             {
-                return CriarResultadoFalha(xml, null, ex, ObterStatus(ex));
+                var falha = SanitizarFalhaAACBS(xml, ex);
+                return CriarResultadoFalha(xml, null, falha, ObterStatus(falha));
             }
             finally
             {
                 configuracao.TipoDFe = tipoDFeSalva;
             }
+        }
+
+        private static Exception SanitizarFalhaAACBS(XmlDocument xml, Exception exception)
+        {
+            if (xml.DocumentElement?.NamespaceURI == Unimake.Business.DFe.Xml.AACBS.AACBSFormat.Namespace &&
+                !(exception is ValidatorDFeException))
+            {
+                return new ValidarXMLException("AACBS: o XML não atende ao contrato de raiz, versão, namespace ou schema da operação.");
+            }
+            return exception;
         }
 
         private static ResultadoValidacao CriarResultadoSucesso(XmlDocument xml, string descricao, string mensagem)
@@ -1271,6 +1288,11 @@ namespace Unimake.Business.DFe
 
         private static string ObterVersao(XmlDocument xml, XmlDocument xmlConfig, TipoDFe tipoDFe)
         {
+            if (tipoDFe == TipoDFe.AACBS)
+            {
+                return xml.DocumentElement.GetAttribute("versao");
+            }
+
             var servicoValidacao = xmlConfig.SelectSingleNode("ServicosValidacao");
             var nodeDFe = servicoValidacao.SelectSingleNode(tipoDFe.ToString());
 
@@ -1886,6 +1908,11 @@ namespace Unimake.Business.DFe
 
         private static TipoDFe DetectarTipoDFe(XmlDocument xml)
         {
+            if (Unimake.Business.DFe.Xml.AACBS.AACBSFormat.IsDocument(xml.DocumentElement))
+            {
+                return TipoDFe.AACBS;
+            }
+
             var tipoDFe = TipoDFe.Desconhecido;
 
             switch (xml.DocumentElement.Name)

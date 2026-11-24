@@ -42,6 +42,9 @@ namespace Unimake.Business.DFe
         /// </summary>
         private string ErroValidacao { get; set; }
 
+        private bool SanitizarErrosAACBS { get; set; }
+        private string RaizAACBS { get; set; }
+
         private static string SelecionarSchemaMonofasia(XmlDocument conteudoXML, string arqSchema)
         {
             var nomeSchema = SchemasNFeComLeiaute.FirstOrDefault(x =>
@@ -357,7 +360,8 @@ namespace Unimake.Business.DFe
         /// <param name="sender">Object sender</param>
         /// <param name="e">Argumentos</param>
         private void Reader_ValidationEventHandler(object sender, ValidationEventArgs e) =>
-            ErroValidacao += "Linha: " + e.Exception.LineNumber + " Coluna: " + e.Exception.LinePosition + " Erro: " + e.Exception.Message + "\r\n";
+            ErroValidacao += "Linha: " + e.Exception.LineNumber + " Coluna: " + e.Exception.LinePosition + " Erro: " +
+            (SanitizarErrosAACBS ? "O XML AACBS de <" + RaizAACBS + "> não atende ao schema da operação." : e.Exception.Message) + "\r\n";
 
         /// <summary>
         /// Validar XML
@@ -376,10 +380,11 @@ namespace Unimake.Business.DFe
                 }
                 catch (Exception ex)
                 {
+                    var mensagem = SanitizarErrosAACBS ? "O XML AACBS não pôde ser validado contra o schema da operação." : ex.Message;
                     if (!string.IsNullOrWhiteSpace(ErroValidacao))
-                        ErroValidacao += ex.Message;
+                        ErroValidacao += mensagem;
                     else
-                        ErroValidacao = ex.Message;
+                        ErroValidacao = mensagem;
                 }
 
                 xmlReader.Close();
@@ -424,6 +429,9 @@ namespace Unimake.Business.DFe
         public void Validar(XmlDocument conteudoXML, string arqSchema, string targetNS = "", Servicos.PadraoNFSe padraoNFSe = Servicos.PadraoNFSe.None)
         {
             ErroValidacao = "";
+            SanitizarErrosAACBS = arqSchema != null && arqSchema.StartsWith("AACBS.", StringComparison.Ordinal);
+            RaizAACBS = Unimake.Business.DFe.Xml.AACBS.AACBSFormat.IsRoot(conteudoXML?.DocumentElement?.LocalName ?? "")
+                ? conteudoXML.DocumentElement.LocalName : "documento";
 
             if (string.IsNullOrEmpty(arqSchema))
             {
@@ -433,6 +441,21 @@ namespace Unimake.Business.DFe
             Success = true;
             ErrorCode = 0;
             ErrorMessage = "";
+
+            if (SanitizarErrosAACBS)
+            {
+                var schemaRaiz = arqSchema.Substring("AACBS.".Length);
+                var versaoIndex = schemaRaiz.IndexOf("_v", StringComparison.Ordinal);
+                var raizEsperada = versaoIndex > 0 ? schemaRaiz.Substring(0, versaoIndex) : string.Empty;
+                if (!Unimake.Business.DFe.Xml.AACBS.AACBSFormat.IsDocument(conteudoXML?.DocumentElement) ||
+                    !string.Equals(conteudoXML.DocumentElement.LocalName, raizEsperada, StringComparison.Ordinal))
+                {
+                    Success = false;
+                    ErrorCode = 1;
+                    ErrorMessage = "AACBS: raiz ou namespace incompatível com o schema da operação.";
+                    return;
+                }
+            }
 
             arqSchema = SelecionarSchemaMonofasia(conteudoXML, arqSchema);
 
@@ -479,7 +502,7 @@ namespace Unimake.Business.DFe
             }
             catch (Exception ex)
             {
-                ErroValidacao = ex.Message + "\r\n";
+                ErroValidacao = (SanitizarErrosAACBS ? "Falha ao preparar a validação do schema AACBS." : ex.Message) + "\r\n";
             }
 
             if (ErroValidacao != "")

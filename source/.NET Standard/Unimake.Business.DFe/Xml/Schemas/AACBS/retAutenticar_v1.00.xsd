@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:aacbs="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd" />
+
+  <xs:element name="retAutenticar" type="aacbs:RetAutenticarTipo" />
+
+  <xs:complexType name="RetAutenticarTipo">
+    <xs:choice>
+      <xs:element name="erroLocal" type="aacbs:ErroLocalTipo" />
+      <xs:sequence>
+        <xs:element name="access_token" type="aacbs:TextoNaoVazio" />
+        <xs:element name="token_type">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="[bB][eE][aA][rR][eE][rR]" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="expires_in" minOccurs="0">
+          <xs:simpleType>
+            <xs:restriction base="xs:int">
+              <xs:minInclusive value="1" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="scope" minOccurs="0" type="aacbs:TextoNaoVazio" />
+      </xs:sequence>
+      <xs:sequence>
+        <xs:element name="error" type="aacbs:TextoNaoVazio" />
+        <xs:element name="error_description" minOccurs="0" type="xs:string" />
+        <xs:element name="error_uri" minOccurs="0" type="xs:anyURI" />
+      </xs:sequence>
+    </xs:choice>
+    <xs:attribute name="versao" type="aacbs:VersaoXML" use="required" fixed="1.00" />
+  </xs:complexType>
+</xs:schema>

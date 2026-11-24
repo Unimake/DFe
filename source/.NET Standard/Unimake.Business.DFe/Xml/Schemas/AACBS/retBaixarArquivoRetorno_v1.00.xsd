@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:aacbs="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="retArquivoDebitos_v1.00.xsd" />
+  <xs:include schemaLocation="retArquivoCreditos_v1.00.xsd" />
+  <xs:include schemaLocation="retArquivoPagamentos_v1.00.xsd" />
+  <xs:include schemaLocation="retArquivoRecolhimentos_v1.00.xsd" />
+
+  <xs:element name="retBaixarArquivoRetorno" type="aacbs:RetBaixarArquivoRetornoTipo" />
+
+  <xs:complexType name="RetBaixarArquivoRetornoTipo">
+    <xs:choice>
+      <xs:element name="erroLocal" type="aacbs:ErroLocalTipo" />
+      <xs:element name="retArquivoDebitos" type="aacbs:RetArquivoDebitosTipo" />
+      <xs:element name="retArquivoCreditos" type="aacbs:RetArquivoCreditosTipo" />
+      <xs:element name="retArquivoPagamentos" type="aacbs:RetArquivoPagamentosTipo" />
+      <xs:element name="retArquivoRecolhimentos" type="aacbs:RetArquivoRecolhimentosTipo" />
+    </xs:choice>
+    <xs:attribute name="versao" type="aacbs:VersaoXML" use="required" fixed="1.00" />
+  </xs:complexType>
+</xs:schema>

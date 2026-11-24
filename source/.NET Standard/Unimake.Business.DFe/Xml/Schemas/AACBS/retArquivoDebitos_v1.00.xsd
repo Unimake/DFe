@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd"/>
+
+  <xs:element name="retArquivoDebitos" type="RetArquivoDebitosTipo"/>
+
+  <xs:complexType name="RetArquivoDebitosTipo">
+    <xs:sequence>
+      <xs:element name="tiqueteSolicitacao" type="TextoNaoVazio"/>
+      <xs:element name="ni" type="Identificacao8"/>
+      <xs:element name="niConsumidor" type="IdentificacaoConsumidor"/>
+      <xs:element name="geradoEm" type="InstanteComFuso"/>
+      <xs:element name="apuracao">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" type="ApuracaoDebitosTipo" minOccurs="0" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="versao" type="VersaoXML" use="required" fixed="1.00"/>
+  </xs:complexType>
+
+  <xs:complexType name="ApuracaoDebitosTipo">
+    <xs:sequence>
+      <xs:element name="pa" type="PeriodoApuracao"/>
+      <xs:element name="debitos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="item" type="DebitoArquivoTipo" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="DebitoArquivoTipo">
+    <xs:sequence>
+      <xs:element name="origem">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="20"/>
+            <xs:enumeration value="21"/>
+            <xs:enumeration value="22"/>
+            <xs:enumeration value="30"/>
+            <xs:enumeration value="31"/>
+            <xs:enumeration value="32"/>
+            <xs:enumeration value="50"/>
+            <xs:enumeration value="51"/>
+            <xs:enumeration value="52"/>
+            <xs:enumeration value="53"/>
+            <xs:enumeration value="54"/>
+            <xs:enumeration value="55"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="documento">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="55"/>
+            <xs:enumeration value="57"/>
+            <xs:enumeration value="62"/>
+            <xs:enumeration value="63"/>
+            <xs:enumeration value="64"/>
+            <xs:enumeration value="65"/>
+            <xs:enumeration value="66"/>
+            <xs:enumeration value="67"/>
+            <xs:enumeration value="91"/>
+            <xs:enumeration value="92"/>
+            <xs:enumeration value="93"/>
+            <xs:enumeration value="94"/>
+            <xs:enumeration value="97"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="chave">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:minLength value="1"/>
+            <xs:maxLength value="100"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="emissao" type="InstanteComFuso"/>
+      <xs:element name="registro" type="InstanteComFuso"/>
+      <xs:element name="atualizacao" type="InstanteComFuso"/>
+      <xs:element name="cbs" type="CbsDebitoTipo"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="CbsDebitoTipo">
+    <xs:sequence>
+      <xs:element name="excedente" type="ValorMonetario18_2" minOccurs="0"/>
+      <xs:element name="apurado" type="ValorMonetario18_2"/>
+      <xs:element name="inexigivel" type="ValorMonetario18_2" minOccurs="0"/>
+      <xs:element name="suspenso" type="ValorMonetario18_2" minOccurs="0"/>
+      <xs:element name="pgtoAntecipado" type="ValorMonetario18_2" minOccurs="0"/>
+      <xs:element name="extinto" type="ValorMonetario18_2" minOccurs="0"/>
+      <xs:element name="saldoDevedor" type="ValorMonetario18_2"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

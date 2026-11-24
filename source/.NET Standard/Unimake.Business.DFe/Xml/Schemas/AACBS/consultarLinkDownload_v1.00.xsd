@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:aacbs="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd" />
+
+  <xs:element name="consultarLinkDownload" type="aacbs:ConsultarLinkDownloadTipo" />
+
+  <xs:complexType name="ConsultarLinkDownloadTipo">
+    <xs:sequence>
+      <xs:element name="tiqueteSolicitacao" type="aacbs:TextoNaoVazio" />
+    </xs:sequence>
+    <xs:attribute name="versao" type="aacbs:VersaoXML" use="required" fixed="1.00" />
+  </xs:complexType>
+</xs:schema>

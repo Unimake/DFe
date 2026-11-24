@@ -568,12 +568,32 @@ namespace Unimake.Business.DFe.Utility
         private static T Deserializar<T>(string xml, bool rejeitarTodosDesconhecidos)
             where T : new()
         {
+            var raiz = (XmlRootAttribute)Attribute.GetCustomAttribute(typeof(T), typeof(XmlRootAttribute));
+            var aacbs = raiz?.Namespace == Unimake.Business.DFe.Xml.AACBS.AACBSFormat.Namespace;
             try
             {
-                xml = TratarFalhaXML(xml);
+                if (aacbs)
+                {
+                    var documento = new XmlDocument { XmlResolver = null, PreserveWhitespace = true };
+                    using (var reader = XmlReader.Create(new StringReader(xml), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null }))
+                    {
+                        documento.Load(reader);
+                    }
+                    var schema = new ValidarSchema();
+                    schema.Validar(documento, "AACBS." + raiz.ElementName + "_v1.00.xsd", raiz.Namespace);
+                    if (!schema.Success)
+                    {
+                        throw new ValidarXMLException("AACBS: XML incompatível com o contrato de leitura.");
+                    }
+                    new Validator.AACBS.AACBSValidator(documento).Validate();
+                }
+                else
+                {
+                    xml = TratarFalhaXML(xml);
+                }
 
                 T result;
-                if (rejeitarTodosDesconhecidos || TipoNFe(typeof(T)))
+                if (aacbs || rejeitarTodosDesconhecidos || TipoNFe(typeof(T)))
                 {
                     var ocorrencias = new List<OcorrenciaDesserializacao>();
                     var serializer = new XmlSerializer(typeof(T));
@@ -600,9 +620,24 @@ namespace Unimake.Business.DFe.Utility
                             Tipo = TipoOcorrenciaDesserializacao.Atributo
                         });
 
-                    using (var reader = new StringReader(xml))
+                    if (aacbs)
                     {
-                        result = (T)serializer.Deserialize(reader);
+                        using (var reader = XmlReader.Create(new StringReader(xml), new XmlReaderSettings
+                        {
+                            DtdProcessing = DtdProcessing.Prohibit,
+                            XmlResolver = null,
+                            IgnoreWhitespace = false
+                        }))
+                        {
+                            result = (T)serializer.Deserialize(reader);
+                        }
+                    }
+                    else
+                    {
+                        using (var reader = new StringReader(xml))
+                        {
+                            result = (T)serializer.Deserialize(reader);
+                        }
                     }
 
                     ValidarOcorrenciasDesserializacao(ocorrencias, rejeitarTodosDesconhecidos);
@@ -623,6 +658,12 @@ namespace Unimake.Business.DFe.Utility
             }
             catch (Exception ex)
             {
+                if (aacbs)
+                {
+                    // Não anexar a exceção do XmlSerializer: pode conter trecho do XML e segredos operacionais.
+                    throw new XmlException("AACBS: não foi possível ler o documento <" + raiz.ElementName +
+                        ">; verifique raiz, versão, schema e regras de conteúdo.");
+                }
                 if (ex.GetLastException() is XmlException)
                 {
                     var exception = (XmlException)ex.GetLastException();
@@ -993,6 +1034,27 @@ namespace Unimake.Business.DFe.Utility
         public static TipoDFe DetectDFeType(string xml)
         {
             var tipoDFe = TipoDFe.Desconhecido;
+
+            // O domínio AACBS possui nomes genéricos e exige identificação pela raiz qualificada.
+            if (!string.IsNullOrWhiteSpace(xml))
+            {
+                try
+                {
+                    using (var reader = XmlReader.Create(new System.IO.StringReader(xml), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null }))
+                    {
+                        if (reader.MoveToContent() == XmlNodeType.Element &&
+                            reader.NamespaceURI == Unimake.Business.DFe.Xml.AACBS.AACBSFormat.Namespace &&
+                            Unimake.Business.DFe.Xml.AACBS.AACBSFormat.IsRoot(reader.LocalName))
+                        {
+                            return TipoDFe.AACBS;
+                        }
+                    }
+                }
+                catch (XmlException)
+                {
+                    // Preserva o comportamento de identificação dos demais documentos.
+                }
+            }
 
             if (xml.Contains("<mod>55</mod>"))
             {
@@ -2121,6 +2183,10 @@ namespace Unimake.Business.DFe.Utility
         public static XmlDocument Serializar<T>(T objeto, List<TNameSpace> namespaces = null)
             where T : new()
         {
+            if (PreservarTextoAACBS(objeto))
+            {
+                return EscreverXml(objeto, new XmlSerializer(objeto.GetType()), CriarNamespacesSerializacao(namespaces?.Select(s => (s.NS, s.Prefix)).ToList()));
+            }
             var xml = XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
 
             return xml;
@@ -2134,6 +2200,10 @@ namespace Unimake.Business.DFe.Utility
         /// <returns>XML</returns>
         public static XmlDocument Serializar(object objeto, List<TNameSpace> namespaces = null)
         {
+            if (PreservarTextoAACBS(objeto))
+            {
+                return EscreverXml(objeto, new XmlSerializer(objeto.GetType()), CriarNamespacesSerializacao(namespaces?.Select(s => (s.NS, s.Prefix)).ToList()));
+            }
             var xml = XmlHelper.Serialize(objeto, namespaces?.Select(s => (s.NS, s.Prefix)).ToList());
 
             return xml;
@@ -2172,12 +2242,27 @@ namespace Unimake.Business.DFe.Utility
             return ns;
         }
 
+        private static bool PreservarTextoAACBS(object objeto) => objeto != null &&
+            Attribute.GetCustomAttribute(objeto.GetType(), typeof(XmlRootAttribute)) is XmlRootAttribute raiz &&
+            raiz.Namespace == Unimake.Business.DFe.Xml.AACBS.AACBSFormat.Namespace;
+
         private static XmlDocument EscreverXml(object obj, XmlSerializer xmlSerializer, XmlSerializerNamespaces ns)
         {
-            var xmlDocument = new XmlDocument();
+            var xmlDocument = new XmlDocument { PreserveWhitespace = PreservarTextoAACBS(obj) };
             using (var stringWriter = new Utf8StringWriter())
             {
-                xmlSerializer.Serialize(stringWriter, obj, ns);
+                if (PreservarTextoAACBS(obj))
+                {
+                    // Sem indentação estrutural, os únicos espaços de texto são os dados do contrato.
+                    using (var writer = XmlWriter.Create(stringWriter, new XmlWriterSettings { Indent = false, NewLineHandling = NewLineHandling.Entitize }))
+                    {
+                        xmlSerializer.Serialize(writer, obj, ns);
+                    }
+                }
+                else
+                {
+                    xmlSerializer.Serialize(stringWriter, obj, ns);
+                }
                 xmlDocument.LoadXml(stringWriter.ToString());
             }
 

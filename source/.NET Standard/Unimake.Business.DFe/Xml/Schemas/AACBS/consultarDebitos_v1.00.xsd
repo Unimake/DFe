@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:aacbs="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd" />
+
+  <xs:element name="consultarDebitos" type="aacbs:ConsultarDebitosTipo" />
+
+  <xs:complexType name="ConsultarDebitosTipo">
+    <xs:sequence>
+      <xs:element name="cnpj" type="aacbs:Identificacao8" />
+      <xs:element name="urlRetorno" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:pattern value="([hH][tT][tT][pP][sS]://[^/?#\s]+[^\s]*)?" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="versao" type="aacbs:VersaoXML" use="required" fixed="1.00" />
+  </xs:complexType>
+</xs:schema>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:aacbs="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd" />
+
+  <xs:element name="retConsultarLinkDownload" type="aacbs:RetConsultarLinkDownloadTipo" />
+
+  <xs:complexType name="RetConsultarLinkDownloadTipo">
+    <xs:choice>
+      <xs:element name="erroLocal" type="aacbs:ErroLocalTipo" />
+      <xs:sequence>
+        <xs:element name="urlAssinada">
+          <xs:simpleType>
+            <xs:restriction base="xs:anyURI">
+              <xs:pattern value="[hH][tT][tT][pP][sS]://[^/?#\s]+[^\s]*" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="urlAssinadaExpiraEm" minOccurs="0" type="aacbs:InstanteComFuso" />
+      </xs:sequence>
+      <xs:sequence>
+        <xs:element name="codigoErro" type="aacbs:TextoNaoVazio" />
+        <xs:element name="mensagemErro" type="aacbs:TextoNaoVazio" />
+      </xs:sequence>
+    </xs:choice>
+    <xs:attribute name="versao" type="aacbs:VersaoXML" use="required" fixed="1.00" />
+  </xs:complexType>
+</xs:schema>

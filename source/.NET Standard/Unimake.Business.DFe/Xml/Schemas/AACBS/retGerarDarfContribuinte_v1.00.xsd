@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:aacbs="http://www.unimake.com.br/dfe/aacbs"
+           targetNamespace="http://www.unimake.com.br/dfe/aacbs"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="tiposComuns_v1.00.xsd" />
+
+  <xs:element name="retGerarDarfContribuinte" type="aacbs:RetGerarDarfContribuinteTipo" />
+
+  <xs:complexType name="RetGerarDarfContribuinteTipo">
+    <xs:choice>
+      <xs:element name="erroLocal" type="aacbs:ErroLocalTipo" />
+      <xs:sequence>
+        <xs:element name="cdRetorno">
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="DARF_GERADO" />
+              <xs:enumeration value="DFE_NAO_ENCONTRADO" />
+              <xs:enumeration value="VALOR_PARCIAL_SUPERIOR_DFE" />
+              <xs:enumeration value="CNPJ_NAO_ADQUIRENTE" />
+              <xs:enumeration value="DADOS_DE_ENTRADA_INVALIDOS" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:choice>
+          <xs:sequence>
+            <xs:element name="darf" type="aacbs:GerarDarfContribuinteDadosDarfTipo" />
+            <xs:element name="informacoesPagamento" type="aacbs:GerarDarfContribuinteInformacoesPagamentoTipo" />
+          </xs:sequence>
+          <xs:sequence>
+            <xs:element name="mensagem" type="aacbs:TextoNaoVazio" />
+            <xs:element name="dadosInvalidos" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="item" maxOccurs="unbounded" type="aacbs:TextoNaoVazio" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:choice>
+      </xs:sequence>
+    </xs:choice>
+    <xs:attribute name="versao" type="aacbs:VersaoXML" use="required" fixed="1.00" />
+  </xs:complexType>
+
+  <xs:complexType name="GerarDarfContribuinteDadosDarfTipo">
+    <xs:sequence>
+      <xs:element name="chavePIX" type="aacbs:TextoNaoVazio" />
+      <xs:element name="codigoBarras" type="aacbs:TextoNaoVazio" />
+      <xs:element name="linkDarfPDF">
+        <xs:simpleType>
+          <xs:restriction base="xs:anyURI">
+            <xs:pattern value="[a-zA-Z][a-zA-Z0-9+.-]*:[^\s]+" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="GerarDarfContribuinteInformacoesPagamentoTipo">
+    <xs:sequence>
+      <xs:choice>
+        <xs:element name="dataMaximaPagamento" type="aacbs:DataCivil" />
+        <xs:element name="dataVencimento" type="aacbs:DataCivil" />
+      </xs:choice>
+      <xs:element name="valorDarfPrincipal" type="aacbs:ValorMonetario18_2" />
+      <xs:element name="valorDarfMulta" type="aacbs:ValorMonetario18_2" />
+      <xs:element name="valorDarfJuros" type="aacbs:ValorMonetario18_2" />
+      <xs:element name="valorDarfTotal" type="aacbs:ValorMonetario18_2" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
