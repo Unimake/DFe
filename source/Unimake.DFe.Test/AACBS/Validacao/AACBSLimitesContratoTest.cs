@@ -14,6 +14,49 @@ namespace Unimake.DFe.Test.AACBS.Validacao
     public class AACBSLimitesContratoTest
     {
         [Theory]
+        [InlineData("retArquivoDebitos", true)]
+        [InlineData("retArquivoCreditos", false)]
+        [InlineData("retArquivoPagamentos", false)]
+        [InlineData("retArquivoRecolhimentos", false)]
+        public void SchemasAceitamNiDeQuatorzeDigitosSomenteNosDebitos(string raiz, bool aceitaQuatorze)
+        {
+            var arquivo = AACBSFixture.Carregar(raiz);
+            var ni = AACBSFixture.Procurar(arquivo, "ni");
+            ni.InnerText = "00000001";
+            ConferirSchemasDoArquivoEEnvelope(arquivo, raiz, true);
+
+            ni.InnerText = "00000001000001";
+            ConferirSchemasDoArquivoEEnvelope(arquivo, raiz, aceitaQuatorze);
+        }
+
+        [Theory]
+        [InlineData("ni", "000000010")]
+        [InlineData("ni", "00000001000")]
+        [InlineData("ni", "0000000100000")]
+        [InlineData("ni", "000000010000001")]
+        [InlineData("ni", "0000000100000\u0661")]
+        [InlineData("niConsumidor", "00000001")]
+        public void SchemasDeDebitosRejeitamIdentificadorForaDoContrato(string campo, string texto)
+        {
+            const string raiz = "retArquivoDebitos";
+            var arquivo = AACBSFixture.Carregar(raiz);
+            AACBSFixture.Procurar(arquivo, campo).InnerText = texto;
+
+            ConferirSchemasDoArquivoEEnvelope(arquivo, raiz, false);
+        }
+
+        private static void ConferirSchemasDoArquivoEEnvelope(XmlDocument arquivo, string raiz, bool sucessoEsperado)
+        {
+            const string raizEnvelope = "retBaixarArquivoRetorno";
+            var envelope = AACBSFixture.Carregar(raizEnvelope);
+            envelope.DocumentElement.ReplaceChild(envelope.ImportNode(arquivo.DocumentElement, true),
+                AACBSFixture.Procurar(envelope, "retArquivoDebitos"));
+
+            Assert.Equal(sucessoEsperado, AACBSFixture.ValidarSchemaDe(arquivo, raiz).Success);
+            Assert.Equal(sucessoEsperado, AACBSFixture.ValidarSchemaDe(envelope, raizEnvelope).Success);
+        }
+
+        [Theory]
         [InlineData("9999-12-31T23:59:59.99999994Z")]
         [InlineData("9999-12-31T23:59:59.99999995Z")]
         public void PreservaInstanteNoLimiteSemArredondarAntesDaProjecao(string instante)

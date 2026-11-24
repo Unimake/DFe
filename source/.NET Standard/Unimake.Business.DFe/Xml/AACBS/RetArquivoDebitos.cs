@@ -37,7 +37,7 @@ namespace Unimake.Business.DFe.Xml.AACBS
         public string TiqueteSolicitacao { get; set; }
 
         /// <summary>
-        /// CNPJ base do contribuinte.
+        /// CNPJ do contribuinte conforme recebido no arquivo de débitos, com 8 dígitos na forma base ou 14 na forma completa.
         /// </summary>
         [XmlElement("ni", Order = 1)]
         public string Ni { get; set; }
