@@ -1,0 +1,4 @@
+<consultarPagamentos xmlns="http://www.unimake.com.br/dfe/aacbs" versao="1.00">
+  <cnpj>00000001</cnpj>
+  <urlRetorno />
+</consultarPagamentos>

@@ -1,0 +1,6 @@
+<gerarDarfContribuinte xmlns="http://www.unimake.com.br/dfe/aacbs" versao="1.00">
+  <cnpj>00000001000001</cnpj>
+  <pa>02/2028</pa>
+  <opcaoPagamento>PAGAMENTO_PARCIAL</opcaoPagamento>
+  <valorDarfParcial>0</valorDarfParcial>
+</gerarDarfContribuinte>

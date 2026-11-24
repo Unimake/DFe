@@ -1,0 +1,6 @@
+<retAutenticar xmlns="http://www.unimake.com.br/dfe/aacbs" versao="1.00">
+  <access_token>MARCADOR-PUBLICO-SINTETICO</access_token>
+  <token_type>Bearer</token_type>
+  <expires_in>3600</expires_in>
+  <scope>escopo-sintetico</scope>
+</retAutenticar>

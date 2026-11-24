@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net10.0</TargetFramework>
@@ -146,4 +146,7 @@
     <None Remove="DCe\Resources\AF05\**\*.xsd;DCe\Resources\AF05\proveniencia.json" />
     <EmbeddedResource Include="DCe\Resources\AF05\**\*.xsd;DCe\Resources\AF05\proveniencia.json" />
   </ItemGroup>
+	<ItemGroup Label="AACBS - recursos de contratos">
+		<None Update="AACBS\Resources\*.xml" CopyToOutputDirectory="PreserveNewest" />
+	</ItemGroup>
 </Project>

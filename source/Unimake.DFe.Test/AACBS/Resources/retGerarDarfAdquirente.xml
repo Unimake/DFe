@@ -1,0 +1,13 @@
+<retGerarDarfAdquirente xmlns="http://www.unimake.com.br/dfe/aacbs" versao="1.00">
+  <cdRetorno>DARF_GERADO</cdRetorno>
+  <darf>
+    <chavePIX>PIX-SINTETICO</chavePIX>
+    <codigoBarras>00000000000000000001</codigoBarras>
+    <linkDarfPDF>https://example.com/a%2Fb?teste=a%2Bb&amp;v=2</linkDarfPDF>
+  </darf>
+  <informacoesPagamento>
+    <dataMaximaPagamento>2028-02-29</dataMaximaPagamento>
+    <valorDarfPrincipal>9999999999999999.99</valorDarfPrincipal>
+    <valorDarfTotal>0</valorDarfTotal>
+  </informacoesPagamento>
+</retGerarDarfAdquirente>
