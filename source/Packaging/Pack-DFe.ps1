@@ -220,6 +220,7 @@ function Get-DependencyVersions {
         'Unimake.Utils',
         'Unimake.Extensions',
         'Unimake.Cryptography',
+        'System.Net.Http.Json',
         'System.Net.Http.WinHttpHandler',
         'System.Security.Cryptography.Xml'
     )
@@ -259,6 +260,7 @@ function New-Nuspec {
         '{{DEPENDENCY_UNIMAKE_UTILS}}' = $Dependencies['Unimake.Utils']
         '{{DEPENDENCY_UNIMAKE_EXTENSIONS}}' = $Dependencies['Unimake.Extensions']
         '{{DEPENDENCY_UNIMAKE_CRYPTOGRAPHY}}' = $Dependencies['Unimake.Cryptography']
+        '{{DEPENDENCY_HTTP_JSON}}' = $Dependencies['System.Net.Http.Json']
         '{{DEPENDENCY_WINHTTPHANDLER}}' = $Dependencies['System.Net.Http.WinHttpHandler']
         '{{DEPENDENCY_CRYPTOGRAPHY_XML}}' = $Dependencies['System.Security.Cryptography.Xml']
         '{{DFe_DLL}}' = ConvertTo-XmlText $Files.DFeDll
@@ -420,9 +422,26 @@ function Test-GeneratedPackage {
         }
     }
 
+    $actualLibraryFiles = @(Get-ChildItem -LiteralPath (Join-Path $extractPath 'lib') -Recurse -File |
+        ForEach-Object { $_.FullName.Substring($extractPath.Length + 1) })
+    if ($actualLibraryFiles.Count -ne $required.Count -or
+        @($actualLibraryFiles | Where-Object { $_ -cnotin $required }).Count -ne 0) {
+        throw 'O pacote deve conter exclusivamente os quatro assets previstos em lib/netstandard2.0.'
+    }
+    $unexpectedFiles = @(Get-ChildItem -LiteralPath $extractPath -Recurse -File | Where-Object {
+        $relative = $_.FullName.Substring($extractPath.Length + 1)
+        $relative -cnotin $required -and
+        $relative -cnotmatch '^(Unimake\.DFe\.nuspec|\[Content_Types\]\.xml|_rels\\\.rels|package\\services\\metadata\\core-properties\\[^\\]+\.psmdcp)$'
+    })
+    if ($unexpectedFiles.Count -ne 0) {
+        throw 'O pacote contém arquivos fora dos quatro assets e metadados NuGet previstos.'
+    }
+    Write-Host 'Assets validados: somente lib/netstandard2.0, com os quatro arquivos previstos.' -ForegroundColor Green
+
     $netStandardDll = Join-Path $extractPath 'lib\netstandard2.0\Unimake.Business.DFe.dll'
     $netStandardCiot = Join-Path $extractPath 'lib\netstandard2.0\GeradorCIOTShared.dll'
     Assert-EqualHash $netStandardCiot $script:CiotSourcePath 'GeradorCIOTShared.dll contra a origem'
+    Write-Host 'Hash de GeradorCIOTShared.dll conferido contra a origem.' -ForegroundColor Green
 
     $actualAssemblyVersion = [Reflection.AssemblyName]::GetAssemblyName($netStandardDll).Version
     if ($actualAssemblyVersion -ne [Version]$AssemblyVersion) {

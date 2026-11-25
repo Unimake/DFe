@@ -19,6 +19,7 @@
         <dependency id="Unimake.Utils" version="{{DEPENDENCY_UNIMAKE_UTILS}}" />
         <dependency id="Unimake.Extensions" version="{{DEPENDENCY_UNIMAKE_EXTENSIONS}}" />
         <dependency id="Unimake.Cryptography" version="{{DEPENDENCY_UNIMAKE_CRYPTOGRAPHY}}" />
+        <dependency id="System.Net.Http.Json" version="{{DEPENDENCY_HTTP_JSON}}" />
         <dependency id="System.Net.Http.WinHttpHandler" version="{{DEPENDENCY_WINHTTPHANDLER}}" />
         <dependency id="System.Security.Cryptography.Xml" version="{{DEPENDENCY_CRYPTOGRAPHY_XML}}" />
       </group>
