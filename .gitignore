@@ -513,3 +513,12 @@ MigrationBackup/
 # RAD-01 autorizada: somente evidências finais sanitizadas
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0003/runtime-testes.log
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0003/real-rad01.log
+
+# Correções da revisão AACBS-005: somente logs finais offline
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/testes-interop.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/acesso-winps.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/acesso-pwsh.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/roteiro-offline.log

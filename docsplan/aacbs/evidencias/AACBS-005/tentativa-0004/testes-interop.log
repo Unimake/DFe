@@ -1,0 +1,7 @@
+xUnit.net v3 In-Process Runner v4.0.3+384aa7f0b4 (64-bit .NET 10.0.15)
+  Discovering: Unimake.DFe.Test
+  Discovered:  Unimake.DFe.Test
+  Starting:    Unimake.DFe.Test
+  Finished:    Unimake.DFe.Test (ID = '3e4d634f4f61d47c127c6139116271ae839b138943191f0f54c8be2b73348c4e')
+=== TEST EXECUTION SUMMARY ===
+   Unimake.DFe.Test  Total: 173, Errors: 0, Failed: 0, Skipped: 0, Not Run: 0, Time: 1,879s

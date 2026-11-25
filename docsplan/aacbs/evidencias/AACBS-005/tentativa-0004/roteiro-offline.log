@@ -1,0 +1,23 @@
+Attempting to perform the InitializeDefaultDrives operation on the 'FileSystem' provider failed.
+2026-11-25T14:52:22.2647052+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=AberturaAmbigua origem=simulada correlacao=5d9c25059e5b428c83e64897ca10cc02
+2026-11-25T14:52:22.4516202+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=cece6e1c90614bc4b8d9307cf64dc296
+2026-11-25T14:52:22.5544540+00:00 AACBS-003 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=cece6e1c90614bc4b8d9307cf64dc296
+2026-11-25T14:52:22.5976657+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=JaFinalizada origem=simulada correlacao=cece6e1c90614bc4b8d9307cf64dc296
+2026-11-25T14:52:22.7528545+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=af1d80f132594c12bdc03eaee6b9659c
+2026-11-25T14:52:23.0943808+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=7f34a7a4641b41798c696580477aefad
+2026-11-25T14:52:23.1821951+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=7f34a7a4641b41798c696580477aefad
+2026-11-25T14:52:23.2523118+00:00 AACBS-003 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=7f34a7a4641b41798c696580477aefad
+2026-11-25T14:52:23.2549576+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=JaFinalizada origem=simulada correlacao=7f34a7a4641b41798c696580477aefad
+2026-11-25T14:52:23.3045800+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=35b780de75064fa4a50a0c64196787f1
+2026-11-25T14:52:23.3924761+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=35b780de75064fa4a50a0c64196787f1
+2026-11-25T14:52:23.4491528+00:00 AACBS-004 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=35b780de75064fa4a50a0c64196787f1
+2026-11-25T14:52:23.4506756+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarCreditos estado=JaFinalizada origem=simulada correlacao=35b780de75064fa4a50a0c64196787f1
+2026-11-25T14:52:23.4875555+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=a297c030dc1f4e8483618f8c167438c3
+2026-11-25T14:52:23.5597532+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=a297c030dc1f4e8483618f8c167438c3
+2026-11-25T14:52:23.6099086+00:00 AACBS-004 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=a297c030dc1f4e8483618f8c167438c3
+2026-11-25T14:52:23.6115886+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarPagamentos estado=JaFinalizada origem=simulada correlacao=a297c030dc1f4e8483618f8c167438c3
+2026-11-25T14:52:23.6486688+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=cbfc59cd86994314b78176e0bb00d439
+2026-11-25T14:52:23.7263271+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=cbfc59cd86994314b78176e0bb00d439
+2026-11-25T14:52:23.7785265+00:00 AACBS-004 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=cbfc59cd86994314b78176e0bb00d439
+2026-11-25T14:52:23.7792222+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarRecolhimentos estado=JaFinalizada origem=simulada correlacao=cbfc59cd86994314b78176e0bb00d439
+Verificacoes sinteticas AACBS concluidas. Nenhuma API chamada e nenhum acesso local real importado.

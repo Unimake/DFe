@@ -134,3 +134,11 @@ O DEV solicitou preparar o encerramento técnico e a comunicação à Receita, s
 ## Solicitação enviada pelo DEV — 25/11/2026
 
 Após a revisão do texto para até 5.000 caracteres, o DEV informou: "Enviado, agora temos que aguardar." Encaminhamento registrado como enviado pelo DEV, aguardando resposta; protocolo, horário e canal efetivamente utilizado ainda não informados. Não houve envio pelo Codex, nova chamada fiscal, geração ou alteração dos journals. Estado AACBS-005 mantido BLOCKED nos critérios reais. O envio não equivale à reconciliação ou aprovação de nova tentativa.
+## Correções da revisão consolidada do ticket — 25/11/2026
+
+| Data | Etapa | De | Para | Registro | Tentativa |
+|---|---|---|---|---|---|
+| 2026-11-25 | AACBS-005 | BLOCKED | REWORK | DEV solicitou analisar e corrigir os três achados da revisão do ID #189855. Escopo exclusivamente offline; bloqueios reais preservados | tentativa-0004 |
+| 2026-11-25 | AACBS-005 | REWORK | BLOCKED | Publicação consistente do acesso, verificação compartilhada e preservação de espaços no validador corrigidas. 171 casos Debug/173 INTEROP e testes PowerShell 5.1/7.6 aprovados, roteiro offline aprovado e revisão independente sem achados. Reparos entregues para revisão humana; pendências reais não resolvidas | tentativa-0004 |
+
+A [entrega dos reparos](evidencias/AACBS-005/tentativa-0004/ENTREGA.md) identifica as provas e limitações. A correção não libera consumo, não modifica o acesso real, não reconcilia RAD-01 e não constitui aprovação da etapa. Continuamos aguardando a Receita e as massas elegíveis conforme o encerramento técnico.
