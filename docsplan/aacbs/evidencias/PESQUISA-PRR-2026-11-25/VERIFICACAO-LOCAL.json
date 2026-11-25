@@ -1,0 +1,16 @@
+{
+  "DataLocal": "2026-11-25",
+  "CredentialDpapiReadable": true,
+  "ConfigurationValid": true,
+  "EnvironmentUnchanged": "ProducaoBeta",
+  "DarfDisabled": true,
+  "CachedTokens": 1,
+  "CurrentlyUsableTokens": 0,
+  "AuthAttemptsLastHour": 0,
+  "TokenOpaqueOrNotJwt": true,
+  "PermissionsCouldBeInspectedOffline": false,
+  "PrrAccessProven": false,
+  "JournalUnchanged": true,
+  "HttpRequests": 0,
+  "CredentialRotated": false
+}
