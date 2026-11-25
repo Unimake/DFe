@@ -12,13 +12,13 @@ namespace Unimake.Business.DFe.Servicos.AACBS
     {
         internal static RetBaixarArquivoRetorno ArquivoCreditos(JsonElement json, HttpStatusCode status, Xml.AACBS.BaixarArquivoRetorno envio)
         {
-            var obj = CabecalhoArquivo(json, status, envio);
+            var obj = CabecalhoArquivo(json, status, envio, true);
             return new RetBaixarArquivoRetorno
             {
                 ArquivoCreditos = new RetArquivoCreditos
                 {
                     TiqueteSolicitacao = envio.TiqueteSolicitacao,
-                    Ni = envio.Cnpj,
+                    Ni = obj.Texto("ni"),
                     NiConsumidor = DigitosArquivo(obj, "niConsumidor", 11, 14),
                     GeradoEmField = obj.Instante("geradoEm"),
                     Apuracao = obj.Lista("apuracao", PeriodoCreditos)
@@ -58,7 +58,7 @@ namespace Unimake.Business.DFe.Servicos.AACBS
             };
         }
 
-        private static Objeto CabecalhoArquivo(JsonElement json, HttpStatusCode status, Xml.AACBS.BaixarArquivoRetorno envio)
+        private static Objeto CabecalhoArquivo(JsonElement json, HttpStatusCode status, Xml.AACBS.BaixarArquivoRetorno envio, bool niCompleto = false)
         {
             if (status != HttpStatusCode.OK) throw new CampoInvalidoException("$");
             var obj = new Objeto(json, "$");
@@ -66,7 +66,8 @@ namespace Unimake.Business.DFe.Servicos.AACBS
             var tiquete = obj.Texto("tiqueteSolicitacao");
             if (tiquete.Length == 0 || !string.Equals(tiquete, envio.TiqueteSolicitacao, StringComparison.Ordinal))
                 throw obj.Invalido("tiqueteSolicitacao");
-            if (!string.Equals(DigitosArquivo(obj, "ni", 8), envio.Cnpj, StringComparison.Ordinal))
+            var ni = DigitosArquivo(obj, "ni", 8, niCompleto ? 14 : (int?)null);
+            if (!string.Equals(ni.Substring(0, 8), envio.Cnpj, StringComparison.Ordinal))
                 throw obj.Invalido("ni");
             return obj;
         }

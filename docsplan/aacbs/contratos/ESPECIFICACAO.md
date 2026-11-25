@@ -121,3 +121,5 @@ Cache de token usa identidade derivada irreversível da credencial, ambiente e e
 | COM-09 | Roteiro real lê acesso DPAPI sem valores em comandos/logs, usa cache/cotas e retoma tíquete sem reabrir; PRR e DARF obedecem às restrições aprovadas. |
 
 A AACBS-001 verificou documentalmente completude e consistência, hashes e matrizes; os resultados estão em seu dossiê. Estes casos de implementação permanecem planejados para 002–005. As propostas e limitações acima acompanham a entrega ao DEV; não iniciar a AACBS-002 antes da aprovação.
+
+Em 25/11/2026 o DEV aprovou também NI de 8/14 dígitos no retorno de créditos, preservado integralmente e correlacionado pela raiz do pedido. A alteração permanece local a retArquivoCreditos/ni e ao ramo correspondente do envelope. Envios, pagamentos e recolhimentos não foram ampliados. A AACBS-005 registra a auditoria, as regressões e a validação do original cifrado.

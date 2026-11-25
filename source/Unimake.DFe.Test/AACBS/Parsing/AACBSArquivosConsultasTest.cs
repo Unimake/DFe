@@ -219,14 +219,70 @@ namespace Unimake.DFe.Test.AACBS.Parsing
         }
 
         [Theory]
-        [InlineData(TipoConsultaAACBS.Creditos)]
+        [InlineData(Cnpj, false)]
+        [InlineData(Cnpj, true)]
+        [InlineData("00000001000002", false)]
+        [InlineData("00000001000002", true)]
+        public void CreditosPreservamNiDaMesmaRaizComApuracaoVaziaOuPreenchida(string ni, bool vazio)
+        {
+            const TipoConsultaAACBS familia = TipoConsultaAACBS.Creditos;
+            const string raiz = "retArquivoCreditos";
+            var transporte = new AACBSTransporteControlado();
+            transporte.Enfileirar(HttpStatusCode.OK, ArquivoJsonComNi(familia, $"\"{ni}\"", vazio));
+            using var executor = ApiTransportExecutorFactory.Override(() => transporte);
+            using var baixar = new ServicosAACBS.BaixarArquivoRetorno(CriarPedido(familia), CriarConfiguracao());
+
+            baixar.Executar();
+
+            Assert.Equal(Cnpj, baixar.Envio.Cnpj);
+            ValidarRetorno(baixar, "retBaixarArquivoRetorno");
+            var arquivo = Assert.IsType<RetArquivoCreditos>(SelecionarArquivo(baixar.Result, familia));
+            Assert.Equal(ni, arquivo.Ni);
+            Assert.Equal(vazio ? 0 : 2, arquivo.Apuracao.Count);
+            Assert.Equal(vazio ? 0 : 3, arquivo.Apuracao.Sum(periodo => periodo.Creditos.Count));
+
+            var xml = arquivo.GerarXML();
+            var validacao = AACBSFixture.ValidarSchemaDe(xml, raiz);
+            Assert.True(validacao.Success, validacao.ErrorMessage);
+            Assert.Equal(ni, AACBSFixture.Procurar(xml, "ni").InnerText);
+            Assert.Equal(ni, AACBSFixture.Procurar(baixar.RetornoWSXML, raiz + "/ni").InnerText);
+            var roundTrip = AACBSFixture.Gerar(xml, typeof(RetArquivoCreditos));
+            CompararXml(xml.DocumentElement.OuterXml, roundTrip.DocumentElement.OuterXml);
+            Assert.Single(transporte.Requisicoes);
+        }
+
+        [Theory]
+        [InlineData("\"00000002\"")]
+        [InlineData("\"00000002000001\"")]
+        [InlineData("\"000000010\"")]
+        [InlineData("\"0000000100\"")]
+        [InlineData("\"00000001000\"")]
+        [InlineData("\"000000010000\"")]
+        [InlineData("\"0000000100000\"")]
+        [InlineData("\"000000010000001\"")]
+        [InlineData("\"0000000100000\u0661\"")]
+        [InlineData("\"00000001+00001\"")]
+        [InlineData("\"00000001-00001\"")]
+        [InlineData("\"0000000100000A\"")]
+        [InlineData("\"00000001 \"")]
+        [InlineData("10000000000001")]
+        [InlineData("null")]
+        public void CreditosRejeitamNiInvalidoOuComRaizDivergente(string niJson)
+        {
+            const TipoConsultaAACBS familia = TipoConsultaAACBS.Creditos;
+            RejeitarArquivo(familia, ArquivoJsonComNi(familia, niJson, vazio: true), "$.ni");
+        }
+
+        [Theory]
         [InlineData(TipoConsultaAACBS.Pagamentos)]
         [InlineData(TipoConsultaAACBS.Recolhimentos)]
-        public void NiCompletoPermitidoEmDebitosNaoAmpliaDemaisFamilias(TipoConsultaAACBS familia)
+        public void PagamentosERecolhimentosRejeitamNiDeQuatorzeDigitos(TipoConsultaAACBS familia)
         {
-            var json = ArquivoJson(familia).Replace("\"ni\": \"00000001\"", "\"ni\": \"00000001000001\"", StringComparison.Ordinal);
-            RejeitarArquivo(familia, json, "$.ni");
+            RejeitarArquivo(familia, ArquivoJsonComNi(familia, "\"00000001000001\""), "$.ni");
         }
+
+        private static string ArquivoJsonComNi(TipoConsultaAACBS familia, string niJson, bool vazio = false) =>
+            ArquivoJson(familia, vazio).Replace($"\"ni\": \"{Cnpj}\"", "\"ni\": " + niJson, StringComparison.Ordinal);
 
         [Theory]
         [InlineData(TipoConsultaAACBS.Creditos, TipoConsultaAACBS.Debitos)]

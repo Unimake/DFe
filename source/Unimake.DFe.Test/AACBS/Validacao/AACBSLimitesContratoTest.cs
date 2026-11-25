@@ -15,10 +15,10 @@ namespace Unimake.DFe.Test.AACBS.Validacao
     {
         [Theory]
         [InlineData("retArquivoDebitos", true)]
-        [InlineData("retArquivoCreditos", false)]
+        [InlineData("retArquivoCreditos", true)]
         [InlineData("retArquivoPagamentos", false)]
         [InlineData("retArquivoRecolhimentos", false)]
-        public void SchemasAceitamNiDeQuatorzeDigitosSomenteNosDebitos(string raiz, bool aceitaQuatorze)
+        public void SchemasAceitamNiDeQuatorzeDigitosSomenteNosDebitosECreditos(string raiz, bool aceitaQuatorze)
         {
             var arquivo = AACBSFixture.Carregar(raiz);
             var ni = AACBSFixture.Procurar(arquivo, "ni");
@@ -45,6 +45,47 @@ namespace Unimake.DFe.Test.AACBS.Validacao
             ConferirSchemasDoArquivoEEnvelope(arquivo, raiz, false);
         }
 
+        [Theory]
+        [InlineData("ni", "000000010")]
+        [InlineData("ni", "0000000100")]
+        [InlineData("ni", "00000001000")]
+        [InlineData("ni", "000000010000")]
+        [InlineData("ni", "0000000100000")]
+        [InlineData("ni", "000000010000001")]
+        [InlineData("ni", "0000000100000\u0661")]
+        [InlineData("ni", "00000001+00001")]
+        [InlineData("ni", "00000001-00001")]
+        [InlineData("ni", "0000000100000A")]
+        [InlineData("ni", " 00000001 ")]
+        [InlineData("ni", "00000001000001 ")]
+        [InlineData("ni", "\t00000001000001")]
+        [InlineData("niConsumidor", "00000001")]
+        public void SchemasDeCreditosRejeitamIdentificadorForaDoContrato(string campo, string texto)
+        {
+            const string raiz = "retArquivoCreditos";
+            var arquivo = AACBSFixture.Carregar(raiz);
+            AACBSFixture.Procurar(arquivo, campo).InnerText = texto;
+
+            ConferirSchemasDoArquivoEEnvelope(arquivo, raiz, false);
+        }
+
+        [Theory]
+        [InlineData("consultarDebitos")]
+        [InlineData("consultarCreditos")]
+        [InlineData("consultarPagamentos")]
+        [InlineData("consultarRecolhimentos")]
+        [InlineData("baixarArquivoRetorno")]
+        public void EnviosContinuamExigindoCnpjDeOitoDigitos(string raiz)
+        {
+            var envio = AACBSFixture.Carregar(raiz);
+            var cnpj = AACBSFixture.Procurar(envio, "cnpj");
+            Assert.Equal("00000001", cnpj.InnerText);
+            Assert.True(Validar(envio).Validado);
+
+            cnpj.InnerText = "00000001000001";
+            Assert.False(Validar(envio).Validado);
+        }
+
         private static void ConferirSchemasDoArquivoEEnvelope(XmlDocument arquivo, string raiz, bool sucessoEsperado)
         {
             const string raizEnvelope = "retBaixarArquivoRetorno";
@@ -54,6 +95,8 @@ namespace Unimake.DFe.Test.AACBS.Validacao
 
             Assert.Equal(sucessoEsperado, AACBSFixture.ValidarSchemaDe(arquivo, raiz).Success);
             Assert.Equal(sucessoEsperado, AACBSFixture.ValidarSchemaDe(envelope, raizEnvelope).Success);
+            Assert.Equal(sucessoEsperado, Validar(arquivo).Validado);
+            Assert.Equal(sucessoEsperado, Validar(envelope).Validado);
         }
 
         [Theory]

@@ -10,7 +10,11 @@
   <xs:complexType name="RetArquivoCreditosTipo">
     <xs:sequence>
       <xs:element name="tiqueteSolicitacao" type="TextoNaoVazio"/>
-      <xs:element name="ni" type="Identificacao8"/>
+      <xs:element name="ni">
+        <xs:simpleType>
+          <xs:union memberTypes="Identificacao8 Identificacao14"/>
+        </xs:simpleType>
+      </xs:element>
       <xs:element name="niConsumidor" type="IdentificacaoConsumidor"/>
       <xs:element name="geradoEm" type="InstanteComFuso"/>
       <xs:element name="apuracao">
