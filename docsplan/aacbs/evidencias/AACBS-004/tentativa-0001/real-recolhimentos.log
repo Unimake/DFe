@@ -1,0 +1,3 @@
+2026-11-25T00:59:15.5406677+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarRecolhimentos estado=ContratoIncompativel HTTP=404 correlacao=541d67c187aa43dabd709106256a805c campo=$
+2026-11-25T00:59:15.5686305+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarRecolhimentos estado=AberturaAmbigua HTTP=404 correlacao=541d67c187aa43dabd709106256a805c
+Exception: Abertura de recolhimentos interrompida. O resultado e o orcamento permanecem no journal cifrado.

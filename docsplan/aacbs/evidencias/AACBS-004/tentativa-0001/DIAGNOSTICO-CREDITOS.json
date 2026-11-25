@@ -1,0 +1,22 @@
+{
+  "Correlation": "97448d46a50540beb787a132d7cf4e20",
+  "Environment": "ProducaoBeta",
+  "Family": "Creditos",
+  "AuthenticationRequests": 0,
+  "OpeningRequests": 0,
+  "SituationRequests": 0,
+  "LinkRequests": 1,
+  "DownloadRequests": 1,
+  "LinkHttp": 200,
+  "DownloadHttp": 200,
+  "JsonUtf8Bytes": 8969,
+  "NiKind": "String",
+  "NiLength": 14,
+  "NiOnlyDigits": true,
+  "NiMatchesRoot": true,
+  "NiMatchesConfiguredMatrix": true,
+  "TicketMatches": true,
+  "PeriodCount": 2,
+  "CipherSha256": "13CD64C7D2FAEBEEFE2C606CCEF4623A52602D78E2200EE34FA956E0CE4F4474",
+  "StateJournalUnchanged": true
+}

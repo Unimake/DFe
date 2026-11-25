@@ -9,8 +9,8 @@ Este arquivo é a fonte única dos estados e do histórico das etapas. O escopo 
 | AACBS-000 | Planejamento e revisão das fontes, decisões, requisitos e estratégia de execução | APPROVED | Aprovação explícita do DEV em 24/11/2026 |
 | AACBS-001 | Qualificação das fontes e especificação dos contratos de todas as famílias, campo a campo; autenticação somente documental | APPROVED | Aprovação explícita do DEV, incluindo datas e retorno global RAD |
 | AACBS-002 | Classes XML, XSDs de envio e retorno, validação, integração com recursos da DLL e testes | APPROVED | Aprovação explícita do DEV após correções e nova revisão do ticket |
-| AACBS-003 | Infraestrutura, autenticação, configuração e transporte; débitos com prova offline seguida de ciclo real | DELIVERED_FOR_REVIEW | Contexto OAuth corrigido; 344 testes Debug/347 INTEROP aprovados; aguarda DEV |
-| AACBS-004 | Créditos, pagamentos, recolhimentos e DARF RAD/PCONT; cobertura integral e provas reais incrementais | PLANNED | AACBS-003 APPROVED |
+| AACBS-003 | Infraestrutura, autenticação, configuração e transporte; débitos com prova offline seguida de ciclo real | APPROVED | Aprovação explícita do DEV em 24/11/2026, liberando AACBS-004 |
+| AACBS-004 | Créditos, pagamentos, recolhimentos e DARF RAD/PCONT; cobertura integral e provas reais incrementais | BLOCKED | Três achados corrigidos e validados offline; pendências reais de NI, HTTP 404 e cenários DARF preservadas |
 | AACBS-005 | Consolidação dos resultados reais, INTEROP, pacote, documentação de uso, revisão e entrega final | PLANNED | AACBS-004 APPROVED |
 
 ## Estados
@@ -71,9 +71,19 @@ Cada etapa usa `evidencias/<etapa>/tentativa-NNNN/ENTREGA.md`, seguindo [EVIDENC
 | 2026-11-24 | AACBS-003 | DELIVERED_FOR_REVIEW | REWORK | DEV solicitou corrigir o achado da nova revisão: falha da autenticação auxiliar atribuída à consulta de débitos e campo scope vazio sem caminho específico | tentativa-0003 |
 | 2026-11-24 | AACBS-003 | REWORK | IN_PROGRESS | Correção de contexto OAuth e testes controlados; sem chamadas reais ou início da 004 | tentativa-0003 |
 | 2026-11-24 | AACBS-003 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Achado OAuth corrigido, 3 regressões novas, 344 testes Debug/347 INTEROP aprovados e 119 hashes estáveis; revisão independente concluída, sem novas chamadas reais | tentativa-0003 |
+| 2026-11-24 | AACBS-003 | DELIVERED_FOR_REVIEW | APPROVED | DEV: Aprovo a AACBS-003 e libero a execução da AACBS-004. Consultas reais Beta autorizadas; confirmar cenário/parâmetros antes de qualquer DARF | tentativa-0003 |
+| 2026-11-24 | AACBS-004 | PLANNED | IN_PROGRESS | Implementação das demais famílias e dois DARFs, prova offline seguida de consultas reais Beta. Emissão DARF ainda não autorizada por cenário | tentativa-0001 |
+| 2026-11-24 | AACBS-004 | IN_PROGRESS | BLOCKED | 428 testes Debug/436 INTEROP e roteiro offline aprovados. Créditos concluídos remotamente mas NI 14 diverge do contrato 8; original cifrado e proposta aguardam DEV. Pagamentos/recolhimentos deram 404, sem replay. DARFs aguardam dados e confirmação específica antes de emissão; 005 não iniciada | tentativa-0001 |
+| 2026-11-25 | AACBS-004 | BLOCKED | REWORK | DEV solicitou analisar e corrigir os três achados da revisão das alterações pendentes | tentativa-0002 |
+| 2026-11-25 | AACBS-004 | REWORK | IN_PROGRESS | Correção de resolução do checkout, filtro OAuth e testes de webhook; sem chamadas reais e sem presumir decisões pendentes | tentativa-0002 |
+| 2026-11-25 | AACBS-004 | IN_PROGRESS | BLOCKED | Três achados corrigidos: 21 testes Debug/26 INTEROP da classe afetada e roteiro offline passaram; revisão independente e 131 hashes + 2 externos estáveis. Sem chamadas reais. Bloqueios anteriores de NI, HTTP 404 e cenários DARF preservados | tentativa-0002 |
 
-AACBS-000, AACBS-001 e AACBS-002 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-003 entregue com prova real Beta e aguardando revisão humana. A aprovação pontual do NI 8/14 foi uma decisão de contrato e não substitui a aprovação da etapa. AACBS-004 e AACBS-005 permanecem pendentes. Os resultados reais e a limitação da massa vazia estão no [dossiê](evidencias/AACBS-003/tentativa-0001/ENTREGA.md); a [pesquisa dos ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) conserva a limitação da rota PRR.
+AACBS-000, AACBS-001 e AACBS-002 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-003 aprovada pelo DEV após revisão e correções. A aprovação pontual do NI 8/14 foi uma decisão de contrato e não substitui a aprovação da etapa. AACBS-004 está bloqueada nas condições documentadas; AACBS-005 permanece pendente. Os resultados reais e a limitação da massa vazia estão no [dossiê](evidencias/AACBS-003/tentativa-0001/ENTREGA.md); a [pesquisa dos ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) conserva a limitação da rota PRR.
 
 O [retrabalho da AACBS-003](evidencias/AACBS-003/tentativa-0002/ENTREGA.md) consolida as quatro correções anteriores e sua validação offline. A prova real da tentativa-0001 permanece histórica; não houve novo consumo real no retrabalho.
 
-A entrega corrente está na [tentativa-0003](evidencias/AACBS-003/tentativa-0003/ENTREGA.md): correção do diagnóstico OAuth auxiliar e testes controlados concluídos; aguarda aprovação humana da AACBS-003. Não houve novas chamadas reais.
+A entrega corrente está na [tentativa-0003](evidencias/AACBS-003/tentativa-0003/ENTREGA.md): correção do diagnóstico OAuth auxiliar e testes controlados concluídos; aprovada explicitamente pelo DEV. Não houve novas chamadas reais.
+
+AACBS-004 alcançou o limite dos testes reais atualmente qualificáveis. A [entrega parcial e condições de retomada](evidencias/AACBS-004/tentativa-0001/ENTREGA.md) registram os impedimentos e as perguntas pendentes ao DEV. A etapa não está aprovada nem concluída; nenhuma emissão DARF ou repetição de abertura foi executada.
+
+As [correções da revisão AACBS-004](evidencias/AACBS-004/tentativa-0002/ENTREGA.md) foram concluídas offline em 25/11/2026. Isso não dispensa as condições reais da tentativa-0001 nem aprova a etapa.

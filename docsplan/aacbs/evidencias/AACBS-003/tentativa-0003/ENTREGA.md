@@ -38,3 +38,5 @@ Todos os checks passaram na primeira execução desta tentativa. Não houve nece
 ## Gate humano
 
 Correção entregue para revisão em 24/11/2026. Aprovação do DEV: AGUARDANDO. A aprovação técnica dos agentes não libera a AACBS-004. Novo retrabalho após esta entrega deverá abrir tentativa-0004, preservando o histórico; reversão deve retirar apenas estes três incrementos e os registros correspondentes, mantendo a implementação anterior e alterações externas. Nenhuma reversão executada.
+
+Aprovação recebida em 24/11/2026: DEV aprovou AACBS-003 e liberou AACBS-004, com consultas reais em Produção Beta e confirmação específica antes de emitir DARF. Transição registrada no PDCA.

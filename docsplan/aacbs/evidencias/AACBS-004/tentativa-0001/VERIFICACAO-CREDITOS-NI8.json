@@ -1,0 +1,20 @@
+{
+  "Family": "Creditos",
+  "Mode": "Offline",
+  "CipherHashMatchesDiagnostic": true,
+  "OriginalRejectedAtNi": true,
+  "RootNiOnlySubstitution": true,
+  "SourceNiLength": 14,
+  "DiagnosticNiLength": 8,
+  "OtherJsonPropertiesEquivalent": true,
+  "ParserAccepted": true,
+  "SchemaAndContentValidated": true,
+  "PeriodCount": 2,
+  "CreditItemCount": 27,
+  "ResultCountsMatchOriginal": true,
+  "OriginalCipherUnchanged": true,
+  "NetworkRequests": 0,
+  "OperationalXmlWritten": false,
+  "JournalWrites": 0,
+  "LibrarySha256": "3A7E6B58112DFD656A6BD8C920BA289FE35DC182FBA0B441EF123F9C4FFEB9B2"
+}

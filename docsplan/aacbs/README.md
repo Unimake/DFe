@@ -44,3 +44,9 @@ O retrabalho aprovado dos quatro achados do ticket ID #189855 está na [tentativ
 Os quatro achados da revisão da AACBS-003 foram corrigidos na [tentativa-0002](evidencias/AACBS-003/tentativa-0002/ENTREGA.md): 341 testes Debug, 344 INTEROP, 132 regressões e roteiro offline aprovados, com conferência nativa de COM. A etapa aguarda aprovação humana. Esta rodada não fez novas chamadas reais.
 
 A [tentativa-0003](evidencias/AACBS-003/tentativa-0003/ENTREGA.md) corrige o diagnóstico da autenticação auxiliar, com três regressões novas e 344 testes Debug/347 INTEROP aprovados. É a entrega corrente para revisão humana da AACBS-003; a AACBS-004 continua pendente.
+
+O DEV aprovou AACBS-003 e liberou AACBS-004 em 24/11/2026. A execução corrente das demais consultas e dois serviços DARF está na [AACBS-004](evidencias/AACBS-004/tentativa-0001/ENTREGA.md); o [roteiro de consultas](scripts/ROTEIRO-AACBS004.md) separa famílias e preserva o journal anterior. Antes de qualquer emissão RAD/PCONT, o cenário e os parâmetros serão confirmados com o DEV.
+
+A AACBS-004 passou nos testes offline (428 Debug/436 INTEROP), mas está BLOCKED nos critérios reais: compatibilidade NI de créditos aguardando decisão, pagamentos/recolhimentos com HTTP 404 e cenários DARF por confirmar. As condições de retomada estão no dossiê e no PDCA; a AACBS-005 não foi iniciada.
+
+Em 25/11/2026, os três achados da revisão da AACBS-004 foram corrigidos: resolução do checkout principal, campos OAuth com sublinhado e nove combinações de webhook. A [tentativa-0002](evidencias/AACBS-004/tentativa-0002/ENTREGA.md) registra 21 testes Debug/26 INTEROP da classe afetada e roteiro offline aprovados, sem novas chamadas reais. Os impedimentos reais e o gate da AACBS-005 permanecem.

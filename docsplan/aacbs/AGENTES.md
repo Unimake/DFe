@@ -15,7 +15,7 @@ Este documento define papéis e instruções reutilizáveis para executar o plan
 
 ## Autonomia de testes e execução real
 
-O DEV aprovou a AACBS-000, a AACBS-001 (incluindo datas e retorno global RAD) e a AACBS-002 após correções e nova revisão, liberando a AACBS-003 em 24/11/2026; o PDCA registra as transições. Conferir credenciais localmente não solicita token nem executa negócio. A AACBS-003 entregou autenticação, harness e ciclo real de débitos em Beta e aguarda revisão humana; o estado corrente permanece no PDCA.
+O DEV aprovou a AACBS-000, a AACBS-001 (incluindo datas e retorno global RAD) e a AACBS-002 após correções e nova revisão, liberando a AACBS-003 em 24/11/2026; o PDCA registra as transições. Conferir credenciais localmente não solicita token nem executa negócio. A AACBS-003 foi aprovada após entregar autenticação, harness e ciclo real de débitos em Beta; a AACBS-004 está liberada para consultas reais Beta e qualquer emissão DARF exige confirmação prévia do cenário/parâmetros pelo DEV; o estado corrente permanece no PDCA.
 
 Dentro de uma etapa já liberada pelo DEV, o orquestrador pode executar os testes previstos, corrigir falhas e repetir os checks afetados sem pedir confirmação para cada comando ou chamada. Essa autonomia respeita os contratos qualificados, o contribuinte, o ambiente, as operações e o orçamento de chamadas definidos para a etapa. Credenciais disponíveis não liberam sucessoras nem ampliam o escopo.
 

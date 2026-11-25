@@ -1,0 +1,8 @@
+2026-11-25T00:58:09.2864736+00:00 AACBS-004 ambiente=ProducaoBeta operacao=Autenticar estado=RespostaInterpretada HTTP=200
+2026-11-25T00:58:10.4571656+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarCreditos estado=RespostaInterpretada HTTP=201 correlacao=97448d46a50540beb787a132d7cf4e20
+2026-11-25T00:58:10.4981467+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando correlacao=97448d46a50540beb787a132d7cf4e20
+2026-11-25T01:00:31.5382545+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=RespostaInterpretada HTTP=200 correlacao=97448d46a50540beb787a132d7cf4e20
+2026-11-25T01:00:31.5904207+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 correlacao=97448d46a50540beb787a132d7cf4e20
+2026-11-25T01:00:32.0601412+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarLinkDownload estado=RespostaInterpretada HTTP=200 correlacao=97448d46a50540beb787a132d7cf4e20
+2026-11-25T01:00:32.3495449+00:00 AACBS-004 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=ContratoIncompativel HTTP=200 correlacao=97448d46a50540beb787a132d7cf4e20 campo=$.ni
+Exception: Download de creditos sem arquivo valido. O link foi descartado.
