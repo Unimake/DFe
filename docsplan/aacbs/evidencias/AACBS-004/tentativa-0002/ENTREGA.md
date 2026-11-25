@@ -43,3 +43,5 @@ Orquestrador: resolução do checkout, filtros do módulo e documentação/evid�
 Os três achados estão tratados. AACBS-004 permanece BLOCKED exclusivamente nas condições reais documentadas antes desta correção: decisão NI 8/14 para créditos, qualificação dos HTTP 404 de pagamentos/recolhimentos e dados/confirmação específica de cenário DARF. Nada disso foi tratado como autorização por presunção ou tempo decorrido. A AACBS-005 permanece PLANNED.
 
 Novo retrabalho após esta entrega abre tentativa-0003. Se uma reversão for solicitada, retirar somente os quatro deltas desta tentativa e seus registros, preservando a implementação anterior e alterações externas; nenhuma reversão foi executada. O PDCA registra o início do retrabalho e o retorno ao bloqueio real após a correção offline. Aprovação da AACBS-004: AGUARDANDO, sem pedido de avanço enquanto seus critérios obrigatórios estiverem pendentes.
+
+Aprovação posterior em 25/11/2026: DEV aprovou AACBS-004 e liberou AACBS-005. A aprovação foi registrada no PDCA, preservando os resultados e limitações históricas; não foi uma confirmação específica de cenário de emissão DARF nem uma decisão explícita de NI de créditos.

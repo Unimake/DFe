@@ -1,0 +1,26 @@
+Attempting to perform the InitializeDefaultDrives operation on the 'FileSystem' provider failed.
+2026-11-25T09:53:54.6907200+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=AberturaAmbigua origem=simulada correlacao=b2ff2023386b4d1eb2127eecfa4c368a
+2026-11-25T09:53:54.8517719+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=5581db4723b94d9fb5e5674116ff5c84
+2026-11-25T09:53:54.9332525+00:00 AACBS-003 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=5581db4723b94d9fb5e5674116ff5c84
+2026-11-25T09:53:54.9701938+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=JaFinalizada origem=simulada correlacao=5581db4723b94d9fb5e5674116ff5c84
+2026-11-25T09:53:55.1204915+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=462f0fd5ab6d411682fa816bcbd0ccae
+2026-11-25T09:53:55.3702708+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=40db967e142e4c58aba7bfdd955d321f
+2026-11-25T09:53:55.4670423+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=40db967e142e4c58aba7bfdd955d321f
+2026-11-25T09:53:55.5284135+00:00 AACBS-003 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=40db967e142e4c58aba7bfdd955d321f
+2026-11-25T09:53:55.5291699+00:00 AACBS-003 ambiente=ProducaoBeta operacao=ConsultarDebitos estado=JaFinalizada origem=simulada correlacao=40db967e142e4c58aba7bfdd955d321f
+2026-11-25T09:53:55.5722035+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=533e55d9d7c6462b9e5aae5cbbb3e0b9
+2026-11-25T09:53:55.6537675+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=533e55d9d7c6462b9e5aae5cbbb3e0b9
+2026-11-25T09:53:55.7051500+00:00 AACBS-004 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=533e55d9d7c6462b9e5aae5cbbb3e0b9
+2026-11-25T09:53:55.7057503+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarCreditos estado=JaFinalizada origem=simulada correlacao=533e55d9d7c6462b9e5aae5cbbb3e0b9
+2026-11-25T09:53:55.7420489+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=76c5401264a34a7fa5f32d0a8ebf5fdb
+2026-11-25T09:53:55.8243721+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=76c5401264a34a7fa5f32d0a8ebf5fdb
+2026-11-25T09:53:55.8837350+00:00 AACBS-004 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=76c5401264a34a7fa5f32d0a8ebf5fdb
+2026-11-25T09:53:55.8843940+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarPagamentos estado=JaFinalizada origem=simulada correlacao=76c5401264a34a7fa5f32d0a8ebf5fdb
+2026-11-25T09:53:55.9291837+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=JanelaAguardando origem=simulada correlacao=66e404cf5f11485cb0cf5c75c77394e1
+2026-11-25T09:53:56.0157830+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarSituacaoSolicitacao estado=Concluida HTTP=200 origem=simulada correlacao=66e404cf5f11485cb0cf5c75c77394e1
+2026-11-25T09:53:56.0847393+00:00 AACBS-004 ambiente=ProducaoBeta operacao=BaixarArquivoRetorno estado=Finalizada HTTP=200 origem=simulada correlacao=66e404cf5f11485cb0cf5c75c77394e1
+2026-11-25T09:53:56.0859811+00:00 AACBS-004 ambiente=ProducaoBeta operacao=ConsultarRecolhimentos estado=JaFinalizada origem=simulada correlacao=66e404cf5f11485cb0cf5c75c77394e1
+System.Text.Json do PowerShell 10.0.0.0; System.Text.Json da DLL 11.0.0.0.
+A DLL executou o ciclo AACBS sintetico no mesmo contexto isolado do roteiro, com transporte controlado.
+Verificacoes sinteticas AACBS concluidas. Nenhuma API chamada e nenhum acesso local real importado.
+EXITCODE=0

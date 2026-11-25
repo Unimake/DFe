@@ -494,3 +494,12 @@ MigrationBackup/
 !/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/roteiro-offline.log
 !/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/build-interop.log
 !/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/testes-interop.log
+
+# AACBS-005: logs finais sanitizados de validação e pacote oficial
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/roteiro-offline.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/manifesto-pacote.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/testes-interop.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/pacote-dryrun.log

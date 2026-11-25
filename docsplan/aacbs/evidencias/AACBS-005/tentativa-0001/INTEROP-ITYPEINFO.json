@@ -1,0 +1,464 @@
+{
+    "Stage":  "AACBS-005",
+    "Mode":  "WindowsPowerShell-.NETFramework-x64",
+    "Source":  "CLR-ITypeInfo/FUNCDESC",
+    "InteropDllSha256":  "EFC0ED03A8318885D1673A3DD0785D8ABC6CE1FE54A9B9E853BE66083BF77AAE",
+    "WindowsPowerShellVersion":  "5.1.26100.9818",
+    "ClrVersion":  "4.0.30319.42000",
+    "RegistrationPerformed":  false,
+    "BusinessInvocations":  0,
+    "ConfiguracaoInterfaceId":  "2e5c708e-81fc-30ad-a352-b0e995ec097f",
+    "ConfiguracaoFunctionCount":  204,
+    "AACBSTokenHidden":  true,
+    "ClientSecret":  [
+                         {
+                             "Name":  "ClientSecret",
+                             "DispId":  1610743976,
+                             "Offset":  1400,
+                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                             "NativeParameterCount":  0,
+                             "ParameterTypes":  [
+
+                                                ],
+                             "ReturnType":  null
+                         },
+                         {
+                             "Name":  "ClientSecret",
+                             "DispId":  1610743976,
+                             "Offset":  1408,
+                             "InvokeKind":  "INVOKE_PROPERTYPUT",
+                             "NativeParameterCount":  1,
+                             "ParameterTypes":  [
+
+                                                ],
+                             "ReturnType":  null
+                         }
+                     ],
+    "ProvedorCIOT":  [
+                         {
+                             "Name":  "ProvedorCIOT",
+                             "DispId":  1610743978,
+                             "Offset":  1416,
+                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                             "NativeParameterCount":  0,
+                             "ParameterTypes":  [
+
+                                                ],
+                             "ReturnType":  null
+                         },
+                         {
+                             "Name":  "ProvedorCIOT",
+                             "DispId":  1610743978,
+                             "Offset":  1424,
+                             "InvokeKind":  "INVOKE_PROPERTYPUT",
+                             "NativeParameterCount":  1,
+                             "ParameterTypes":  [
+
+                                                ],
+                             "ReturnType":  null
+                         }
+                     ],
+    "ServiceCount":  10,
+    "Services":  [
+                     {
+                         "Operation":  "Autenticar",
+                         "InterfaceId":  "823404ce-f329-33dc-91ab-1ba9e1f5aa2c",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_Autenticar)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_Autenticar)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetAutenticar)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "ConsultarDebitos",
+                         "InterfaceId":  "7bc4d892-2e94-3982-8ba6-4be936f2dd26",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarDebitos)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarDebitos)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetConsultarDebitos)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "ConsultarCreditos",
+                         "InterfaceId":  "2b2861bc-1801-3ed3-8c3d-321f4ac6611c",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarCreditos)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarCreditos)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetConsultarCreditos)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "ConsultarPagamentos",
+                         "InterfaceId":  "0b1b95f4-a67b-3471-9a04-8e021c2db3b6",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarPagamentos)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarPagamentos)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetConsultarPagamentos)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "ConsultarRecolhimentos",
+                         "InterfaceId":  "49e94513-3f13-32c6-bc81-fac2b869bc74",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarRecolhimentos)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarRecolhimentos)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetConsultarRecolhimentos)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "ConsultarSituacaoSolicitacao",
+                         "InterfaceId":  "e2c54d7c-e77f-382f-825d-5584046d3700",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarSituacaoSolicitacao)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarSituacaoSolicitacao)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetConsultarSituacaoSolicitacao)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "ConsultarLinkDownload",
+                         "InterfaceId":  "d6cc185e-b1df-33ea-8084-8850eeeecc85",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarLinkDownload)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_ConsultarLinkDownload)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetConsultarLinkDownload)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "BaixarArquivoRetorno",
+                         "InterfaceId":  "c8fcf866-2b20-3010-900a-0fee88ab1600",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_BaixarArquivoRetorno)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_BaixarArquivoRetorno)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetBaixarArquivoRetorno)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "GerarDarfAdquirente",
+                         "InterfaceId":  "6230dc76-6f96-38e9-ac41-db3708a38399",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_GerarDarfAdquirente)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_GerarDarfAdquirente)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetGerarDarfAdquirente)"
+                                         }
+                                     ]
+                     },
+                     {
+                         "Operation":  "GerarDarfContribuinte",
+                         "InterfaceId":  "bc6f6fc1-fc18-34d3-bb7e-430979ab4ce9",
+                         "Members":  [
+                                         {
+                                             "Name":  "Executar",
+                                             "DispId":  1610743830,
+                                             "Offset":  232,
+                                             "InvokeKind":  "INVOKE_FUNC",
+                                             "NativeParameterCount":  2,
+                                             "ParameterTypes":  [
+                                                                    "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_GerarDarfContribuinte)",
+                                                                    "VT_PTR(_Configuracao)"
+                                                                ],
+                                             "ReturnType":  "VT_VOID"
+                                         },
+                                         {
+                                             "Name":  "Envio",
+                                             "DispId":  1610743831,
+                                             "Offset":  240,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_Unimake_Business_DFe_Xml_AACBS_GerarDarfContribuinte)"
+                                         },
+                                         {
+                                             "Name":  "Result",
+                                             "DispId":  1610743832,
+                                             "Offset":  248,
+                                             "InvokeKind":  "INVOKE_PROPERTYGET",
+                                             "NativeParameterCount":  0,
+                                             "ParameterTypes":  [
+
+                                                                ],
+                                             "ReturnType":  "VT_PTR(_RetGerarDarfContribuinte)"
+                                         }
+                                     ]
+                     }
+                 ]
+}

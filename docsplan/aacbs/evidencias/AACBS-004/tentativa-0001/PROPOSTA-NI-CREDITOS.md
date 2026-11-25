@@ -15,3 +15,5 @@ Proposta submetida ao DEV:
 - Validar o JSON original cifrado, sem substituir campos, depois da correção aprovada; não repetir abertura. Resultado real válido com itens será documentado por contagens e booleans estruturais, sem payload identificável versionado.
 
 Até a decisão explícita, o contrato e os testes continuam exigindo oito dígitos para créditos. Nenhum XML normalizado artificialmente conta como entrega operacional ou prova de compatibilidade com o original.
+
+Decisão posterior em 25/11/2026: DEV aprovou explicitamente a compatibilidade NI 8/14 em créditos. A aplicação e a validação do original permanecem registradas na AACBS-005, preservando o resultado histórico desta proposta.

@@ -10,8 +10,8 @@ Este arquivo é a fonte única dos estados e do histórico das etapas. O escopo 
 | AACBS-001 | Qualificação das fontes e especificação dos contratos de todas as famílias, campo a campo; autenticação somente documental | APPROVED | Aprovação explícita do DEV, incluindo datas e retorno global RAD |
 | AACBS-002 | Classes XML, XSDs de envio e retorno, validação, integração com recursos da DLL e testes | APPROVED | Aprovação explícita do DEV após correções e nova revisão do ticket |
 | AACBS-003 | Infraestrutura, autenticação, configuração e transporte; débitos com prova offline seguida de ciclo real | APPROVED | Aprovação explícita do DEV em 24/11/2026, liberando AACBS-004 |
-| AACBS-004 | Créditos, pagamentos, recolhimentos e DARF RAD/PCONT; cobertura integral e provas reais incrementais | BLOCKED | Três achados corrigidos e validados offline; pendências reais de NI, HTTP 404 e cenários DARF preservadas |
-| AACBS-005 | Consolidação dos resultados reais, INTEROP, pacote, documentação de uso, revisão e entrega final | PLANNED | AACBS-004 APPROVED |
+| AACBS-004 | Créditos, pagamentos, recolhimentos e DARF RAD/PCONT; cobertura integral e provas reais incrementais | APPROVED | Aprovação explícita do DEV em 25/11/2026; limitações reais registradas para consolidação na 005 |
+| AACBS-005 | Consolidação dos resultados reais, INTEROP, pacote, documentação de uso, revisão e entrega final | DELIVERED_FOR_REVIEW | Validação técnica concluída em 25/11/2026; limitações materiais reais submetidas ao DEV, sem presumir emissão DARF |
 
 ## Estados
 
@@ -77,13 +77,25 @@ Cada etapa usa `evidencias/<etapa>/tentativa-NNNN/ENTREGA.md`, seguindo [EVIDENC
 | 2026-11-25 | AACBS-004 | BLOCKED | REWORK | DEV solicitou analisar e corrigir os três achados da revisão das alterações pendentes | tentativa-0002 |
 | 2026-11-25 | AACBS-004 | REWORK | IN_PROGRESS | Correção de resolução do checkout, filtro OAuth e testes de webhook; sem chamadas reais e sem presumir decisões pendentes | tentativa-0002 |
 | 2026-11-25 | AACBS-004 | IN_PROGRESS | BLOCKED | Três achados corrigidos: 21 testes Debug/26 INTEROP da classe afetada e roteiro offline passaram; revisão independente e 131 hashes + 2 externos estáveis. Sem chamadas reais. Bloqueios anteriores de NI, HTTP 404 e cenários DARF preservados | tentativa-0002 |
+| 2026-11-25 | AACBS-004 | BLOCKED | APPROVED | DEV: Aprovo a AACBS-004 e libero a execução da AACBS-005. Limitações reais permanecem documentadas; não há confirmação específica de NI ou cenário de emissão DARF nessa mensagem | tentativa-0002 |
+| 2026-11-25 | AACBS-005 | PLANNED | IN_PROGRESS | Consolidação, documentação de uso, smoke tests, compatibilidade e empacotamento oficial DryRun; nenhuma nova abertura/emissão por iniciativa da consolidação | tentativa-0001 |
 
-AACBS-000, AACBS-001 e AACBS-002 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-003 aprovada pelo DEV após revisão e correções. A aprovação pontual do NI 8/14 foi uma decisão de contrato e não substitui a aprovação da etapa. AACBS-004 está bloqueada nas condições documentadas; AACBS-005 permanece pendente. Os resultados reais e a limitação da massa vazia estão no [dossiê](evidencias/AACBS-003/tentativa-0001/ENTREGA.md); a [pesquisa dos ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) conserva a limitação da rota PRR.
+AACBS-000, AACBS-001 e AACBS-002 aprovadas explicitamente pelo DEV; tentativas anteriores preservadas. AACBS-003 aprovada pelo DEV após revisão e correções. A aprovação pontual do NI 8/14 foi uma decisão de contrato e não substitui a aprovação da etapa. AACBS-004 foi aprovada pelo DEV em 25/11/2026, e AACBS-005 foi entregue para revisão humana; as limitações reais permanecem documentadas. Os resultados reais e a limitação da massa vazia estão no [dossiê](evidencias/AACBS-003/tentativa-0001/ENTREGA.md); a [pesquisa dos ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) conserva a limitação da rota PRR.
 
 O [retrabalho da AACBS-003](evidencias/AACBS-003/tentativa-0002/ENTREGA.md) consolida as quatro correções anteriores e sua validação offline. A prova real da tentativa-0001 permanece histórica; não houve novo consumo real no retrabalho.
 
 A entrega corrente está na [tentativa-0003](evidencias/AACBS-003/tentativa-0003/ENTREGA.md): correção do diagnóstico OAuth auxiliar e testes controlados concluídos; aprovada explicitamente pelo DEV. Não houve novas chamadas reais.
 
-AACBS-004 alcançou o limite dos testes reais atualmente qualificáveis. A [entrega parcial e condições de retomada](evidencias/AACBS-004/tentativa-0001/ENTREGA.md) registram os impedimentos e as perguntas pendentes ao DEV. A etapa não está aprovada nem concluída; nenhuma emissão DARF ou repetição de abertura foi executada.
+Na tentativa-0001, a AACBS-004 alcançou o limite dos testes reais então qualificáveis. A [entrega parcial e condições de retomada](evidencias/AACBS-004/tentativa-0001/ENTREGA.md) registra os impedimentos daquela rodada; a aprovação posterior está no histórico abaixo. Nenhuma emissão DARF ou repetição de abertura foi executada.
 
-As [correções da revisão AACBS-004](evidencias/AACBS-004/tentativa-0002/ENTREGA.md) foram concluídas offline em 25/11/2026. Isso não dispensa as condições reais da tentativa-0001 nem aprova a etapa.
+As [correções da revisão AACBS-004](evidencias/AACBS-004/tentativa-0002/ENTREGA.md) foram concluídas offline em 25/11/2026. Essas correções, por si, não dispensaram as condições reais da tentativa-0001; a aprovação posterior pertence ao DEV e está registrada abaixo.
+
+O DEV aprovou expressamente a AACBS-004 em 25/11/2026 e liberou a AACBS-005. Os registros históricos de bloqueio foram preservados. As limitações reais são transferidas à matriz final, sem declarar testes não executados como aprovados; decisões específicas pendentes continuam identificadas.
+
+Decisão específica recebida em 25/11/2026 durante AACBS-005: DEV aprovou NI 8/14 somente no retorno de créditos, preservando o valor integral e a raiz do pedido. Implementação e validação do original cifrado pertencem à tentativa-0001 da AACBS-005; essa decisão não autoriza emissões DARF.
+
+| Data | Etapa | De | Para | Registro | Tentativa |
+|---|---|---|---|---|---|
+| 2026-11-25 | AACBS-005 | IN_PROGRESS | DELIVERED_FOR_REVIEW | NI 8/14 de créditos aprovado e original integral validado: 2 PAs/27 créditos, XML cifrado/journal finalizado, zero HTTP novo. 499 testes Debug/509 INTEROP, COM nativo dez operações, pacote oficial DryRun e revisão independente concluídos. Pagamentos/recolhimentos 404 e DARFs sem cenário confirmado permanecem lacunas reais, submetidas ao DEV | tentativa-0001 |
+
+A [entrega da AACBS-005](evidencias/AACBS-005/tentativa-0001/ENTREGA.md), o [guia de uso](uso/README.md) e a [matriz final](evidencias/AACBS-005/tentativa-0001/MATRIZ-ACEITE-FINAL.md) estão disponíveis para revisão humana. Nenhum critério real pendente foi contado como sucesso. A aprovação pertence exclusivamente ao DEV; emissão real DARF continua sujeita à confirmação do cenário e dos parâmetros.

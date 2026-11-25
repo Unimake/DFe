@@ -33,20 +33,16 @@ Uma aprovação explícita do DEV da etapa N libera a etapa N+1, conforme sua in
 | AACBS-004 | Demais consultas e dois DARFs, com cobertura controlada integral e testes reais incrementais dos cenários habilitados. |
 | AACBS-005 | Consolidação das evidências reais, compatibilidade, empacotamento oficial, documentação e revisão final. |
 
-AACBS-000, AACBS-001 e AACBS-002 foram aprovadas. A AACBS-002 entrega 24 raízes XML, 25 XSDs, validação central/de conteúdo e testes offline. As propostas de datas e retorno global RAD foram aceitas pelo DEV. A AACBS-003 foi entregue para revisão humana com autenticação e ciclo real de débitos em Produção Beta concluídos, incluindo a compatibilidade NI 8/14 aprovada. O retorno real veio vazio; cenários com itens foram testados offline. Ver o PDCA e o [dossiê da etapa](evidencias/AACBS-003/tentativa-0001/ENTREGA.md). Este trabalho não publica pacote nem altera UniNFe ou PRO.
+AACBS-000 a AACBS-004 foram aprovadas pelo DEV. A AACBS-005 foi entregue para revisão humana: 499 testes Debug, 509 INTEROP, compatibilidade NI de créditos aprovada em 25/11/2026 e original com 27 créditos validado sem nova chamada remota, COM nativo e pacote oficial em DryRun. A prova real de pagamentos/recolhimentos e DARFs permanece limitada conforme a matriz. O [guia de uso](uso/README.md) reúne os dez serviços e 24 XMLs sintéticos. O [dossiê corrente](evidencias/AACBS-005/tentativa-0001/ENTREGA.md) separa resultados comprovados e limitações reais. O PDCA mantém o estado e todas as transições.
 
-## Evidências
+## Evidências e histórico
 
-A entrega da AACBS-002 está em [evidencias/AACBS-002/tentativa-0001/ENTREGA.md](evidencias/AACBS-002/tentativa-0001/ENTREGA.md), com o checkpoint de código, os 292 testes aprovados e os logs de build. A [entrega aprovada da AACBS-001](evidencias/AACBS-001/tentativa-0001/ENTREGA.md), a [revisão aprovada da AACBS-000](evidencias/AACBS-000/tentativa-0002/ENTREGA.md) e o [dossiê inicial](evidencias/AACBS-000/tentativa-0001/ENTREGA.md) permanecem como histórico. Logs adicionais só entram quando ajudam a comprovar o resultado; segredos e dados fiscais identificáveis não pertencem às evidências.
+- AACBS-000: [plano inicial](evidencias/AACBS-000/tentativa-0001/ENTREGA.md) e [revisão das fontes e acesso](evidencias/AACBS-000/tentativa-0002/ENTREGA.md).
+- AACBS-001: [contratos qualificados](evidencias/AACBS-001/tentativa-0001/ENTREGA.md).
+- AACBS-002: [serialização e XSDs](evidencias/AACBS-002/tentativa-0001/ENTREGA.md) e [correções do ticket ID #189855](evidencias/AACBS-002/tentativa-0002/ENTREGA.md).
+- AACBS-003: [ciclo real de débitos](evidencias/AACBS-003/tentativa-0001/ENTREGA.md), [correções e compatibilidade COM](evidencias/AACBS-003/tentativa-0002/ENTREGA.md) e [diagnóstico OAuth](evidencias/AACBS-003/tentativa-0003/ENTREGA.md). O retorno real de débitos veio vazio; grupos com itens têm cobertura sintética.
+- AACBS-004: [demais serviços e testes reais incrementais](evidencias/AACBS-004/tentativa-0001/ENTREGA.md) e [correções de roteiro e webhooks](evidencias/AACBS-004/tentativa-0002/ENTREGA.md). A aprovação posterior permite a consolidação na 005; não transforma as limitações de 404 e DARF em testes reais aprovados.
 
-O retrabalho aprovado dos quatro achados do ticket ID #189855 está na [tentativa-0002](evidencias/AACBS-002/tentativa-0002/ENTREGA.md), com testes Debug e INTEROP aprovados. A [pesquisa dos ambientes na AACBS-003](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) registra a distinção entre Piloto/PRR e Beta e a ausência de uma rota PRR confirmada nas fontes atuais.
+A [pesquisa dos ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) registra a ausência de rota PRR oficialmente qualificada. Produção Beta foi explicitamente autorizada pelo DEV. Antes de qualquer emissão real RAD/PCONT, o cenário e os parâmetros continuam sujeitos à confirmação específica. Nenhum pagamento será executado. Este escopo não publica pacote nem altera UniNFe ou PRO.
 
-Os quatro achados da revisão da AACBS-003 foram corrigidos na [tentativa-0002](evidencias/AACBS-003/tentativa-0002/ENTREGA.md): 341 testes Debug, 344 INTEROP, 132 regressões e roteiro offline aprovados, com conferência nativa de COM. A etapa aguarda aprovação humana. Esta rodada não fez novas chamadas reais.
-
-A [tentativa-0003](evidencias/AACBS-003/tentativa-0003/ENTREGA.md) corrige o diagnóstico da autenticação auxiliar, com três regressões novas e 344 testes Debug/347 INTEROP aprovados. É a entrega corrente para revisão humana da AACBS-003; a AACBS-004 continua pendente.
-
-O DEV aprovou AACBS-003 e liberou AACBS-004 em 24/11/2026. A execução corrente das demais consultas e dois serviços DARF está na [AACBS-004](evidencias/AACBS-004/tentativa-0001/ENTREGA.md); o [roteiro de consultas](scripts/ROTEIRO-AACBS004.md) separa famílias e preserva o journal anterior. Antes de qualquer emissão RAD/PCONT, o cenário e os parâmetros serão confirmados com o DEV.
-
-A AACBS-004 passou nos testes offline (428 Debug/436 INTEROP), mas está BLOCKED nos critérios reais: compatibilidade NI de créditos aguardando decisão, pagamentos/recolhimentos com HTTP 404 e cenários DARF por confirmar. As condições de retomada estão no dossiê e no PDCA; a AACBS-005 não foi iniciada.
-
-Em 25/11/2026, os três achados da revisão da AACBS-004 foram corrigidos: resolução do checkout principal, campos OAuth com sublinhado e nove combinações de webhook. A [tentativa-0002](evidencias/AACBS-004/tentativa-0002/ENTREGA.md) registra 21 testes Debug/26 INTEROP da classe afetada e roteiro offline aprovados, sem novas chamadas reais. Os impedimentos reais e o gate da AACBS-005 permanecem.
+Logs só entram quando comprovam o resultado. Credenciais, tokens, tíquetes, links temporários e dados fiscais reais ficam protegidos sob `.local/aacbs`, ignorados pelo Git; não pertencem ao dossiê.
