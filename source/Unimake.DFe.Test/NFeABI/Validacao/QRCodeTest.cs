@@ -34,8 +34,10 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
             var grupo = xml.GetElementsByTagName("infNFeSupl");
             Assert.Single(grupo);
             var suplemento = (XmlElement)grupo[0];
-            var qrCode = Assert.IsType<XmlCDataSection>(Assert.Single(suplemento.GetElementsByTagName("qrCode")[0].ChildNodes));
-            Assert.Equal(UrlConsultaHomologacao + "?" + chave + "|1|2", qrCode.Value);
+            var tagQrCode = suplemento.GetElementsByTagName("qrCode")[0];
+            var qrCode = Assert.IsType<XmlText>(Assert.Single(tagQrCode.ChildNodes));
+            Assert.Equal(UrlConsultaHomologacao + "?chNFeABI=" + chave + "&tpAmb=2", qrCode.Value);
+            Assert.Contains("&amp;tpAmb=2</qrCode>", tagQrCode.OuterXml);
             Assert.InRange(qrCode.Value.Length, 100, 1000);
             var urlChave = Assert.IsType<XmlText>(Assert.Single(suplemento.GetElementsByTagName("urlChave")[0].ChildNodes));
             Assert.Equal(UrlConsultaHomologacao, urlChave.Value);
@@ -68,9 +70,10 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
                     QrCodeXmlHelper.MontarQrCodeNFeABI(xml, configuracao);
 
                     var assinatura = Converter.ToRSASHA1(certificado, parametrosSemAssinatura);
+                    var qrCode = Assert.IsType<XmlText>(Assert.Single(xml.GetElementsByTagName("qrCode")[0].ChildNodes));
                     Assert.Equal(
                         UrlConsultaHomologacao + "?p=" + parametrosSemAssinatura + "|" + assinatura,
-                        xml.GetElementsByTagName("qrCode")[0].InnerText);
+                        qrCode.Value);
                 }
             }
         }
@@ -113,10 +116,11 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
         /// Garante que a autorização online gere um QR Code aceito pelo schema da NFeABI.
         /// </summary>
         [Theory]
-        [InlineData(false)]
-        [InlineData(true)]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("p=")]
         [Trait("DFe", "NFeABI")]
-        public void AutorizacaoOnlineDeveGerarQRCodeValidoParaOSchema(bool informarSuplemento)
+        public void AutorizacaoOnlineDeveGerarQRCodeValidoParaOSchema(string prefixoLegado)
         {
             using (var rsa = RSA.Create(2048))
             {
@@ -127,20 +131,26 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
                         .LoadFromFile(@"..\..\..\NFeABI\Resources\NFeABI-minima.xml");
                     documento.Signature = null;
                     documento.InfNFeABI.Ide.TpEmis = TipoEmissaoNFeABI.Normal;
-                    var urlQrCode = UrlConsultaHomologacao + "?" + documento.InfNFeABI.Chave + "|1|2";
-                    documento.InfNFeSupl = informarSuplemento
-                        ? new Business.DFe.Xml.NFeABI.InfNFeSupl { QrCode = urlQrCode, UrlChave = UrlConsultaHomologacao }
-                        : null;
+                    var urlBase = prefixoLegado == null ? UrlConsultaHomologacao : "https://homologacao.example.com/nfeabi/consulta";
+                    var chave = documento.InfNFeABI.Chave;
+                    documento.InfNFeSupl = prefixoLegado == null
+                        ? null
+                        : new Business.DFe.Xml.NFeABI.InfNFeSupl
+                        {
+                            QrCode = urlBase + "?" + prefixoLegado + chave + "|1|2",
+                            UrlChave = UrlConsultaHomologacao
+                        };
 
                     var servico = new NFeABIAutorizacaoSinc(
                         documento,
                         new Configuracao { CertificadoDigital = certificado });
                     var xml = new XmlDocument();
                     xml.LoadXml(servico.ConteudoXMLAssinado.OuterXml);
-                    var qrCode = Assert.IsType<XmlCDataSection>(Assert.Single(xml.GetElementsByTagName("qrCode")[0].ChildNodes));
+                    var qrCode = Assert.IsType<XmlText>(Assert.Single(xml.GetElementsByTagName("qrCode")[0].ChildNodes));
 
                     Assert.InRange(qrCode.Value.Length, 100, 1000);
-                    Assert.Equal(urlQrCode, qrCode.Value);
+                    Assert.Equal(urlBase + "?chNFeABI=" + chave + "&tpAmb=2", qrCode.Value);
+                    Assert.Equal(UrlConsultaHomologacao, xml.GetElementsByTagName("urlChave")[0].InnerText);
                 }
             }
         }

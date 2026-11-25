@@ -517,12 +517,6 @@ namespace Unimake.Business.DFe.Utility
 
             var elementNFeABI = (XmlElement)conteudoXml.GetElementsByTagName("NFeABI")[0];
 
-            if (elementNFeABI["infNFeSupl", elementNFeABI.NamespaceURI] is XmlElement grupoSuplementar)
-            {
-                AplicarCDataAoQrCodeNFeABI(grupoSuplementar);
-                return;
-            }
-
             if (elementNFeABI.GetElementsByTagName("infNFeABI").Count <= 0)
             {
                 throw new Exception("A tag obrigatória <infNFeABI>, do grupo de tag <NFeABI>, não foi localizada no XML.");
@@ -546,6 +540,15 @@ namespace Unimake.Business.DFe.Utility
             var tpAmb = (TipoAmbiente)Convert.ToInt32(elementIde.GetElementsByTagName("tpAmb")[0].InnerText);
             var tpEmis = (TipoEmissao)Convert.ToInt32(elementIde.GetElementsByTagName("tpEmis")[0].InnerText);
             var chave = id.Substring(prefixoChave.Length);
+            var parametrosOnline = $"chNFeABI={chave}&tpAmb={(int)tpAmb}";
+            var parametrosPosicionais = $"{chave}|1|{(int)tpAmb}";
+
+            if (elementNFeABI["infNFeSupl", elementNFeABI.NamespaceURI] is XmlElement grupoSuplementar)
+            {
+                AtualizarQrCodeNFeABIInformado(grupoSuplementar, tpEmis, parametrosOnline, parametrosPosicionais);
+                return;
+            }
+
             var urlQrCode = tpAmb == TipoAmbiente.Homologacao ? configuracoes.UrlQrCodeHomologacao : configuracoes.UrlQrCodeProducao;
             var urlChave = tpAmb == TipoAmbiente.Homologacao ? configuracoes.UrlChaveHomologacao : configuracoes.UrlChaveProducao;
 
@@ -559,9 +562,7 @@ namespace Unimake.Business.DFe.Utility
                 throw new Exception("A URL de consulta por chave da NFeABI não foi configurada para o ambiente informado.");
             }
 
-            var parametrosQrCode = chave + "|1|" + ((int)tpAmb).ToString();
-            // A emissão normal em homologação usa a sequência posicional diretamente após o '?'.
-            var conteudoQrCode = urlQrCode + "?" + parametrosQrCode;
+            var conteudoQrCode = urlQrCode + "?" + parametrosOnline;
             if (tpEmis == TipoEmissao.ContingenciaOffLine)
             {
                 if (elementIde.GetElementsByTagName("dhEmi").Count <= 0)
@@ -606,7 +607,7 @@ namespace Unimake.Business.DFe.Utility
 
                 var dhEmi = DateTimeOffset.Parse(elementIde.GetElementsByTagName("dhEmi")[0].InnerText);
                 var vNF = elementTotal.GetElementsByTagName("vNF")[0].InnerText;
-                parametrosQrCode += "|" + dhEmi.ToString("dd") + "|" + vNF.Trim() + "|" + tipoDocumento + "|" + documento;
+                var parametrosQrCode = parametrosPosicionais + "|" + dhEmi.ToString("dd") + "|" + vNF.Trim() + "|" + tipoDocumento + "|" + documento;
                 parametrosQrCode += "|" + Converter.ToRSASHA1(configuracoes.CertificadoDigital, parametrosQrCode);
                 conteudoQrCode = urlQrCode + "?p=" + parametrosQrCode;
             }
@@ -616,22 +617,44 @@ namespace Unimake.Business.DFe.Utility
                 throw new Exception("O conteúdo do QR Code da NFeABI deve possuir entre 100 e 1000 caracteres, conforme definido pelo schema.");
             }
 
-            var grupoGerado = InserirGrupoSuplementar(
+            AdicionarGrupoSuplementar(
                 conteudoXml,
                 elementNFeABI,
                 elementInfNFeABI,
                 "infNFeSupl",
                 new KeyValuePair<string, string>("qrCode", conteudoQrCode),
                 new KeyValuePair<string, string>("urlChave", urlChave));
-            AplicarCDataAoQrCodeNFeABI(grupoGerado);
         }
 
-        private static void AplicarCDataAoQrCodeNFeABI(XmlElement grupoSuplementar)
+        private static void AtualizarQrCodeNFeABIInformado(XmlElement grupoSuplementar, TipoEmissao tipoEmissao, string parametrosOnline, string parametrosPosicionais)
         {
             var qrCode = grupoSuplementar["qrCode", grupoSuplementar.NamespaceURI];
-            if (qrCode?.FirstChild is XmlText texto && qrCode.ChildNodes.Count == 1)
+            if (qrCode == null)
             {
-                qrCode.ReplaceChild(qrCode.OwnerDocument.CreateCDataSection(texto.Value), texto);
+                return;
+            }
+
+            var url = qrCode.InnerText;
+            var inicioParametros = url.IndexOf('?');
+            if (tipoEmissao == TipoEmissao.Normal && inicioParametros >= 0)
+            {
+                var parametrosInformados = url.Substring(inicioParametros + 1);
+                if (string.Equals(parametrosInformados, parametrosPosicionais, StringComparison.Ordinal) ||
+                    string.Equals(parametrosInformados, "p=" + parametrosPosicionais, StringComparison.Ordinal))
+                {
+                    qrCode.InnerText = url.Substring(0, inicioParametros + 1) + parametrosOnline;
+                    return;
+                }
+            }
+
+            for (var filho = qrCode.FirstChild; filho != null;)
+            {
+                var proximo = filho.NextSibling;
+                if (filho is XmlCDataSection cdata)
+                {
+                    qrCode.ReplaceChild(qrCode.OwnerDocument.CreateTextNode(cdata.Value), cdata);
+                }
+                filho = proximo;
             }
         }
 
@@ -1152,9 +1175,6 @@ namespace Unimake.Business.DFe.Utility
         /// O namespace padrão do grupo e de suas tags filhas é herdado do <paramref name="nodePai"/>.
         /// </remarks>
         public static void AdicionarGrupoSuplementar(XmlDocument conteudoXml, XmlNode nodePai, XmlNode nodeReferencia, string nomeTagSuplementar, params KeyValuePair<string, string>[] tags)
-            => InserirGrupoSuplementar(conteudoXml, nodePai, nodeReferencia, nomeTagSuplementar, tags);
-
-        private static XmlElement InserirGrupoSuplementar(XmlDocument conteudoXml, XmlNode nodePai, XmlNode nodeReferencia, string nomeTagSuplementar, params KeyValuePair<string, string>[] tags)
         {
             var namespaceURI = nodePai.GetNamespaceOfPrefix("");
             var grupoSuplementarNode = conteudoXml.CreateElement(nomeTagSuplementar, namespaceURI);
@@ -1168,7 +1188,6 @@ namespace Unimake.Business.DFe.Utility
 
             nodePai.AppendChild(grupoSuplementarNode);
             nodePai.InsertAfter(grupoSuplementarNode, nodeReferencia);
-            return grupoSuplementarNode;
         }
     }
 }
