@@ -1,0 +1,19 @@
+<gerarDarfAdquirente xmlns="http://www.unimake.com.br/dfe/aacbs" versao="1.00">
+  <cnpj>00000001000001</cnpj>
+  <solicitacoes>
+    <item>
+      <chaveDFE>CHAVE-SINTETICA-RAD</chaveDFE>
+      <opcaoPagamento>PAGAMENTO_PARCIAL</opcaoPagamento>
+      <valorDarfParcial>0</valorDarfParcial>
+    </item>
+    <item>
+      <chaveDFE>CHAVE-SINTETICA-RAD</chaveDFE>
+      <opcaoPagamento>PAGAMENTO_TOTAL</opcaoPagamento>
+    </item>
+    <item>
+      <chaveDFE>CHAVE-SINTETICA-RAD</chaveDFE>
+      <opcaoPagamento>PAGAMENTO_TOTAL</opcaoPagamento>
+      <valorDarfParcial>9999999999999999.99</valorDarfParcial>
+    </item>
+  </solicitacoes>
+</gerarDarfAdquirente>

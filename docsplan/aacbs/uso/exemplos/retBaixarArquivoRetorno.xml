@@ -1,0 +1,9 @@
+<retBaixarArquivoRetorno xmlns="http://www.unimake.com.br/dfe/aacbs" versao="1.00">
+  <retArquivoDebitos versao="1.00">
+    <tiqueteSolicitacao>TÍQUETE-SINTÉTICO-01</tiqueteSolicitacao>
+    <ni>00000001</ni>
+    <niConsumidor>00000001000001</niConsumidor>
+    <geradoEm>2028-02-29T23:59:59.123456799-03:00</geradoEm>
+    <apuracao />
+  </retArquivoDebitos>
+</retBaixarArquivoRetorno>

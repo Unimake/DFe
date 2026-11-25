@@ -148,5 +148,6 @@
   </ItemGroup>
 	<ItemGroup Label="AACBS - recursos de contratos">
 		<None Update="AACBS\Resources\*.xml" CopyToOutputDirectory="PreserveNewest" />
+		<None Include="..\..\docsplan\aacbs\uso\exemplos\*.xml" Link="AACBS\Exemplos\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 </Project>
