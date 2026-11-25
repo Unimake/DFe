@@ -14,7 +14,7 @@ A entrega técnica da AACBS-001 começa em [contratos/ESPECIFICACAO.md](contrato
 
 ## Ponto atual de encerramento
 
-A [consolidação técnica da AACBS-005](ENCERRAMENTO-TECNICO.md) reúne o entregue, os checkpoints e todas as pendências reais. O [material para a Receita](encaminhamento-receita/README.md) reúne os 404 de RAD/pagamentos/recolhimentos e anexos sanitizados mínimos. O DEV informou que enviou a solicitação após a versão resumida para o formulário; aguardamos a resposta, com protocolo ainda não informado. A versão completa preparada está cifrada localmente; o Codex não enviou mensagem. O [PDCA](PDCA.md) mantém BLOCKED na parte real e o gate de aceite do DEV; PRR está adiada e nenhum replay ou nova emissão integra este fechamento.
+A [consolidação técnica da AACBS-005](ENCERRAMENTO-TECNICO.md) reúne o entregue, os checkpoints e todas as pendências reais. O [material para a Receita](encaminhamento-receita/README.md) reúne os 404 de RAD/pagamentos/recolhimentos e anexos sanitizados mínimos. O atendimento **202601396763**, de 25/11/2026, está **Aguardando atendimento** no Receita Atende, serviço Apuração Assistida, conforme informado pelo DEV. O [link de consulta e os dados do protocolo](encaminhamento-receita/README.md#protocolo-e-consulta-do-chamado) estão registrados. A versão completa preparada está cifrada localmente; o Codex não enviou mensagem. O [PDCA](PDCA.md) mantém BLOCKED na parte real e o gate de aceite do DEV; PRR está adiada e nenhum replay ou nova emissão integra este fechamento.
 ## Entrada e retomada
 
 1. Ler [PDCA.md](PDCA.md), a única fonte de status e aprovações.

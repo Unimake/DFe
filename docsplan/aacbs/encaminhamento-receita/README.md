@@ -1,6 +1,19 @@
 # Material para encaminhar à Receita
 
-Estado atual: **ENVIADO PELO DEV — AGUARDANDO RESPOSTA DA RECEITA**. Em 25/11/2026, após preparar a versão em texto de até 5.000 caracteres, o DEV informou: "Enviado, agora temos que aguardar." Canal efetivamente usado, horário e protocolo não foram informados neste chat. O Codex não abriu atendimento nem enviou mensagem e não repetirá o envio.
+Estado atual: **AGUARDANDO ATENDIMENTO**, conforme os dados fornecidos pelo DEV em 25/11/2026. O Codex não abriu atendimento nem enviou mensagem e não repetirá o envio.
+
+## Protocolo e consulta do chamado
+
+| Campo | Informação fornecida pelo DEV |
+|---|---|
+| Número do atendimento | 202601396763 |
+| Origem | Receita Atende |
+| Data | 25/11/2026 |
+| Serviço | Apuração Assistida |
+| Status | Aguardando atendimento |
+| Abertura e consulta | [Portal Tributação sobre Consumo — categoria 146](https://consumo.tributos.gov.br/lista-grupo?categoria=146) |
+
+O DEV confirmou que abriu o chamado nesse endereço e que deve consultá-lo ali. Estes dados foram registrados a partir de sua mensagem; não houve consulta ao portal ou confirmação independente de atualização do status. O horário da abertura não foi informado. O protocolo identifica o atendimento e não é tíquete fiscal ou prova de processamento da RAD-01. A AACBS-005 permanece BLOCKED nos critérios reais.
 
 ## Mensagem
 
@@ -12,7 +25,7 @@ Na raiz do repositório, na mesma conta Windows que protegeu os dados, o DEV pod
 pwsh -NoProfile -File ".local/aacbs/encaminhamento-receita/Visualizar-Solicitacao.ps1"
 ```
 
-O visualizador somente lê o texto protegido. A opção `-SomenteVerificar` confere sua integridade sem mostrar identificadores. Nenhum desses modos autentica, envia mensagem ou chama serviço. O DEV copia o texto e encaminha pelo [atendimento do Portal Piloto](https://piloto-cbs.tributos.gov.br/servico/atendimento/home) ou pelo canal técnico Receita Integra orientado pela Receita. O acesso autenticado ao portal e o envio são ações do DEV.
+O visualizador somente lê o texto protegido. A opção `-SomenteVerificar` confere sua integridade sem mostrar identificadores. Nenhum desses modos autentica, envia mensagem ou chama serviço. O [atendimento do Portal Piloto](https://piloto-cbs.tributos.gov.br/servico/atendimento/home) permanece como referência da pesquisa inicial; o canal efetivamente utilizado pelo DEV é o link de consulta registrado acima. O chamado já foi enviado e não deve ser reenviado.
 
 ## Anexos sanitizados, caso o atendimento solicite
 
