@@ -9,30 +9,7 @@ $script:ProtectedTextPrefix = 'aacbs-dpapi-utf8-v1:'
 $script:Utf8 = [Text.UTF8Encoding]::new($false, $true)
 $script:LoadedDll = $null
 
-function Test-Integer($Value, [long]$Min, [long]$Max) {
-    return ($Value -is [int] -or $Value -is [long]) -and $Value -ge $Min -and $Value -le $Max
-}
-
-function Assert-LocalMetadata($Metadata, $Credential) {
-    $fields = @('cnpjMatriz', 'ambiente', 'habilitarTestesReais', 'permitirProducao', 'permitirGeracaoDarf', 'limiteAberturasPorApiPorDia', 'intervaloConsultaSegundos', 'maximoConsultasSituacao', 'tempoMaximoAcompanhamentoMinutos', 'cenariosDarf')
-    if ($null -eq $Metadata -or $Metadata -isnot [pscustomobject] -or
-        @($Metadata.PSObject.Properties.Name).Count -ne $fields.Count -or
-        @($Metadata.PSObject.Properties.Name | Where-Object { $_ -cnotin $fields }).Count -ne 0 -or
-        $Metadata.cnpjMatriz -isnot [string] -or $Metadata.cnpjMatriz -cnotmatch '\A[0-9]{14}\z' -or
-        $Metadata.ambiente -isnot [string] -or $Metadata.ambiente -cnotin @('ProducaoRestrita', 'ProducaoBeta') -or
-        $Metadata.habilitarTestesReais -isnot [bool] -or $Metadata.permitirProducao -isnot [bool] -or
-        $Metadata.permitirProducao -ne ($Metadata.ambiente -ceq 'ProducaoBeta') -or
-        $Metadata.permitirGeracaoDarf -isnot [bool] -or $Metadata.permitirGeracaoDarf -or
-        $Metadata.cenariosDarf -isnot [array] -or $Metadata.cenariosDarf.Count -ne 0 -or
-        -not (Test-Integer $Metadata.limiteAberturasPorApiPorDia 1 1) -or
-        -not (Test-Integer $Metadata.intervaloConsultaSegundos 120 120) -or
-        -not (Test-Integer $Metadata.maximoConsultasSituacao 1 120) -or
-        -not (Test-Integer $Metadata.tempoMaximoAcompanhamentoMinutos 1 240) -or
-        $Credential -isnot [pscredential] -or [string]::IsNullOrWhiteSpace($Credential.UserName) -or
-        $Credential.Password.Length -eq 0) {
-        throw 'Metadados ou credencial AACBS invalidos para o roteiro de consultas.'
-    }
-}
+. (Join-Path $PSScriptRoot 'AACBS-AcessoLocal.ps1')
 
 function Assert-RealEnvironment($Metadata) {
     if (-not $Metadata.habilitarTestesReais) {
@@ -43,52 +20,6 @@ function Assert-RealEnvironment($Metadata) {
     }
     if ($Metadata.ambiente -cne 'ProducaoBeta' -or -not $Metadata.permitirProducao) {
         throw 'Producao exige selecao e habilitacao explicitas na configuracao local.'
-    }
-}
-
-function Get-LocalDirectory([string]$Repository) {
-    $root = (& git -C $Repository rev-parse --show-toplevel 2>$null)
-    if ($LASTEXITCODE -ne 0 -or $root -isnot [string]) { throw 'Repositorio local AACBS invalido.' }
-    foreach ($path in @('.local/aacbs/', '.local/aacbs/configuracao.local.json', '.local/aacbs/credenciais.local.clixml', '.local/aacbs/execucoes/verificacao.dpapi')) {
-        & git -C $root check-ignore --quiet -- $path 2>$null
-        if ($LASTEXITCODE -ne 0) { throw 'Os arquivos operacionais AACBS precisam estar ignorados pelo Git.' }
-    }
-    $tracked = @(& git -C $root ls-files -- '.local/aacbs/' 2>$null)
-    if ($LASTEXITCODE -ne 0 -or $tracked.Count -ne 0) { throw 'A pasta operacional AACBS precisa estar fora do versionamento.' }
-    return Join-Path $root '.local/aacbs'
-}
-
-function Assert-OrdinaryPath([string]$Path) {
-    if ((Test-Path -LiteralPath $Path) -and
-        ((Get-Item -LiteralPath $Path -Force).Attributes -band [IO.FileAttributes]::ReparsePoint)) {
-        throw 'O acesso local AACBS exige arquivos e diretorios fisicos.'
-    }
-}
-
-function Read-LocalAccess([string]$Directory) {
-    try {
-        $metadataPath = Join-Path $Directory 'configuracao.local.json'
-        $credentialPath = Join-Path $Directory 'credenciais.local.clixml'
-        foreach ($path in @((Split-Path -Parent $Directory), $Directory, $metadataPath, $credentialPath)) {
-            Assert-OrdinaryPath $path
-        }
-        $json = [IO.File]::ReadAllText($metadataPath)
-        $options = [System.Text.Json.JsonDocumentOptions]::new()
-        $options.AllowDuplicateProperties = $false
-        $document = [System.Text.Json.JsonDocument]::Parse($json, $options)
-        try {
-            if ($document.RootElement.ValueKind -ne [System.Text.Json.JsonValueKind]::Object) {
-                throw 'Estrutura local invalida.'
-            }
-            $metadata = ConvertFrom-Json -InputObject $json -DateKind String
-        }
-        finally { $document.Dispose() }
-        $credential = Import-Clixml -LiteralPath $credentialPath
-        Assert-LocalMetadata $metadata $credential
-        return @{ Metadata = $metadata; Credential = $credential }
-    }
-    catch {
-        throw 'Falha ao verificar o acesso AACBS. Confira a configuracao local e a conta Windows que preparou a credencial.'
     }
 }
 

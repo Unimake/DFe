@@ -27,7 +27,11 @@ Para conferir a preparação, sem exibir valores e sem acessar a Receita:
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File "C:\projetos\github\Unimake.DFe\docsplan\aacbs\scripts\Configurar-AcessoLocal.ps1" -Verificar
 ```
 
-Esse resultado comprova somente configuração e leitura local, não autorização remota ou funcionamento da integração. Para substituir conscientemente um acesso existente, executar o preparador com `-AtualizarCredenciais`; não é necessário revogar chaves no portal para usar esse parâmetro local.
+O preparador e o roteiro verificam os mesmos campos, tipos, limites e credencial DPAPI. O resultado confirma a leitura local. A autorização remota depende do ambiente e do serviço.
+
+Para substituir o par, execute o preparador com `-AtualizarCredenciais`. Ele valida os dois arquivos temporários, retira o JSON anterior, substitui a credencial e publica o JSON novo por último. Se a atualização for interrompida após retirar o JSON, o acesso ficará bloqueado. Execute o preparador novamente com `-AtualizarCredenciais` e informe o par pretendido. As configurações existentes continuam legíveis nos caminhos originais.
+
+Consumidores locais devem obter os dois valores juntos com `Read-LocalAccess`. No Windows, o leitor mantém o JSON aberto até terminar a importação da credencial, impedindo a troca do par durante essa leitura.
 
 ## Ambiente e autorização de operações
 
@@ -35,7 +39,7 @@ Escolher `ProducaoRestrita` se a credencial/cenário for de testes nesse ambient
 
 A configuração começa com testes reais habilitados, orçamento conservador de uma abertura por API por dia e geração de DARF desabilitada. O limite local não representa saldo oficial; a FAQ publica até quatro aberturas/dia/credencial para as quatro consultas. Para acompanhar solicitações, o roteiro propõe 120 segundos entre consultas, no máximo 120 consultas e 240 minutos; são limites locais, não uma frequência garantida pela Receita. [FAQ oficial](https://docs.receitafederal.gov.br/apuracao-cbs/faq.html)
 
-Os dois DARFs fazem parte da implementação planejada, mas sua geração real exige `permitirGeracaoDarf=true` **e** casos explícitos em `cenariosDarf`, preparados com período/chave DF-e, opção total/parcial, valor e ambiente aprovados para o teste. Até especificar os contratos na AACBS-001, não inventar o formato desses casos nem usar dados fictícios contra produção. Gerar documento não inclui pagar DARF, usar PIX ou iniciar transação bancária.
+O roteiro de consultas exige `permitirGeracaoDarf=false` e `cenariosDarf=[]`. A autorização pontual da RAD-01 foi consumida em uma tentativa registrada como indeterminada, com repetição bloqueada. PCONT aguarda cenário elegível e autorização específica do DEV. [Condições de retomada](ENCERRAMENTO-TECNICO.md#condições-de-retomada-e-responsáveis)
 
 ## Autonomia do executor e limites da entrega atual
 
