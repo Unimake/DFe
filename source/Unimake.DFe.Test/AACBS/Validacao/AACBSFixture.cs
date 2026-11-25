@@ -51,7 +51,7 @@ namespace Unimake.DFe.Test.AACBS.Validacao
         internal static XmlDocument Carregar(string raiz)
         {
             var xml = new XmlDocument { XmlResolver = null };
-            xml.Load(Path.Combine(AppContext.BaseDirectory, "AACBS", "Resources", raiz + ".xml"));
+            xml.Load(Path.Combine(Path.GetDirectoryName(typeof(AACBSFixture).Assembly.Location), "AACBS", "Resources", raiz + ".xml"));
             return xml;
         }
 
