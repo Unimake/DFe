@@ -1,0 +1,18 @@
+{
+  "DuplicateBlocked": false,
+  "State": "ResultadoIndeterminado",
+  "DarfInvocations": 1,
+  "Http": 404,
+  "ApplicationCode": null,
+  "PublicResultValidated": false,
+  "EncryptedXmlReadBack": false,
+  "XmlCipherSha256": null,
+  "Failure": "RespostaSemXMLValidado",
+  "Mode": "Emitir",
+  "Scenario": "RAD-01",
+  "ProposalSha256": "D663880BB7351232C3896C18BD5D60F16B1A42E41D3C259F3E6294F74056F4D1",
+  "DllSha256": "0CA4192C051F3B10A8248E2BBA17CA590EC672A4B8E7A0804928A03A36ED6DE1",
+  "TokenRequests": 1,
+  "PriorBusinessRunsPreserved": true,
+  "SharedJournalReadBack": true
+}

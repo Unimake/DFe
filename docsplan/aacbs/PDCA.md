@@ -11,7 +11,7 @@ Este arquivo é a fonte única dos estados e do histórico das etapas. O escopo 
 | AACBS-002 | Classes XML, XSDs de envio e retorno, validação, integração com recursos da DLL e testes | APPROVED | Aprovação explícita do DEV após correções e nova revisão do ticket |
 | AACBS-003 | Infraestrutura, autenticação, configuração e transporte; débitos com prova offline seguida de ciclo real | APPROVED | Aprovação explícita do DEV em 24/11/2026, liberando AACBS-004 |
 | AACBS-004 | Créditos, pagamentos, recolhimentos e DARF RAD/PCONT; cobertura integral e provas reais incrementais | APPROVED | Aprovação explícita do DEV em 25/11/2026; limitações reais registradas para consolidação na 005 |
-| AACBS-005 | Consolidação dos resultados reais, INTEROP, pacote, documentação de uso, revisão e entrega final | DELIVERED_FOR_REVIEW | Validação técnica concluída em 25/11/2026; limitações materiais reais submetidas ao DEV, sem presumir emissão DARF |
+| AACBS-005 | Consolidação dos resultados reais, INTEROP, pacote, documentação de uso, revisão e entrega final | BLOCKED | RAD-01 autorizada e executada uma vez: HTTP 404, sem retorno fiscal validado; resultado indeterminado exige reconciliação. Demais pendências reais preservadas |
 
 ## Estados
 
@@ -99,3 +99,38 @@ Decisão específica recebida em 25/11/2026 durante AACBS-005: DEV aprovou NI 8/
 | 2026-11-25 | AACBS-005 | IN_PROGRESS | DELIVERED_FOR_REVIEW | NI 8/14 de créditos aprovado e original integral validado: 2 PAs/27 créditos, XML cifrado/journal finalizado, zero HTTP novo. 499 testes Debug/509 INTEROP, COM nativo dez operações, pacote oficial DryRun e revisão independente concluídos. Pagamentos/recolhimentos 404 e DARFs sem cenário confirmado permanecem lacunas reais, submetidas ao DEV | tentativa-0001 |
 
 A [entrega da AACBS-005](evidencias/AACBS-005/tentativa-0001/ENTREGA.md), o [guia de uso](uso/README.md) e a [matriz final](evidencias/AACBS-005/tentativa-0001/MATRIZ-ACEITE-FINAL.md) estão disponíveis para revisão humana. Nenhum critério real pendente foi contado como sucesso. A aprovação pertence exclusivamente ao DEV; emissão real DARF continua sujeita à confirmação do cenário e dos parâmetros.
+
+## Orientação posterior de ambiente — 25/11/2026
+
+Após a [pesquisa aprofundada de PRR](evidencias/PESQUISA-PRR-2026-11-25/RESULTADO.md), o DEV determinou registrá-la no plano, continuar da forma atual e retomá-la depois. A execução permanece em Produção Beta dentro das autorizações existentes; PRR fica adiada, com responsável técnico e ponto de retomada no dossiê. A configuração local e a credencial foram preservadas; a pesquisa não gerou token nem chamada fiscal.
+
+Este registro é uma orientação de continuidade, sem transição de aceite: AACBS-005 permanece DELIVERED_FOR_REVIEW. As lacunas reais de pagamentos/recolhimentos e DARF continuam identificadas. Emissão RAD/PCONT exige confirmação específica do cenário e dos parâmetros; não repetir as aberturas ambíguas apenas porque PRR foi adiada.
+
+## Retomada autorizada da AACBS-005 — 25/11/2026
+
+| Data | Etapa | De | Para | Registro | Tentativa |
+|---|---|---|---|---|---|
+| 2026-11-25 | AACBS-005 | DELIVERED_FOR_REVIEW | IN_PROGRESS | DEV autorizou investigar HTTP 404 de pagamentos/recolhimentos e preparar cenários reais RAD/PCONT. Antes de qualquer emissão, confirmar parâmetros com o DEV. Beta mantida; PRR adiada; tentativa anterior preservada | tentativa-0002 |
+
+A [tentativa-0002](evidencias/AACBS-005/tentativa-0002/ENTREGA.md) concentra a retomada; a entrega técnica anterior permanece válida no checkpoint registrado, sem transformar suas lacunas reais em sucesso.
+| Data | Etapa | De | Para | Registro | Tentativa |
+|---|---|---|---|---|---|
+| 2026-11-25 | AACBS-005 | IN_PROGRESS | DELIVERED_FOR_REVIEW | Rotas/contratos dos 404 conferidos sem defeito demonstrado do cliente; causa remota/tíquetes indeterminados. RAD-01 cifrado preparado, sem emissão e sem aprovação específica; PCONT sem saldo, DEV obterá outra empresa. Cinco novos testes Debug e cinco INTEROP aprovados, revisão independente e 143 hashes estáveis; zero chamadas fiscais | tentativa-0002 |
+
+A [tentativa-0002](evidencias/AACBS-005/tentativa-0002/ENTREGA.md) e sua [matriz](evidencias/AACBS-005/tentativa-0002/MATRIZ-RETOMADA.md) registram o avanço possível enquanto a massa real é providenciada. A aprovação da etapa e a confirmação de emissão continuam distintas e pertencem ao DEV.
+## RAD-01 — confirmação e execução pontual em 25/11/2026
+
+| Data | Etapa | De | Para | Registro | Tentativa |
+|---|---|---|---|---|---|
+| 2026-11-25 | AACBS-005 | DELIVERED_FOR_REVIEW | IN_PROGRESS | DEV confirmou os parâmetros privados e ser adquirente; autorizou uma tentativa RAD-01 total em Beta vinculada ao hash D663880BB7351232C3896C18BD5D60F16B1A42E41D3C259F3E6294F74056F4D1 | tentativa-0003 |
+| 2026-11-25 | AACBS-005 | IN_PROGRESS | BLOCKED | Autenticação aceita, uma execução RAD recebeu HTTP 404 sem XML/código fiscal validado. Journal ResultadoIndeterminado bloqueia nova tentativa; registros anteriores preservados, sem pagamento ou replay. Reconciliação/ativação/habilitação dependem de esclarecimento da Receita | tentativa-0003 |
+
+A [tentativa-0003](evidencias/AACBS-005/tentativa-0003/ENTREGA.md) registra a autorização e o resultado. Não há confirmação de geração nem prova de ausência de processamento. Não repetir a RAD-01 ou tratar uma nova aprovação como reconciliação do envio anterior. PCONT segue sem cenário elegível e PRR permanece adiada.
+## Consolidação documental entregue — 25/11/2026
+
+O DEV solicitou preparar o encerramento técnico e a comunicação à Receita, sem chamadas, novas emissões ou envio externo. Foram entregues o [encerramento com ressalvas](ENCERRAMENTO-TECNICO.md), a [solicitação consolidada](encaminhamento-receita/SOLICITACAO-CONSOLIDADA.md) e o [guia de encaminhamento/anexos](encaminhamento-receita/README.md). O DEV é o responsável por encaminhar e retornar o protocolo/resposta para análise técnica. Não existe protocolo recebido ou resposta da Receita nesta consolidação.
+
+**Estado operacional mantido: BLOCKED.** A consolidação está disponível para revisão técnica/humana, sem transição para APPROVED nem declaração de validação real integral. Retomada condicionada à reconciliação da RAD-01, esclarecimento das duas aberturas de consulta e/ou massa elegível PCONT. A [matriz de condições e responsáveis](ENCERRAMENTO-TECNICO.md#condições-de-retomada-e-responsáveis) distingue recuperação de documento existente, abertura nova e eventual nova emissão sujeita à confirmação específica. Os registros antigos, cotas e bloqueios permanecem preservados.
+## Solicitação enviada pelo DEV — 25/11/2026
+
+Após a revisão do texto para até 5.000 caracteres, o DEV informou: "Enviado, agora temos que aguardar." Encaminhamento registrado como enviado pelo DEV, aguardando resposta; protocolo, horário e canal efetivamente utilizado ainda não informados. Não houve envio pelo Codex, nova chamada fiscal, geração ou alteração dos journals. Estado AACBS-005 mantido BLOCKED nos critérios reais. O envio não equivale à reconciliação ou aprovação de nova tentativa.

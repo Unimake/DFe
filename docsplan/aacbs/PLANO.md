@@ -2,6 +2,19 @@
 
 Revisão de 24/11/2026 — AACBS-000, tentativa-0002. Preserva as decisões iniciais e incorpora o catálogo e os contratos publicados em 13/11, além do preparo local de acesso solicitado pelo DEV.
 
+## Orientação de continuidade — 25/11/2026
+
+O DEV decidiu manter a execução em **Produção Beta**, conforme o fluxo e os limites já autorizados, e **adiar a retomada de Produção Restrita**. A pesquisa complementar foi preservada no [dossiê PRR](evidencias/PESQUISA-PRR-2026-11-25/RESULTADO.md), incluindo fontes oficiais e históricas, URLs ainda não confirmadas, canais oficiais de atendimento, verificação local das chaves e roteiro de acesso sem DARF. PRR não é requisito para continuar o trabalho autorizado em Beta.
+
+Ao retomar PRR, começar pelo dossiê e pelos [passos de confirmação sem DARF](evidencias/PESQUISA-PRR-2026-11-25/ACESSO-SEM-DARF.md), revalidando as fontes e os resultados locais datados; não repetir toda a investigação nem tratar token expirado como chave inválida. A falta de rota qualificada permanece registrada. Não habilitar PRR por analogia, alterar o ambiente local ou revogar chaves apenas para investigar.
+
+Essa orientação não aprova automaticamente a AACBS-005, não elimina as lacunas reais da matriz final e não autoriza emissão DARF: cenário e parâmetros continuam sujeitos à confirmação específica do DEV. Estado e aprovações permanecem no [PDCA](PDCA.md).
+
+## Encerramento técnico com ressalvas — 25/11/2026
+
+Por solicitação do DEV, a entrega técnica foi [consolidada](ENCERRAMENTO-TECNICO.md) com os critérios reais pendentes e uma [solicitação única à Receita](encaminhamento-receita/SOLICITACAO-CONSOLIDADA.md), pronta para o DEV encaminhar e não enviada pelo Codex. A AACBS-005 permanece BLOCKED na parte real; não há aprovação integral presumida ou nova etapa automática.
+
+O encerramento distingue implementação/testes de resultado fiscal: RAD-01 está indeterminada após uma tentativa autorizada com HTTP 404; pagamentos/recolhimentos permanecem com aberturas ambíguas e PCONT depende de contribuinte/período com saldo. As condições de reconciliação, recuperação, nova autorização e acesso de outro contribuinte estão na [matriz de retomada do encerramento](ENCERRAMENTO-TECNICO.md#condições-de-retomada-e-responsáveis). Não repetir chamadas, remover bloqueios ou emitir novos DARFs nesta consolidação. PRR continua adiada.
 ## Objetivo e limite da entrega
 
 Integrar todas as operações publicadas no conjunto de apuração assistida CBS à Unimake.DFe, oferecendo contratos XML documentados e tipados, XSDs de envio e retorno e um serviço por endpoint. O inventário atual possui oito endpoints de negócio: quatro solicitações de consulta, situação, link de download e dois geradores de DARF. Com autenticação e download externo, são dez serviços planejados.

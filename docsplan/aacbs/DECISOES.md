@@ -23,6 +23,7 @@ Registro inicial de 12/11/2026, revisado em 24/11/2026. A aprovação das etapas
 | D15 | DEV não encontrou endereço PRR e solicitou pesquisa dos ambientes. | Pesquisa oficial da AACBS-003 confirma ambientes distintos e credenciais compartilháveis; não qualificou rota PRR nem autoriza mudar silenciosamente para Beta. |
 | D16 | DEV autorizou explicitamente os testes em Produção Beta após a pesquisa dos ambientes. | Atualizar somente metadados locais, preservar credencial DPAPI e retomar autenticação/débitos da AACBS-003; manter limites locais e DARF desabilitado. Aprovações entre etapas continuam vigentes. |
 | D17 | DEV aprovou compatibilidade 8/14 somente no ni do retorno de débitos, após constatar divergência real Beta. | Preservar ni integral no XML; para 8 comparar com a base enviada, para 14 comparar seus primeiros 8. Outra raiz/tamanho/tipo permanece inválido; envio e demais famílias continuam com 8. |
+| D18 | Em 25/11/2026, após a pesquisa aprofundada de PRR, DEV: "Anota tudo isso que vc já pesquisou no plano para não perdermos. Vamos seguir da forma que já estamos fazendo e depois retomamos isso." | Preservar a pesquisa e seu ponto de retomada; continuar em Produção Beta no escopo já autorizado. Investigação/habilitação PRR adiada, sem bloquear Beta, sem inferir URLs, revogar chaves ou emitir DARF. Gates humanos e confirmação específica dos cenários DARF permanecem. Ver [registro e retomada](evidencias/PESQUISA-PRR-2026-11-25/RESULTADO.md). |
 
 ## Propostas técnicas desta entrega
 
@@ -39,6 +40,9 @@ Estas decisões integram o plano e os contratos aprovados nas etapas 000/001/002
 
 Os contratos da AACBS-001 foram aprovados pelo DEV em 24/11/2026, incluindo expressamente as propostas para datas e retorno global do DARF RAD, conforme o PDCA. A [ESPECIFICACAO.md](contratos/ESPECIFICACAO.md) define namespace Unimake, XML 1.00, catálogo de 24 raízes e dez serviços, campos/tipos/cardinalidades, `Result` concreto para download e erro local sem código remoto falso. A aprovação preserva as restrições PRR e as divergências documentadas das fontes.
 
+## Retomada das pendências da AACBS-005 — 25/11/2026
+
+O DEV autorizou investigar HTTP 404 de pagamentos/recolhimentos e preparar cenários reais RAD/PCONT em Produção Beta, confirmando os parâmetros antes de emitir qualquer DARF. Ao pedir um PA elegível para PCONT, informou que o CNPJ configurado não tem saldo e solicitou avançar nos testes possíveis; providenciará depois outra empresa para ampliar as provas reais. A [tentativa-0002 da AACBS-005](evidencias/AACBS-005/tentativa-0002/ENTREGA.md) registra a investigação e cobertura complementar. Não inferir saldo PCONT de créditos, nem emitir para descobrir elegibilidade.
 ## Fatos verificados que limitam as escolhas
 
 As fontes e os links detalhados estão em [FONTES-E-REQUISITOS.md](FONTES-E-REQUISITOS.md).
@@ -71,3 +75,10 @@ O POST OAuth foi qualificado documentalmente pelo manual oficial do mesmo emisso
 O acesso local e a obtenção de token não comprovam funcionamento fiscal. Critério de conclusão será a matriz de cenários demonstrados e limitações aprovadas, sem prometer ausência absoluta de bugs ou controlar a disponibilidade da Receita.
 
 Se uma fonte mudar, registrar o impacto nos contratos já aprovados e levar ao DEV uma alteração concreta. Questões de implementação reversíveis podem ser resolvidas pelo responsável técnico dentro do contrato aprovado; não reabrir decisões do DEV sem evidência nova.
+
+## Autorização pontual RAD-01 — 25/11/2026
+
+O DEV revisou CNPJ/chave/opção no visualizador local e confirmou: "Sim. Confirmo. Acabei de pesquisar para ver." A confirmação se refere a uma única tentativa RAD-01 em Produção Beta, PAGAMENTO_TOTAL, vinculada ao SHA-256 D663880BB7351232C3896C18BD5D60F16B1A42E41D3C259F3E6294F74056F4D1. Não autoriza pagamento, PCONT ou reenvio. A [execução](evidencias/AACBS-005/tentativa-0003/ENTREGA.md) recebeu HTTP 404 sem retorno fiscal validado, ficou indeterminada e exige reconciliação antes de qualquer nova emissão.
+## Consolidação para encaminhamento — 25/11/2026
+
+O DEV determinou consolidar o encerramento técnico com pendências reais explícitas e preparar a solicitação à Receita para reconciliar RAD-01 e esclarecer os 404 de RAD, pagamentos e recolhimentos. Proibiu repetir chamadas, emitir novos DARFs e enviar mensagens externas; o material deve ficar pronto para encaminhamento pelo próprio DEV. A [consolidação](ENCERRAMENTO-TECNICO.md) e o [guia de envio](encaminhamento-receita/README.md) registram a entrega. A orientação não aprova integralmente a etapa, não reconcilia as tentativas e não libera novo consumo. O responsável pelo contato é o DEV; a equipe técnica retomará a análise quando houver resposta ou massa autorizada, conforme os critérios documentados.

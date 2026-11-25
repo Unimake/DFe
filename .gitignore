@@ -503,3 +503,13 @@ MigrationBackup/
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/build-interop.log
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/testes-interop.log
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0001/pacote-dryrun.log
+
+# Retomada AACBS-005: logs finais sanitizados dos testes complementares
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0002/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0002/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0002/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0002/testes-interop.log
+
+# RAD-01 autorizada: somente evidências finais sanitizadas
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0003/runtime-testes.log
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0003/real-rad01.log

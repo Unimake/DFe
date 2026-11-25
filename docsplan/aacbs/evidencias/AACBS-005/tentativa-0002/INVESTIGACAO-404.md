@@ -1,0 +1,43 @@
+# HTTP 404 em pagamentos e recolhimentos na Produção Beta
+
+Em 25/11/2026, a revisão encontrou as duas aberturas alinhadas ao contrato público vigente. Os registros originais confirmam HTTP 404 com resposta incompatível com o contrato de abertura. A origem do erro e a existência de solicitações no backend permanecem indeterminadas. A investigação usou documentação pública, código e evidências sanitizadas.
+
+## Conferência do envio
+
+| Operação | Requisição no host HTTPS `api.receitafederal.gov.br` | Fonte oficial |
+| --- | --- | --- |
+| ConsultarPagamentos | `POST /apuracao-cbs/v2/pagamentos/{cnpj}` | [Pagamentos, seção 4](https://docs.receitafederal.gov.br/apuracao-cbs/pagamentos.html) |
+| ConsultarRecolhimentos | `POST /apuracao-cbs/v2/recolhimentos/{cnpj}` | [Recolhimentos, seção 4](https://docs.receitafederal.gov.br/apuracao-cbs/recolhimentos.html) |
+
+- O recurso `AN.xml` define os dois métodos e caminhos. A base AACBS carrega a configuração embutida para a operação e exige `TipoAmbiente.Producao`, que o roteiro usa para Produção Beta. A revisão 1.3 de 13/11 das duas páginas alterou a documentação do arquivo de retorno. Os endereços permanecem em `/v2`. [Configuração embutida](../../../../../source/.NET%20Standard/Unimake.Business.DFe/Servicos/Config/AACBS/AN.xml) · [Base AACBS](../../../../../source/.NET%20Standard/Unimake.Business.DFe/Servicos/AACBS/ServicoBase.cs) · [Revalidação de fontes da AACBS-005](../tentativa-0001/REVALIDACAO-FONTES.csv)
+- O roteiro usa os oito primeiros dígitos do CNPJ da matriz configurado e omite `UrlRetorno` no objeto XML de abertura. Os dois serviços substituem `{cnpj}` e serializam `{"urlRetorno":""}` em JSON, conforme os exemplos oficiais sem webhook. A base envia `Authorization: Bearer`, `Accept: application/json` e `Content-Type: application/json` com charset UTF-8. O executor recebe URI e método explícitos, com redirecionamento automático desabilitado e `HasProxy = false` no roteiro. As asserções com transporte controlado cobrem método, destino, cabeçalhos e corpo sem webhook. [Roteiro local](../../../scripts/AACBS-RoteiroLocal.psm1) · [Transporte HTTP](../../../../../source/.NET%20Standard/Unimake.Business.DFe/ConsumirServico/Transport/ApiTransportExecutor.cs) · [Testes de abertura](../../../../../source/Unimake.DFe.Test/AACBS/Servicos/AACBSFluxoConsultasTest.cs) · [Regras comuns](https://docs.receitafederal.gov.br/apuracao-cbs/guiaapiassincrona.html)
+
+## O que os registros permitem concluir
+
+| Operação | Horário da observação em 24/11/2026, UTC−03 | Resultado |
+| --- | --- | --- |
+| ConsultarPagamentos | 21:58:43 | HTTP 404, `ContratoIncompativel` na raiz `$`, `AberturaAmbigua` |
+| ConsultarRecolhimentos | 21:59:15 | HTTP 404, `ContratoIncompativel` na raiz `$`, `AberturaAmbigua` |
+
+Os mesmos horários são **00:58:43 UTC e 00:59:15 UTC em 25/11/2026**. O campo `correlacao` dos logs é o identificador gerado pelo roteiro para o journal. O transporte não o envia como cabeçalho. A DLL guarda o HTTP antes de interpretar a resposta. Para uma abertura, o leitor reconhece `201` com tíquete e estimativa, ou erro HTTP com `codigoErro` e `mensagemErro`. O diagnóstico na raiz `$` também pode decorrer de JSON inválido ou de estrutura incompatível. Os registros não contêm cabeçalhos de resposta nem o conteúdo necessário para identificar a camada que respondeu. [Log de pagamentos](../../AACBS-004/tentativa-0001/real-pagamentos.log) · [Log de recolhimentos](../../AACBS-004/tentativa-0001/real-recolhimentos.log) · [Leitor da resposta](../../../../../source/.NET%20Standard/Unimake.Business.DFe/Servicos/AACBS/RespostaAACBS.cs)
+
+O roteiro registrou autenticação `200` e abertura de créditos `201` no mesmo host segundos antes, além de situação `200` depois. Isso comprova acesso ao host e funcionamento da rota v2 de créditos naquele contexto. O manual Receita Integra v1.4 informa que API Gateway e backend podem retornar os mesmos status. A tabela cita endpoint inexistente ou recurso indisponível como causas possíveis de `404`, token ausente, inválido ou expirado para `401` e falta de escopo ou permissão para `403`. A habilitação individual das duas operações permanece sem comprovação. O `404` observado também não comprova problema de DNS ou falta de registros fiscais. [Log de créditos](../../AACBS-004/tentativa-0001/real-creditos.log) · [Manual Receita Integra v1.4, Tabela de Erros](https://cgibs.gov.br/upload/arquivos/202609/05164748-08-manual-de-integracao-tecnica-receita-integra-v-1-4.pdf#page=5)
+
+## Confirmação pública de implantação
+
+| Publicação | Alcance |
+| --- | --- |
+| 14/09, Receita Federal | O cronograma previa as duas consultas para o início de novembro, com liberação gradual em Produção Restrita e Produção Beta. [Cronograma](https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/receita-federal-publica-nova-documentacao-tecnica-das-apis-de-apuracao-de-cbs) |
+| 09/11, Receita Federal e Ministério da Fazenda | O comunicado confirma débitos e créditos v2 desde 28/10 nos dois ambientes e prevê outros serviços para novembro. A versão do Ministério atualizada em 24/11 ainda confirma operacionalmente apenas débitos e créditos. [Receita Federal](https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/receita-federal-libera-acesso-as-novas-apis-de-apuracao-da-cbs/) · [Ministério da Fazenda](https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-libera-acesso-as-novas-apis-de-apuracao-da-cbs/) |
+| 17/11, Receita Federal e Ministério da Fazenda | A Receita diz que a entrega de RAD inclui a documentação de consulta de recolhimentos e de emissão do DARF e que a operação será comunicada posteriormente. O Ministério, em texto atualizado em 24/11, anuncia disponibilização da API do RAD e lista os mesmos serviços, sem especificar o ambiente operacional. [Receita Federal](https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/novembro/virando-a-chave-para-a-reforma-tributaria-api-para-emissao-do-rad-ja-esta-disponivel) · [Ministério da Fazenda](https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-disponibiliza-api-para-emissao-do-recolhimento-como-adquirente-rad) |
+| 23/11, Ministério da Fazenda, atualizado em 24/11 | A ampliação de acesso trata do Piloto em Produção Restrita. A publicação distingue esse ambiente da Produção Beta e não declara a ativação das duas consultas no Beta. [Ampliação do Piloto](https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/novembro/receita-federal-amplia-acesso-ao-ambiente-de-producao-restrita-do-piloto-da-cbs) |
+
+A pesquisa até 25/11/2026 não encontrou confirmação pública específica de operação das duas rotas no Beta. O comunicado do RAD trata de recolhimentos como adquirente e geração de DARF RAD. A operação `ConsultarPagamentos`, que também abrange pagamentos próprios PCONT, tem contrato separado. [Objetivo de pagamentos](https://docs.receitafederal.gov.br/apuracao-cbs/pagamentos.html) · [Objetivo de recolhimentos](https://docs.receitafederal.gov.br/apuracao-cbs/recolhimentos.html)
+
+## Evidência para reconciliar as aberturas
+
+1. Uma resposta técnica da Receita Integra com o estado de publicação das rotas `POST` no Beta, a permissão exigida por operação e o rastreio do gateway e do backend nas duas janelas UTC permitiria identificar a camada que devolveu `404` e se houve criação de tíquete. Para correlacionar, usar ambiente, métodos, modelos de caminho e horários. Um identificador remoto, se obtido futuramente por canal oficial, ajuda no rastreio. O identificador local serve para localizar o registro no journal.
+2. A rota oficial `GET /apuracao-cbs/v2/situacao/{tiqueteSolicitacao}` permite acompanhar um tíquete conhecido. As duas aberturas ficaram sem tíquete. A consulta de situação de créditos pode evidenciar conectividade atual com a rota compartilhada, sem esclarecer o histórico desses dois `POST`. [Situação da solicitação](https://docs.receitafederal.gov.br/apuracao-cbs/situacao-solicitacao.html)
+3. `GET`, `HEAD` e `OPTIONS` nas rotas de abertura não são contratos documentados. Um `405` com `Allow: POST` indicaria reconhecimento do método pela camada que respondeu naquele momento. Um `404` nesses verbos não distingue ausência da rota `POST` de tratamento específico por método. DNS e TLS podem comprovar alcance ao host no momento do teste. Provas não mutantes desses tipos não reconciliam o processamento histórico.
+
+O roteiro protege `AberturaAmbigua` contra repetição. A evidência disponível sustenta preservar as duas entradas nessa condição até recuperar um tíquete válido ou confirmar no atendimento que as aberturas não foram criadas. [Roteiro da AACBS-004](../../../scripts/ROTEIRO-AACBS004.md)

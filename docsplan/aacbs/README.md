@@ -12,6 +12,9 @@ O DEV configurou as chaves e o modo local de verificação passou sem exibir val
 
 A entrega técnica da AACBS-001 começa em [contratos/ESPECIFICACAO.md](contratos/ESPECIFICACAO.md), com catálogo de raízes, matrizes por campo e propostas para os conflitos das fontes. A baseline oficial e seus hashes estão em [fontes/2026-11-24](fontes/2026-11-24/README.md).
 
+## Ponto atual de encerramento
+
+A [consolidação técnica da AACBS-005](ENCERRAMENTO-TECNICO.md) reúne o entregue, os checkpoints e todas as pendências reais. O [material para a Receita](encaminhamento-receita/README.md) reúne os 404 de RAD/pagamentos/recolhimentos e anexos sanitizados mínimos. O DEV informou que enviou a solicitação após a versão resumida para o formulário; aguardamos a resposta, com protocolo ainda não informado. A versão completa preparada está cifrada localmente; o Codex não enviou mensagem. O [PDCA](PDCA.md) mantém BLOCKED na parte real e o gate de aceite do DEV; PRR está adiada e nenhum replay ou nova emissão integra este fechamento.
 ## Entrada e retomada
 
 1. Ler [PDCA.md](PDCA.md), a única fonte de status e aprovações.
@@ -45,4 +48,9 @@ AACBS-000 a AACBS-004 foram aprovadas pelo DEV. A AACBS-005 foi entregue para re
 
 A [pesquisa dos ambientes](evidencias/AACBS-003/tentativa-0001/PESQUISA-AMBIENTES.md) registra a ausência de rota PRR oficialmente qualificada. Produção Beta foi explicitamente autorizada pelo DEV. Antes de qualquer emissão real RAD/PCONT, o cenário e os parâmetros continuam sujeitos à confirmação específica. Nenhum pagamento será executado. Este escopo não publica pacote nem altera UniNFe ou PRO.
 
+Em 25/11/2026, o DEV determinou preservar a [pesquisa aprofundada de Produção Restrita](evidencias/PESQUISA-PRR-2026-11-25/RESULTADO.md) e retomá-la depois, mantendo a continuidade em **Produção Beta**. O dossiê reúne [fontes e canais oficiais](evidencias/PESQUISA-PRR-2026-11-25/ORIGENS-PUBLICAS.md), [verificação local sanitizada](evidencias/PESQUISA-PRR-2026-11-25/VERIFICACAO-LOCAL.json), [roteiro de confirmação sem DARF](evidencias/PESQUISA-PRR-2026-11-25/ACESSO-SEM-DARF.md) e [solicitação técnica pronta, não enviada](evidencias/PESQUISA-PRR-2026-11-25/SOLICITACAO-TECNICA.md). Não há URL PRR atual qualificada nem acesso PRR comprovado; esses pontos não impedem continuar o escopo Beta já autorizado.
+
 Logs só entram quando comprovam o resultado. Credenciais, tokens, tíquetes, links temporários e dados fiscais reais ficam protegidos sob `.local/aacbs`, ignorados pelo Git; não pertencem ao dossiê.
+
+A [retomada AACBS-005, tentativa-0002](evidencias/AACBS-005/tentativa-0002/ENTREGA.md) foi autorizada para investigar os 404 e preparar cenários DARF. O CNPJ atual não tem saldo PCONT, conforme informado pelo DEV; a cobertura complementar offline foi entregue com cinco casos aprovados em Debug e INTEROP, enquanto uma massa real elegível fica pendente. Emissão continua dependendo de confirmação específica. O PDCA identifica o estado corrente; a entrega da tentativa-0001 permanece como histórico validado.
+A [RAD-01, tentativa-0003](evidencias/AACBS-005/tentativa-0003/ENTREGA.md), foi expressamente autorizada pelo DEV e executada uma vez. Recebeu HTTP 404 sem retorno fiscal validado; o journal protege o resultado indeterminado e bloqueia repetição. A parte real da AACBS-005 está bloqueada para reconciliação/esclarecimento operacional. A proposta anterior não permanece simplesmente aguardando confirmação; o histórico de preparo e testes foi preservado. Nenhum pagamento foi executado.

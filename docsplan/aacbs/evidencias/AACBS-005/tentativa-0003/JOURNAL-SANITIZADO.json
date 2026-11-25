@@ -1,0 +1,11 @@
+{
+  "Scenario": "RAD-01",
+  "Origin": "Real",
+  "Phase": "ResultadoIndeterminado",
+  "StartedUtc": "2026-11-25T13:06:53.3708326+00:00",
+  "StartedSaoPaulo": "2026-11-25T10:06:53.3708326-03:00",
+  "Http": 404,
+  "ProposalSha256": "D663880BB7351232C3896C18BD5D60F16B1A42E41D3C259F3E6294F74056F4D1",
+  "LedgerCipherSha256": "AF6B1261F858905EC745CE3052A6B42D7D0D022B16C3361044C57A0ADFC7DB6C",
+  "RealXmlExists": false
+}
