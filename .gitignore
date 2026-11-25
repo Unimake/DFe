@@ -474,3 +474,23 @@ MigrationBackup/
 !/docsplan/aacbs/evidencias/AACBS-003/tentativa-0003/testes-debug.log
 !/docsplan/aacbs/evidencias/AACBS-003/tentativa-0003/build-interop.log
 !/docsplan/aacbs/evidencias/AACBS-003/tentativa-0003/testes-interop.log
+
+# AACBS-004: checkpoints intermediários e logs finais sanitizados
+/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/CHECKPOINT-000*.csv
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/roteiro-offline.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/testes-interop.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/volume.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/config-real.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/real-creditos.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/real-pagamentos.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0001/real-recolhimentos.log
+
+# Correções de roteiro e cobertura da revisão AACBS-004
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/build-debug.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/testes-debug.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/roteiro-offline.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/build-interop.log
+!/docsplan/aacbs/evidencias/AACBS-004/tentativa-0002/testes-interop.log

@@ -25,6 +25,17 @@ function Test-OfflineDll([string]$Dll) {
         $method = $testType.GetMethod('ExecutarCicloExplicitoValidaContratosEIsolaDownload', [type[]]@([bool], [bool]))
         [void]$method.Invoke($test, [object[]]@($false, $false))
 
+        $queryType = $testAssembly.GetType('Unimake.DFe.Test.AACBS.Servicos.AACBSFluxoConsultasTest', $true)
+        $queryTest = [Activator]::CreateInstance($queryType)
+        $queryMethod = $queryType.GetMethod('ExecutarCicloPreservaContratoEContextoDaFamilia')
+        $familyType = $queryMethod.GetParameters()[0].ParameterType
+        foreach ($family in @('Creditos', 'Pagamentos', 'Recolhimentos')) {
+            $value = [Enum]::Parse($familyType, $family)
+            $webhook = if ($family -ceq 'Creditos') { 'https://example.com/a%2Fb?teste=a%2Bb&v=2' } else { '' }
+            $estimate = switch ($family) { 'Creditos' { -1 } 'Pagamentos' { 0 } 'Recolhimentos' { 60 } }
+            [void]$queryMethod.Invoke($queryTest, [object[]]@($value, $family.ToLowerInvariant(), $webhook, $estimate))
+        }
+
         $localJsonPath = Join-Path $directory 'System.Text.Json.dll'
         if (Test-Path -LiteralPath $localJsonPath) {
             $localJson = @($loaded.Context.Assemblies | Where-Object { $_.GetName().Name -ceq 'System.Text.Json' })
@@ -230,9 +241,9 @@ function Invoke-AACBSOffline([string]$Dll) {
             }
         }
         $context.State = New-LocalState
-        Assert-OfflineFailure { Invoke-Debits $context $false $false } 'Abertura de debitos interrompida.*' 'post-timeout-controlado'
+        Assert-OfflineFailure { Invoke-Query $context $false $false } 'Abertura de debitos interrompida.*' 'post-timeout-controlado'
         $context.State = Read-LocalState $context.Path
-        Assert-OfflineFailure { Invoke-Debits $context $false $false } 'Abertura de debitos sem resultado confirmado.*' 'roteiro-sem-replay'
+        Assert-OfflineFailure { Invoke-Query $context $false $false } 'Abertura de debitos sem resultado confirmado.*' 'roteiro-sem-replay'
         Assert-OfflineCondition (($context.Calls -join ',') -ceq 'Autenticar,ConsultarDebitos') 'contagem-sem-replay'
 
         foreach ($expired in @($false, $true)) {
@@ -245,13 +256,13 @@ function Invoke-AACBSOffline([string]$Dll) {
             Save-LocalState $context
             $context.State = Read-LocalState $context.Path
             if ($expired) {
-                Assert-OfflineFailure { Invoke-Debits $context $false $false } 'O link do arquivo de debitos expirou.' 'link-vencido'
+                Assert-OfflineFailure { Invoke-Query $context $false $false } 'O link do arquivo de debitos expirou.' 'link-vencido'
                 Assert-OfflineCondition (($context.Calls -join ',') -ceq 'Autenticar,ConsultarSituacaoSolicitacao,ConsultarLinkDownload') 'sem-download-vencido'
             }
             else {
                 $largeText = 'x' * 70000
                 $context.FinalXml = '<retBaixarArquivoRetorno><texto>CR&#xD;CRLF&#xD;&#xA;' + $largeText + '</texto></retBaixarArquivoRetorno>'
-                Invoke-Debits $context $false $true
+                Invoke-Query $context $false $true
                 $finalPath = Join-Path $directory ('arquivo-debitos-' + $run.Id + '.dpapi')
                 $finalXml = Read-ProtectedText $finalPath
                 Assert-OfflineCondition ($finalXml -ceq $context.FinalXml) 'xml-final-acima-64-kib-fiel'
@@ -259,7 +270,7 @@ function Invoke-AACBSOffline([string]$Dll) {
                 $document.LoadXml($finalXml)
                 Assert-OfflineCondition ($document.DocumentElement.InnerText -ceq ('CR' + "`r" + 'CRLF' + "`r`n" + $largeText)) 'xml-final-preserva-cr-e-crlf'
                 $context.State = Read-LocalState $context.Path
-                Invoke-Debits $context $false $false
+                Invoke-Query $context $false $false
                 Assert-OfflineCondition (($context.Calls -join ',') -ceq 'Autenticar,ConsultarSituacaoSolicitacao,ConsultarLinkDownload,BaixarArquivoRetorno') 'retomada-debito-sem-post-extra'
             }
         }
@@ -271,6 +282,7 @@ function Invoke-AACBSOffline([string]$Dll) {
         foreach ($file in [IO.Directory]::GetFiles($directory)) { [IO.File]::Delete($file) }
         [IO.Directory]::Delete($directory)
     }
+    Test-OfflineAACBS004 $metadata
     if ($Dll) { Test-OfflineDll $Dll }
     Write-Output 'Verificacoes sinteticas AACBS concluidas. Nenhuma API chamada e nenhum acesso local real importado.'
 }

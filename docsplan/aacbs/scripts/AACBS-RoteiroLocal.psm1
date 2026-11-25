@@ -30,7 +30,7 @@ function Assert-LocalMetadata($Metadata, $Credential) {
         -not (Test-Integer $Metadata.tempoMaximoAcompanhamentoMinutos 1 240) -or
         $Credential -isnot [pscredential] -or [string]::IsNullOrWhiteSpace($Credential.UserName) -or
         $Credential.Password.Length -eq 0) {
-        throw 'Metadados ou credencial AACBS invalidos para a etapa AACBS-003.'
+        throw 'Metadados ou credencial AACBS invalidos para o roteiro de consultas.'
     }
 }
 
@@ -103,6 +103,14 @@ function Get-Identity([string[]]$Values) {
 }
 
 function Get-Now { return [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds() }
+
+function Get-QueryFamily($Context) {
+    $family = if ($Context.ContainsKey('Family')) { $Context.Family } else { 'Debitos' }
+    if ($family -cnotin @('Debitos', 'Creditos', 'Pagamentos', 'Recolhimentos')) {
+        throw 'Familia de consulta AACBS invalida.'
+    }
+    return $family
+}
 
 function New-LocalState {
     return [pscustomobject]@{
@@ -190,8 +198,10 @@ function Read-LocalState([string]$Path) {
     }
     foreach ($run in $state.Runs) {
         if ($run.Id -cnotmatch '\A[0-9a-f]{32}\z' -or $run.Scope -cnotmatch '\A[0-9a-f]{64}\z' -or
-            $run.Credential -cnotmatch '\A[0-9a-f]{64}\z' -or $run.Stage -cne 'AACBS-003' -or
-            $run.Api -cne 'Debitos' -or $run.Environment -cne 'ProducaoBeta' -or
+            $run.Credential -cnotmatch '\A[0-9a-f]{64}\z' -or
+            -not (($run.Stage -ceq 'AACBS-003' -and $run.Api -ceq 'Debitos') -or
+                ($run.Stage -ceq 'AACBS-004' -and $run.Api -cin @('Creditos', 'Pagamentos', 'Recolhimentos'))) -or
+            $run.Environment -cne 'ProducaoBeta' -or
             $run.Phase -cnotin $script:States -or -not (Test-Integer $run.Opened 1 $now) -or
             -not (Test-Integer $run.Polls 0 120) -or -not (Test-Integer $run.LastPoll 0 $now) -or
             -not (Test-Integer $run.LinkAt 0 $now) -or -not (Test-Integer $run.DownloadAt 0 $now) -or
@@ -204,12 +214,28 @@ function Read-LocalState([string]$Path) {
     return $state
 }
 
-function Write-Observation($Context, [string]$Operation, [string]$Status, [int]$Http = 0) {
+function Write-Observation($Context, [string]$Operation, [string]$Status, [int]$Http = 0, [string]$ContractPath = '') {
     $when = [DateTimeOffset]::UtcNow.ToString('o')
     $origin = if ($Context.ContainsKey('Synthetic')) { ' origem=simulada' } else { '' }
     $correlation = if ($Context.ContainsKey('Correlation')) { " correlacao=$($Context.Correlation)" } else { '' }
     $response = if ($Http -gt 0) { " HTTP=$Http" } else { '' }
-    Write-Information "$when AACBS-003 ambiente=$($Context.Metadata.ambiente) operacao=$Operation estado=$Status$response$origin$correlation" -InformationAction Continue
+    $stage = if ($Context.ContainsKey('Stage')) { $Context.Stage } else { 'AACBS-003' }
+    $field = if ($ContractPath -cmatch '\A\$(?:\.[A-Za-z][A-Za-z0-9_]*(?:\[\])?)*\z') { " campo=$ContractPath" } else { '' }
+    Write-Information "$when $stage ambiente=$($Context.Metadata.ambiente) operacao=$Operation estado=$Status$response$origin$correlation$field" -InformationAction Continue
+}
+
+function Get-ContractFailure($Failure, [string]$Operation) {
+    $current = $Failure
+    while ($null -ne $current) {
+        if ($current -is [FormatException] -and
+            $current.Message -cmatch '\AAACBS (Autenticar|ConsultarDebitos|ConsultarCreditos|ConsultarPagamentos|ConsultarRecolhimentos|ConsultarSituacaoSolicitacao|ConsultarLinkDownload|BaixarArquivoRetorno|GerarDarfAdquirente|GerarDarfContribuinte)(?: \((?:DEBITOS|CREDITOS|PAGAMENTOS|RECOLHIMENTOS)\))?: resposta incompatível com o contrato em (\$(?:\.[A-Za-z][A-Za-z0-9_]*(?:\[\])?)*)\.\z') {
+            if ($Matches[1] -ceq $Operation -or $Matches[1] -ceq 'Autenticar') {
+                return @{ Operation = $Matches[1]; Path = $Matches[2] }
+            }
+        }
+        $current = $current.InnerException
+    }
+    return $null
 }
 
 function Get-LocalToken($Context, [long]$Now, [scriptblock]$Authenticate) {
@@ -251,6 +277,7 @@ function Remove-LocalToken($Context, [string]$Token) {
 }
 
 function Get-Run($Context, [bool]$NewRun, [long]$Now) {
+    $family = Get-QueryFamily $Context
     $runs = @($Context.State.Runs | Where-Object { $_.Scope -ceq $Context.RunScope })
     if ($runs.Count -gt 0) {
         $run = $runs[-1]
@@ -259,25 +286,27 @@ function Get-Run($Context, [bool]$NewRun, [long]$Now) {
             $run.Phase = 'AberturaAmbigua'
             Save-LocalState $Context
         }
-        if ($run.Phase -eq 'AberturaAmbigua') { throw 'Abertura de debitos sem resultado confirmado. Reconcilie a solicitacao antes de prosseguir.' }
+        if ($run.Phase -eq 'AberturaAmbigua') { throw "Abertura de $($family.ToLowerInvariant()) sem resultado confirmado. Reconcilie a solicitacao antes de prosseguir." }
         if (-not $NewRun) { return $run }
         if ($run.Phase -notin @('AberturaRejeitada', 'Finalizada', 'ErroFiscal', 'Expirada')) {
-            throw 'Existe uma solicitacao de debitos que precisa ser retomada ou reconciliada.'
+            throw "Existe uma solicitacao de $($family.ToLowerInvariant()) que precisa ser retomada ou reconciliada."
         }
     }
     # Janela movel para nao presumir o fuso adotado pela Receita. O limite e por
     # credencial e API, inclusive para outra empresa representada.
-    $recent = @($Context.State.Runs | Where-Object { $_.Api -eq 'Debitos' -and $_.Opened -gt ($Now - $script:Day) })
+    $recent = @($Context.State.Runs | Where-Object { $_.Api -ceq $family -and $_.Opened -gt ($Now - $script:Day) })
     if ($recent.Count -ge $Context.Metadata.limiteAberturasPorApiPorDia) {
-        throw 'Orcamento local diario de abertura de debitos esgotado.'
+        throw "Orcamento local diario de abertura de $($family.ToLowerInvariant()) esgotado."
     }
     return $null
 }
 
 function Start-Run($Context, [long]$Now) {
+    $family = Get-QueryFamily $Context
+    $stage = if ($family -ceq 'Debitos') { 'AACBS-003' } else { 'AACBS-004' }
     $run = [pscustomobject]@{
         Id = [Guid]::NewGuid().ToString('N'); Scope = $Context.RunScope; Credential = $Context.TokenScope
-        Stage = 'AACBS-003'; Api = 'Debitos'; Environment = $Context.Metadata.ambiente
+        Stage = $stage; Api = $family; Environment = $Context.Metadata.ambiente
         Phase = 'AberturaIniciada'; Opened = $Now; LastPoll = 0L; Polls = 0; Ticket = ''
         LinkAt = 0L; DownloadAt = 0L; LastHttp = 0
     }
@@ -295,12 +324,13 @@ function Get-PollDelay($Metadata, $Run, [long]$Now) {
     return $next - $Now
 }
 
-function Import-AACBSAssembly([string]$Path) {
+function Import-AACBSAssembly([string]$Path, [string]$Family = 'Debitos') {
     try {
         $dll = Get-Item -LiteralPath $Path
         if ($dll.Name -cne 'Unimake.Business.DFe.dll') { throw 'DLL invalida.' }
         if ($null -ne $script:LoadedDll) {
             if ($script:LoadedDll.Path -ine $dll.FullName) { throw 'Outra DLL ja carregada.' }
+            if (-not $script:LoadedDll.Types.ContainsKey('Consultar' + $Family)) { throw 'Outra familia ja carregada; use um novo processo.' }
             return $script:LoadedDll
         }
 
@@ -337,7 +367,7 @@ namespace Unimake.AACBS
         $types = @{}
         $configurationType = $assembly.GetType('Unimake.Business.DFe.Servicos.Configuracao', $true)
         if ($null -eq $configurationType.GetProperty('AACBSToken')) { throw 'Contrato AACBS ausente.' }
-        foreach ($operation in @('Autenticar', 'ConsultarDebitos', 'ConsultarSituacaoSolicitacao', 'ConsultarLinkDownload', 'BaixarArquivoRetorno')) {
+        foreach ($operation in @('Autenticar', ('Consultar' + $Family), 'ConsultarSituacaoSolicitacao', 'ConsultarLinkDownload', 'BaixarArquivoRetorno')) {
             $requestType = $assembly.GetType("Unimake.Business.DFe.Xml.AACBS.$operation", $true)
             $serviceType = $assembly.GetType("Unimake.Business.DFe.Servicos.AACBS.$operation", $true)
             if ($null -eq $serviceType.GetConstructor([type[]]@($requestType, $configurationType)) -or
@@ -381,7 +411,9 @@ function Invoke-DllCall($Context, [string]$Operation, [hashtable]$Fields, [strin
     }
     catch {
         $http = if ($null -ne $service) { [int]$service.HttpStatusCode } else { 0 }
-        Write-Observation $Context $Operation 'FalhaTecnica' $http
+        $contract = Get-ContractFailure $_.Exception $Operation
+        if ($null -ne $contract) { Write-Observation $Context $contract.Operation 'ContratoIncompativel' $http $contract.Path }
+        else { Write-Observation $Context $Operation 'FalhaTecnica' $http }
         return @{ Http = $http; Result = $null }
     }
     finally {
@@ -401,20 +433,23 @@ function Test-AuthorizationFailure($Context, $Response, [string]$Token) {
 }
 
 function Assert-DownloadWindow($Context, $Run, [long]$Now) {
+    $family = Get-QueryFamily $Context
     # Sem webhook, o inicio da abertura e a referencia conservadora para as 48h.
     if ($Now -ge ($Run.Opened + 2 * $script:Day)) {
         $Run.Phase = 'Expirada'
         Save-LocalState $Context
-        throw 'A janela local para recuperar o arquivo de debitos expirou.'
+        throw "A janela local para recuperar o arquivo de $($family.ToLowerInvariant()) expirou."
     }
 }
 
-function Invoke-Debits($Context, [bool]$NewRun, [bool]$KeepFinalXml) {
+function Invoke-Query($Context, [bool]$NewRun, [bool]$KeepFinalXml, [bool]$NoWait = $false) {
+    $family = Get-QueryFamily $Context
+    $operation = 'Consultar' + $family
     $run = Get-Run $Context $NewRun (Get-Now)
     if ($null -eq $run) {
         $token = Get-ExecutionToken $Context
         $run = Start-Run $Context (Get-Now)
-        $opened = & $Context.Dispatch $Context 'ConsultarDebitos' @{ Cnpj = $Context.Cnpj } $token
+        $opened = & $Context.Dispatch $Context $operation @{ Cnpj = $Context.Cnpj } $token
         $run.LastHttp = $opened.Http
         if ($opened.Http -eq 201 -and $null -ne $opened.Result -and $opened.Result.TiqueteSolicitacao) {
             $run.Ticket = $opened.Result.TiqueteSolicitacao
@@ -427,15 +462,21 @@ function Invoke-Debits($Context, [bool]$NewRun, [bool]$KeepFinalXml) {
         Save-LocalState $Context
         $rejected = Test-AuthorizationFailure $Context $opened $token
         if ($rejected -or $run.Phase -ne 'ComTiquete') {
-            Write-Observation $Context 'ConsultarDebitos' $run.Phase $opened.Http
-            throw 'Abertura de debitos interrompida. O resultado e o orcamento permanecem no journal cifrado.'
+            Write-Observation $Context $operation $run.Phase $opened.Http
+            throw "Abertura de $($family.ToLowerInvariant()) interrompida. O resultado e o orcamento permanecem no journal cifrado."
         }
     }
 
     while ($run.Phase -eq 'ComTiquete') {
         $delay = Get-PollDelay $Context.Metadata $run (Get-Now)
         if ($delay -lt 0) { throw 'Limite local de acompanhamento atingido. O tiquete permanece no journal cifrado.' }
-        if ($delay -gt 0) { Start-Sleep -Milliseconds ([int]$delay) }
+        if ($delay -gt 0) {
+            if ($NoWait) {
+                Write-Observation $Context 'ConsultarSituacaoSolicitacao' 'JanelaAguardando'
+                return
+            }
+            Start-Sleep -Milliseconds ([int]$delay)
+        }
         $token = Get-ExecutionToken $Context
         $now = Get-Now
         if ((Get-PollDelay $Context.Metadata $run $now) -ne 0) {
@@ -456,7 +497,7 @@ function Invoke-Debits($Context, [bool]$NewRun, [bool]$KeepFinalXml) {
             $run.Phase = if ($situation -eq 'Expirada') { 'Expirada' } else { 'ErroFiscal' }
             Save-LocalState $Context
             Write-Observation $Context 'ConsultarSituacaoSolicitacao' $run.Phase $status.Http
-            throw 'A Receita encerrou a solicitacao de debitos. O estado permanece no journal cifrado.'
+            throw "A Receita encerrou a solicitacao de $($family.ToLowerInvariant()). O estado permanece no journal cifrado."
         }
         if ($status.Http -ne 200 -or $situation -cnotin @('Pendente', 'EmProcessamento', 'Concluida')) {
             throw 'Consulta de situacao sem resultado utilizavel. O tiquete permanece no journal cifrado.'
@@ -469,11 +510,11 @@ function Invoke-Debits($Context, [bool]$NewRun, [bool]$KeepFinalXml) {
     }
 
     if ($run.Phase -eq 'Finalizada') {
-        Write-Observation $Context 'ConsultarDebitos' 'JaFinalizada'
+        Write-Observation $Context $operation 'JaFinalizada'
         return
     }
     if ($run.Phase -ne 'Pronta') {
-        Write-Observation $Context 'ConsultarDebitos' $run.Phase
+        Write-Observation $Context $operation $run.Phase
         throw 'A solicitacao existente exige reconciliacao ou decisao explicita do executor.'
     }
 
@@ -492,7 +533,7 @@ function Invoke-Debits($Context, [bool]$NewRun, [bool]$KeepFinalXml) {
         [string]::IsNullOrWhiteSpace($link.Result.UrlAssinada)) {
         $run.Phase = if ($link.Http -in @(401, 403, 429)) { 'Pronta' } else { 'LinkIndisponivel' }
         Save-LocalState $Context
-        throw 'Link de debitos indisponivel. A recuperacao exige revisar a operacao registrada.'
+        throw "Link de $($family.ToLowerInvariant()) indisponivel. A recuperacao exige revisar a operacao registrada."
     }
 
     try {
@@ -501,26 +542,26 @@ function Invoke-Debits($Context, [bool]$NewRun, [bool]$KeepFinalXml) {
             ($null -ne $expiration -and $expiration -le [DateTimeOffset]::UtcNow)) {
             $run.Phase = 'Expirada'
             Save-LocalState $Context
-            throw 'O link do arquivo de debitos expirou.'
+            throw "O link do arquivo de $($family.ToLowerInvariant()) expirou."
         }
         $run.Phase = 'DownloadIniciado'
         $run.DownloadAt = Get-Now
         $run.LastHttp = 0
         Save-LocalState $Context
         $downloaded = & $Context.Dispatch $Context 'BaixarArquivoRetorno' @{
-            TipoConsulta = 'Debitos'; Cnpj = $Context.Cnpj; TiqueteSolicitacao = $run.Ticket
+            TipoConsulta = $family; Cnpj = $Context.Cnpj; TiqueteSolicitacao = $run.Ticket
             UrlAssinada = $link.Result.UrlAssinada; UrlAssinadaExpiraEmField = $link.Result.UrlAssinadaExpiraEmField
         } ''
     }
     finally { $link = $null }
     $run.LastHttp = $downloaded.Http
-    if ($downloaded.Http -ne 200 -or $null -eq $downloaded.Result -or $null -eq $downloaded.Result.ArquivoDebitos) {
+    if ($downloaded.Http -ne 200 -or $null -eq $downloaded.Result -or $null -eq $downloaded.Result.('Arquivo' + $family)) {
         $run.Phase = 'DownloadIndisponivel'
         Save-LocalState $Context
-        throw 'Download de debitos sem arquivo valido. O link foi descartado.'
+        throw "Download de $($family.ToLowerInvariant()) sem arquivo valido. O link foi descartado."
     }
     if ($KeepFinalXml) {
-        $finalPath = Join-Path (Split-Path -Parent $Context.Path) ("arquivo-debitos-" + $run.Id + '.dpapi')
+        $finalPath = Join-Path (Split-Path -Parent $Context.Path) ('arquivo-' + $family.ToLowerInvariant() + '-' + $run.Id + '.dpapi')
         if ([string]::IsNullOrEmpty($downloaded.Xml)) { throw 'O arquivo validado nao tem XML para gravacao local.' }
         Write-ProtectedText $finalPath $downloaded.Xml
     }
@@ -529,7 +570,7 @@ function Invoke-Debits($Context, [bool]$NewRun, [bool]$KeepFinalXml) {
     Write-Observation $Context 'BaixarArquivoRetorno' 'Finalizada' $downloaded.Http
 }
 
-function Invoke-AACBSLocal([string]$Repository, [ValidateSet('Verificar', 'Autenticar', 'Debitos')][string]$Action, [string]$Dll, [bool]$NewRun, [bool]$KeepFinalXml) {
+function Invoke-AACBSLocal([string]$Repository, [ValidateSet('Verificar', 'Autenticar', 'Debitos', 'Creditos', 'Pagamentos', 'Recolhimentos')][string]$Action, [string]$Dll, [bool]$NewRun, [bool]$KeepFinalXml, [bool]$NoWait = $false) {
     if ([Environment]::OSVersion.Platform -ne [PlatformID]::Win32NT) { throw 'O roteiro AACBS exige Windows para usar DPAPI.' }
     $local = Get-LocalDirectory $Repository
     $access = Read-LocalAccess $local
@@ -541,7 +582,15 @@ function Invoke-AACBSLocal([string]$Repository, [ValidateSet('Verificar', 'Auten
         return
     }
     Assert-RealEnvironment $access.Metadata
-    $assembly = Import-AACBSAssembly $Dll
+    $family = switch ($Action) {
+        'Creditos' { 'Creditos' }
+        'Pagamentos' { 'Pagamentos' }
+        'Recolhimentos' { 'Recolhimentos' }
+        default { 'Debitos' }
+    }
+    $access.Family = $family
+    $access.Stage = if ($family -ceq 'Debitos') { 'AACBS-003' } else { 'AACBS-004' }
+    $assembly = Import-AACBSAssembly $Dll $family
     $access.Cnpj = $access.Metadata.cnpjMatriz.Substring(0, 8)
     $access.Dll = $assembly
     $access.Dispatch = { param($context, $operation, $fields, $token) Invoke-DllCall $context $operation $fields $token }
@@ -550,7 +599,7 @@ function Invoke-AACBSLocal([string]$Repository, [ValidateSet('Verificar', 'Auten
         $credentialId = $access.Credential.UserName
         $quota = Get-Identity @($script:Emitter, $credentialId)
         $access.TokenScope = Get-Identity @($script:Emitter, $access.Metadata.ambiente, $credentialId, $access.Credential.GetNetworkCredential().Password)
-        $access.RunScope = Get-Identity @($quota, $access.Metadata.ambiente, 'Debitos', $access.Cnpj)
+        $access.RunScope = Get-Identity @($quota, $access.Metadata.ambiente, $family, $access.Cnpj)
         $sid = [Security.Principal.WindowsIdentity]::GetCurrent().User.Value
         $mutex = [Threading.Mutex]::new($false, ('Global\UnimakeAACBS-' + (Get-Identity @($sid, $quota))))
         $locked = $false
@@ -569,7 +618,7 @@ function Invoke-AACBSLocal([string]$Repository, [ValidateSet('Verificar', 'Auten
                 Write-Observation $access 'Autenticar' 'TokenDisponivel'
                 return
             }
-            Invoke-Debits $access $NewRun $KeepFinalXml
+            Invoke-Query $access $NewRun $KeepFinalXml $NoWait
         }
         finally {
             if ($locked) { $mutex.ReleaseMutex() }
@@ -588,4 +637,5 @@ function Invoke-AACBSLocal([string]$Repository, [ValidateSet('Verificar', 'Auten
 }
 
 . (Join-Path $PSScriptRoot 'Testar-RoteiroAACBS.ps1')
+. (Join-Path $PSScriptRoot 'Testar-ConsultasAACBS004.ps1')
 Export-ModuleMember -Function Invoke-AACBSLocal, Invoke-AACBSOffline
