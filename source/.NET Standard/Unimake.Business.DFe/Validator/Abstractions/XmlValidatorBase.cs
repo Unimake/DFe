@@ -59,10 +59,17 @@ namespace Unimake.Business.DFe.Validator.Abstractions
         /// <summary>
         /// <inheritdoc cref="IXmlValidator.Validate"/>
         /// </summary>
-        public virtual bool Validate()
+        public virtual bool Validate() => Validate(LoadOptions.None);
+
+        /// <summary>
+        /// Valida as tags registradas com as opções de leitura do XML informadas.
+        /// </summary>
+        /// <param name="loadOptions">Opções de leitura do XML.</param>
+        /// <returns>Verdadeiro quando a validação é concluída.</returns>
+        protected bool Validate(LoadOptions loadOptions)
         {
             //faz um loop pelas tags do XML
-            var elements = XDocument.Parse(Xml)
+            var elements = XDocument.Parse(Xml, loadOptions)
                                     .Descendants()
                                     .Where(element => validators.Any(w => w.Predicate(element)));
             return Validate(elements);

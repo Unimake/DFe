@@ -2,9 +2,12 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using System.Xml.Linq;
 using Unimake.Business.DFe;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
+using Unimake.Business.DFe.Validator.AACBS;
+using Unimake.Business.DFe.Validator.Abstractions;
 using Unimake.Business.DFe.Xml.AACBS;
 using Xunit;
 
@@ -147,6 +150,56 @@ namespace Unimake.DFe.Test.AACBS.Validacao
                 campo.InnerText = valor;
                 Assert.False(Validar(xml).Validado);
             }
+
+            campo.InnerText = new string(' ', 100);
+            Assert.Equal(raiz != "gerarDarfAdquirente", Validar(xml).Validado);
+
+            campo.InnerText = new string(' ', 101);
+            var excesso = Validar(xml);
+            Assert.False(excesso.Validado);
+            if (raiz != "gerarDarfAdquirente")
+            {
+                Assert.Contains("100 caracteres Unicode", excesso.MensagemRetorno);
+            }
+
+            foreach (var quantidade in new[] { 99, 100 })
+            {
+                campo.InnerText = new string('A', quantidade);
+                campo.AppendChild(xml.CreateComment("comentário entre trechos de texto"));
+                campo.AppendChild(xml.CreateWhitespace(" "));
+
+                var validacao = Validar(xml);
+                Assert.Equal(quantidade == 99, validacao.Validado);
+                if (quantidade == 100)
+                {
+                    Assert.Contains("100 caracteres Unicode", validacao.MensagemRetorno);
+                }
+            }
+        }
+
+        [Fact]
+        public void ValidadorAACBSPreservaEspacosParaRegrasAdicionais()
+        {
+            var xml = AACBSFixture.Carregar("consultarSituacaoSolicitacao");
+            AACBSFixture.Procurar(xml, "tiqueteSolicitacao").InnerText = " ";
+            var validador = new AACBSValidator(xml);
+            var valorLido = "inicial";
+            validador.ValidateTag(elemento => elemento.Name.LocalName == "tiqueteSolicitacao",
+                elemento => valorLido = elemento.Value);
+
+            Assert.True(validador.Validate());
+            Assert.Equal(" ", valorLido);
+        }
+
+        [Fact]
+        public void ValidadorBaseMantemLeituraPadraoDeEspacos()
+        {
+            var validador = new ValidadorDeTeste { Xml = "<valor> </valor>" };
+            var valorLido = "inicial";
+            validador.ValidateTag(validador.CanValidate, elemento => valorLido = elemento.Value);
+
+            Assert.True(validador.Validate());
+            Assert.Equal(string.Empty, valorLido);
         }
 
 #if INTEROP
@@ -182,5 +235,10 @@ namespace Unimake.DFe.Test.AACBS.Validacao
 
         private static ValidarEstruturaXML.ResultadoValidacao Validar(XmlDocument document) =>
             new ValidarEstruturaXML().ValidarServico(document, new Configuracao { CodigoUF = (int)UFBrasil.AN });
+
+        private sealed class ValidadorDeTeste : XmlValidatorBase
+        {
+            public override bool CanValidate(XElement element) => element.Name.LocalName == "valor";
+        }
     }
 }

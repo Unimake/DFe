@@ -30,6 +30,10 @@ namespace Unimake.Business.DFe.Validator.AACBS
         public override bool CanValidate(XElement element) => element != null && element.Parent == null &&
             element.Name.Namespace == NS && AACBSFormat.IsRoot(element.Name.LocalName);
 
+        /// <summary>Valida o conteúdo AACBS preservando os espaços do XML.</summary>
+        /// <returns>Verdadeiro quando a validação é concluída.</returns>
+        public override bool Validate() => base.Validate(LoadOptions.PreserveWhitespace);
+
         private static void Fail(XElement element, string rule) =>
             throw new ValidatorDFeException("AACBS: tag <" + element.Name.LocalName + "> no grupo <" +
                 (element.Parent?.Name.LocalName ?? element.Name.LocalName) + ">: " + rule);
@@ -121,11 +125,12 @@ namespace Unimake.Business.DFe.Validator.AACBS
         private static void ValidateKeyLength(XElement element)
         {
             // O contrato limita caracteres Unicode; um par substituto UTF-16 conta uma vez.
+            var value = element.Value;
             var characters = 0;
-            for (var index = 0; index < element.Value.Length; index++)
+            for (var index = 0; index < value.Length; index++)
             {
-                if (char.IsHighSurrogate(element.Value[index]) && index + 1 < element.Value.Length &&
-                    char.IsLowSurrogate(element.Value[index + 1]))
+                if (char.IsHighSurrogate(value[index]) && index + 1 < value.Length &&
+                    char.IsLowSurrogate(value[index + 1]))
                 {
                     index++;
                 }
