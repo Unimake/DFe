@@ -1,0 +1,5 @@
+"PackagePath","SourcePath","Sha256"
+"lib/netstandard2.0/Unimake.Business.DFe.dll","source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.dll","B1AA7CE403AF52F71E8F151DBD6119A32309ACD3DF6A6C71D4F5AFDCF31B3E8F"
+"lib/netstandard2.0/Unimake.Business.DFe.pdb","source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.pdb","C5C4108E58FCB7312246D9F72405AC2EAD48B57B17235D576D65F756A476AE54"
+"lib/netstandard2.0/Unimake.Business.DFe.xml","source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.xml","8F04A2CE94B74DBCE57B3D8EB2D97F996E5043C0CAD576DF22358DF3735DEB44"
+"lib/netstandard2.0/GeradorCIOTShared.dll","source/.NET Standard/Unimake.Business.DFe/ThirdParty/GeradorCIOTShared/GeradorCIOTShared.dll","BB94512BBC44FAB09E9D6DE9D8370519EEDD32B90BE46EFE7E9DE1660DA6238D"

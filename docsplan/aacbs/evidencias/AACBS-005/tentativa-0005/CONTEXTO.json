@@ -1,0 +1,13 @@
+{
+  "Stage": "AACBS-005",
+  "Attempt": 5,
+  "GitHead": "3efc0eae7e5b216a0f348387b8575f9e941679eb",
+  "Mode": "Offline",
+  "DryRun": true,
+  "StartDate": "19/11/2026 00:00:00",
+  "EndDate": "25/11/2026 11:57:55",
+  "TrackedChangesBefore": [],
+  "PublicationAuthorized": false,
+  "ConsumerChangesAuthorized": false,
+  "ReceitaRequestsAuthorized": false
+}

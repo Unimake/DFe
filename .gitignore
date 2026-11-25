@@ -522,3 +522,6 @@ MigrationBackup/
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/acesso-winps.log
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/acesso-pwsh.log
 !/docsplan/aacbs/evidencias/AACBS-005/tentativa-0004/roteiro-offline.log
+
+# DryRun oficial AACBS-005 após as correções: log final de empacotamento
+!/docsplan/aacbs/evidencias/AACBS-005/tentativa-0005/pacote-dryrun.log

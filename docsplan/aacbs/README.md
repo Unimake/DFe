@@ -56,3 +56,6 @@ A [retomada AACBS-005, tentativa-0002](evidencias/AACBS-005/tentativa-0002/ENTRE
 A [RAD-01, tentativa-0003](evidencias/AACBS-005/tentativa-0003/ENTREGA.md), foi expressamente autorizada pelo DEV e executada uma vez. Recebeu HTTP 404 sem retorno fiscal validado; o journal protege o resultado indeterminado e bloqueia repetição. A parte real da AACBS-005 está bloqueada para reconciliação/esclarecimento operacional. A proposta anterior não permanece simplesmente aguardando confirmação; o histórico de preparo e testes foi preservado. Nenhum pagamento foi executado.
 
 Os [reparos da revisão consolidada](evidencias/AACBS-005/tentativa-0004/ENTREGA.md) corrigem a atualização/verificação do acesso local e a contagem de espaços em chaves XML. Testes offline concluídos; aguardam revisão humana, preservando o bloqueio dos critérios reais.
+
+
+O [DryRun oficial após os reparos](evidencias/AACBS-005/tentativa-0005/ENTREGA.md) passou em 25/11/2026, com assets, dependências e recursos AACBS conferidos. Nenhum pacote foi publicado ou instalado; pendências reais permanecem bloqueadas.

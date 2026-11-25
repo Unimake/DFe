@@ -142,3 +142,8 @@ Após a revisão do texto para até 5.000 caracteres, o DEV informou: "Enviado, 
 | 2026-11-25 | AACBS-005 | REWORK | BLOCKED | Publicação consistente do acesso, verificação compartilhada e preservação de espaços no validador corrigidas. 171 casos Debug/173 INTEROP e testes PowerShell 5.1/7.6 aprovados, roteiro offline aprovado e revisão independente sem achados. Reparos entregues para revisão humana; pendências reais não resolvidas | tentativa-0004 |
 
 A [entrega dos reparos](evidencias/AACBS-005/tentativa-0004/ENTREGA.md) identifica as provas e limitações. A correção não libera consumo, não modifica o acesso real, não reconcilia RAD-01 e não constitui aprovação da etapa. Continuamos aguardando a Receita e as massas elegíveis conforme o encerramento técnico.
+## DryRun do pacote após as correções — 25/11/2026
+
+O DEV autorizou somente a validação do empacotamento oficial em modo DryRun, sem publicação, alterações de consumidores ou chamadas à Receita. A [tentativa-0005](evidencias/AACBS-005/tentativa-0005/ENTREGA.md) concluiu o fluxo Offline -DryRun com exit 0 no HEAD 3efc0eae7, incluindo os reparos da tentativa-0004. Pacote temporário 20261125.1158.32 validado com quatro assets netstandard2.0, dependências e hash CIOT conferidos; DLL Release com 25 XSDs e duas configurações AACBS. Projeto/pacote rastreado restaurados/preservados, sete hashes sem divergências. O aviso NU1900 limita a prova de auditoria de vulnerabilidades do feed configurado, sem impedir build/pack. Nenhum teste unitário, consumo fiscal ou consumidor foi executado nesta verificação. Não houve commit.
+
+Estado AACBS-005 mantido BLOCKED nos critérios reais. Esta prova complementar não reconcilia as chamadas anteriores nem substitui o aceite humano.

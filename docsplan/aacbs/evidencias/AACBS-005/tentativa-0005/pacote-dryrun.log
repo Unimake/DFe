@@ -1,0 +1,158 @@
+AssemblyVersion e FileVersion atualizadas no projeto para 2026.11.25.1158 antes da compilação.
+Executando: dotnet clean C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj --configuration Release -p:SolutionDir=C:\projetos\github\Unimake.DFe\source\
+Compilação de 25/11/2026 11:58:40 iniciada.
+     1>Projeto "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" no nó 1 (Clean destino(s)).
+     1>O projeto "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" (1) está compilando "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" (1:2) no nó 1 (Clean destino(s)).
+     1>CoreClean:
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\Unimake.DFe\Compilacao\Release\netstandard2.0\System.Net.Http.WinHttpHandler.dll".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.deps.json".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.dll".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.pdb".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.xml".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.csproj.AssemblyReference.cache".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.Properties.Resources.resources".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.csproj.GenerateResource.cache".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.GeneratedMSBuildEditorConfig.editorconfig".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.AssemblyInfoInputs.cache".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.AssemblyInfo.cs".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.csproj.CoreCompileInputs.cache".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.sourcelink.json".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake..C45FCD11.Up2Date".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.dll".
+         Excluindo o arquivo "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\obj\Release\netstandard2.0\Unimake.Business.DFe.pdb".
+     1>Projeto de compilação pronto "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" (Clean destino(s)).
+     1>Projeto de compilação pronto "C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj" (Clean destino(s)).
+
+Compilação com êxito.
+    0 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:03.34
+Executando: dotnet build C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj --configuration Release --no-incremental --disable-build-servers -p:Version=20261125.1158.32 -p:PackageVersion=20261125.1158.32 -p:AssemblyVersion=2026.11.25.1158 -p:FileVersion=2026.11.25.1158 -p:SolutionDir=C:\projetos\github\Unimake.DFe\source\
+  Determinando os projetos a serem restaurados...
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj : warning NU1900: Ocorreu um erro ao obter os dados de vulnerabilidade do pacote: Não é possível carregar o índice de serviço para a origem https://pkgs.dev.azure.com/unimakesoftware/_packaging/unimake/nuget/v3/index.json.
+  C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj restaurado (em 6,44 seg).
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(159,21): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(159,39): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(159,58): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(160,20): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+  Unimake.Business.DFe -> C:\projetos\github\Unimake.DFe\source\Unimake.DFe\Compilacao\Release\netstandard2.0\Unimake.Business.DFe.dll
+
+Compilação com êxito.
+
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj : warning NU1900: Ocorreu um erro ao obter os dados de vulnerabilidade do pacote: Não é possível carregar o índice de serviço para a origem https://pkgs.dev.azure.com/unimakesoftware/_packaging/unimake/nuget/v3/index.json.
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(159,21): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(159,39): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(159,58): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Xml\NFe\EnviNFe.cs(160,20): warning CS0618: "NFe.InfNFe" é obsoleto: "Utilize a propriedade InfNFeField para acessar as informações da NFe/NFCe. A propriedade InfNFe é uma lista para manter a compatibilidade com o schema, mas a NFe/NFCe só pode conter um elemento InfNFe, logo, o conteúdo da lista InfNFe deve ser sempre 0 (zero) ou 1 (um)." [C:\projetos\github\Unimake.DFe\source\.NET Standard\Unimake.Business.DFe\Unimake.Business.DFe.csproj::TargetFramework=netstandard2.0]
+    5 Aviso(s)
+    0 Erro(s)
+
+Tempo Decorrido 00:00:15.24
+Executando: dotnet pack C:\Users\Wandrey\AppData\Local\Temp\Unimake.DFe.Packaging.20c8a2c86fa64deea7140674f3e86b2f\Unimake.DFe.nuspec --output C:\Users\Wandrey\AppData\Local\Temp\Unimake.DFe.Packaging.20c8a2c86fa64deea7140674f3e86b2f
+AVISO: [NuGet Manager] [Warning] O elemento 'PackageIconUrl'/'iconUrl' foi preterido. Em vez dele, use o elemento 
+'PackageIcon'/'icon'. Saiba mais em https://aka.ms/deprecateIconUrl
+[NuGet Manager] Falta um pacote Unimake.DFe.20261125.1158.32 Acesse. Acesse https://aka.ms/nuget/authoring-best-practices/readme para saber porque readmes de pacote são importantes.
+[NuGet Manager] Pacote criado com êxito 'C:\Users\Wandrey\AppData\Local\Temp\Unimake.DFe.Packaging.20c8a2c86fa64deea7140674f3e86b2f\Unimake.DFe.20261125.1158.32.nupkg'.
+Assets validados: somente lib/netstandard2.0, com os quatro arquivos previstos.
+Hash de GeradorCIOTShared.dll conferido contra a origem.
+
+Pacote validado com sucesso.
+Modo             : Offline
+PackageVersion   : 20261125.1158.32
+AssemblyVersion  : 2026.11.25.1158
+Início           : 19/11/2026 00:00:00
+Fim              : 25/11/2026 11:57:55
+Release notes:
+- fix(aacbs): mantém consistente a atualização e a verificação do acesso local
+
+- fix(aacbs): preserva espaços na validação do limite das chaves XML
+
+- fix(nfeabi): ajusta as URLs de consulta em homologação
+
+- fix(nuget): exporta a dependência HTTP JSON e valida os assets do pacote
+
+- fix(aacbs): preserva o NI completo no retorno de créditos
+
+- feat(aacbs): amplia o roteiro protegido para as demais consultas
+
+- feat(aacbs): adiciona consultas complementares e serviços de geração de DARF
+
+- fix(nfeabi): adequa o QR Code da emissão normal à NT 2026.001
+
+- feat(aacbs): adiciona roteiro local protegido para testes e retomada
+
+- feat(aacbs): implementa autenticação e serviços do fluxo de débitos
+
+- fix(aacbs): aceita CNPJ completo no arquivo de débitos
+
+- feat(transporte): adiciona leitura por cabeçalhos com controle de cookies e redirecionamento
+
+- fix(nfeabi): aplica CDATA ao QR Code da nota
+
+- feat(revisao-ticket): revisa alterações pendentes do chat quando o ticket é omitido
+
+- fix(nfeabi): valida a tag de retorno SOAP na recepção de eventos
+
+- fix(nfeabi): rejeita envelope SOAP de consulta na recepção de eventos
+
+- fix(nfeabi): rejeita transporte por API na recepção de eventos
+
+- fix(aacbs): corrige validação de instantes e chaves Unicode
+
+- fix(aacbs): preserva espaços e quebras de linha nos contratos XML
+
+- fix(nfeabi): rejeita configuração de outra operação na recepção de eventos
+
+- fix(nfeabi): limpa XMLs no INTEROP e rejeita ambiente divergente
+
+- fix(nfeabi): corrige a reutilização da recepção de eventos no INTEROP
+
+- fix(nfeabi): descarta o retorno anterior a cada tentativa de evento
+
+- feat(aacbs): adiciona contratos XML e validação da apuração assistida
+
+- feat(aacbs): prepara acesso local protegido para testes
+
+- fix(nfeabi): valida conteúdo e identificador na recepção de eventos
+
+- feat(nfeabi): adiciona recepção de eventos em homologação
+
+- feat(nfce): retira o envio de EPEC da NFC-e de São Paulo
+
+- fix(nfeabi): corrige o QR Code da emissão normal em homologação
+
+- feat(nfe): adiciona o segmento B25d para gerar cIndOp no XML
+
+- fix(nfe): alinha a raiz ProcInutNFe ao schema de distribuição
+
+- fix(nfcom): reutiliza os serializadores dos grupos do evento 412140
+
+- fix(nfe): reutiliza o serializador do grupo gPgto no evento 110300
+
+- fix(cte): reutiliza o serializador da consulta de status 4.00
+
+- fix(dce): compatibiliza a solicitação opcional do Fisco
+
+- fix(nfe): rejeita tpEmis inválido no status TXT
+
+- feat(nfe): seleciona rota de status por TXT com adesão explícita
+
+- fix(nfe): preserva barra invertida na Carta de Correção
+
+- fix(txt): adiciona detecção de codificação opt-in na entrada
+
+- fix(nfe): preserva o layout legado no retorno de status TXT
+
+- fix(nfe): normaliza o motivo no retorno de inutilização TXT
+
+- fix(nfe): normaliza o motivo no resumo da situação TXT
+
+- fix(nfe): corrige colunas do retorno de situação TXT
+
+- fix(nfe): restaura delimitadores do retorno de evento TXT
+
+- fix(nfe): omite resumo de situação TXT quando há apenas evento
+
+DryRun concluído: nenhum pacote foi enviado e nenhum arquivo rastreado foi alterado.
+EXITCODE=0

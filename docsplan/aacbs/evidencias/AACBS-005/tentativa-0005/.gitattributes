@@ -1,0 +1,2 @@
+# Preserva os bytes do log cujo SHA-256 consta da evidência.
+pacote-dryrun.log -text
