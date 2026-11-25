@@ -235,8 +235,6 @@ namespace Unimake.Business.DFe.Servicos.AACBS
 
         internal RetornoAACBSBase Baixar(Xml.AACBS.BaixarArquivoRetorno envio)
         {
-            if (envio.TipoConsulta != TipoConsultaAACBS.Debitos)
-                throw new InvalidOperationException("AACBS: família de arquivo ainda não disponível para download.");
             if (envio.UrlAssinadaExpiraEm <= RelogioUtc())
                 throw new InvalidOperationException("AACBS: a URL assinada está expirada.");
             // O HttpClient de netstandard2.0/.NET Framework constrói o destino usando System.Uri.
@@ -350,7 +348,8 @@ namespace Unimake.Business.DFe.Servicos.AACBS
         private FormatException ErroContrato(string caminho, bool oauth = false)
         {
             var operacao = oauth ? "Autenticar" : nomeOperacao;
-            if (Operacao == Servico.AACBSBaixarArquivoRetorno) operacao += " (DEBITOS)";
+            if (Operacao == Servico.AACBSBaixarArquivoRetorno)
+                operacao += " (" + LerEnvio<Xml.AACBS.BaixarArquivoRetorno>().TipoConsulta.ToString().ToUpperInvariant() + ")";
             return new FormatException("AACBS " + operacao + ": resposta incompatível com o contrato em " + caminho + ".");
         }
 

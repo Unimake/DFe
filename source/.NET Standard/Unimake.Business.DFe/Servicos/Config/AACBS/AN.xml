@@ -14,6 +14,41 @@
       <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/debitos/{cnpj}</RequestURIProducao>
       <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
     </ConsultarDebitos>
+    <ConsultarCreditos versao="1.00">
+      <Descricao>Abrir consulta de créditos</Descricao>
+      <MetodoAPI>post</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/creditos/{cnpj}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </ConsultarCreditos>
+    <ConsultarPagamentos versao="1.00">
+      <Descricao>Abrir consulta de pagamentos</Descricao>
+      <MetodoAPI>post</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/pagamentos/{cnpj}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </ConsultarPagamentos>
+    <ConsultarRecolhimentos versao="1.00">
+      <Descricao>Abrir consulta de recolhimentos</Descricao>
+      <MetodoAPI>post</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/recolhimentos/{cnpj}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </ConsultarRecolhimentos>
+    <GerarDarfAdquirente versao="1.00">
+      <Descricao>Gerar DARF de recolhimento como adquirente</Descricao>
+      <MetodoAPI>post</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/rad/{cnpj}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </GerarDarfAdquirente>
+    <GerarDarfContribuinte versao="1.00">
+      <Descricao>Gerar DARF de pagamento como contribuinte</Descricao>
+      <MetodoAPI>post</MetodoAPI>
+      <UsaCertificadoDigital>false</UsaCertificadoDigital>
+      <RequestURIProducao>https://api.receitafederal.gov.br/apuracao-cbs/v2/pcont/{cnpj}</RequestURIProducao>
+      <RequestURILoginProducao>https://api.receitafederal.gov.br/token</RequestURILoginProducao>
+    </GerarDarfContribuinte>
     <ConsultarSituacaoSolicitacao versao="1.00">
       <Descricao>Consultar a situação do tíquete</Descricao>
       <MetodoAPI>get</MetodoAPI>

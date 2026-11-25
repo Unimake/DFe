@@ -17,7 +17,7 @@ namespace Unimake.Business.DFe.Servicos.AACBS
         internal CampoInvalidoException(string caminho) => Caminho = caminho;
     }
 
-    internal static class RespostaAACBS
+    internal static partial class RespostaAACBS
     {
         private static readonly HashSet<int> OrigensDebito = new HashSet<int> { 0, 20, 21, 22, 30, 31, 32, 50, 51, 52, 53, 54, 55 };
         private static readonly HashSet<int> DocumentosDebito = new HashSet<int> { 55, 57, 62, 63, 64, 65, 66, 67, 91, 92, 93, 94, 97 };
@@ -227,6 +227,14 @@ namespace Unimake.Business.DFe.Servicos.AACBS
 
         internal static RetBaixarArquivoRetorno Arquivo(JsonElement json, HttpStatusCode status, Xml.AACBS.BaixarArquivoRetorno envio)
         {
+            switch (envio.TipoConsulta)
+            {
+                case TipoConsultaAACBS.Creditos: return ArquivoCreditos(json, status, envio);
+                case TipoConsultaAACBS.Pagamentos: return ArquivoPagamentos(json, status, envio);
+                case TipoConsultaAACBS.Recolhimentos: return ArquivoRecolhimentos(json, status, envio);
+                case TipoConsultaAACBS.Debitos: break;
+                default: throw new CampoInvalidoException("$");
+            }
             if (status != HttpStatusCode.OK) throw new CampoInvalidoException("$");
             var obj = new Objeto(json, "$");
             obj.Aceitar("tiqueteSolicitacao", "ni", "niConsumidor", "geradoEm", "apuracao");
