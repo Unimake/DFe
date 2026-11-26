@@ -2,7 +2,7 @@
 * CIOT - Gerar identificador da operacao de transporte
 * ---------------------------------------------------------------------------------
 FUNCTION CIOTGerarIdOperacaoTransporte()
-   LOCAL oConfiguracao, oXmlCIOT, oServico
+   LOCAL oConfiguracao, oXmlCIOT, oServico, oRetorno, oTemp, cId, cMensagem
    LOCAL oErro, oExceptionInterop
 
  * Criar configuracao basica para consumir o servico
@@ -26,10 +26,23 @@ FUNCTION CIOTGerarIdOperacaoTransporte()
       oServico = CREATEOBJECT("Unimake.Business.DFe.Servicos.CIOT.GerarIdOperacaoTransporte")
       oServico.Executar(oXmlCIOT, oConfiguracao)
 
-      MESSAGEBOX("Id Operacao Transporte: " + oServico.Result.IdOperacaoTransporte)
-
-      oServico.GravarXmlDistribuicao("d:\testenfe\xmlciot")
-      MESSAGEBOX(oServico.GetGerarIdOperacaoTransporteProcResult())
+      oRetorno = oServico.Result
+      cId = NVL(oRetorno.IdOperacaoTransporte, "")
+      IF oRetorno.Codigo == "110" AND LEN(cId) == 12 AND LEN(CHRTRAN(cId, "0123456789", "")) == 0
+         MESSAGEBOX("Id Operacao Transporte: " + cId)
+         oServico.GravarXmlDistribuicao("d:\testenfe\xmlciot")
+         MESSAGEBOX(oServico.GetGerarIdOperacaoTransporteProcResult())
+      ELSE
+         cMensagem = NVL(oRetorno.Mensagem, "")
+         IF EMPTY(cMensagem)
+            oTemp = oRetorno.Temp
+            IF VARTYPE(oTemp) == "O"
+               cMensagem = NVL(oTemp.Message, "")
+            ENDIF
+         ENDIF
+         MESSAGEBOX("CIOT - Codigo: " + oRetorno.Codigo + CHR(13) + ;
+            EVL(cMensagem, "Consulte o retorno do servico."))
+      ENDIF
 
    CATCH TO oErro
     * Excecao do FOXPRO

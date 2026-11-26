@@ -3,9 +3,13 @@ using System.Runtime.InteropServices;
 #endif
 using GeradorCIOTShared;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
+using System.Xml.Schema;
 using Unimake.Business.DFe.Servicos.Interop;
 using Unimake.Business.DFe.Xml;
 using Unimake.Business.DFe.Xml.CIOT;
@@ -24,6 +28,13 @@ namespace Unimake.Business.DFe.Servicos.CIOT
     public class GerarIdOperacaoTransporte : ServicoBase, IInteropService<Xml.CIOT.GerarIdOperacaoTransporte>
     {
         #region Private Fields
+
+        private const string MensagemSucesso = "CIOT gerado com sucesso";
+        private const string MensagemSucessoInconsistente =
+            "A ANTT informou sucesso, mas o retorno não confirmou um IdOperacaoTransporte válido de 12 dígitos.";
+        private const string NamespaceJson = "http://james.newtonking.com/projects/json";
+        private static readonly string[] NomesIdentificador = { "CIOT", "IdOperacaoTransporte", "idOperacaoTransporte" };
+        private static readonly string[] CamposRetornoSimples = { "CIOT", "IdOperacaoTransporte", "idOperacaoTransporte", "CpfCnpj", "DataGeracao", "Mensagem", "Erros" };
 
         private Xml.CIOT.GerarIdOperacaoTransporte envio;
         private readonly System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcs = new System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc>();
@@ -47,39 +58,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// A chave do dicionário é o identificador da operação retornado no campo <c>IdOperacaoTransporte</c>.
         /// </summary>
         [System.Runtime.InteropServices.ComVisible(false)]
-        public System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcResults
-        {
-            get
-            {
-                if (Result?.Temp != null)
-                {
-                    throw new Exception($"Não é possível gerar o XML de distribuição porque o serviço retornou erro: {Result.Temp.Error} - {Result.Temp.Message}");
-                }
-
-                if (string.IsNullOrWhiteSpace(Result?.IdOperacaoTransporte))
-                {
-                    throw new Exception("Não foi localizado o IdOperacaoTransporte no retorno do serviço para elaboração do arquivo de distribuição.");
-                }
-
-                var idOperacaoTransporte = Result.IdOperacaoTransporte;
-
-                if (GerarIdOperacaoTransporteProcs.ContainsKey(idOperacaoTransporte))
-                {
-                    GerarIdOperacaoTransporteProcs[idOperacaoTransporte].RetGerarIdOperacaoTransporte = Result;
-                }
-                else
-                {
-                    GerarIdOperacaoTransporteProcs.Add(idOperacaoTransporte, new GerarIdOperacaoTransporteProc
-                    {
-                        Versao = Configuracoes.SchemaVersao,
-                        GerarIdOperacaoTransporte = Envio,
-                        RetGerarIdOperacaoTransporte = Result
-                    });
-                }
-
-                return GerarIdOperacaoTransporteProcs;
-            }
-        }
+        public System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> GerarIdOperacaoTransporteProcResults =>
+            ObterProcResults(Result);
 
         /// <summary>
         /// Recupera o conteúdo processado da geração do identificador da operação de transporte, combinando o XML de envio com o XML de retorno para geração do arquivo de distribuição.
@@ -88,15 +68,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         {
             get
             {
-                var idOperacaoTransporte = Result?.IdOperacaoTransporte;
-
-                if (string.IsNullOrWhiteSpace(idOperacaoTransporte))
-                {
-                    _ = GerarIdOperacaoTransporteProcResults;
-                    idOperacaoTransporte = Result.IdOperacaoTransporte;
-                }
-
-                return GerarIdOperacaoTransporteProcResults[idOperacaoTransporte];
+                var retorno = Result;
+                return ObterProcResults(retorno)[retorno.IdOperacaoTransporte];
             }
         }
 
@@ -142,27 +115,44 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// <returns>Retorno XML tipado.</returns>
         public RetGerarIdOperacaoTransporte ProcessarRetornoANTT(string retorno)
         {
+            RetornoWSXML = null;
+            RetornoWSString = null;
+            RetornoWSRawString = retorno;
+            HttpStatusCode = default;
+
             if (string.IsNullOrWhiteSpace(retorno))
             {
                 throw new InvalidOperationException("A API ANTT retornou conteúdo vazio ao gerar o IdOperacaoTransporte.");
             }
 
-            var doc = new XmlDocument();
+            XmlDocument doc;
             var conteudo = retorno.Trim();
 
-            if (Regex.IsMatch(conteudo, @"^[0-9]{12}$"))
+            if (RetGerarIdOperacaoTransporte.IdValido(conteudo))
             {
+                doc = new XmlDocument();
                 doc.LoadXml("<temp><IdOperacaoTransporte>" + conteudo + "</IdOperacaoTransporte></temp>");
             }
             else
             {
                 try
                 {
-                    doc = JsonConvert.DeserializeXmlNode(conteudo, "temp");
+                    var objeto = LerJsonANTT(conteudo);
+                    using (var leitor = objeto.CreateReader())
+                    {
+                        var conversor = new XmlNodeConverter
+                        {
+                            DeserializeRootElementName = "temp",
+                            EncodeSpecialCharacters = true,
+                            WriteArrayAttribute = true
+                        };
+                        doc = JsonSerializer.CreateDefault(new JsonSerializerSettings { Converters = { conversor } })
+                            .Deserialize<XmlDocument>(leitor);
+                    }
                 }
-                catch (JsonException ex)
+                catch (Exception ex) when (ex is JsonException || ex is XmlException || ex is ArgumentException)
                 {
-                    throw new InvalidOperationException("A API ANTT retornou conteúdo inválido ao gerar o IdOperacaoTransporte.", ex);
+                    throw new InvalidOperationException("A ANTT retornou conteúdo inválido ao gerar o IdOperacaoTransporte.");
                 }
             }
 
@@ -172,11 +162,34 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             }
 
             RetornoWSXML = doc;
-            return Result;
+            try
+            {
+                return Result;
+            }
+            catch
+            {
+                RetornoWSXML = null;
+                RetornoWSString = null;
+                throw;
+            }
         }
 
         /// <inheritdoc />
         protected override XmlDocument CriarXMLRetornoTipado()
+        {
+            var retorno = NormalizarRetornoANTT();
+            var status = (int)HttpStatusCode;
+            if (status != 0 && (status < 200 || status >= 300) &&
+                EhSucessoXml(ObterValor(retorno.DocumentElement, "Sucesso")))
+            {
+                return CriarErroRetorno("1.00", "RETORNO_HTTP_INVALIDO",
+                    $"A ANTT retornou HTTP {status} ao gerar o IdOperacaoTransporte.").GerarXML();
+            }
+
+            return retorno;
+        }
+
+        private XmlDocument NormalizarRetornoANTT()
         {
             var retorno = RetornoWSXML;
             var root = retorno?.DocumentElement;
@@ -188,44 +201,96 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 
             if (root.LocalName == nameof(RetGerarIdOperacaoTransporte))
             {
-                return retorno;
+                retorno = RemoverTimestampInvalido(retorno);
+                root = retorno.DocumentElement;
+                var tipado = new RetGerarIdOperacaoTransporte().LerXML<RetGerarIdOperacaoTransporte>(retorno);
+                if (tipado.Sucesso != true)
+                {
+                    return retorno;
+                }
+
+                if (AplicarRejeicaoExplicita(tipado))
+                {
+                    return tipado.GerarXML();
+                }
+
+                if (!EhSucessoXml(ObterValor(root, "Sucesso")))
+                {
+                    return CriarErroIndicadorSucesso(tipado.Versao).GerarXML();
+                }
+
+                if (tipado.Codigo != "110" || tipado.IdOperacaoTransporte != ObterIdEstruturado(root, false))
+                {
+                    return MarcarSucessoInconsistente(tipado).GerarXML();
+                }
+
+                var validado = ValidarDataGeracao(tipado, root["Dados", root.NamespaceURI]);
+                return ReferenceEquals(tipado, validado) ? retorno : validado.GerarXML();
+            }
+
+            JObject objeto = null;
+            var bruto = RetornoWSRawString?.Trim();
+            if (root.LocalName == "temp" && !string.IsNullOrEmpty(bruto) &&
+                bruto[0] != '<' && !RetGerarIdOperacaoTransporte.IdValido(bruto))
+            {
+                try
+                {
+                    objeto = LerJsonANTT(bruto);
+                }
+                catch (JsonException)
+                {
+                    return CriarErroRetorno("1.00", "RETORNO_JSON_INVALIDO",
+                        "A ANTT retornou um JSON inválido ao gerar o IdOperacaoTransporte.").GerarXML();
+                }
             }
 
             if (root.LocalName == "temp" && root["error"] != null)
             {
-                var retornoErro = base.CriarXMLRetornoTipado();
+                var retornoErro = RemoverTimestampInvalido(base.CriarXMLRetornoTipado());
                 return new RetGerarIdOperacaoTransporte().LerXML<RetGerarIdOperacaoTransporte>(retornoErro).GerarXML();
             }
 
-            if (root.LocalName == "temp" && ObterValor(root, "Sucesso") != null)
+            if (root.LocalName == "temp" && ObterElementos(root, "Sucesso").Length > 0)
             {
-                return CriarRetornoANTT(root).GerarXML();
+                return CriarRetornoANTT(root, objeto).GerarXML();
             }
 
-            var idOperacaoTransporte = ObterValor(root, "IdOperacaoTransporte") ?? ObterValor(root, "idOperacaoTransporte");
-            if (Regex.IsMatch(idOperacaoTransporte ?? "", @"^[0-9]{12}$"))
+            var mensagem = ObterValor(root, "Mensagem");
+            var mensagemErro = ObterMensagemErro(root);
+            if (string.IsNullOrWhiteSpace(mensagemErro) && mensagem != MensagemSucesso)
             {
-                return CriarRetornoSucesso(idOperacaoTransporte).GerarXML();
+                mensagemErro = mensagem;
             }
 
-            var mensagem = ObterValor(root, "Message") ?? ObterValor(root, "message");
-            if (!string.IsNullOrWhiteSpace(mensagem))
+            var erros = ObterErros(root);
+            if (!string.IsNullOrWhiteSpace(mensagemErro) || !string.IsNullOrWhiteSpace(erros))
             {
                 return new RetGerarIdOperacaoTransporte
                 {
                     Versao = "1.00",
                     Sucesso = false,
-                    Mensagem = mensagem,
-                    Erros = string.Empty
+                    Mensagem = string.IsNullOrWhiteSpace(mensagemErro) ? erros : mensagemErro,
+                    Erros = erros
                 }.GerarXML();
             }
 
-            if (Regex.IsMatch(root.InnerText?.Trim() ?? "", @"^[0-9]{12}$"))
+            if (root.LocalName == "temp" && EhRetornoSimples(root, objeto))
+            {
+                var id = ObterValor(root, NomesIdentificador);
+                if (RetGerarIdOperacaoTransporte.IdValido(id))
+                {
+                    var resultado = CriarRetornoSucesso(id, ObterValor(root, "CpfCnpj"), ObterValor(root, "DataGeracao"));
+                    return ValidarDataGeracao(resultado, root, objeto).GerarXML();
+                }
+            }
+
+            if (EhRaizEscalarDoIdentificador(root) && EhValorSimples(root) &&
+                RetGerarIdOperacaoTransporte.IdValido(root.InnerText.Trim()))
             {
                 return CriarRetornoSucesso(root.InnerText.Trim()).GerarXML();
             }
 
-            throw new InvalidOperationException("A API ANTT retornou conteúdo inesperado ao gerar o IdOperacaoTransporte: " + retorno.OuterXml);
+            throw new InvalidOperationException("A ANTT retornou conteúdo inesperado ao gerar o IdOperacaoTransporte.");
         }
 
 #if INTEROP
@@ -235,6 +300,8 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         [ComVisible(true)]
         public void Executar(Xml.CIOT.GerarIdOperacaoTransporte xml, Configuracao configuracao)
         {
+            LimparExecucaoAnterior();
+            envio = null;
             try
             {
                 InicializarServico(NormalizarEnvio(xml), configuracao);
@@ -287,11 +354,21 @@ namespace Unimake.Business.DFe.Servicos.CIOT
 #endif
         public override void Executar()
         {
+            LimparExecucaoAnterior();
             if (Configuracoes.TipoAmbiente == TipoAmbiente.Producao)
             {
                 // O componente ANTT não expõe o endpoint ou o HTTP efetivo; não inventar esses dados.
                 Utility.SessaoObservacaoDisponibilidade.InformarTransporte(string.Empty, "ComponenteExterno");
-                ProcessarRetornoANTT(GerarCIOTProducao(Envio.CpfCnpj));
+                try
+                {
+                    RetornoWSRawString = GerarCIOTProducao(Envio.CpfCnpj);
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException($"Não foi possível executar o gerador de IdOperacaoTransporte da ANTT (HRESULT 0x{ex.HResult:X8}).");
+                }
+
+                ProcessarRetornoANTT(RetornoWSRawString);
                 return;
             }
 
@@ -368,15 +445,108 @@ namespace Unimake.Business.DFe.Servicos.CIOT
             return xml;
         }
 
-        private static string ObterValor(XmlElement root, string nome)
+        private void LimparExecucaoAnterior()
         {
-            if (root.LocalName == nome)
+            LimparRetornoWS();
+            GerarIdOperacaoTransporteProcs.Clear();
+        }
+
+        private System.Collections.Generic.Dictionary<string, GerarIdOperacaoTransporteProc> ObterProcResults(RetGerarIdOperacaoTransporte retorno)
+        {
+            if (retorno?.Codigo != "110")
             {
-                return root.InnerText;
+                throw new InvalidOperationException("Não é possível gerar o XML de distribuição sem um retorno de sucesso com IdOperacaoTransporte válido de 12 dígitos. Consulte o resultado do serviço.");
             }
 
-            var nodes = root.GetElementsByTagName(nome);
-            return nodes.Count > 0 ? nodes[0].InnerText : null;
+            if (GerarIdOperacaoTransporteProcs.TryGetValue(retorno.IdOperacaoTransporte, out var proc))
+            {
+                proc.RetGerarIdOperacaoTransporte = retorno;
+            }
+            else
+            {
+                GerarIdOperacaoTransporteProcs.Add(retorno.IdOperacaoTransporte, new GerarIdOperacaoTransporteProc
+                {
+                    Versao = Configuracoes.SchemaVersao,
+                    GerarIdOperacaoTransporte = Envio,
+                    RetGerarIdOperacaoTransporte = retorno
+                });
+            }
+
+            return GerarIdOperacaoTransporteProcs;
+        }
+
+        private static XmlElement[] ObterElementos(XmlElement pai, params string[] nomes) =>
+            pai.ChildNodes.OfType<XmlElement>()
+                .Where(elemento => elemento.NamespaceURI == pai.NamespaceURI && nomes.Contains(elemento.LocalName))
+                .ToArray();
+
+        private static bool EhValorSimples(XmlElement elemento) =>
+            !elemento.ChildNodes.OfType<XmlElement>().Any() &&
+            elemento.GetAttribute("Array", NamespaceJson) != "true";
+
+        private static bool EhRaizEscalarDoIdentificador(XmlElement root)
+        {
+            if (root.LocalName == "string")
+            {
+                return root.NamespaceURI.Length == 0 || root.NamespaceURI == "http://schemas.microsoft.com/2003/10/Serialization/";
+            }
+
+            return (root.LocalName == "IdOperacaoTransporte" || root.LocalName == "idOperacaoTransporte") &&
+                (root.NamespaceURI.Length == 0 || root.NamespaceURI == CIOTNamespace.PortalANTT);
+        }
+
+        private static bool TemTextoAvulso(XmlElement elemento) =>
+            elemento.ChildNodes.OfType<XmlCharacterData>()
+                .Any(no => (no.NodeType == XmlNodeType.Text || no.NodeType == XmlNodeType.CDATA) &&
+                    !string.IsNullOrWhiteSpace(no.Value)) ||
+            elemento.ChildNodes.OfType<XmlElement>()
+                .Any(no => XmlConvert.DecodeName(no.LocalName).StartsWith("#", StringComparison.Ordinal));
+
+        private static bool EhRetornoSimples(XmlElement root, JObject objeto)
+        {
+            var elementos = root.ChildNodes.OfType<XmlElement>().ToArray();
+            var conhecidos = ObterElementos(root, CamposRetornoSimples);
+            var mensagens = ObterElementos(root, "Mensagem");
+            var erros = ObterElementos(root, "Erros");
+            return (objeto == null || (objeto.Properties().All(campo => CamposRetornoSimples.Contains(campo.Name)) &&
+                    EhIdentificadorJsonUnico(objeto))) &&
+                !TemTextoAvulso(root) && elementos.Length == conhecidos.Length &&
+                conhecidos.Where(elemento => elemento.LocalName != "DataGeracao").All(EhValorSimples) &&
+                (mensagens.Length == 0 || (mensagens.Length == 1 && mensagens[0].InnerText == MensagemSucesso)) &&
+                (erros.Length == 0 || (erros.Length == 1 && erros[0].InnerText.Length == 0 &&
+                    (objeto == null || objeto["Erros"]?.Type == JTokenType.String))) &&
+                ObterElementos(root, "CpfCnpj").Length <= 1;
+        }
+
+        private static string ObterValor(XmlElement pai, params string[] nomes)
+        {
+            var elementos = ObterElementos(pai, nomes);
+            return elementos.Length == 1 && EhValorSimples(elementos[0]) ? elementos[0].InnerText : null;
+        }
+
+        private static string ObterIdEstruturado(XmlElement root, bool aceitarCiotNaRaiz)
+        {
+            if (TemTextoAvulso(root))
+            {
+                return null;
+            }
+
+            var grupos = ObterElementos(root, "Dados");
+            var idsNaRaiz = ObterElementos(root, NomesIdentificador);
+            if (grupos.Length == 0 && aceitarCiotNaRaiz)
+            {
+                return idsNaRaiz.Length == 1 ? ObterValor(root, "CIOT") : null;
+            }
+
+            if (grupos.Length != 1 || idsNaRaiz.Length != 0 ||
+                grupos[0].GetAttribute("Array", NamespaceJson) == "true" ||
+                TemTextoAvulso(grupos[0]) ||
+                ObterElementos(grupos[0], "IdOperacaoTransporte", "idOperacaoTransporte").Length != 0)
+            {
+                return null;
+            }
+
+            return ObterValor(grupos[0], "CIOT");
         }
 
         /// <summary>
@@ -386,38 +556,213 @@ namespace Unimake.Business.DFe.Servicos.CIOT
         /// <returns>Retorno bruto disponibilizado pela biblioteca da ANTT.</returns>
         protected virtual string GerarCIOTProducao(string cpfCnpj) => new GeradorCIOTService_v3().GerarCIOT(cpfCnpj);
 
-        private static RetGerarIdOperacaoTransporte CriarRetornoSucesso(string ciot)
+        private static RetGerarIdOperacaoTransporte CriarRetornoSucesso(string ciot, string cpfCnpj = null, string dataGeracao = null)
         {
             return new RetGerarIdOperacaoTransporte
             {
                 Versao = "1.00",
                 Sucesso = true,
-                Mensagem = "CIOT gerado com sucesso",
+                Mensagem = MensagemSucesso,
                 Dados = new DadosGerarIdOperacaoTransporte
                 {
-                    CIOT = ciot
+                    CIOT = ciot,
+                    CpfCnpj = cpfCnpj,
+                    DataGeracao = dataGeracao
                 },
                 Erros = string.Empty
             };
         }
 
-        private static RetGerarIdOperacaoTransporte CriarRetornoANTT(XmlElement root)
+        private static RetGerarIdOperacaoTransporte CriarRetornoANTT(XmlElement root, JObject objeto)
         {
-            bool.TryParse(ObterValor(root, "Sucesso"), out var sucesso);
+            var indicador = objeto?["Sucesso"];
+            var indicadorValido = objeto == null || indicador?.Type == JTokenType.Boolean || indicador?.Type == JTokenType.String;
+            var sucesso = indicadorValido &&
+                bool.TryParse(ObterValor(root, "Sucesso"), out var sucessoDeclarado) && sucessoDeclarado;
+            var grupoDados = root["Dados", root.NamespaceURI];
+            var dados = grupoDados ?? root;
+            var dadosJson = grupoDados == null ? objeto : objeto?["Dados"] as JObject;
+            var id = EhIdEstruturadoJsonValido(objeto, dadosJson, grupoDados != null) ? ObterIdEstruturado(root, true) : null;
 
-            return new RetGerarIdOperacaoTransporte
+            var retorno = new RetGerarIdOperacaoTransporte
             {
                 Versao = "1.00",
                 Sucesso = sucesso,
                 Mensagem = ObterValor(root, "Mensagem"),
                 Dados = new DadosGerarIdOperacaoTransporte
                 {
-                    CIOT = ObterValor(root, "CIOT"),
-                    CpfCnpj = ObterValor(root, "CpfCnpj"),
-                    DataGeracao = ObterValor(root, "DataGeracao")
+                    CIOT = id,
+                    CpfCnpj = ObterValor(dados, "CpfCnpj"),
+                    DataGeracao = ObterValor(dados, "DataGeracao")
                 },
-                Erros = ObterValor(root, "Erros") ?? string.Empty
+                Erros = ObterErros(root)
             };
+
+            if (AplicarRejeicaoExplicita(retorno, ObterMensagemErro(root)))
+            {
+                return retorno;
+            }
+
+            if (!indicadorValido)
+            {
+                return CriarErroIndicadorSucesso(retorno.Versao);
+            }
+
+            return sucesso && retorno.Codigo != "110"
+                ? MarcarSucessoInconsistente(retorno)
+                : ValidarDataGeracao(retorno, dados, dadosJson);
+        }
+
+        private static bool EhSucessoXml(string valor)
+        {
+            var texto = valor?.Trim();
+            return texto == "true" || texto == "1";
+        }
+
+        private static bool EhIdEstruturadoJsonValido(JObject objeto, JObject dados, bool temGrupoDados)
+        {
+            if (objeto == null)
+            {
+                return true;
+            }
+
+            return (temGrupoDados ? !NomesIdentificador.Any(nome => objeto.Property(nome) != null) : objeto.Property("Dados") == null) &&
+                dados != null && EhIdentificadorJsonUnico(dados, "CIOT");
+        }
+
+        private static bool EhIdentificadorJsonUnico(JObject objeto, string nomeEsperado = null)
+        {
+            var campos = objeto.Properties().Where(campo => NomesIdentificador.Contains(campo.Name)).ToArray();
+            return campos.Length == 1 && (nomeEsperado == null || campos[0].Name == nomeEsperado) &&
+                (campos[0].Value.Type == JTokenType.String || campos[0].Value.Type == JTokenType.Integer);
+        }
+
+        private static string ObterMensagemErro(XmlElement root)
+        {
+            var mensagem = ObterErros(root, "Message");
+            return string.IsNullOrWhiteSpace(mensagem) ? ObterErros(root, "message") : mensagem;
+        }
+
+        private static string ObterErros(XmlElement root, string nome = "Erros") =>
+            string.Join(Environment.NewLine, ObterElementos(root, nome).Select(erro => erro.InnerText));
+
+        private static bool AplicarRejeicaoExplicita(RetGerarIdOperacaoTransporte retorno, string mensagemErro = null)
+        {
+            var precisaMensagemDeRejeicao = string.IsNullOrWhiteSpace(retorno.Mensagem) || retorno.Mensagem == MensagemSucesso;
+            if (!string.IsNullOrWhiteSpace(mensagemErro))
+            {
+                if (retorno.Sucesso == true || precisaMensagemDeRejeicao)
+                {
+                    retorno.Mensagem = mensagemErro;
+                }
+            }
+            else if (string.IsNullOrWhiteSpace(retorno.Erros))
+            {
+                return false;
+            }
+            else if (precisaMensagemDeRejeicao)
+            {
+                retorno.Mensagem = retorno.Erros;
+            }
+
+            retorno.Sucesso = false;
+            return true;
+        }
+
+        private static RetGerarIdOperacaoTransporte ValidarDataGeracao(RetGerarIdOperacaoTransporte retorno, XmlElement origem, JObject dadosJson = null)
+        {
+            if (retorno.Sucesso != true)
+            {
+                return retorno;
+            }
+
+            if (DataGeracaoTemEstruturaInvalida(origem, dadosJson))
+            {
+                return CriarErroDataGeracao(retorno.Versao);
+            }
+
+            var dataGeracao = retorno.Dados?.DataGeracao;
+            return dataGeracao == null || EhDataHoraXmlValida(dataGeracao)
+                ? retorno
+                : CriarErroDataGeracao(retorno.Versao);
+        }
+
+        private static XmlDocument RemoverTimestampInvalido(XmlDocument retorno)
+        {
+            var erro = retorno.DocumentElement["temp", CIOTNamespace.PortalANTT];
+            if (erro == null)
+            {
+                return retorno;
+            }
+
+            var timestamps = ObterElementos(erro, "timestamp");
+            if (timestamps.Length == 0 || (timestamps.Length == 1 &&
+                EhValorSimples(timestamps[0]) && EhDataHoraXmlValida(timestamps[0].InnerText)))
+            {
+                return retorno;
+            }
+
+            var copia = (XmlDocument)retorno.CloneNode(true);
+            var erroNormalizado = copia.DocumentElement["temp", CIOTNamespace.PortalANTT];
+            foreach (var timestamp in ObterElementos(erroNormalizado, "timestamp"))
+            {
+                erroNormalizado.RemoveChild(timestamp);
+            }
+
+            return copia;
+        }
+
+        private static bool EhDataHoraXmlValida(string valor)
+        {
+            try
+            {
+                XmlSchemaType.GetBuiltInSimpleType(XmlTypeCode.DateTime).Datatype.ParseValue(valor, null, null);
+                return true;
+            }
+            catch (XmlSchemaException)
+            {
+                return false;
+            }
+        }
+
+        private static bool DataGeracaoTemEstruturaInvalida(XmlElement origem, JObject dadosJson)
+        {
+            var datas = ObterElementos(origem, "DataGeracao");
+            if (datas.Length > 1 || (datas.Length == 1 && !EhValorSimples(datas[0])))
+            {
+                return true;
+            }
+
+            // A conversão JSON/XML pode omitir listas vazias ou representar uma lista unitária como texto.
+            var data = dadosJson?["DataGeracao"];
+            return data != null && data.Type != JTokenType.String && data.Type != JTokenType.Date;
+        }
+
+        private static JObject LerJsonANTT(string conteudo) =>
+            JObject.Parse(conteudo, new JsonLoadSettings { DuplicatePropertyNameHandling = DuplicatePropertyNameHandling.Error });
+
+        private static RetGerarIdOperacaoTransporte CriarErroDataGeracao(string versao) =>
+            CriarErroRetorno(versao, "DATA_GERACAO_INVALIDA", "A DataGeracao no retorno da ANTT é inválida para o tipo xs:dateTime.");
+
+        private static RetGerarIdOperacaoTransporte CriarErroIndicadorSucesso(string versao) =>
+            CriarErroRetorno(versao, "INDICADOR_SUCESSO_INVALIDO", "O campo Sucesso no retorno da ANTT é inválido ou ambíguo.");
+
+        private static RetGerarIdOperacaoTransporte CriarErroRetorno(string versao, string codigo, string mensagem) =>
+            new RetGerarIdOperacaoTransporte
+            {
+                Versao = versao,
+                Temp = new Temp
+                {
+                    Error = codigo,
+                    Message = mensagem
+                }
+            };
+
+        private static RetGerarIdOperacaoTransporte MarcarSucessoInconsistente(RetGerarIdOperacaoTransporte retorno)
+        {
+            retorno.Sucesso = false;
+            retorno.Mensagem = MensagemSucessoInconsistente;
+            return retorno;
         }
     }
 }

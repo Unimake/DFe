@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 
 using Newtonsoft.Json;
 using System;
+using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
 namespace Unimake.Business.DFe.Xml.CIOT
@@ -80,7 +81,10 @@ namespace Unimake.Business.DFe.Xml.CIOT
         public string IdOperacaoTransporte => Dados?.CIOT;
 
         [XmlIgnore]
-        public string Codigo => Sucesso == true ? "110" : "999";
+        public string Codigo => Sucesso == true && Temp == null && string.IsNullOrWhiteSpace(Erros) &&
+            IdValido(IdOperacaoTransporte) ? "110" : "999";
+
+        internal static bool IdValido(string id) => Regex.IsMatch(id ?? "", @"\A[0-9]{12}\z");
 
         public bool ShouldSerializeTemp() => Temp != null;
         public bool ShouldSerializeSucesso() => Sucesso.HasValue;
