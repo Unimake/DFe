@@ -1198,10 +1198,10 @@ namespace Unimake.Business.DFe.Xml.CTeSimp
         public CTe.ICMSUFFim ICMSUFFim { get; set; }
 
         /// <summary>
-        /// Grupo de informações da Tributação IBS/CBS
+        /// Grupo de informações do IBS/CBS no cabeçalho do leiaute anterior do CT-e Simplificado.
+        /// No leiaute atual, informe o grupo em cada prestação (InfCTe.Det).
         /// </summary>
         [XmlElement("IBSCBS")]
-        [Obsolete("No leiaute atual, informe o IBS/CBS em InfCTe.Det[i].IBSCBS. Esta propriedade atende somente o leiaute anterior.", false)]
         public CTe.IBSCBS IBSCBS { get; set; }
 
         #region ShouldSerialize

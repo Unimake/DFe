@@ -10,6 +10,7 @@ using Unimake.Business.DFe.Utility;
 using Unimake.Business.DFe.Xml.CTe;
 using Unimake.Business.DFe.Xml.CTeSimp;
 using Xunit;
+using ImpCTeSimp = Unimake.Business.DFe.Xml.CTeSimp.Imp;
 using ModeloCTeSimp = Unimake.Business.DFe.Xml.CTeSimp.CTeSimp;
 
 namespace Unimake.DFe.Test.CTeSimp.Validacao
@@ -20,6 +21,14 @@ namespace Unimake.DFe.Test.CTeSimp.Validacao
         private const string NamespaceCTe = "http://www.portalfiscal.inf.br/cte";
         private const string SchemaCTeSimp = "CTe.cteSimp_v4.00.xsd";
         private const string SchemaProcessado = "CTe.procCTeSimp_v4.00.xsd";
+
+        [Fact]
+        public void PropriedadeDoIBSCBSLegadoPermaneceSerializavelNoNetFramework()
+        {
+            var propriedade = typeof(ImpCTeSimp).GetProperty(nameof(ImpCTeSimp.IBSCBS));
+            Assert.False(propriedade.IsDefined(typeof(ObsoleteAttribute), false),
+                "O XmlSerializer do .NET Framework ignora propriedades marcadas com Obsolete.");
+        }
 
         [Theory]
         [InlineData(SchemaCTeSimp)]
