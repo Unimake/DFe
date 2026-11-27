@@ -15,6 +15,7 @@
       <regTrib><opSimpNac>1</opSimpNac><regEspTrib>0</regEspTrib></regTrib>
     </prest>
     <toma><CNPJ>12345678000195</CNPJ></toma>
+    <indDest>0</indDest>
     <serv>
       <locPrest><cLocPrestacao>4106902</cLocPrestacao></locPrest>
       <cServ><cTribNac>010101</cTribNac><cNBS>115022000</cNBS><cIntContrib>TESTE</cIntContrib><xDescServ>SERVICO TESTE</xDescServ></cServ>
@@ -39,7 +40,6 @@
       <trib><tribMun><tribISSQN>1</tribISSQN><tpRetISSQN>1</tpRetISSQN></tribMun><totTrib><vTotTrib><vTotTribFed>0.00</vTotTribFed><vTotTribEst>0.00</vTotTribEst><vTotTribMun>0.00</vTotTribMun></vTotTrib></totTrib></trib>
     </valores>
     <IBSCBS>
-      <indDest>0</indDest>
       <imovel>
         <cMun>4106902</cMun>
         <gLocacao><pCopropriedade>50.00</pCopropriedade><vTotOper>1000.00</vTotOper><vDescIncondTot>0.00</vDescIncondTot><dVencOrig>2026-11-01</dVencOrig></gLocacao>

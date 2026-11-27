@@ -43,7 +43,7 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.NotNull(ibscbs);
 
         // Novos campos obrigatórios v1.01
-        Assert.Equal(IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente, ibscbs.IndDest); // Novo campo obrigatório
+        Assert.Equal(IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente, lido.InfDPS.IndDest);
 
         // Novos campos opcionais v1.01 (presentes neste XML)
         Assert.NotNull(ibscbs.TpOper);
@@ -82,7 +82,8 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.Null(ibscbsNode.SelectSingleNode("ns:valores/ns:trib/ns:gIBSCBS/ns:CST", nsmgr));
 
         // Verifica presença dos campos v1.01 corretos
-        Assert.NotNull(ibscbsNode.SelectSingleNode("ns:indDest", nsmgr));
+        Assert.Equal("0", docRoundTrip.SelectSingleNode("/ns:DPS/ns:infDPS/ns:indDest", nsmgr)?.InnerText);
+        Assert.Null(ibscbsNode.SelectSingleNode("ns:indDest", nsmgr));
         Assert.NotNull(ibscbsNode.SelectSingleNode("ns:tpOper", nsmgr));
         Assert.NotNull(ibscbsNode.SelectSingleNode("ns:tpEnteGov", nsmgr));
 
@@ -111,6 +112,7 @@ public class SerializacaoDesserializacaoNacionalTest
                 CLocEmi = lido.InfDPS.CLocEmi,
                 Prest = lido.InfDPS.Prest,
                 Toma = lido.InfDPS.Toma,
+                IndDest = lido.InfDPS.IndDest,
                 Serv = lido.InfDPS.Serv,
                 Valores = new Valores
                 {
@@ -123,7 +125,6 @@ public class SerializacaoDesserializacaoNacionalTest
                     CIndOp = ibscbs.CIndOp,
                     TpOper = ibscbs.TpOper, // v1.01
                     TpEnteGov = ibscbs.TpEnteGov,
-                    IndDest = ibscbs.IndDest, // v1.01
                     Valores = ibscbs.Valores
                 }
             }
@@ -136,7 +137,8 @@ public class SerializacaoDesserializacaoNacionalTest
         Assert.NotNull(ibscbsCriado);
 
         // Verifica valores específicos
-        Assert.Equal("0", ibscbsCriado.SelectSingleNode("ns:indDest", nsmgr)?.InnerText);
+        Assert.Equal("0", docCriado.SelectSingleNode("/ns:DPS/ns:infDPS/ns:indDest", nsmgr)?.InnerText);
+        Assert.Null(ibscbsCriado.SelectSingleNode("ns:indDest", nsmgr));
         Assert.Equal("1", ibscbsCriado.SelectSingleNode("ns:tpOper", nsmgr)?.InnerText);
         Assert.Equal("1", ibscbsCriado.SelectSingleNode("ns:tpEnteGov", nsmgr)?.InnerText);
     }
@@ -155,7 +157,9 @@ public class SerializacaoDesserializacaoNacionalTest
             CIndOp = "000001",
             TpOper = TpOperacaoGov.FornecimentoComPagamentoPosterior,
             TpEnteGov = TipoEnteGovernamentalNFSeRTC.Municipio,
-            IndDest = IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente,
+#pragma warning disable CS0618 // Exercita a emissão pela API pública legada.
+            IndDest = IndicadorDestinatarioNFSeRTC.DestinatarioDiferenteAdquirente,
+#pragma warning restore CS0618
         };
 
         Assert.True(ibscbs.ShouldSerializeTpOper());
@@ -224,12 +228,12 @@ public class SerializacaoDesserializacaoNacionalTest
 
         Assert.NotNull(node);
         Assert.NotNull(node.SelectSingleNode("ns:tpOper", nsmgr));
-        Assert.NotNull(node.SelectSingleNode("ns:indDest", nsmgr));
+        Assert.Null(xml.SelectSingleNode("/ns:DPS/ns:infDPS/ns:indDest", nsmgr));
         Assert.Null(node.SelectSingleNode("ns:gRefNFSe", nsmgr));
 
         // Verifica valores corretos
         Assert.Equal("1", node.SelectSingleNode("ns:tpOper", nsmgr)?.InnerText);
-        Assert.Equal("0", node.SelectSingleNode("ns:indDest", nsmgr)?.InnerText);
+        Assert.Equal("1", node.SelectSingleNode("ns:indDest", nsmgr)?.InnerText);
     }
 
     [Fact]

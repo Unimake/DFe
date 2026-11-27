@@ -38,6 +38,7 @@
 				<xBairro>SANTA QUITERIA</xBairro>
 			</end>
 		</toma>
+		<indDest>0</indDest>
 		<serv>
 			<locPrest>
 				<cLocPrestacao>4106902</cLocPrestacao>

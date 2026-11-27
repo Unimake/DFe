@@ -65,6 +65,7 @@
 						<xBairro>XXXXXXXXXXXXX</xBairro>
 					</end>
 				</toma>
+				<indDest>0</indDest>
 				<serv>
 					<locPrest>
 						<cLocPrestacao>4105508</cLocPrestacao>
