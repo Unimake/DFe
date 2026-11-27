@@ -34,6 +34,10 @@
         Informar o identificador precedido do literal "NFS". A regra de formação do identificador de 53 posições da NFS-e é:
         "NFS" + Cód.Mun.(7) + Amb.Ger.(1) + Tipo de Inscrição Federal(1) + Inscrição Federal(14) + No.NFS-e(13) + AnoMes Emis.(4) + Cód.Num.(9) + DV(1)
       </xs:documentation>
+      <xs:appinfo>
+        A adoção do CNPJ alfanumérico não demanda ajustes na regra de cálculo do dígito verificador (DV) do "id" da NFS-e, uma vez que o algoritmo atualmente empregado, baseado no módulo 11, permanece plenamente aplicável.
+        A metodologia de cálculo admite o tratamento de caracteres alfanuméricos por meio de sua representação numérica, preservando a consistência e a validade do processo de geração e validação do DV.
+      </xs:appinfo>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:whiteSpace value="preserve"/>
@@ -591,8 +595,9 @@
         0 - Desconhecido (tipo não informado na nota de origem);
         1 - Transfronteiriço;
         2 - Consumo no Brasil;
-        3 - Presença Comercial no Exterior;
-        4 - Movimento Temporário de Pessoas Físicas;
+        3 - Movimento Temporário de Pessoas Físicas;
+        4 - Consumo no Exterior;
+        5 - Consumo concomitante no território nacional e exterior;
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
@@ -602,6 +607,7 @@
       <xs:enumeration value="2"/>
       <xs:enumeration value="3"/>
       <xs:enumeration value="4"/>
+      <xs:enumeration value="5"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TSVincPrest">
@@ -728,8 +734,8 @@
         Vínculo da Operação à Movimentação Temporária de Bens:
         0 - Desconhecido (tipo não informado na nota de origem);
         1 - Não;
-        2 - Vinculada - Declaração de Importação;
-        3 - Vinculada - Declaração de Exportação;
+        2 - Vinculada - Declaração Única de Importação;
+        3 - Vinculada - Declaração Única de Exportação;
       </xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
@@ -773,21 +779,53 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TSNumDocImport">
-    <xs:annotation>
-      <xs:documentation>Número da Declaração de Importação (DI/DSI/DA/DRI-E) averbado</xs:documentation>
-    </xs:annotation>
     <xs:restriction base="TSString">
       <xs:minLength value="1"/>
       <xs:maxLength value="12"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TSNumRegExport">
-    <xs:annotation>
-      <xs:documentation>Número do Registro de Exportação (RE) averbado</xs:documentation>
-    </xs:annotation>
     <xs:restriction base="TSString">
       <xs:minLength value="1"/>
       <xs:maxLength value="12"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TSNumDUIMP">
+    <xs:annotation>
+      <xs:documentation>Número da Declaração Única de Importação (DUIMP)</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="TSString">
+      <xs:minLength value="15"/>
+      <xs:maxLength value="15"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TSNumDUE">
+    <xs:annotation>
+      <xs:documentation>Número da Declaração Única de Exportação (DU-E)</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="TSString">
+      <xs:minLength value="14"/>
+      <xs:maxLength value="14"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TSNumContCambio">
+    <xs:annotation>
+      <xs:documentation>Número da identificação do contrato de câmbio ou do documento que comprove o pagamento</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:maxLength value="20"/>
+      <xs:pattern value="[0-9]{1,20}"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="TSNumFatura">
+    <xs:annotation>
+      <xs:documentation>Número da identificação da fatura de serviços ou do documento que comprove a transação</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:whiteSpace value="preserve"/>
+      <xs:maxLength value="20"/>
+      <xs:pattern value="[0-9]{1,20}"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="TSEnvMDIC">
@@ -1452,6 +1490,15 @@
       <xs:pattern value="0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,14}(\.[0-9]{2})?"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="TSDec15V2Neg">
+	    <xs:annotation>
+		    <xs:documentation>Valor decimal com sinal, com 1 a 15 dígitos mais 2 casas decimais</xs:documentation>
+	    </xs:annotation>
+	    <xs:restriction base="xs:string">
+		    <xs:whiteSpace value="preserve"/>
+		    <xs:pattern value="-?(0|0\.[0-9]{2}|[1-9]{1}[0-9]{0,14}(\.[0-9]{2})?)"/>
+	    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="TSDec1V2">
     <xs:annotation>
       <xs:documentation>Valor decimal com 1 dígito mais 2 casas decimais</xs:documentation>
@@ -1860,6 +1907,126 @@
 			<xs:whiteSpace value="preserve"/>
 			<xs:maxLength value="8"/>
 			<xs:pattern value="[0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSRTCTpCobranca">
+		<xs:annotation>
+			<xs:documentation>
+				Tipo da cobrança das taxas e demais valores condominiais:
+				01 - Condomínio Ordinário;
+				02 - Condomínio Privativo;
+				03 - Fundo De Promoção E Propaganda (FPP);
+				04 - Impostos e Taxas;
+				05 - Fundo de Reserva;
+				99 - Outra Cobrança;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="01"/>
+			<xs:enumeration value="02"/>
+			<xs:enumeration value="03"/>
+			<xs:enumeration value="04"/>
+			<xs:enumeration value="05"/>
+			<xs:enumeration value="99"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSRTCTpDetCobranca">
+		<xs:annotation>
+			<xs:documentation>
+				Tipo de detalhamento da cobrança das taxas e demais valores condominiais:
+				001 - Cond. Comum CRD;
+				002 - Cond. Comum M2;
+				003 - Cond. Comum Fixo;
+				004 - Cond. Comum Fração;
+				005 - Cond. Comum Percentual;
+				006 - Condomínio CMM;
+				007 - Energia Elétrica;
+				008 - Água;
+				009 - Ar Condicionado;
+				010 - Telefone;
+				011 - Internet;
+				012 - Controle de Pragas;
+				013 - Exaustão;
+				014 - Gás;
+				015 - IPTU;
+				016 - Taxa Área;
+				017 - Manutenção;
+				018 - Multa;
+				019 - Seguro;
+				020 - Taxa Bombeiro;
+				021 - Taxa Administração;
+				022 - Taxa Foro;
+				023 - Limpeza;
+				024 - Taxa de Lixo;
+				025 - Tapume;
+				026 - Instalação Alarme;
+				027 - Segurança;
+				028 - Fundo de Promoção e Propaganda;
+				029 - Análise de Projeto;
+				030 - Fundo de Reserva;
+				031 - Laudos e Vistorias;
+				032 - Detecção de Fumaça;
+				033 - Reanálise de Projeto;
+				034 - Taxa Extra;
+				035 - Área Vaga;
+				036 - Condomínio Irrecuperável;
+				999 - Outro;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="001"/>
+			<xs:enumeration value="002"/>
+			<xs:enumeration value="003"/>
+			<xs:enumeration value="004"/>
+			<xs:enumeration value="005"/>
+			<xs:enumeration value="006"/>
+			<xs:enumeration value="007"/>
+			<xs:enumeration value="008"/>
+			<xs:enumeration value="009"/>
+			<xs:enumeration value="010"/>
+			<xs:enumeration value="011"/>
+			<xs:enumeration value="012"/>
+			<xs:enumeration value="013"/>
+			<xs:enumeration value="014"/>
+			<xs:enumeration value="015"/>
+			<xs:enumeration value="016"/>
+			<xs:enumeration value="017"/>
+			<xs:enumeration value="018"/>
+			<xs:enumeration value="019"/>
+			<xs:enumeration value="020"/>
+			<xs:enumeration value="021"/>
+			<xs:enumeration value="022"/>
+			<xs:enumeration value="023"/>
+			<xs:enumeration value="024"/>
+			<xs:enumeration value="025"/>
+			<xs:enumeration value="026"/>
+			<xs:enumeration value="027"/>
+			<xs:enumeration value="028"/>
+			<xs:enumeration value="029"/>
+			<xs:enumeration value="030"/>
+			<xs:enumeration value="031"/>
+			<xs:enumeration value="032"/>
+			<xs:enumeration value="033"/>
+			<xs:enumeration value="034"/>
+			<xs:enumeration value="035"/>
+			<xs:enumeration value="036"/>
+			<xs:enumeration value="999"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TSRTCTpDesconto">
+		<xs:annotation>
+			<xs:documentation>
+				Tipo do desconto aplicado pelo Condomínio:
+				1 - Desconto Incondicionado;
+				2 - Desconto Condicionado;
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>

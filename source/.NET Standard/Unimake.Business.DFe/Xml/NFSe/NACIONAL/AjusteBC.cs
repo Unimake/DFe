@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Xml;
 using System.Xml.Serialization;
 using Unimake.Business.DFe.Servicos;
 using Unimake.Business.DFe.Utility;
@@ -83,6 +84,35 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         /// <summary>Documentos do ajuste, independentes da opção percentual ou valor.</summary>
         [XmlElement("documentos")]
         public DocumentosAjusteBC Documentos { get; set; }
+
+        /// <summary>Valor do ajuste da base de cálculo de IBS/CBS no comércio exterior. No COM, decimal.MinValue representa ausência.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public decimal VAjusteBCIBSCBSComExt { get; set; } = decimal.MinValue;
+#else
+        public decimal? VAjusteBCIBSCBSComExt { get; set; }
+#endif
+
+        /// <summary>Representação XML do valor do ajuste de IBS/CBS no comércio exterior.</summary>
+        [XmlElement("vAjusteBCIBSCBSComExt")]
+        public string VAjusteBCIBSCBSComExtField
+        {
+            get =>
+#if INTEROP
+                VAjusteBCIBSCBSComExt.ToString("F2", CultureInfo.InvariantCulture);
+#else
+                VAjusteBCIBSCBSComExt?.ToString("F2", CultureInfo.InvariantCulture);
+#endif
+            set => VAjusteBCIBSCBSComExt = XmlConvert.ToDecimal(value);
+        }
+
+        /// <summary>Emite o ajuste apenas quando informado, inclusive se for zero ou negativo.</summary>
+        public bool ShouldSerializeVAjusteBCIBSCBSComExtField() =>
+#if INTEROP
+            VAjusteBCIBSCBSComExt != decimal.MinValue;
+#else
+            VAjusteBCIBSCBSComExt.HasValue;
+#endif
     }
 
     /// <summary>Lista de documentos de ajuste da base de cálculo.</summary>

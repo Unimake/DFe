@@ -822,7 +822,24 @@ namespace Unimake.Business.DFe.Servicos.NFSe
         /// <summary>
         /// Validar, o conteúdo das tags do XML, alguns validações manuais que o schema não faz. Vamos implementando novas regras na medida da necessidade de cada serviço.
         /// </summary>
-        protected override void XmlValidarConteudo() { }
+        protected override void XmlValidarConteudo()
+        {
+            var raiz = ConteudoXML?.DocumentElement;
+            if (Configuracoes.PadraoNFSe != PadraoNFSe.NACIONAL ||
+                raiz?.NamespaceURI != Xml.NFSe.NACIONAL.Nfse.Ns ||
+                (raiz.LocalName != "DPS" && raiz.LocalName != "NFSe"))
+            {
+                return;
+            }
+
+            var versao = string.IsNullOrWhiteSpace(Configuracoes.SchemaVersao)
+                ? ValidarEstruturaXML.DefinirVersaoNFSe(ConteudoXML, Configuracoes.PadraoNFSe, Configuracoes.CodigoMunicipio)
+                : Configuracoes.SchemaVersao;
+            if (versao == "1.01")
+            {
+                new Validator.NFSe.NFSeNacionalComercioExteriorValidator { Xml = ConteudoXML.OuterXml }.Validate();
+            }
+        }
 
         /// <summary>
         /// Cria o conteúdo HTTP padrão para os serviços NFSe que consomem API.

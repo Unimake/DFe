@@ -163,6 +163,10 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL.NFSe
         [XmlElement("ambGer")]
         public AmbienteGeradorNFSe AmbGer { get; set; }
 
+        /// <summary>Versão da calculadora de tributos IBS/CBS.</summary>
+        [XmlElement("verCalcIBSCBS")]
+        public string VerCalcIBSCBS { get; set; }
+
         /// <summary>
         /// Tipo de emissão da NFS-e.
         /// </summary>

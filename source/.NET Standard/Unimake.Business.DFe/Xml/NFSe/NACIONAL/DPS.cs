@@ -19,6 +19,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public const string Ns = "http://www.sped.fazenda.gov.br/nfse";
     }
 
+    [Serializable]
+    internal sealed class DestinatarioDps
+    {
+        internal IndicadorDestinatarioNFSeRTC? Indicador { get; set; }
+        internal Dest Dados { get; set; }
+    }
+
     /// <summary>
     /// Emissão (Gerar) de NFS-e – Padrão Nacional (esqueleto).
     /// </summary>
@@ -89,6 +96,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class InfDPS
     {
         private string IdField;
+        private readonly DestinatarioDps destinatario = new DestinatarioDps();
+        private IBSCBS ibscbs;
         private FinalidadeNFSeRTC finNFSe;
         private bool finNFSeInformada;
 
@@ -318,6 +327,22 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("toma")]
         public Toma Toma { get; set; }
 
+        /// <summary>Indicador de destinatário do serviço.</summary>
+        [XmlElement("indDest")]
+        public IndicadorDestinatarioNFSeRTC IndDest
+        {
+            get => destinatario.Indicador ?? ibscbs?.IndDestLegado ?? IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente;
+            set => destinatario.Indicador = value;
+        }
+
+        /// <summary>Informações do destinatário do serviço.</summary>
+        [XmlElement("dest")]
+        public Dest Dest
+        {
+            get => destinatario.Dados ?? ibscbs?.DestField;
+            set => destinatario.Dados = value;
+        }
+
         /// <summary>
         /// Dados do Intermediário de Serviço
         /// </summary>
@@ -336,10 +361,39 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("valores")]
         public Valores Valores { get; set; }
 
+        /// <summary>Informações declaradas do IBS e da CBS. Grupos vinculados a outra DPS são copiados para isolar o destinatário.</summary>
         [XmlElement("IBSCBS")]
-        public IBSCBS IBSCBS { get; set; }
+        public IBSCBS IBSCBS
+        {
+            get => ibscbs;
+            set
+            {
+                if (ReferenceEquals(ibscbs, value))
+                {
+                    return;
+                }
+
+                var grupoVinculado = value?.Vincular(destinatario);
+                ibscbs?.Desvincular();
+                ibscbs = grupoVinculado;
+            }
+        }
+
+        /// <summary>Controla a presença do indicador em infDPS. Use false para omiti-lo.</summary>
+        [XmlIgnore]
+        public bool IndDestSpecified
+        {
+            get => destinatario.Indicador.HasValue;
+            set => destinatario.Indicador = value ? IndDest : (IndicadorDestinatarioNFSeRTC?)null;
+        }
 
         #region Should Serialize
+        /// <summary>Emite o destinatário nesta posição quando informado diretamente em infDPS.</summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public bool ShouldSerializeDest() => destinatario.Dados != null;
+
         public bool ShouldSerializeCMotivoEmisTI() => !string.IsNullOrWhiteSpace(CMotivoEmisTI);
 
         /// <summary>Omite a finalidade quando ela não foi informada.</summary>
@@ -456,6 +510,14 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class End
     {
+        internal End Copiar()
+        {
+            var copia = (End)MemberwiseClone();
+            copia.EndNac = EndNac?.Copiar();
+            copia.EndExt = EndExt?.Copiar();
+            return copia;
+        }
+
         [XmlElement("endNac")]
         public EndNac EndNac { get; set; }
 
@@ -494,6 +556,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class EndNac
     {
+        internal EndNac Copiar() => (EndNac)MemberwiseClone();
+
         [XmlElement("cMun")]
         public int CMun { get; set; }
 
@@ -508,6 +572,8 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class EndExt
     {
+        internal EndExt Copiar() => (EndExt)MemberwiseClone();
+
         [XmlElement("cPais")]
         public string CPais { get; set; }
 
@@ -894,8 +960,87 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
 #endif
     public class ComExt
     {
+        private bool? usarLeiauteLegado;
+        private bool? usarLeiauteLegadoNaLeitura;
+        private bool valorServicoMoedaLido;
+        private double? valorServicoMoedaNumerico;
+        private decimal? valorServicoMoedaXml;
+        private int? codigoMdPrestacao;
+        private ModoPrestacaoNFSe modoPrestacao;
+
+        /// <summary>Modo de prestação com o significado correspondente ao leiaute selecionado.</summary>
+        [XmlIgnore]
+        public ModoPrestacaoNFSe MdPrestacao
+        {
+            get
+            {
+                switch (codigoMdPrestacao)
+                {
+                    case null:
+                        return modoPrestacao;
+                    case 0:
+                    case 1:
+                    case 2:
+                        return (ModoPrestacaoNFSe)codigoMdPrestacao.Value;
+                    case 3:
+                        return UsarLeiauteLegadoNaLeitura
+                            ? ModoPrestacaoNFSe.PresencaComercialExteriorLegada
+                            : ModoPrestacaoNFSe.MovimentoTemporarioPessoasFisicas;
+                    case 4:
+                        return UsarLeiauteLegadoNaLeitura
+                            ? ModoPrestacaoNFSe.MovimentoTemporarioPessoasFisicas
+                            : ModoPrestacaoNFSe.ConsumoExterior;
+                    case 5 when !UsarLeiauteLegadoNaLeitura:
+                        return ModoPrestacaoNFSe.ConsumoConcomitante;
+                    default:
+                        throw new InvalidOperationException("Código de mdPrestacao inválido para o leiaute de comércio exterior selecionado.");
+                }
+            }
+            set
+            {
+                modoPrestacao = value;
+                codigoMdPrestacao = null;
+            }
+        }
+
+        /// <summary>Código de mdPrestacao no XML para o leiaute selecionado.</summary>
         [XmlElement("mdPrestacao")]
-        public ModoPrestacaoNFSe MdPrestacao { get; set; }
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public string MdPrestacaoField
+        {
+            get
+            {
+                var modo = MdPrestacao;
+                switch (modo)
+                {
+                    case ModoPrestacaoNFSe.Desconhecido:
+                    case ModoPrestacaoNFSe.Transfronteirico:
+                    case ModoPrestacaoNFSe.ConsumoBrasil:
+                        return ((int)modo).ToString(CultureInfo.InvariantCulture);
+                    case ModoPrestacaoNFSe.PresencaComercialExteriorLegada when UsarLeiauteLegado:
+                        return "3";
+                    case ModoPrestacaoNFSe.MovimentoTemporarioPessoasFisicas:
+                        return UsarLeiauteLegado ? "4" : "3";
+                    case ModoPrestacaoNFSe.ConsumoExterior when !UsarLeiauteLegado:
+                        return "4";
+                    case ModoPrestacaoNFSe.ConsumoConcomitante when !UsarLeiauteLegado:
+                        return "5";
+                    default:
+                        throw new InvalidOperationException("O modo de prestação informado não possui código no leiaute de comércio exterior selecionado.");
+                }
+            }
+            set
+            {
+                if (value == null || value.Length != 1 || value[0] < '0' || value[0] > '5')
+                {
+                    throw new FormatException($"Código '{value}' inválido para a tag <mdPrestacao> do grupo <comExt>. Informe um código de 0 a 5.");
+                }
+
+                codigoMdPrestacao = value[0] - '0';
+            }
+        }
 
         [XmlElement("vincPrest")]
         public VinculoEntrePartes VincPrest { get; set; }
@@ -903,14 +1048,77 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("tpMoeda")]
         public string TpMoeda { get; set; }
 
-        [XmlIgnore]
-        public double vServMoeda { get; set; }
+        /// <summary>Número da fatura ou do documento que comprova a transação.</summary>
+        [XmlElement("nFatura")]
+        public string NFatura { get; set; }
 
+        /// <summary>Valor da fatura na moeda informada em TpMoeda. No COM, decimal.MinValue representa ausência.</summary>
+        [XmlIgnore]
+#if INTEROP
+        public decimal VFatura { get; set; } = decimal.MinValue;
+#else
+        public decimal? VFatura { get; set; }
+#endif
+
+        /// <summary>Representação XML do valor da fatura.</summary>
+        [XmlElement("vFatura")]
+        public string VFaturaField
+        {
+            get =>
+#if INTEROP
+                VFatura.ToString("F2", CultureInfo.InvariantCulture);
+#else
+                VFatura?.ToString("F2", CultureInfo.InvariantCulture);
+#endif
+            set => VFatura = XmlConvert.ToDecimal(value);
+        }
+
+        /// <summary>Valor do serviço em moeda estrangeira no leiaute anterior.</summary>
+        [XmlIgnore]
+        public double vServMoeda
+        {
+            get => valorServicoMoedaNumerico ?? (double)valorServicoMoedaXml.GetValueOrDefault();
+            set
+            {
+                valorServicoMoedaNumerico = value;
+                valorServicoMoedaXml = null;
+            }
+        }
+
+        /// <summary>Representação histórica do valor do serviço em moeda estrangeira.</summary>
         [XmlElement("vServMoeda")]
         public string vServMoedaField
         {
-            get => vServMoeda.ToString("F2", CultureInfo.InvariantCulture);
-            set => vServMoeda = Converter.ToDouble(value);
+            get => valorServicoMoedaNumerico.HasValue
+                ? FormatarValorServico(valorServicoMoedaNumerico.Value)
+                : valorServicoMoedaXml?.ToString("F2", CultureInfo.InvariantCulture);
+            set
+            {
+                valorServicoMoedaXml = value == null ? (decimal?)null : XmlConvert.ToDecimal(value);
+                valorServicoMoedaNumerico = null;
+            }
+        }
+
+        private static string FormatarValorServico(double valor)
+        {
+            var cultura = CultureInfo.InvariantCulture;
+
+            // No .NET Framework, a formatação direta de double com F2 pode perder
+            // centavos em valores grandes. G17 mantém a precisão do valor recebido.
+            return decimal.TryParse(valor.ToString("G17", cultura), NumberStyles.Float, cultura, out var valorDecimal)
+                ? valorDecimal.ToString("F2", cultura)
+                : valor.ToString("F2", cultura);
+        }
+
+        /// <summary>Controla a presença de vServMoeda em XML e registra sua ocorrência durante a leitura.</summary>
+        [XmlIgnore]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public bool vServMoedaFieldSpecified
+        {
+            get => UsarLeiauteLegado;
+            set => valorServicoMoedaLido = value;
         }
 
         [XmlElement("mecAFComexP")]
@@ -922,19 +1130,97 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         [XmlElement("movTempBens")]
         public MovTempBens MovTempBens { get; set; }
 
-        [XmlElement("nDI")]
-        public int NDI { get; set; }
+        /// <summary>Número da declaração de importação no leiaute anterior, para identificadores numéricos.</summary>
+        [XmlIgnore]
+        public int NDI
+        {
+            get => int.TryParse(NDIField, NumberStyles.Integer, CultureInfo.InvariantCulture, out var numero) ? numero : 0;
+            set => NDIField = value > 0 ? value.ToString(CultureInfo.InvariantCulture) : null;
+        }
 
+        /// <summary>Número do registro de exportação no leiaute anterior, para identificadores numéricos.</summary>
+        [XmlIgnore]
+        public int NRE
+        {
+            get => int.TryParse(NREField, NumberStyles.Integer, CultureInfo.InvariantCulture, out var numero) ? numero : 0;
+            set => NREField = value > 0 ? value.ToString(CultureInfo.InvariantCulture) : null;
+        }
+
+        /// <summary>Identificador da declaração de importação no leiaute anterior, preservado como texto.</summary>
+        [XmlElement("nDI")]
+        public string NDIField { get; set; }
+
+        /// <summary>Identificador do registro de exportação no leiaute anterior, preservado como texto.</summary>
         [XmlElement("nRE")]
-        public int NRE { get; set; }
+        public string NREField { get; set; }
+
+        /// <summary>Número da Declaração Única de Importação.</summary>
+        [XmlElement("nDUIMP")]
+        public string NDUIMP { get; set; }
+
+        /// <summary>Número da Declaração Única de Exportação.</summary>
+        [XmlElement("nDUE")]
+        public string NDUE { get; set; }
 
         [XmlElement("mdic")]
         public int MDic { get; set; }
 
+        /// <summary>Número do contrato de câmbio ou do documento que comprova o pagamento.</summary>
+        [XmlElement("nContCambio")]
+        public string NContCambio { get; set; }
+
+        /// <summary>
+        /// Seleciona o leiaute anterior para gerar o grupo. Por padrão, segue o leiaute
+        /// identificado ou selecionado na leitura.
+        /// </summary>
+        [XmlIgnore]
+        public bool UsarLeiauteLegado
+        {
+            get => usarLeiauteLegado ?? UsarLeiauteLegadoNaLeitura;
+            set => usarLeiauteLegado = value;
+        }
+
+        /// <summary>
+        /// Interpreta o código lido segundo o leiaute anterior. Por padrão, vServMoeda
+        /// presente no XML de origem identifica esse leiaute. Defina antes de consultar MdPrestacao
+        /// caso conheça o leiaute da origem.
+        /// </summary>
+        [XmlIgnore]
+        public bool UsarLeiauteLegadoNaLeitura
+        {
+            get => usarLeiauteLegadoNaLeitura ?? valorServicoMoedaLido;
+            set => usarLeiauteLegadoNaLeitura = value;
+        }
+
         #region Should Serialize
-        public bool ShouldSerializeNDI() => NDI > 0;
-        public bool ShouldSerializeNRE() => NRE > 0;
-        public bool ShouldSerializeMDic() => MDic > 0;
+        /// <summary>Emite o número da fatura somente no leiaute atual.</summary>
+        public bool ShouldSerializeNFatura() => !UsarLeiauteLegado;
+
+        /// <summary>Emite o valor da fatura quando informado no leiaute atual.</summary>
+        public bool ShouldSerializeVFaturaField() => !UsarLeiauteLegado &&
+#if INTEROP
+            VFatura != decimal.MinValue;
+#else
+            VFatura.HasValue;
+#endif
+        /// <summary>Emite e exige o valor do serviço no leiaute anterior.</summary>
+        public bool ShouldSerializevServMoedaField()
+        {
+            if (UsarLeiauteLegado && !valorServicoMoedaNumerico.HasValue && !valorServicoMoedaXml.HasValue)
+            {
+                throw new InvalidOperationException("Informe a tag <vServMoeda> do grupo <comExt> para gerar no leiaute legado.");
+            }
+
+            return UsarLeiauteLegado;
+        }
+        public bool ShouldSerializeNDI() => UsarLeiauteLegado && !string.IsNullOrEmpty(NDIField);
+        public bool ShouldSerializeNRE() => UsarLeiauteLegado && !string.IsNullOrEmpty(NREField);
+        public bool ShouldSerializeNDIField() => ShouldSerializeNDI();
+        public bool ShouldSerializeNREField() => ShouldSerializeNRE();
+        public bool ShouldSerializeNDUIMP() => !UsarLeiauteLegado;
+        public bool ShouldSerializeNDUE() => !UsarLeiauteLegado;
+        public bool ShouldSerializeNContCambio() => !UsarLeiauteLegado;
+        public bool ShouldSerializeMDic() => true;
         #endregion Should Serialize
 
     }
@@ -1051,6 +1337,13 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
             set => DtFim = DateTimeOffset.ParseExact(value, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
 #endif
         }
+
+        /// <summary>Código IBGE do município de realização do evento.</summary>
+        [XmlElement("cMun")]
+        public int CMun { get; set; }
+
+        /// <summary>Emite o código do município quando informado.</summary>
+        public bool ShouldSerializeCMun() => CMun > 0;
 
         [XmlElement("idAtvEvt")]
         public string IdAtvEvt { get; set; }
@@ -1927,6 +2220,25 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     public class IBSCBS
     {
         private FinalidadeNFSeRTC finNFSe;
+        private DestinatarioDps destinatarioDps;
+
+        internal IndicadorDestinatarioNFSeRTC? IndDestLegado { get; private set; }
+
+        internal IBSCBS Vincular(DestinatarioDps destinatario)
+        {
+            if (destinatarioDps == null)
+            {
+                destinatarioDps = destinatario;
+                return this;
+            }
+
+            var copia = (IBSCBS)MemberwiseClone();
+            copia.destinatarioDps = destinatario;
+            copia.DestField = DestField?.Copiar();
+            return copia;
+        }
+
+        internal void Desvincular() => destinatarioDps = null;
 
         /// <summary>
         /// Finalidade no leiaute anterior. Para emissão atual, use InfDPS.FinNFSe.
@@ -1977,11 +2289,53 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public TipoEnteGovernamentalNFSeRTC? TpEnteGov { get; set; }
 #endif
 
-        [XmlElement("indDest")]
-        public IndicadorDestinatarioNFSeRTC IndDest { get; set; }
+        /// <summary>Indicador na posição legada, disponível durante a transição.</summary>
+        [Obsolete("Use InfDPS.IndDest para o novo leiaute. Mantenha IBSCBS.IndDest enquanto o ambiente exigir a posição legada.", false)]
+        [XmlIgnore]
+        public IndicadorDestinatarioNFSeRTC IndDest
+        {
+            get => IndDestLegado ?? destinatarioDps?.Indicador ?? IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente;
+            set => IndDestLegado = value;
+        }
 
+        /// <summary>Destinatário na posição legada, disponível durante a transição.</summary>
+        [Obsolete("Use InfDPS.Dest para o novo leiaute. Mantenha IBSCBS.Dest enquanto o ambiente exigir a posição legada.", false)]
+        [XmlIgnore]
+        public Dest Dest
+        {
+            get => DestField ?? destinatarioDps?.Dados;
+            set => DestField = value;
+        }
+
+        /// <summary>Representação XML do indicador na posição legada.</summary>
+        [XmlElement("indDest")]
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public IndicadorDestinatarioNFSeRTC IndDestField
+        {
+            get => IndDestLegado.GetValueOrDefault();
+            set => IndDestLegado = value;
+        }
+
+        /// <summary>Representação XML do destinatário na posição legada.</summary>
         [XmlElement("dest")]
-        public Dest Dest { get; set; }
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public Dest DestField { get; set; }
+
+        /// <summary>Indica se o indicador foi informado na posição legada.</summary>
+        public bool ShouldSerializeIndDest() => IndDestSpecified;
+
+        /// <summary>Indica se o destinatário foi informado na posição legada.</summary>
+        public bool ShouldSerializeDest() => DestField != null;
+
+        /// <summary>Emite o indicador na posição legada quando informado.</summary>
+#if INTEROP
+        [ComVisible(false)]
+#endif
+        public bool ShouldSerializeIndDestField() => ShouldSerializeIndDest();
 
         [XmlElement("imovel")]
         public Imovel Imovel { get; set; }
@@ -2010,8 +2364,22 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
         public int GetBensMoveisCount => BensMoveis?.Count ?? 0;
 #endif
 
+        /// <summary>Informações das operações de condomínio.</summary>
+        [XmlElement("condominios")]
+        public Condominios Condominios { get; set; }
+
         [XmlElement("valores")]
         public IBSCBSValores Valores { get; set; }
+
+        /// <summary>Controla a presença do indicador na posição legada. Use false para omiti-lo.</summary>
+        [XmlIgnore]
+        public bool IndDestSpecified
+        {
+            get => IndDestLegado.HasValue;
+            set => IndDestLegado = value
+                ? IndDestLegado ?? destinatarioDps?.Indicador ?? IndicadorDestinatarioNFSeRTC.ProprioTomadorAdquirente
+                : (IndicadorDestinatarioNFSeRTC?)null;
+        }
 
         #region Should Serialize
 
@@ -2078,7 +2446,15 @@ namespace Unimake.Business.DFe.Xml.NFSe.NACIONAL
     [ProgId("Unimake.Business.DFe.Xml.NFSe.NACIONAL.Dest")]
     [ComVisible(true)]
 #endif
-    public class Dest : Toma { }
+    public class Dest : Toma
+    {
+        internal Dest Copiar()
+        {
+            var copia = (Dest)MemberwiseClone();
+            copia.End = End?.Copiar();
+            return copia;
+        }
+    }
 
 #if INTEROP
     [ClassInterface(ClassInterfaceType.AutoDual)]

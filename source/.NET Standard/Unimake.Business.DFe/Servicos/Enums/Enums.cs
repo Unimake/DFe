@@ -18809,19 +18809,229 @@ namespace Unimake.Business.DFe.Servicos
         ConsumoBrasil = 2,
 
         /// <summary>
-        /// 3 - Presença Comercial no Exterior
+        /// 3 - Movimento temporário de pessoas físicas.
         /// </summary>
         [XmlEnum("3")]
-        PrecencaComercialExt = 3,
+        MovimentoTemporarioPessoasFisicas = 4,
 
         /// <summary>
-        /// 4 - Movimento Temporário Pessoa Física
+        /// 4 - Consumo no exterior.
         /// </summary>
         [XmlEnum("4")]
+        ConsumoExterior = 6,
+
+        /// <summary>5 - Consumo concomitante no território nacional e no exterior.</summary>
+        [XmlEnum("5")]
+        ConsumoConcomitante = 5,
+
+        /// <summary>3 - Presença comercial no exterior, exclusiva do leiaute anterior.</summary>
+        [XmlIgnore]
+        PresencaComercialExteriorLegada = 3,
+
+        /// <summary>Nome histórico da presença comercial no exterior no leiaute anterior.</summary>
+        [Obsolete("Use PresencaComercialExteriorLegada no leiaute anterior.")]
+        [XmlIgnore]
+        PrecencaComercialExt = 3,
+
+        /// <summary>Nome histórico do movimento temporário de pessoas físicas.</summary>
+        [Obsolete("Use MovimentoTemporarioPessoasFisicas.")]
+        [XmlIgnore]
         MovimentoTempPessoaFisica = 4,
     }
 
     #endregion Modo de prestação NFS-e NACIONAL
+
+    /// <summary>Tipo de cobrança condominial na NFS-e Nacional.</summary>
+    public enum TipoCobrancaCondominioNFSe
+    {
+        /// <summary>Condomínio ordinário.</summary>
+        [XmlEnum("01")]
+        CondominioOrdinario = 1,
+
+        /// <summary>Condomínio privativo.</summary>
+        [XmlEnum("02")]
+        CondominioPrivativo = 2,
+
+        /// <summary>Fundo de promoção e propaganda.</summary>
+        [XmlEnum("03")]
+        FundoPromocaoPropaganda = 3,
+
+        /// <summary>Impostos e taxas.</summary>
+        [XmlEnum("04")]
+        ImpostosTaxas = 4,
+
+        /// <summary>Fundo de reserva.</summary>
+        [XmlEnum("05")]
+        FundoReserva = 5,
+
+        /// <summary>Outra cobrança.</summary>
+        [XmlEnum("99")]
+        OutraCobranca = 99,
+    }
+
+    /// <summary>Tipo de detalhamento da cobrança condominial na NFS-e Nacional.</summary>
+    public enum TipoDetalhamentoCobrancaCondominioNFSe
+    {
+        /// <summary>Condomínio comum CRD.</summary>
+        [XmlEnum("001")]
+        CondominioComumCRD = 1,
+
+        /// <summary>Condomínio comum por metro quadrado.</summary>
+        [XmlEnum("002")]
+        CondominioComumM2 = 2,
+
+        /// <summary>Condomínio comum fixo.</summary>
+        [XmlEnum("003")]
+        CondominioComumFixo = 3,
+
+        /// <summary>Condomínio comum por fração.</summary>
+        [XmlEnum("004")]
+        CondominioComumFracao = 4,
+
+        /// <summary>Condomínio comum por percentual.</summary>
+        [XmlEnum("005")]
+        CondominioComumPercentual = 5,
+
+        /// <summary>Condomínio CMM.</summary>
+        [XmlEnum("006")]
+        CondominioCMM = 6,
+
+        /// <summary>Energia elétrica.</summary>
+        [XmlEnum("007")]
+        EnergiaEletrica = 7,
+
+        /// <summary>Água.</summary>
+        [XmlEnum("008")]
+        Agua = 8,
+
+        /// <summary>Ar condicionado.</summary>
+        [XmlEnum("009")]
+        ArCondicionado = 9,
+
+        /// <summary>Telefone.</summary>
+        [XmlEnum("010")]
+        Telefone = 10,
+
+        /// <summary>Internet.</summary>
+        [XmlEnum("011")]
+        Internet = 11,
+
+        /// <summary>Controle de pragas.</summary>
+        [XmlEnum("012")]
+        ControlePragas = 12,
+
+        /// <summary>Exaustão.</summary>
+        [XmlEnum("013")]
+        Exaustao = 13,
+
+        /// <summary>Gás.</summary>
+        [XmlEnum("014")]
+        Gas = 14,
+
+        /// <summary>IPTU.</summary>
+        [XmlEnum("015")]
+        IPTU = 15,
+
+        /// <summary>Taxa de área.</summary>
+        [XmlEnum("016")]
+        TaxaArea = 16,
+
+        /// <summary>Manutenção.</summary>
+        [XmlEnum("017")]
+        Manutencao = 17,
+
+        /// <summary>Multa.</summary>
+        [XmlEnum("018")]
+        Multa = 18,
+
+        /// <summary>Seguro.</summary>
+        [XmlEnum("019")]
+        Seguro = 19,
+
+        /// <summary>Taxa de bombeiro.</summary>
+        [XmlEnum("020")]
+        TaxaBombeiro = 20,
+
+        /// <summary>Taxa de administração.</summary>
+        [XmlEnum("021")]
+        TaxaAdministracao = 21,
+
+        /// <summary>Taxa de foro.</summary>
+        [XmlEnum("022")]
+        TaxaForo = 22,
+
+        /// <summary>Limpeza.</summary>
+        [XmlEnum("023")]
+        Limpeza = 23,
+
+        /// <summary>Taxa de lixo.</summary>
+        [XmlEnum("024")]
+        TaxaLixo = 24,
+
+        /// <summary>Tapume.</summary>
+        [XmlEnum("025")]
+        Tapume = 25,
+
+        /// <summary>Instalação de alarme.</summary>
+        [XmlEnum("026")]
+        InstalacaoAlarme = 26,
+
+        /// <summary>Segurança.</summary>
+        [XmlEnum("027")]
+        Seguranca = 27,
+
+        /// <summary>Fundo de promoção e propaganda.</summary>
+        [XmlEnum("028")]
+        FundoPromocaoPropaganda = 28,
+
+        /// <summary>Análise de projeto.</summary>
+        [XmlEnum("029")]
+        AnaliseProjeto = 29,
+
+        /// <summary>Fundo de reserva.</summary>
+        [XmlEnum("030")]
+        FundoReserva = 30,
+
+        /// <summary>Laudos e vistorias.</summary>
+        [XmlEnum("031")]
+        LaudosVistorias = 31,
+
+        /// <summary>Detecção de fumaça.</summary>
+        [XmlEnum("032")]
+        DeteccaoFumaca = 32,
+
+        /// <summary>Reanálise de projeto.</summary>
+        [XmlEnum("033")]
+        ReanaliseProjeto = 33,
+
+        /// <summary>Taxa extra.</summary>
+        [XmlEnum("034")]
+        TaxaExtra = 34,
+
+        /// <summary>Área vaga.</summary>
+        [XmlEnum("035")]
+        AreaVaga = 35,
+
+        /// <summary>Condomínio irrecuperável.</summary>
+        [XmlEnum("036")]
+        CondominioIrrecuperavel = 36,
+
+        /// <summary>Outro.</summary>
+        [XmlEnum("999")]
+        Outro = 999,
+    }
+
+    /// <summary>Tipo de desconto condominial na NFS-e Nacional.</summary>
+    public enum TipoDescontoCondominioNFSe
+    {
+        /// <summary>Desconto incondicionado.</summary>
+        [XmlEnum("1")]
+        Incondicionado = 1,
+
+        /// <summary>Desconto condicionado.</summary>
+        [XmlEnum("2")]
+        Condicionado = 2,
+    }
 
     #region Vinculo Entre as partes no negócio NFS-e NACIONAL
     /// <summary>
