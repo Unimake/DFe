@@ -98,7 +98,7 @@ begin
     DPS.InfDPS.IBSCBS.finNFSe := 0;
     DPS.InfDPS.IBSCBS.IndFinal := 0;
     DPS.InfDPS.IBSCBS.cIndOp := '000001';
-    DPS.InfDPS.IBSCBS.indDest := 0;
+    DPS.InfDPS.indDest := 0;
     DPS.InfDPS.IBSCBS.valores := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSValores');
     DPS.InfDPS.IBSCBS.valores.trib := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.IBSCBSValoresTrib');
     DPS.InfDPS.IBSCBS.valores.trib.gIBSCBS := CreateOleObject('Unimake.Business.DFe.Xml.NFSe.NACIONAL.GIBSCBS');
