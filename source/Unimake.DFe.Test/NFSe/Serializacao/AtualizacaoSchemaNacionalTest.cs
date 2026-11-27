@@ -54,8 +54,13 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
             modelo.InfDPS.Serv.AtvEvento = new AtvEvento
             {
                 XNome = "EVENTO TESTE",
+#if INTEROP
+                DtIni = new DateTime(2026, 11, 15),
+                DtFim = new DateTime(2026, 11, 16),
+#else
                 DtIni = new DateTimeOffset(2026, 11, 15, 0, 0, 0, TimeSpan.Zero),
                 DtFim = new DateTimeOffset(2026, 11, 16, 0, 0, 0, TimeSpan.Zero),
+#endif
                 CMun = 3550308,
                 IdAtvEvt = "123"
             };
@@ -82,9 +87,14 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
             Assert.Equal("000045", relido.InfDPS.Serv.ComExt.NContCambio);
             Assert.Equal(-12.34m, relido.InfDPS.Valores.VAjusteBC.VAjusteBCIBSCBSComExt);
 
-            relido.InfDPS.Serv.ComExt.VFatura = null;
             relido.InfDPS.Serv.AtvEvento.CMun = 0;
+#if INTEROP
+            relido.InfDPS.Serv.ComExt.VFatura = decimal.MinValue;
+            relido.InfDPS.Valores.VAjusteBC.VAjusteBCIBSCBSComExt = decimal.MinValue;
+#else
+            relido.InfDPS.Serv.ComExt.VFatura = null;
             relido.InfDPS.Valores.VAjusteBC.VAjusteBCIBSCBSComExt = null;
+#endif
             xml = relido.GerarXML();
             Assert.Null(Selecionar(xml, serv + "/n:comExt/n:vFatura"));
             Assert.Null(Selecionar(xml, serv + "/n:atvEvento/n:cMun"));
@@ -103,7 +113,11 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
             dps.InfDPS.Dest = new Dest { CNPJ = "12345678000195", XNome = "DESTINATARIO TESTE" };
             dps.InfDPS.IBSCBS.Condominios = new Condominios
             {
+#if INTEROP
+                DVencOrig = new DateTime(2026, 11, 30, 14, 15, 0),
+#else
                 DVencOrig = new DateTimeOffset(2026, 11, 30, 14, 15, 0, TimeSpan.FromHours(-3)),
+#endif
                 GCobranca = new List<CobrancaCondominio>
                 {
                     new CobrancaCondominio
@@ -171,7 +185,11 @@ namespace Unimake.DFe.Test.NFSe.Serializacao
             modelo.InfDPS.Valores.VAjusteBC.VAjusteBCIBSCBSComExt = -limite;
             modelo.InfDPS.IBSCBS.Condominios = new Condominios
             {
+#if INTEROP
+                DVencOrig = new DateTime(2026, 11, 30),
+#else
                 DVencOrig = new DateTimeOffset(2026, 11, 30, 0, 0, 0, TimeSpan.Zero),
+#endif
                 GCobranca = new List<CobrancaCondominio>
                 {
                     new CobrancaCondominio
