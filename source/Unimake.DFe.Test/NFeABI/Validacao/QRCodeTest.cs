@@ -15,7 +15,7 @@ namespace Unimake.DFe.Test.NFeABI.Validacao
     public class QRCodeTest
     {
         private const string UrlQrCodeHomologacao = "https://www.fazenda.pr.gov.br/nfeabi/qrcode";
-        private const string UrlChaveHomologacao = "https://www.fazenda.pr.gov.br/nfeabi/consulta";
+        private const string UrlChaveHomologacao = "https://www.fazenda.pr.gov.br/nfeabi";
 
         /// <summary>
         /// Gera o grupo suplementar online no formato usado em homologação.
