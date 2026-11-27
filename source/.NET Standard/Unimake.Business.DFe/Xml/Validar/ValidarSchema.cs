@@ -95,6 +95,36 @@ namespace Unimake.Business.DFe
             return arqSchema.Substring(0, arqSchema.Length - nomeSchema.Length) + nomeLegado;
         }
 
+        private static string SelecionarSchemaCTeSimplificado(XmlDocument conteudoXML, string arqSchema)
+        {
+            if (conteudoXML == null)
+            {
+                return arqSchema;
+            }
+
+            string caminhoCTe;
+            switch (arqSchema)
+            {
+                case "CTe.cteSimp_v4.00.xsd":
+                    caminhoCTe = "/cte:CTeSimp";
+                    break;
+                case "CTe.procCTeSimp_v4.00.xsd":
+                    caminhoCTe = "/cte:cteSimpProc/cte:CTeSimp";
+                    break;
+                default:
+                    return arqSchema;
+            }
+
+            var namespaces = new XmlNamespaceManager(conteudoXML.NameTable);
+            namespaces.AddNamespace("cte", "http://www.portalfiscal.inf.br/cte");
+            var grupoLegado = conteudoXML.SelectSingleNode(caminhoCTe + "/cte:infCte/cte:imp/cte:IBSCBS", namespaces);
+
+            // O schema legado aceita o grupo no cabeçalho e rejeita os grupos exclusivos do leiaute por prestação.
+            return grupoLegado == null
+                ? arqSchema
+                : Path.GetFileNameWithoutExtension(arqSchema) + "_legado.xsd";
+        }
+
         /// <summary>
         /// Extrai recursos (XSD) da DLL para efetuar a validação do XML, resolvendo recursivamente todos os includes/imports.
         /// </summary>
@@ -458,6 +488,7 @@ namespace Unimake.Business.DFe
             }
 
             arqSchema = SelecionarSchemaMonofasia(conteudoXML, arqSchema);
+            arqSchema = SelecionarSchemaCTeSimplificado(conteudoXML, arqSchema);
 
             //if (padraoNFSe == Servicos.PadraoNFSe.None)
             //{

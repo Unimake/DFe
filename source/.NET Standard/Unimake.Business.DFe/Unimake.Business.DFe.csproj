@@ -821,6 +821,8 @@
 		<None Remove="Xml\Schemas\CTe\cteMultiModal_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cteOS_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteSimp_v4.00_legado.xsd" />
+		<None Remove="Xml\Schemas\CTe\cteSimpTiposLegado_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\cte_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\DFeTiposBasicos_v1.00.xsd" />
@@ -851,6 +853,7 @@
 		<None Remove="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTeSimp_v4.00.xsd" />
+		<None Remove="Xml\Schemas\CTe\procCTeSimp_v4.00_legado.xsd" />
 		<None Remove="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
 		<None Remove="Xml\Schemas\CTe\procGTVe_v3.00.xsd" />
@@ -2491,6 +2494,8 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\cteMultiModal_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\cteOS_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\cteSimp_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteSimp_v4.00_legado.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\cteSimpTiposLegado_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\cteTiposBasico_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\cte_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\DFeTiposBasicos_v1.00.xsd" />
@@ -2516,6 +2521,7 @@
 		<EmbeddedResource Include="Xml\Schemas\CTe\inutCTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procCTeOS_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procCTeSimp_v4.00.xsd" />
+		<EmbeddedResource Include="Xml\Schemas\CTe\procCTeSimp_v4.00_legado.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procCTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procEventoCTe_v4.00.xsd" />
 		<EmbeddedResource Include="Xml\Schemas\CTe\procGTVe_v4.00.xsd" />
